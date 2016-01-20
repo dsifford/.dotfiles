@@ -31,6 +31,13 @@ export PATH=$PATH:/usr/local/bin
         docker rm $(docker ps -aq -f status=exited)
         docker rmi $(docker images -f "dangling=true" -q)
     }
+    
+    # Remove either untagged images or a variable number of images (1-9) 
+    drmi () {
+	if [[ $1 = @(u|un) ]]; then docker rmi $(docker images -f dangling=true -q)
+	elif [[ "$1" = [1-9] ]]; then docker rmi $(docker images -q | head -"$1") 
+	fi
+    }
 
 ### Git
     gra () {
