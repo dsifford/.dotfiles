@@ -15,9 +15,19 @@ exec --no-startup-id redshift -l 42.729336197453655:-82.99709570068359
 exec --no-startup-id ckb --background
 
 # Init a terminal scratchpad on launch
-exec --no-startup-id i3-msg 'workspace 2; exec tilda --class MAINTERM';
+exec i3-msg 'workspace 2; exec tilda --class MAINTERM';
 for_window [class="MAINTERM"] floating enable, move position 1080px 200px, resize set 1920 500, move scratchpad;
 bindsym Control+space [class="MAINTERM"] workspace 2;  scratchpad show
+
+# Init atom in its own workspace on launch
+exec --no-startup-id i3-msg 'workspace 1; exec atom-beta';
+for_window [class="Atom"] move to workspace Atom;
+bindsym $mod+grave workspace Atom;
+
+# Init spotify in its own workspace on launc
+exec --no-startup-id i3-msg 'workspace 1; exec spotify';
+for_window [class="Spotify"] move to workspace Spotify;
+bindsym $mod+Tab workspace Spotify;
 
 # Scratchpad settings
 bindsym Control+Shift+$mod+space move scratchpad
