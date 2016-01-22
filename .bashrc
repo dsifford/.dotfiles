@@ -1,18 +1,16 @@
-# User dependent .bashrc file
 
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
 
-# Variables
+# System Environment Variables
 source ~/.git-prompt.sh
 export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/gocode
 
 # Set a default prompt: user@host ~/current/working/dir (repository)
  export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m\]\n\$ '
 
-
-# Uncomment to use the terminal colours set in DIR_COLORS
-# eval "$(dircolors -b /etc/DIR_COLORS)"
 
 #------------------Shell Scripts---------------------#
 
@@ -81,8 +79,5 @@ export PATH=$PATH:/usr/local/bin
     alias rma='docker rm $(docker ps -aq)'
     alias rmia='docker rmi $(docker images -q)'
 
-    # Remove all untagged images
-    alias drmiu='docker rmi $(docker images | grep "<none>" | awk "{print \$3}")'
-    # fix this to use the dangling=true filter -- "docker images -f dangling=true -q"
-
+    # Better format for "docker ps"
     alias dpsa='docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}"'
