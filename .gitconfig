@@ -1,0 +1,21 @@
+[user]
+	email = dereksifford@gmail.com
+	name = Derek P Sifford
+[diff]
+	tool = meld
+[merge]
+	tool = meld
+[credential]
+	helper = store
+[core]
+	editor = vim
+[pull]
+	rebase = true
+[rerere]
+	enabled = true
+[alias]
+	lg = log --oneline --decorate --all --graph
+[push]
+	default = simple
+[difftool]
+	prompt = false
