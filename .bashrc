@@ -2,11 +2,16 @@
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
 
-# System Environment Variables
-source ~/.git-prompt.sh
+# Set up system path
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/gocode/bin
+
+# System Environment Variables
 export GOPATH=$HOME/gocode
+
+# Source git prompt script
+source ~/.git-prompt.sh
 
 # Set a default prompt: user@host ~/current/working/dir (repository)
  export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m\]\n\$ '
