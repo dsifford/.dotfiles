@@ -3,9 +3,9 @@
 [[ "$-" != *i* ]] && return
 
 # Set up system path
+export PATH=$PATH:$HOME/gocode/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/gocode/bin
 
 # System Environment Variables
 export GOPATH=$HOME/gocode
