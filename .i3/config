@@ -10,7 +10,6 @@ exec --no-startup-id xrandr --output DP-3 --off --output DVI-I-0 --off --output 
 
 # Applets
 exec --no-startup-id nm-applet
-exec --no-startup-id gnome-sound-applet
 exec --no-startup-id dropbox start
 exec --no-startup-id redshift -l 42.729336197453655:-82.99709570068359
 exec --no-startup-id ckb --background
@@ -25,13 +24,13 @@ bindsym Control+Shift+$mod+space move scratchpad
 bindsym Control+Shift+space scratchpad show
 
 # Always open Zeal maximized on monitor 2
-for_window [class="Zeal"] floating enable, move to workspace 2; 
+for_window [class="Zeal"] floating enable, move to workspace 2;
 
 # Set keyboard shortcuts for volume control
 bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume 0 -- '-5%'
 bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume 0 -- '+5%'
 
-# Set default font 
+# Set default font
 font pango:DejaVu Sans Mono 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -164,7 +163,7 @@ bar {
 		# Type             border  background  font
 		focused_workspace  #008fff #007fff     #ffffff
 		active_workspace   #333333 #5f676a     #888888
-		urgent_workspace   #aa0000 #990000     #ffffff	
+		urgent_workspace   #aa0000 #990000     #ffffff
 	}
 	# i3bar position
 	position top
