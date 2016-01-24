@@ -11,20 +11,21 @@ exec --no-startup-id xrandr --output DP-3 --off --output DVI-I-0 --off --output 
 # Applets
 exec --no-startup-id nm-applet
 exec --no-startup-id dropbox start
-exec --no-startup-id redshift -l 42.729336197453655:-82.99709570068359
+exec --no-startup-id redshift-gtk -l 42.729336197453655:-82.99709570068359
 exec --no-startup-id ckb --background
+exec --no-startup-id autokey
 
 # Init a terminal scratchpad on launch
 exec i3-msg 'workspace 2; exec tilda --class MAINTERM';
 for_window [class="MAINTERM"] floating enable, move position 1080px 200px, resize set 1920 500, move scratchpad;
-bindsym Control+space [class="MAINTERM"] workspace 2;  scratchpad show
+bindsym Control+space [class="MAINTERM"] workspace 2,  scratchpad show
 
-# Init atom in its own workspace on launch
-exec --no-startup-id i3-msg 'workspace 1; exec atom-beta';
+# Have atom always open in its own workspace 
 for_window [class="Atom"] move to workspace Atom;
-bindsym $mod+grave workspace Atom;
+workspace Atom output HDMI-0
+bindsym $mod+grave workspace Atom, fullscreen enable;
 
-# Init spotify in its own workspace on launc
+# Init spotify in its own workspace on launch
 exec --no-startup-id i3-msg 'workspace 1; exec spotify';
 for_window [class="Spotify"] move to workspace Spotify;
 bindsym $mod+Tab workspace Spotify;
@@ -36,9 +37,18 @@ bindsym Control+Shift+space scratchpad show
 # Always open Zeal maximized on monitor 2
 for_window [class="Zeal"] floating enable, move to workspace 2;
 
+# Always open Meld maximized
+for_window [class="Meld"] fullscreen enable
+
 # Set keyboard shortcuts for volume control
 bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume 0 -- '-5%'
 bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume 0 -- '+5%'
+
+# Printscreen key = shutter
+bindsym Print exec gnome-screenshot -i 
+
+######################## BEGIN i3 DEFAULTS ############################## 
+
 
 # Set default font
 font pango:DejaVu Sans Mono 8

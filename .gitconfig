@@ -9,6 +9,7 @@
 	helper = store
 [core]
 	editor = vim
+	autocrlf = input
 [pull]
 	rebase = true
 [rerere]
