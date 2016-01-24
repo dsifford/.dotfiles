@@ -8,6 +8,9 @@ workspace 1 output HDMI-0
 workspace 2 output DVI-I-1
 exec --no-startup-id xrandr --output DP-3 --off --output DVI-I-0 --off --output HDMI-0 --primary --mode 1920x1080 --pos 0x0 --rotate left --output DP-5 --off --output DP-4 --off --output DVI-I-1 --mode 1920x1080 --pos 1080x200 --rotate normal --output DP-2 --off --output DP-1 --off --output DP-0 --off
 
+# Display Settings
+hide_edge_borders both
+
 # Applets
 exec --no-startup-id nm-applet
 exec --no-startup-id dropbox start

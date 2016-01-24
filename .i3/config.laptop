@@ -3,6 +3,10 @@ set $mod Mod4
 
 ### Startup scripts
 
+# Display / Screen Options
+exec --no-startup-id xrandr --dpi 138/eDP1
+hide_edge_borders both 		
+
 # Applets
 exec --no-startup-id nm-applet
 exec --no-startup-id dropbox start
@@ -10,8 +14,8 @@ exec --no-startup-id redshift-gtk -l 42.729336197453655:-82.99709570068359
 exec --no-startup-id autokey
 
 # Init a terminal scratchpad on launch
-exec i3-msg 'workspace 2; exec tilda --class MAINTERM';
-for_window [class="MAINTERM"] floating enable, resize set 1920 500, move scratchpad;
+exec i3-msg 'exec --no-startup-id tilda --class MAINTERM'
+for_window [class="MAINTERM"] floating enable, move position 0 0; move scratchpad
 bindsym Control+space [class="MAINTERM"] scratchpad show
 
 # Have atom always open in its own workspace 
