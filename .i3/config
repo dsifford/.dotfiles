@@ -15,6 +15,7 @@ hide_edge_borders both
 exec --no-startup-id nm-applet
 exec --no-startup-id dropbox start
 exec --no-startup-id redshift-gtk -l 42.729336197453655:-82.99709570068359
+exec --no-startup-id ckb-daemon
 exec --no-startup-id ckb --background
 exec --no-startup-id autokey
 
@@ -50,8 +51,9 @@ for_window [class="Meld"] fullscreen enable
 bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume 0 -- '-5%'
 bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume 0 -- '+5%'
 
-# Printscreen key = shutter
+# Screenshots / Screen recording keybindings 
 bindsym Print exec gnome-screenshot -i 
+bindsym Control+Shift+Print exec recordmydesktop -x 1080 -y 200 --width=1920 --height=1080 
 
 ######################## BEGIN i3 DEFAULTS ############################## 
 
@@ -191,6 +193,7 @@ bar {
 		active_workspace   #333333 #5f676a     #888888
 		urgent_workspace   #aa0000 #990000     #ffffff
 	}
+	font pango:DejaVu Sans Mono 10
 	# i3bar position
 	position top
 	# using custom i3status.conf
