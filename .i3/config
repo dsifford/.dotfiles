@@ -18,6 +18,9 @@ exec --no-startup-id redshift-gtk -l 42.729336197453655:-82.99709570068359
 exec --no-startup-id ckb --background
 exec --no-startup-id autokey
 
+# Remap Caps Lock as Escape key
+exec --no-startup-id setxkbmap -option caps:escape
+
 # Init a terminal scratchpad on launch
 exec i3-msg 'workspace 2; exec tilda --class MAINTERM';
 for_window [class="MAINTERM"] floating enable, move position 1080px 200px, resize set 1920 500, move scratchpad;
