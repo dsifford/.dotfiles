@@ -13,7 +13,7 @@ exec --no-startup-id dropbox start
 exec --no-startup-id redshift-gtk -l 42.729336197453655:-82.99709570068359
 exec --no-startup-id autokey
 
-# Remap Caps Lock as Escape
+# Remap Caps Lock as Escape (for VIM)
 exec --no-startup-id setxkbmap -option caps:escape
 
 # Init a terminal scratchpad on launch
