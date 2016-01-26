@@ -30,19 +30,17 @@ bindsym Control+space [class="MAINTERM"] workspace 2,  scratchpad show
 # Have atom always open in its own workspace 
 for_window [class="Atom"] move to workspace Atom;
 workspace Atom output HDMI-0
-bindsym $mod+grave workspace Atom, fullscreen enable;
+bindsym $mod+grave workspace Atom;
 
 # Init spotify in its own workspace on launch
 exec --no-startup-id i3-msg 'workspace 1; exec spotify';
 for_window [class="Spotify"] move to workspace Spotify;
 bindsym $mod+Tab workspace Spotify;
 
-# Scratchpad settings
-bindsym Control+Shift+$mod+space move scratchpad
-bindsym Control+Shift+space scratchpad show
-
 # Always open Zeal maximized on monitor 2
-for_window [class="Zeal"] floating enable, move to workspace 2;
+for_window [class="Zeal"] floating enable, resize set 1060 1075, move position center, move scratchpad;
+bindsym Control+Shift+space [class="Zeal"] scratchpad show;
+
 
 # Always open Meld maximized
 for_window [class="Meld"] fullscreen enable
