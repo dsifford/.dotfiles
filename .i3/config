@@ -51,7 +51,7 @@ bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume 0 -- '+5%'
 
 # Screenshots / Screen recording keybindings 
 bindsym Print exec gnome-screenshot -i 
-bindsym Control+Shift+Print exec recordmydesktop -x 1080 -y 200 --width=1920 --height=1080 
+bindsym Control+Shift+Print exec recordmydesktop -x 1080 -y 200 --width=1920 --height=1080 /tmp/out.mp4 
 
 ######################## BEGIN i3 DEFAULTS ############################## 
 

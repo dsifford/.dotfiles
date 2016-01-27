@@ -3,9 +3,7 @@
 [[ "$-" != *i* ]] && return
 
 # Set up system path
-export PATH=$PATH:$HOME/gocode/bin
-export PATH=$PATH:/usr/local/bin
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/gocode/bin:/usr/local/bin:/usr/local/go/bin
 
 # System Environment Variables
 export GOPATH=$HOME/gocode
@@ -45,6 +43,14 @@ source ~/.git-prompt.sh
 ### Git
     gra () {
         git remote add origin https://github.com/dsifford/$1.git
+    }
+
+### Taskwarrior
+    ta () {
+    	task add $* && task sync
+    }
+    td () {
+   	task $1 done && task sync 
     }
 
 #---------------------- Aliases-----------------------#
