@@ -182,14 +182,15 @@ bindsym $mod+r mode "resize"
 bar {
 	colors {
 		# Whole color settings
-		background #000000
-		statusline #ffffff
-		separator  #666666
+		background #3c3b37 
+		statusline #dcdccc
+		# separator  #666666
 
 		# Type             border  background  font
-		focused_workspace  #008fff #007fff     #ffffff
-		active_workspace   #333333 #5f676a     #888888
-		urgent_workspace   #aa0000 #990000     #ffffff
+		focused_workspace  #93b3a3 #3c3b37     #93b3a3
+		active_workspace   #ffcfaf #3c3b37     #888888
+		inactive_workspace #636363 #3c3b37     #dcdccc
+		urgent_workspace   #dca3a3 #3c3b37     #dca383
 	}
 	font pango:DejaVu Sans Mono 10
 	# i3bar position
