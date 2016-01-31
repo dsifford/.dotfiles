@@ -18,6 +18,7 @@ exec --no-startup-id redshift-gtk -l 42.729336197453655:-82.99709570068359
 exec --no-startup-id ckb-daemon
 exec --no-startup-id ckb --background
 exec --no-startup-id autokey
+exec --no-startuo-id pasystray
 
 # Remap Caps Lock as Escape key
 exec --no-startup-id setxkbmap -option caps:escape
@@ -143,6 +144,8 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+Tab move container to workspace Spotify
+bindsym $mod+Shift+grave move container to workspace Atom
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
