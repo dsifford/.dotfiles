@@ -4,12 +4,15 @@ set $mod Mod4
 ### Startup scripts
 
 # Multi monitor setup
-workspace 1 output HDMI-0
-workspace 2 output DP-4
-#exec --no-startup-id xrandr --output HDMI-0 --primary --mode 1920x1080 --pos 0x0 --rotate left --output DP-4 --mode 1920x1080 --dpi 163
+workspace 1 output DP-4
+workspace 2 output HDMI-0
+exec --no-startup-id xrandr --output DP-3 --off --output DVI-I-0 --off --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate left --output DP-5 --off --output DP-4 --primary --mode 1920x1080 --pos 1080x96 --rotate normal --output DVI-I-1 --off --output DP-2 --off --output DP-1 --off --output DP-0 --off 
 
 # Display Settings
 hide_edge_borders both
+
+# Set Background Color
+exec --no-startup-id xsetroot -solid "#333333"
 
 # Applets
 exec --no-startup-id nm-applet
@@ -25,8 +28,8 @@ exec --no-startup-id setxkbmap -option caps:escape
 
 # Init a terminal scratchpad on launch
 exec i3-msg 'workspace 2; exec tilda --class MAINTERM';
-for_window [class="MAINTERM"] floating enable, move position 1080px 145px, resize set 1920 500, move scratchpad;
-bindsym Control+space [class="MAINTERM"] workspace 2,  scratchpad show
+for_window [class="MAINTERM"] floating enable, move position 1080px 95px, resize set 1920 500, move scratchpad;
+bindsym Control+space [class="MAINTERM"] workspace 1,  scratchpad show
 
 # Have atom always open in its own workspace 
 for_window [class="Atom"] move to workspace Atom;
@@ -58,7 +61,7 @@ bindsym Control+Shift+Print exec recordmydesktop -x 1080 -y 200 --width=1920 --h
 
 
 # Set default font
-font pango:DejaVu Sans Mono 6
+font pango:DejaVu Sans Mono 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -195,7 +198,7 @@ bar {
 		inactive_workspace #636363 #3c3b37     #dcdccc
 		urgent_workspace   #dca3a3 #3c3b37     #dca383
 	}
-	font pango:DejaVu Sans Mono 8
+	font pango:DejaVu Sans Mono 12
 	# i3bar position
 	position top
 	# using custom i3status.conf
