@@ -93,5 +93,3 @@ source ~/.git-prompt.sh
     # Better format for "docker ps"
     alias dpsa='docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}"'
 
-# added by Anaconda3 2.4.1 installer
-export PATH="/home/dsifford/anaconda3/bin:$PATH"

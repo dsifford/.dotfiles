@@ -4,8 +4,9 @@ set $mod Mod4
 ### Startup scripts
 
 # Multi monitor setup
-workspace 1 output DP-4
-workspace 2 output HDMI-0
+workspace 2 output DP-4
+workspace 1 output HDMI-0
+workspace Spotify output HDMI-0
 exec --no-startup-id xrandr --output DP-3 --off --output DVI-I-0 --off --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate left --output DP-5 --off --output DP-4 --primary --mode 1920x1080 --pos 1080x96 --rotate normal --output DVI-I-1 --off --output DP-2 --off --output DP-1 --off --output DP-0 --off 
 
 # Display Settings
@@ -22,6 +23,8 @@ exec --no-startup-id ckb-daemon
 exec --no-startup-id ckb --background
 exec --no-startup-id autokey
 exec --no-startuo-id pasystray
+exec --no-startup-id slack
+exec --no-startup-id bedroomlights
 
 # Remap Caps Lock as Escape key
 exec --no-startup-id setxkbmap -option caps:escape
@@ -29,7 +32,7 @@ exec --no-startup-id setxkbmap -option caps:escape
 # Init a terminal scratchpad on launch
 exec i3-msg 'workspace 2; exec tilda --class MAINTERM';
 for_window [class="MAINTERM"] floating enable, move position 1080px 95px, resize set 1920 500, move scratchpad;
-bindsym Control+space [class="MAINTERM"] workspace 1,  scratchpad show
+bindsym Control+space [class="MAINTERM"] workspace 2,  scratchpad show
 
 # Have atom always open in its own workspace 
 for_window [class="Atom"] move to workspace Atom;
@@ -37,9 +40,12 @@ workspace Atom output HDMI-0
 bindsym $mod+grave workspace Atom;
 
 # Init spotify in its own workspace on launch
-exec --no-startup-id i3-msg 'workspace 1; exec spotify';
+exec --no-startup-id spotify;
 for_window [class="Spotify"] move to workspace Spotify;
 bindsym $mod+Tab workspace Spotify;
+
+# Move slack to Workspace 1
+for_window [class="Slack"] move to workspace 1;
 
 # Always open Zeal maximized on monitor 2
 for_window [class="Zeal"] floating enable, resize set 1060 1075, move position center, move scratchpad;
@@ -49,6 +55,9 @@ bindsym Control+Shift+space [class="Zeal"] scratchpad show;
 # Always open Meld maximized
 for_window [class="Meld"] fullscreen enable
 
+# Always open xterm floating
+for_window [class="XTerm"] floating enable
+
 # Set keyboard shortcuts for volume control
 bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume 0 -- '-5%'
 bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume 0 -- '+5%'
@@ -56,6 +65,9 @@ bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume 0 -- '+5%'
 # Screenshots / Screen recording keybindings 
 bindsym Print exec gnome-screenshot -i 
 bindsym Control+Shift+Print exec recordmydesktop -x 1080 -y 200 --width=1920 --height=1080 /tmp/out.mp4 
+
+# The middle button and a modifer over any part of the window kills the window
+bindsym --whole-window $mod+button2 kill
 
 ######################## BEGIN i3 DEFAULTS ############################## 
 
@@ -72,7 +84,7 @@ bindsym $mod+Return exec gnome-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -i -b -fn -*-*-*-*-*-*-20-*-*-*-*-*-*-*
+bindsym $mod+space exec dmenu_run -i -b -fn -*-*-*-*-*-*-20-*-*-*-*-*-*-*
 
 # change focus
 bindsym $mod+h focus left
@@ -114,9 +126,6 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
