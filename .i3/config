@@ -48,7 +48,7 @@ bindsym $mod+Tab workspace Spotify;
 for_window [class="Slack"] move to workspace 1;
 
 # Always open Zeal maximized on monitor 2
-for_window [class="Zeal"] floating enable, resize set 1060 1075, move position center, move scratchpad;
+for_window [class="Zeal"] floating enable, resize set 1080 1070, move position center, move scratchpad;
 bindsym Control+Shift+space [class="Zeal"] scratchpad show;
 
 
