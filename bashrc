@@ -74,6 +74,7 @@ source ~/.git-prompt.sh
     alias gs='git status'
     alias gss='git status -s'
     alias gc='git checkout'
+    alias gcm='git commit'
     alias gd='git difftool'
     alias gl='git log --oneline --decorate --all --graph'
     alias gca='git commit -a'
