@@ -16,10 +16,12 @@ touch "${BASEDIR}/i3/config/config" "${BASEDIR}/i3/config/i3status.conf"
 if [[ $(uname -a | grep -Po '(?<=dsifford-)\w*') == 'LAPTOP' ]]; then
 	cat "${BASEDIR}/i3/config.laptop" > "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/config.common" >> "${BASEDIR}/i3/config/config"
+	cat "${BASEDIR}/i3/config.laptop.bar" >> "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/i3status.laptop.conf" > "${BASEDIR}/i3/config/i3status.conf"
 else
 	cat "${BASEDIR}/i3/config.desktop" > "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/config.common" >> "${BASEDIR}/i3/config/config"
+	cat "${BASEDIR}/i3/config.desktop.bar" >> "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/i3status.desktop.conf" > "${BASEDIR}/i3/config/i3status.conf"
 fi
 

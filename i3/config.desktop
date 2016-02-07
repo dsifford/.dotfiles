@@ -34,6 +34,11 @@ for_window [class="Slack"] move to workspace 1;
 # Zeal
 for_window [class="Zeal"] floating enable, resize set 1080 1070, move position center, move scratchpad
 
+#===============i3BAR SETTINGS===================
+
+bar {
+	font pango:DejaVu Sans Mono 12
+}
 
 
 
