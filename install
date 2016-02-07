@@ -2,7 +2,12 @@
 
 set -e
 
-CONFIG="install.conf.yaml"
+if [[ $(uname -a | grep -Po '(?<=dsifford-)\w*') == 'LAPTOP' ]]; then
+	CONFIG="install.conf.laptop.yaml"
+else
+	CONFIG="install.conf.yaml"
+fi
+
 DOTBOT_DIR="dotbot"
 
 DOTBOT_BIN="bin/dotbot"
