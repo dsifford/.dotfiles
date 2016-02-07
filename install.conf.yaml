@@ -15,7 +15,7 @@
     ~/.git-prompt.sh: vender/git-prompt.sh
     ~/.i3:
         create: true
-        path: i3/
+        path: i3/config/
     ~/.inputrc: inputrc
     ~/.taskrc: taskrc
     ~/.vimrc: vimrc

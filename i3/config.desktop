@@ -1,0 +1,40 @@
+#================================================
+#           BEGIN DESKTOP CONFIG
+#================================================
+
+# Display / Screen Config
+workspace 2 output DP-4
+workspace 1 output HDMI-0
+workspace Spotify output HDMI-0
+exec --no-startup-id xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate left --output DP-5 --off --output DP-4 --primary --mode 1920x1080 --pos 1080x96 --rotate normal
+
+# Set Background Color
+exec --no-startup-id xsetroot -solid "#333333"
+
+# Startup Apps
+exec --no-startup-id ckb-daemon
+exec --no-startup-id ckb --background
+
+# Startup Scripts
+exec --no-startup-id bedroomlights
+
+# Floating Terminal
+exec i3-msg 'workspace 2; exec tilda --class MAINTERM';
+for_window [class="MAINTERM"] floating enable, move position 1080px 95px, resize set 1920 500, move scratchpad;
+bindsym Control+space [class="MAINTERM"] workspace 2,  scratchpad show
+
+#===============APP WINDOW CONFIG================
+
+# Atom
+workspace Atom output HDMI-0
+
+# Slack
+for_window [class="Slack"] move to workspace 1;
+
+# Zeal
+for_window [class="Zeal"] floating enable, resize set 1080 1070, move position center, move scratchpad
+
+
+
+
+

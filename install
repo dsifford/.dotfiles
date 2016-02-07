@@ -2,18 +2,24 @@
 
 set -e
 
-if [[ $(uname -a | grep -Po '(?<=dsifford-)\w*') == 'LAPTOP' ]]; then
-	CONFIG="install.conf.laptop.yaml"
-else
-	CONFIG="install.conf.yaml"
-fi
-
+CONFIG="install.conf.yaml"
 DOTBOT_DIR="dotbot"
-
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd "${BASEDIR}"
 git submodule update --init --recursive "${DOTBOT_DIR}"
+
+# Create i3 config files based on the the current computer
+if [[ $(uname -a | grep -Po '(?<=dsifford-)\w*') == 'LAPTOP' ]]; then
+	cat "${BASEDIR}/i3/config.laptop" > "${BASEDIR}/i3/config/config"
+	cat "${BASEDIR}/i3/config.common" >> "${BASEDIR}/i3/config/config"
+	cat "${BASEDIR}/i3/i3status.laptop.conf" > "${BASEDIR}/i3/config/i3status.conf"
+else
+	cat "${BASEDIR}/i3/config.desktop" > "${BASEDIR}/i3/config/config"
+	cat "${BASEDIR}/i3/config.common" >> "${BASEDIR}/i3/config/config"
+	cat "${BASEDIR}/i3/i3status.desktop.conf" > "${BASEDIR}/i3/config/i3status.conf"
+fi
+
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
