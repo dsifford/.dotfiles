@@ -12,6 +12,12 @@ set match-hidden-files on
 "\C-i": menu-complete
 "\C-k": menu-complete-backward
 
+set keymap vi-command
+Control-l: clear-screen
+
+set keymap vi-insert
+Control-l: clear-screen
+
 # Waiting for bash 4.4
 # set show-mode-in-prompt on
 # set vi-ins-mode-string \1\e[34;1m\2(ins)\1\e[0m\2
