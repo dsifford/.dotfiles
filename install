@@ -13,7 +13,7 @@ git submodule update --init --recursive "${DOTBOT_DIR}"
 # Create i3 config files based on the the current computer
 touch "${BASEDIR}/i3/config/config" "${BASEDIR}/i3/config/i3status.conf"
 
-if [[ $(uname -a | grep -Po '(?<=dsifford-)\w*') == 'LAPTOP' ]]; then
+if [[ $(uname -n) == 'dsifford-LAPTOP' ]]; then
 	cat "${BASEDIR}/i3/config.laptop" > "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/config.common" >> "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/config.laptop.bar" >> "${BASEDIR}/i3/config/config"
