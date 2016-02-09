@@ -63,7 +63,7 @@ source ~/.git-prompt.sh
     alias vdir='ls --color=auto --format=long'
     alias agent='eval `ssh-agent -s`'
     alias bashrc='vim ~/.bashrc'
-    alias i3c='vim ~/.i3/config'
+    alias i3c='cd ~/.dotfiles/i3'
 
 ### Atom
     alias atom='atom-beta'
