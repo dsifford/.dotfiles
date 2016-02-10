@@ -66,6 +66,9 @@ bindsym --whole-window $mod+button2 kill
 bindsym $mod+space exec dmenu_run -i -b -fn -*-*-*-*-*-*-20-*-*-*-*-*-*-*
 
 
+#==========GNOME TERMINAL SETTINGS===============
+exec --no-startup-id ~/.gnometermrc.sh 
+
 #================================================
 #             BEGIN i3 DEFAULTS
 #================================================

@@ -6,7 +6,7 @@
 workspace 2 output DP-4
 workspace 1 output HDMI-0
 workspace Spotify output HDMI-0
-exec --no-startup-id xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate left --output DP-5 --off --output DP-4 --primary --mode 1920x1080 --pos 1080x96 --rotate normal
+exec --no-startup-id xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate left --output DP-4 --primary --mode 1920x1080 --pos 1080x96 --rotate normal
 
 # Set Background Color
 exec --no-startup-id xsetroot -solid "#333333"
@@ -19,9 +19,9 @@ exec --no-startup-id ckb --background
 exec --no-startup-id bedroomlights
 
 # Floating Terminal
-exec i3-msg 'workspace 2; exec tilda --class MAINTERM';
-for_window [class="MAINTERM"] floating enable, move position 1080px 95px, resize set 1920 500, move scratchpad;
-bindsym Control+space [class="MAINTERM"] workspace 2,  scratchpad show
+exec --no-startup-id gnome-terminal --hide-menubar --role=MAINTERM
+for_window [class="Gnome-terminal" window_role="MAINTERM"] floating enable, move position 1080px 95px, resize set 1930 500, move scratchpad
+bindsym Control+space focus output DP-4, [window_role="MAINTERM"] scratchpad show
 
 #===============APP WINDOW CONFIG================
 

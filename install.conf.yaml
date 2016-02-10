@@ -8,14 +8,13 @@
     ~/.config/ranger/rifle.conf:
         create: true
         path: ranger/rifle.conf
-    ~/.config/tilda:
-        create: true
-        path: config/tilda/
     ~/.gitconfig: gitconfig
     ~/.git-prompt.sh: vender/git-prompt.sh
+    ~/.gnometermrc.sh: gnometermrc.sh
     ~/.i3:
         create: true
         path: i3/config/
     ~/.inputrc: inputrc
     ~/.taskrc: taskrc
+    ~/.vim: vim
     ~/.vimrc: vimrc
