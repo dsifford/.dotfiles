@@ -7,7 +7,7 @@ exec --no-startup-id xrandr --dpi 138/eDP1
 
 # Floating Terminal
 exec --no-startup-id gnome-terminal --hide-menubar --role=MAINTERM
-for_window [class="Gnome-terminal" window_role="MAINTERM"] floating enable, move position 0 0, resize set 1930 500,  move scratchpad
+for_window [class="Gnome-terminal" window_role="MAINTERM"] border pixel 0, floating enable, move position 0 0, resize set 1930 500,  move scratchpad
 bindsym Control+space [class="MAINTERM"] scratchpad show
 
 
