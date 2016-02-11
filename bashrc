@@ -12,7 +12,7 @@ export GOPATH=$HOME/gocode
 source ~/.git-prompt.sh
 
 # Set a default prompt: user@host ~/current/working/dir (repository)
- export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m\]\n\$ '
+export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m\]\n '
 
 
 #------------------Shell Scripts---------------------#
@@ -73,7 +73,9 @@ source ~/.git-prompt.sh
     alias vdir='ls --color=auto --format=long'
     alias agent='eval `ssh-agent -s`'
     alias bashrc='vim ~/.bashrc'
-    alias i3c='cd ~/.dotfiles/i3'
+    alias i3c='if [[ $(uname -n) = "dsifford-ubuntu" ]]; then vim ~/.dotfiles/i3/config.desktop; else vim ~/.dotfiles/i3/config.laptop; fi'
+    alias i3cm='vim ~/.dotfiles/i3/config.common'
+    alias dot='cd ~/.dotfiles'
 
 ### Atom
     alias atom='atom-beta'
