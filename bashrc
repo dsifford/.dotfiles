@@ -8,6 +8,9 @@ export PATH=$PATH:$HOME/gocode/bin:/usr/local/bin:/usr/local/go/bin
 # System Environment Variables
 export GOPATH=$HOME/gocode
 
+# Set default editor to Vim
+export EDITOR=vim
+
 # Source git prompt script
 source ~/.git-prompt.sh
 

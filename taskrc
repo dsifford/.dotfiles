@@ -1,42 +1,36 @@
-# [Created by task 2.5.0 1/29/2016 16:03:17]
-# Taskwarrior program configuration file.
-# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
-# 'man task-sync' or 'man taskrc'
-
-# Here is an example of entries that use the default, override and blank values
-#   variable=foo   -- By specifying a value, this overrides the default
-#   variable=      -- By specifying no value, this means no default
-#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
-
-# Use the command 'task show' to see all defaults and overrides
 
 # Files
 data.location=~/.task
 
-# Color theme
+# Turn off max width
+defaultwidth=100
+
+# Priority Settings
+color.uda.priority.H=rgb500
+color.uda.priority.L=gray9
+color.uda.priority.M=yellow
+
+uda.priority.label=Priority
+uda.priority.type=string
+uda.priority.values=H,M,L,
+
+urgency.uda.priority.H.coefficient=6.0
+urgency.uda.priority.L.coefficient=1.8
+urgency.uda.priority.M.coefficient=3.9
+
+# Colors
 color=on
-color.header=color3
-color.footnote=color3
-color.error=white on red
-color.debug=color4
-
-color.summary.bar=black on rgb141
-color.summary.background=white on color0
-
-color.history.add=color0 on rgb500
-color.history.done=color0 on rgb050
-color.history.delete=color0 on rgb550
+#color.alternate=inverse
+color.header=white bold
+color.error=black on bright yellow
 
 color.burndown.pending=on color9
 color.burndown.started=on color11
 color.burndown.done=on rgb010
 
-color.sync.added=rgb010
-color.sync.changed=color11
-color.sync.rejected=color9
-
-color.undo.before=color1
-color.undo.after=color2
+color.sync.added=green
+color.sync.changed=yellow
+color.sync.rejected=magenta
 
 color.calendar.today=color15 on rgb013
 color.calendar.due=color0 on color1
@@ -47,17 +41,15 @@ color.calendar.holiday=color0 on color11
 color.calendar.weeknumber=rgb013
 
 color.recurring=rgb013
-color.overdue=color9
-color.due.today=rgb400
-color.due=color1
+color.overdue=white on gray
+color.due.today=white on magenta bold 
+color.due=white on rgb100 
 color.active=rgb555 on rgb410
-color.tagged=rgb031
+color.tagged=white on blue bold
 color.blocked=white on color8
 color.blocking=black on color15
-color.project.none=
-color.tag.none=
-color.alternate=on gray2
-_forcecolor=no
+
+# Sync settings
 taskd.server=freecinc.com:53589
 taskd.key=\/home\/dsifford\/.task\/freecinc_4935230f.key.pem
 taskd.certificate=\/home\/dsifford\/.task\/freecinc_4935230f.cert.pem
