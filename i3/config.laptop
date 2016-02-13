@@ -3,7 +3,7 @@
 #================================================
 
 # Display / Screen Config
-exec --no-startup-id xrandr --dpi 138/eDP1		
+exec_always --no-startup-id xrandr --dpi 138/eDP1		
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20
