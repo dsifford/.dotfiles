@@ -10,6 +10,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'molokai'		 " Molokai color scheme
 Plugin 'godlygeek/tabular'	 " Markdown tab formatting
 Plugin 'plasticboy/vim-markdown' " Markdown
+Plugin 'scrooloose/nerdtree'	 " NERDtree
 
 call vundle#end()
 filetype plugin indent on
