@@ -58,6 +58,11 @@ export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m
         git remote add origin https://github.com/dsifford/$1.git
     }
 
+### Python
+    pipi () {
+	sudo -H pip install $1 && sudo -H pip3 install $1
+    }
+
 ### Taskwarrior
     ta () {
     	task add $* && task sync
