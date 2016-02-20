@@ -17,6 +17,7 @@ Control-l: clear-screen
 
 set keymap vi-insert
 Control-l: clear-screen
+Control-r: "ranger\C-m"
 
 # Waiting for bash 4.4
 set show-mode-in-prompt on

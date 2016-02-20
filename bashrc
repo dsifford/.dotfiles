@@ -8,8 +8,9 @@ export PATH=$PATH:$HOME/gocode/bin:/usr/local/bin:/usr/local/go/bin
 # System Environment Variables
 export GOPATH=$HOME/gocode
 
-# Set default editor to Vim
+# Set EDITOR and PAGER 
 export EDITOR=vim
+export PAGER=less
 
 # Source git prompt script
 source ~/.git-prompt.sh
@@ -84,6 +85,7 @@ export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m
     alias i3c='if [[ $(uname -n) = "dsifford-ubuntu" ]]; then vim ~/.dotfiles/i3/config.desktop; else vim ~/.dotfiles/i3/config.laptop; fi'
     alias i3cm='vim ~/.dotfiles/i3/config.common'
     alias dot='cd ~/.dotfiles'
+    alias t='task'
 
 ### Atom
     alias atom='atom-beta'

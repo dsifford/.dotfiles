@@ -34,6 +34,9 @@ for_window [class="Spotify"] move to workspace Spotify
 bindsym $mod+Tab workspace Spotify
 bindsym $mod+Shift+Tab move container to workspace Spotify
 
+# Tk windows (Python Plots)
+for_window [class="Tk"] floating enable
+
 # XTerm
 for_window [class="XTerm"] floating enable
 
@@ -57,7 +60,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioStop exec playerctl stop
 
 # Print Screen
-bindsym Print exec gnome-screenshot -i 
+bindsym Print exec gnome-screenshot -iac
 
 # $mod+Middle Mouse Button => kill window
 bindsym --whole-window $mod+button2 kill
