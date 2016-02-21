@@ -1,6 +1,7 @@
 arandr
 bash-completion
 clang
+compton
 deluge
 dmenu
 docker
@@ -23,8 +24,8 @@ libreoffice-fresh
 meld
 network-manager-applet
 nodejs
-nvidia
-nvidia-libgl
+$nvidia
+$nvidia-libgl
 parted
 pep8
 pulseaudio
@@ -50,6 +51,7 @@ vlc
 wget
 xclip
 xdotool
+@xf86-video-intel
 xorg-server
 xorg-server-utils
 xorg-setxkbmap

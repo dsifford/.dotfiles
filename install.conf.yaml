@@ -7,6 +7,7 @@
         create: true
         force: true
         path: arch/pacman.conf
+    ~/.xinitrc: arch/xinitrc
 
     # Git
     ~/.gitconfig: gitconfig

@@ -8,6 +8,9 @@ set $mod Mod4
 # Hide container borders
 hide_edge_borders both
 
+# Startup Daemons
+exec --no-startup-id compton -b
+
 # Startup Applets
 exec --no-startup-id nm-applet
 exec --no-startuo-id pasystray
