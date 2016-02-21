@@ -23,6 +23,8 @@ libreoffice-fresh
 meld
 network-manager-applet
 nodejs
+nvidia
+nvidia-libgl
 parted
 pep8
 pulseaudio
@@ -48,9 +50,7 @@ vlc
 wget
 xclip
 xdotool
-xorg-xrandr
-xorg-xrdb
-xorg-xsetroot
+xorg-server
+xorg-server-utils
 xorg-setxkbmap
-xorg-xbacklight
 zip
