@@ -19,9 +19,9 @@ exec --no-startup-id ckb --background
 exec --no-startup-id bedroomlights
 
 # Floating Terminal
-exec --no-startup-id gnome-terminal --hide-menubar --role=MAINTERM
-for_window [class="Gnome-terminal" window_role="MAINTERM"] border pixel 0, floating enable, move position 1080px 95px, resize set 1930 500, move scratchpad
-bindsym Control+space focus output DP-4, [window_role="MAINTERM"] scratchpad show
+exec --no-startup-id urxvt -name MAINTERM
+for_window [class="MAINTERM"] border pixel 0, floating enable, move position 1080px 95px, resize set 1930 500, move scratchpad
+bindsym Control+space focus output DP-4, [class="MAINTERM"] scratchpad show
 
 #===============APP WINDOW CONFIG================
 
@@ -33,5 +33,3 @@ for_window [class="Slack"] move to workspace 1;
 
 # Zeal
 for_window [class="Zeal"] floating enable, resize set 1080 1070, move position center, move scratchpad
-
-

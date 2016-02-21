@@ -3,19 +3,13 @@
 #================================================
 
 # Display / Screen Config
-exec_always --no-startup-id xrandr --dpi 138/eDP1		
+exec_always --no-startup-id xrandr --dpi 138/eDP1
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 
-# Remap caps lock
-exec xmodmap -e "clear lock"
-exec xmodmap -e "keysym Caps_Lock = Escape"
-
 # Floating Terminal
-exec --no-startup-id gnome-terminal --hide-menubar --role=MAINTERM
-for_window [class="Gnome-terminal" window_role="MAINTERM"] border pixel 0, floating enable, move position 0 0, resize set 1930 500,  move scratchpad
-bindsym Control+space [class="Gnome-terminal" window_role="MAINTERM"] scratchpad show
-
-
+exec --no-startup-id urxvt -name MAINTERM
+for_window [class="MAINTERM"] border pixel 0, floating enable, move position 0 0, resize set 1930 500,  move scratchpad
+bindsym Control+space [class="MAINTERM"] scratchpad show

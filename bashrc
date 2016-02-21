@@ -8,9 +8,11 @@ export PATH=$PATH:$HOME/gocode/bin:/usr/local/bin:/usr/local/go/bin
 # System Environment Variables
 export GOPATH=$HOME/gocode
 
-# Set EDITOR and PAGER 
+# Set EDITOR and PAGER
 export EDITOR=vim
 export PAGER=less
+export TERM='rxvt-unicode'
+export COLORTERM='rxvt-unicode-256color'
 
 # Source git prompt script
 source ~/.git-prompt.sh
@@ -46,11 +48,11 @@ export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m
         docker rm $(docker ps -aq -f status=exited)
         docker rmi $(docker images -f "dangling=true" -q)
     }
-    
-    # Remove either untagged images or a variable number of images (1-9) 
+
+    # Remove either untagged images or a variable number of images (1-9)
     drmi () {
 	if [[ $1 = @(u|un) ]]; then docker rmi $(docker images -f dangling=true -q)
-	elif [[ "$1" = [1-9] ]]; then docker rmi $(docker images -q | head -"$1") 
+	elif [[ "$1" = [1-9] ]]; then docker rmi $(docker images -q | head -"$1")
 	fi
     }
 
@@ -69,7 +71,7 @@ export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m
     	task add $* && task sync
     }
     td () {
-   	task $1 done && task sync 
+   	task $1 done && task sync
     }
 
 #---------------------- Aliases-----------------------#
@@ -115,4 +117,3 @@ export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m
 
     # Better format for "docker ps"
     alias dpsa='docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}"'
-

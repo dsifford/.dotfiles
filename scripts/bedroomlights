@@ -1,0 +1,30 @@
+#!/usr/bin/python2
+
+from ouimeaux.environment import Environment
+from ouimeaux import device
+from phue import Bridge
+
+env = Environment()
+env.start()
+env.discover(1)
+
+# setup hue
+b = Bridge('192.168.0.101', '1bf65ff514536e0e70a846a26cacb459')
+b.connect()
+
+bedroom = env.get_switch('Bedroom')
+lamp = env.get_switch('Lamp')
+
+
+def switch_triggered(value):
+    if value == "1":
+        device.insight.Insight.on(lamp)
+        b.set_light([1, 2], 'on', True)
+    else:
+        device.insight.Insight.off(lamp)
+        b.set_light([1, 2], 'on', False)
+
+
+env.get_switch('Bedroom').register_listener(switch_triggered)
+
+env.wait()

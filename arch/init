@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Update packages/package list
+## pacman --noconfirm -Syu
+## pacman --noconfirm --needed -S yaourt
+## yaourt --noconfirm -Syu
+
+if [[ ! $HOME ]]; then
+    export HOME='/home/dsifford'
+fi
+
+# Install all pacman packages from pacman list if they
+# aren't yet installed or if they're outdated
+while IFS='' read -r line || [[ -n $line ]]; do
+    printf "PACMAN: Installing package %s...\n" "$line"
+    ## pacman --noconfirm --needed -S $line
+done < "packages/pacman"
+
+# Install all yaourt packages from yaourt list if they aren't
+# yet installed or if they're outdated
+while IFS='' read -r line || [[ -n $line ]]; do
+    printf "YAOURT: Installing package %s...\n" "$line"
+    ## yaourt --noconfirm --needed -S $line
+done < "packages/yaourt"
+
+# Initialize golang directory
+mkdir -p $HOME/gocode/{bin,pkg,src/github.com/dsifford}
+
+# Initialize repos directory
+mkdir -p $HOME/repos
+
+# Install known python script dependencies
+## pip2 install ouimeaux phue

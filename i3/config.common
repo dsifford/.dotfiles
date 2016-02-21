@@ -20,7 +20,7 @@ exec --no-startup-id slack
 
 #===============APP WINDOW CONFIG================
 
-# Atom 
+# Atom
 for_window [class="Atom"] move to workspace Atom
 bindsym $mod+grave workspace Atom
 bindsym $mod+Shift+grave move container to workspace Atom
@@ -69,9 +69,6 @@ bindsym --whole-window $mod+button2 kill
 bindsym $mod+space exec dmenu_run -i -b -fn -*-*-*-*-*-*-20-*-*-*-*-*-*-*
 
 
-#==========GNOME TERMINAL SETTINGS===============
-exec --no-startup-id ~/.gnometermrc.sh 
-
 #================================================
 #             BEGIN i3 DEFAULTS
 #================================================
@@ -84,7 +81,7 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -188,4 +185,3 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-

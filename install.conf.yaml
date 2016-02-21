@@ -1,20 +1,38 @@
 - clean: ['~']
 
 - link:
-    ~/.bashrc: bashrc
+    # Arch stuff
+    /etc/pacman.conf:
+        create: true
+        path: arch/pacman.conf
+    # Git
+    ~/.gitconfig: gitconfig
+    ~/.git-prompt.sh: scripts/git-prompt.sh
+
+    # i3
+    ~/.i3:
+        create: true
+        path: i3/config/
+
+    # Ranger
     ~/.config/ranger/rc.conf:
         create: true
         path: ranger/rc.conf
     ~/.config/ranger/rifle.conf:
         create: true
         path: ranger/rifle.conf
-    ~/.gitconfig: gitconfig
-    ~/.git-prompt.sh: vender/git-prompt.sh
-    ~/.gnometermrc.sh: gnometermrc.sh
-    ~/.i3:
-        create: true
-        path: i3/config/
+
+    # Scripts
+    /usr/local/bin/bedroomlights: scripts/bedroomlights
+
+    # Shell
+    ~/.bashrc: bashrc
     ~/.inputrc: inputrc
+    ~/.Xresources: Xresources
+
+    # Taskwarrior
     ~/.taskrc: taskrc
+
+    # Vim
     ~/.vim: vim
     ~/.vimrc: vimrc
