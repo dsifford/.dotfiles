@@ -39,3 +39,7 @@ URxvt.keysym.Control-Shift-t: perl:tabbedex:new_tab
 URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
 URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
 URxvt.keysym.Control-Shift-w: perl:tabbedex:close_tab
+
+! Misc
+URxvt.iso14755: false
+URxvt.iso14755_52: false

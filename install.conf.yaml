@@ -1,10 +1,13 @@
 - clean: ['~']
 
 - link:
+
     # Arch stuff
     /etc/pacman.conf:
         create: true
+        force: true
         path: arch/pacman.conf
+
     # Git
     ~/.gitconfig: gitconfig
     ~/.git-prompt.sh: scripts/git-prompt.sh
