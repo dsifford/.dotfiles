@@ -11,8 +11,8 @@ export GOPATH=$HOME/gocode
 # Set EDITOR and PAGER
 export EDITOR=vim
 export PAGER=less
-export TERM='rxvt-unicode'
-export COLORTERM='rxvt-unicode-256color'
+export TERM=rxvt-unicode
+export COLORTERM=rxvt-unicode-256color
 
 # Source git prompt script
 source ~/.git-prompt.sh

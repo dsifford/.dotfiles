@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Change back to xterm for now until urxvt is installed
+export TERM='xterm'
+
 # Update packages/package list
 pacman --noconfirm -Syu
 pacman --noconfirm --needed -S yaourt
