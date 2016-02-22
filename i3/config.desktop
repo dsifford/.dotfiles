@@ -11,6 +11,9 @@ exec --no-startup-id xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate 
 # Set Background Color
 exec --no-startup-id xsetroot -solid "#333333"
 
+# Enable numlock always on startup
+exec --no-startup-id setleds -D +num
+
 # Startup Apps
 exec --no-startup-id ckb-daemon
 exec --no-startup-id ckb --background
