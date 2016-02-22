@@ -27,7 +27,9 @@
         path: ranger/rifle.conf
 
     # Scripts
-    /usr/local/bin/bedroomlights: scripts/bedroomlights
+    /usr/local/bin/bedroomlights:
+        create: true
+        path: scripts/bedroomlights
 
     # Shell
     ~/.bash_profile:
