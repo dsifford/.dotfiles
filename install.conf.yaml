@@ -30,7 +30,14 @@
     /usr/local/bin/bedroomlights: scripts/bedroomlights
 
     # Shell
-    ~/.bashrc: bashrc
+    ~/.bash_profile:
+        create: true
+        force: true
+        path: bash_profile
+    ~/.bashrc:
+        create: true
+        force: true
+        path: bashrc
     ~/.inputrc: inputrc
     ~/.Xresources: Xresources
 
