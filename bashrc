@@ -84,14 +84,11 @@ export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m
     alias vdir='ls --color=auto --format=long'
     alias agent='eval `ssh-agent -s`'
     alias bashrc='vim ~/.bashrc'
-    alias i3c='if [[ $(uname -n) = "dsifford-ubuntu" ]]; then vim ~/.dotfiles/i3/config.desktop; else vim ~/.dotfiles/i3/config.laptop; fi'
+    alias i3c='if [[ $(uname -n) = "desktop" ]]; then vim ~/.dotfiles/i3/config.desktop; else vim ~/.dotfiles/i3/config.laptop; fi'
     alias i3cm='vim ~/.dotfiles/i3/config.common'
     alias dot='cd ~/.dotfiles'
     alias t='task'
 
-### Atom
-    alias atom='atom-beta'
-    alias apm='apm-beta'
 
 ### Git
     alias g='git'

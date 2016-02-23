@@ -9,6 +9,12 @@ exec_always --no-startup-id xrandr --dpi 138/eDP1
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 
+# Spotify
+exec --no-startup-id spotify
+for_window [class="Spotify"] move to workspace Spotify
+bindsym $mod+Tab workspace Spotify
+bindsym $mod+Shift+Tab move container to workspace Spotify
+
 # Floating Terminal
 exec --no-startup-id urxvt -name MAINTERM
 for_window [class="MAINTERM"] border pixel 0, floating enable, move position 0 0, resize set 1930 500,  move scratchpad

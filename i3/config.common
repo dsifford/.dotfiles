@@ -8,8 +8,11 @@ set $mod Mod4
 # Hide container borders
 hide_edge_borders both
 
+# Set desktop background
+exec --no-startup-id feh --no-fehbg --bg-fill '~/.dotfiles/arch/Xconf/arch.jpg'
+
 # Startup Daemons
-exec --no-startup-id compton -b
+exec --no-startup-id compton
 
 # Startup Applets
 exec --no-startup-id nm-applet
@@ -17,7 +20,7 @@ exec --no-startuo-id pasystray
 exec --no-startup-id redshift-gtk -l 42.729336197453655:-82.99709570068359
 
 # Startup Apps
-exec --no-startup-id autokey
+exec --no-startup-id autokey-gtk
 exec --no-startup-id dropbox start
 exec --no-startup-id slack
 
@@ -32,10 +35,10 @@ bindsym $mod+Shift+grave move container to workspace Atom
 for_window [class="Meld"] fullscreen enable
 
 # Spotify
-exec --no-startup-id spotify
-for_window [class="Spotify"] move to workspace Spotify
-bindsym $mod+Tab workspace Spotify
-bindsym $mod+Shift+Tab move container to workspace Spotify
+# exec --no-startup-id spotify
+# for_window [class="Spotify"] move to workspace Spotify
+# bindsym $mod+Tab workspace Spotify
+# bindsym $mod+Shift+Tab move container to workspace Spotify
 
 # Tk windows (Python Plots)
 for_window [class="Tk"] floating enable
@@ -57,10 +60,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle
 
 # Media controls
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86AudioStop exec playerctl stop
+#bindsym XF86AudioPlay exec playerctl play-pause
+#bindsym XF86AudioNext exec playerctl next
+#bindsym XF86AudioPrev exec playerctl previous
+#bindsym XF86AudioStop exec playerctl stop
 
 # Print Screen
 bindsym Print exec gnome-screenshot -iac

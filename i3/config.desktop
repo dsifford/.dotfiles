@@ -6,25 +6,18 @@
 workspace 2 output DP-4
 workspace 1 output HDMI-0
 workspace Spotify output HDMI-0
-exec --no-startup-id xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate left --output DP-4 --primary --mode 1920x1080 --pos 1080x96 --rotate normal
-
-# Set Background Color
-exec --no-startup-id xsetroot -solid "#333333"
-
-# Enable numlock always on startup
-exec --no-startup-id setleds -D +num
 
 # Startup Apps
-exec --no-startup-id ckb-daemon
-exec --no-startup-id ckb --background
+#exec --no-startup-id ckb-daemon
+#exec --no-startup-id ckb --background
 
 # Startup Scripts
 exec --no-startup-id bedroomlights
 
 # Floating Terminal
 exec --no-startup-id urxvt -name MAINTERM
-for_window [class="MAINTERM"] border pixel 0, floating enable, move position 1080px 95px, resize set 1930 500, move scratchpad
-bindsym Control+space focus output DP-4, [class="MAINTERM"] scratchpad show
+for_window [title="MAINTERM"] border pixel 0, floating enable, move position 2160px 65px, resize set 3844 1000, move scratchpad
+bindsym Control+space focus output DP-4, [title="MAINTERM"] scratchpad show
 
 #===============APP WINDOW CONFIG================
 

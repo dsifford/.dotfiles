@@ -15,7 +15,7 @@ bar {
 		urgent_workspace   #dca3a3 #3c3b37     #dca383
 	}
 	# i3bar Font
-	font pango:DejaVu Sans Mono 12 
+	font pango:DejaVu Sans Mono 8 
 	# i3bar Position
 	position top
 	# using custom i3status.conf

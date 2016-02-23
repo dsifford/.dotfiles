@@ -8,6 +8,7 @@
         force: true
         path: arch/pacman.conf
     ~/.xinitrc: arch/xinitrc
+    ~/.Xresources: arch/Xresources
 
     # Git
     ~/.gitconfig: gitconfig
@@ -41,7 +42,6 @@
         force: true
         path: bashrc
     ~/.inputrc: inputrc
-    ~/.Xresources: Xresources
 
     # Taskwarrior
     ~/.taskrc: taskrc

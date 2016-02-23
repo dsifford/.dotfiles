@@ -1,60 +1,116 @@
 #!/bin/bash
 
 # Change back to xterm for now until urxvt is installed
-export TERM='xterm'
+TERM='xterm'
 
-# Update packages/package list
-pacman --noconfirm -Syu
-pacman --noconfirm --needed -S yaourt
-yaourt --noconfirm -Syu
+case $1 in
+    'init')
+        # Initialize golang directory
+        mkdir -p $HOME/gocode/{bin,pkg,src/github.com/dsifford}
 
-if [[ ! $HOME ]]; then
-    export HOME='/home/dsifford'
-fi
+        # Initialize repos directory
+        mkdir -p $HOME/repos
+        ;;
+    'pacman')
+        pacman --noconfirm -Syu
+        pacman --noconfirm --needed -S yaourt
 
-# Set "pc_flag" according to hostname
-[[ $(uname -n) == "desktop" ]] && pc_flag="$" || pc_flag="@"
+        # Set "pc_flag" according to hostname
+        [[ $(uname -n) == "desktop" ]] && pc_flag="$" || pc_flag="@"
 
-# Install all pacman packages from pacman list if they
-# aren't yet installed or if they're outdated
-# Pause for confirmation on packages that are unique to the PC
-while IFS='' read -r line || [[ -n $line ]]; do
-    if [[ ${line:0:1} =~ (\$|@) ]]; then
-        if [[ ${line:0:1} != $pc_flag ]]; then
-            continue
-        fi
-        while true; do
-            printf "Should %s be installed on this system? [Yn]\n" "${line:1}"
-            IFS='' read should_install </dev/tty
-            if [[ $should_install =~ (Y|y) ]]; then
-                echo "Installing..."
+        # Install all pacman packages from pacman list if they
+        # aren't yet installed or if they're outdated
+        while IFS='' read -r line || [[ -n $line ]]; do
+            if [[ ${line:0:1} =~ (\$|@) ]]; then
+                if [[ ${line:0:1} != $pc_flag ]]; then
+                    continue
+                fi
+                clear
+                echo '#################################################################'
+                echo '##                                                             ##'
+                echo '##                           PACMAN                            ##'
+                echo '##                                                             ##'
+                echo '#################################################################'
+                printf "\n\n===> Installing package %s...\n\n\n\n\n\n\n\n\n\n\n\n" "$line"
+                sleep 1
                 pacman --noconfirm --needed -S ${line:1}
-                break
-            elif [[ $should_install =~ (N|n) ]]; then
-                echo "Skipping..."
-                break
-            else
                 continue
             fi
-        done
-        continue
-    fi
-    printf "PACMAN: Installing package %s...\n" "$line"
-    pacman --noconfirm --needed -S $line
-done < "packages/pacman"
+            clear
+            echo '#################################################################'
+            echo '##                                                             ##'
+            echo '##                           PACMAN                            ##'
+            echo '##                                                             ##'
+            echo '#################################################################'
+            printf "\n\n===> Installing package %s...\n\n\n\n\n\n\n\n\n\n\n\n" "$line"
+            sleep 1
+            pacman --noconfirm --needed -S $line
+        done < "packages/pacman"
 
-# Install all yaourt packages from yaourt list if they aren't
-# yet installed or if they're outdated
-while IFS='' read -r line || [[ -n $line ]]; do
-    printf "YAOURT: Installing package %s...\n" "$line"
-    yaourt --noconfirm --needed -S $line
-done < "packages/yaourt"
+        # Run through the package list again to make sure all packages installed corretly
+        non_installed=''
+        while IFS='' read -r line || [[ -n $line ]]; do
+            if [[ ${line:0:1} =~ (\$|@) ]]; then
+                continue
+            fi
+            if [[ $(pacman -Qsq $line) == '' ]]; then
+                non_installed="$non_installed $line"
+            fi
+        done < "packages/pacman"
+        [[ $non_installed != '' ]] && \
+            printf "\n\nERROR: The following pacages were not installed:\n\n %s\n\n" "$non_installed" && \
+            exit 0
 
-# Initialize golang directory
-mkdir -p $HOME/gocode/{bin,pkg,src/github.com/dsifford}
+        HOME='/home/dsifford'
 
-# Initialize repos directory
-mkdir -p $HOME/repos
+        # Install known python script dependencies
+        pip2 install -I ouimeaux phue
 
-# Install known python script dependencies
-pip2 install ouimeaux phue
+        ;;
+    'yaourt')
+
+        if [[ $EUID == 0 ]]; then
+            printf "Don't run this with sudo\n"
+            exit 0
+        fi
+
+        # Update packages/package list
+        pacman --noconfirm -Syu
+        pacman --noconfirm --needed -S yaourt
+        yaourt --noconfirm -Syu
+
+        # Set "pc_flag" according to hostname
+        [[ $(uname -n) == "desktop" ]] && pc_flag="$" || pc_flag="@"
+
+        # Install all yaourt packages from yaourt list if they aren't
+        # yet installed or if they're outdated
+        while IFS='' read -r line || [[ -n $line ]]; do
+            clear
+            echo '#################################################################'
+            echo '##                                                             ##'
+            echo '##                           YAOURT                            ##'
+            echo '##                                                             ##'
+            echo '#################################################################'
+            printf "\n\n===> Installing package %s...\n\n\n\n\n\n\n\n\n\n\n\n" "$line"
+            sleep 1
+            yaourt --needed -S $line
+        done < "packages/yaourt"
+
+        # Run through the package list again to make sure all packages installed corretly
+        non_installed=''
+        while IFS='' read -r line || [[ -n $line ]]; do
+            if [[ ${line:0:1} =~ (\$|@) ]]; then
+                continue
+            fi
+            if [[ $(yaourt -Qsq $line) == '' ]]; then
+                non_installed="$non_installed $line"
+            fi
+        done < "packages/yaourt"
+        [[ $non_installed != '' ]] && \
+            printf "\n\nERROR: The following pacages were not installed:\n\n %s\n\n" "$non_installed" && \
+            exit 0
+        ;;
+
+    *)
+        printf 'Commands must be one of:\n1)\tinit\n2)\tpacman\n3)\tyaourt\n'
+esac

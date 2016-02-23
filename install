@@ -1,5 +1,19 @@
 #!/usr/bin/env bash
 
+if [ ! -f /usr/bin/python ]; then
+	printf "Python must be installed first.\n"
+	exit 0
+fi
+
+if [[ $EUID == 0 || $HOME == '/root' ]]; then
+	printf "Don't run this with sudo\n"
+	exit 0
+fi
+
+# Clone the vundle repo if it doesn't exist
+[ ! "$(ls -A ./vim/bundle/Vundle.vim)" ] && \
+    git clone https://github.com/VundleVim/Vundle.vim.git ./vim/bundle/Vundle.vim
+
 set -e
 
 CONFIG="install.conf.yaml"
@@ -10,15 +24,20 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${BASEDIR}"
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
-# Create i3 config files based on the the current computer
-touch "${BASEDIR}/i3/config/config" "${BASEDIR}/i3/config/i3status.conf"
+# Create config files based on the the current computer
+touch   "${BASEDIR}/i3/config/config" \
+		"${BASEDIR}/i3/config/i3status.conf" \
+		"${BASEDIR}/arch/Xresources"
 
 if [[ $(uname -n) == 'dsifford-LAPTOP' ]]; then
+	cat "${BASEDIR}/arch/Xconf/Xresources.common" > "${BASEDIR}/arch/Xresources"
 	cat "${BASEDIR}/i3/config.laptop" > "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/config.common" >> "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/config.laptop.bar" >> "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/i3status.laptop.conf" > "${BASEDIR}/i3/config/i3status.conf"
 else
+	cat "${BASEDIR}/arch/Xconf/Xresources.common" > "${BASEDIR}/arch/Xresources"
+	cat "${BASEDIR}/arch/Xconf/Xresources.desktop" >> "${BASEDIR}/arch/Xresources"
 	cat "${BASEDIR}/i3/config.desktop" > "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/config.common" >> "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/config.desktop.bar" >> "${BASEDIR}/i3/config/config"

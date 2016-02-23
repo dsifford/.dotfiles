@@ -1,0 +1,71 @@
+!================================================!
+!            Begin Common Xresources             !
+!================================================!
+
+! General
+URxvt.visualBell: false
+URxvt*loginShell: true
+
+! Color Scheme
+URxvt.background: #263238
+URxvt.foreground: #eceff1
+
+URxvt.color0:  #263238
+URxvt.color1:  #ff9800
+URxvt.color2:  #8bc34a
+URxvt.color3:  #ffc107
+URxvt.color4:  #03a9f4
+URxvt.color5:  #e91e63
+URxvt.color6:  #009688
+URxvt.color7:  #cfd8dc
+URxvt.color8:  #37474f
+URxvt.color9:  #ffa74d
+URxvt.color10: #9ccc65
+URxvt.color11: #ffa000
+URxvt.color12: #81d4fa
+URxvt.color13: #ad1457
+URxvt.color14: #26a69a
+URxvt.color15: #eceff1
+
+! Font Options
+URxvt.font: xft:Hack:pixelsize=45:antialias=true:hinting=true
+URxvt.boldFont: xft:Hack:bold:pixelsize=45:antialias=true:hinting=true
+
+! Scrollbar
+URxvt.scrollBar: false
+URxvt.scrollWithBuffer: true
+
+! Extensions
+URxvt.perl-ext-common: default,tabbedex,vtwheel,matcher
+URxvt.url-launcher: /usr/bin/google-chrome-beta
+URxvt.matcher.button: 1
+URxvt.tabbed.autohide: yes
+URxvt.tabbed.new-button:  no
+URxvt.tabbed.title: no
+URxvt.tabbed.reopen-on-close: yes
+URxvt.tabbed.tabbar-fg: 8
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg:    15
+URxvt.tabbed.tab-bg:    4
+
+! Keymap
+URxvt.keysym.C-S-T: perl:tabbedex:new_tab
+URxvt.keysym.C-Tab: perl:tabbedex:next_tab
+URxvt.keysym.C-S-Tab: perl:tabbedex:prev_tab
+
+! Misc
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+!================================================!
+!            Begin Desktop Xresources            !
+!================================================!
+
+! Display Settings
+Xft.dpi: 180
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
