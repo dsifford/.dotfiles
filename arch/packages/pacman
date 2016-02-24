@@ -6,6 +6,7 @@ deluge
 dmenu
 docker
 docker-compose
+dunst
 evince
 feh
 file-roller

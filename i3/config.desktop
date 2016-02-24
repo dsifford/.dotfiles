@@ -28,4 +28,4 @@ workspace Atom output HDMI-0
 for_window [class="Slack"] move to workspace 1;
 
 # Zeal
-for_window [class="Zeal"] floating enable, resize set 1080 1070, move position center, move scratchpad
+for_window [class="Zeal"] floating enable, resize set 2080 2070, move scratchpad
