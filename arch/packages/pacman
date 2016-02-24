@@ -1,4 +1,5 @@
 arandr
+alsa-utils
 bash-completion
 clang
 deluge
@@ -22,6 +23,7 @@ i3status
 imagemagick
 libreoffice-fresh
 meld
+networkmanager
 network-manager-applet
 nodejs
 $nvidia

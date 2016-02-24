@@ -35,10 +35,16 @@ URxvt.boldFont: xft:Hack:bold:pixelsize=45:antialias=true:hinting=true
 URxvt.scrollBar: false
 URxvt.scrollWithBuffer: true
 
-! Extensions
-URxvt.perl-ext-common: default,tabbedex,vtwheel,matcher
+!================================================!
+!                   Extensions                   !
+!================================================!
+URxvt.perl-ext-common: default,clipboard,tabbedex,vtwheel,matcher
+
+! Url-Launcher
 URxvt.url-launcher: /usr/bin/google-chrome-beta
 URxvt.matcher.button: 1
+
+! Tabbedex
 URxvt.tabbed.autohide: yes
 URxvt.tabbed.new-button:  no
 URxvt.tabbed.title: no
@@ -47,6 +53,12 @@ URxvt.tabbed.tabbar-fg: 8
 URxvt.tabbed.tabbar-bg: 0
 URxvt.tabbed.tab-fg:    15
 URxvt.tabbed.tab-bg:    4
+
+! Clipboard
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.clipboard.copycmd:  xclip -i -selection clipboard
+URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 
 ! Keymap
 URxvt.keysym.C-S-T: perl:tabbedex:new_tab

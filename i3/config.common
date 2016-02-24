@@ -35,10 +35,10 @@ bindsym $mod+Shift+grave move container to workspace Atom
 for_window [class="Meld"] fullscreen enable
 
 # Spotify
-# exec --no-startup-id spotify
-# for_window [class="Spotify"] move to workspace Spotify
-# bindsym $mod+Tab workspace Spotify
-# bindsym $mod+Shift+Tab move container to workspace Spotify
+exec --no-startup-id google-chrome-beta --app-id=cnkjkdjlofllcpbemipjbcpfnglbgieh 
+for_window [title="Spotify Web Player - Spotify"] move to workspace Spotify
+bindsym $mod+Tab workspace Spotify
+bindsym $mod+Shift+Tab move container to workspace Spotify
 
 # Tk windows (Python Plots)
 for_window [class="Tk"] floating enable

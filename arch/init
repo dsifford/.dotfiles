@@ -5,6 +5,12 @@ TERM='xterm'
 
 case $1 in
     'init')
+
+        if [[ $EUID == 0 ]]; then
+            printf "Don't run this with sudo\n"
+            exit 0
+        fi
+
         # Initialize golang directory
         mkdir -p $HOME/gocode/{bin,pkg,src/github.com/dsifford}
 

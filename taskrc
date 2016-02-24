@@ -20,7 +20,6 @@ urgency.uda.priority.M.coefficient=3.9
 
 # Colors
 color=on
-#color.alternate=inverse
 color.header=white bold
 color.error=black on bright yellow
 
@@ -42,12 +41,19 @@ color.calendar.weeknumber=rgb013
 
 color.recurring=rgb013
 color.overdue=white on gray
-color.due.today=white on magenta bold 
-color.due=white on rgb100 
+color.due.today=white on magenta bold
+color.due=white on rgb100
 color.active=rgb555 on rgb410
 color.tagged=white on blue bold
 color.blocked=white on color8
 color.blocking=black on color15
+
+# Project Colors
+color.project.school=on rgb010
+color.project.tv=color8
+
+# Urgency Settings for Projects
+urgency.user.project.tv.coefficient=-1
 
 # Sync settings
 taskd.server=freecinc.com:53589
