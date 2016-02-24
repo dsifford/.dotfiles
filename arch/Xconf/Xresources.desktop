@@ -13,4 +13,5 @@ Xft.antialias: 1
 Xft.rgba: rgb
 
 ! Cursor Size
-Xcursor.size: 32
+Xcursor.theme: Adwaita
+Xcursor.size: 48
