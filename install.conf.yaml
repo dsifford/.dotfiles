@@ -10,6 +10,11 @@
     ~/.xinitrc: arch/xinitrc
     ~/.Xresources: arch/Xresources
 
+    # Dunst
+    ~/.config/dunst/dunstrc:
+        create: true
+        path: dunstrc
+
     # Git
     ~/.gitconfig: gitconfig
     ~/.git-prompt.sh: scripts/git-prompt.sh

@@ -67,6 +67,9 @@ export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m
     }
 
 ### Taskwarrior
+    t () {
+        if [[ ! $@ ]]; then task; else task $@ && task sync; fi
+    }
     ta () {
     	task add $* && task sync
     }
@@ -87,8 +90,6 @@ export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m
     alias i3c='if [[ $(uname -n) = "desktop" ]]; then vim ~/.dotfiles/i3/config.desktop; else vim ~/.dotfiles/i3/config.laptop; fi'
     alias i3cm='vim ~/.dotfiles/i3/config.common'
     alias dot='cd ~/.dotfiles'
-    alias t='task'
-
 
 ### Git
     alias g='git'

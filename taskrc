@@ -55,6 +55,9 @@ color.project.tv=color8
 # Urgency Settings for Projects
 urgency.user.project.tv.coefficient=-1
 
+# Report Settings
+report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description.count,urgency
+
 # Sync settings
 taskd.server=freecinc.com:53589
 taskd.key=\/home\/dsifford\/.task\/freecinc_4935230f.key.pem
