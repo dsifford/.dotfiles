@@ -68,3 +68,11 @@ URxvt.keysym.C-S-Tab: perl:tabbedex:prev_tab
 ! Misc
 URxvt.iso14755: false
 URxvt.iso14755_52: false
+
+! Xterm
+XTerm*background: #000000
+XTerm*foreground: #FFFFFF
+XTerm*geometry: 60x20
+XTerm*renderFont: true
+XTerm*faceName: Hack
+XTerm*faceSize: 18

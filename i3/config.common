@@ -12,7 +12,7 @@ hide_edge_borders both
 exec --no-startup-id feh --no-fehbg --bg-fill /home/dsifford/.dotfiles/arch/Xconf/arch.jpg
 
 # Startup Daemons
-exec --no-startup-id compton
+#exec --no-startup-id compton
 exec --no-startup-id dunst
 
 # Startup Applets
@@ -75,6 +75,8 @@ bindsym --whole-window $mod+button2 kill
 # $mod+Space => dmenu
 bindsym $mod+space exec --no-startup-id dmenu_run -i -b -fn -*-*-*-*-*-*-20-*-*-*-*-*-*-*
 
+# $mod+Home => Open a new instance of MAINTERM
+bindsym $mod+Home exec --no-startup-id urxvt -name MAINTERM
 
 #================================================
 #             BEGIN i3 DEFAULTS
