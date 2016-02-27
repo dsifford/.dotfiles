@@ -11,8 +11,8 @@ export GOPATH=$HOME/gocode
 # Set EDITOR and PAGER
 export EDITOR=vim
 export PAGER=less
-export TERM=rxvt-unicode
-export COLORTERM=rxvt-unicode-256color
+export TERM=tmux-256color
+export COLORTERM=tmux-256color
 
 # Source git prompt script
 source ~/.git-prompt.sh
@@ -90,6 +90,7 @@ export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m
     alias i3c='if [[ $(uname -n) = "desktop" ]]; then vim ~/.dotfiles/i3/config.desktop; else vim ~/.dotfiles/i3/config.laptop; fi'
     alias i3cm='vim ~/.dotfiles/i3/config.common'
     alias dot='cd ~/.dotfiles'
+    alias vimrc='vim ~/.vimrc'
 
 ### Git
     alias g='git'
@@ -115,3 +116,6 @@ export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m
 
     # Better format for "docker ps"
     alias dpsa='docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}"'
+
+    # Run a juypter container
+    alias jp='docker run --rm -it -p 8888:8888 -v "$(pwd):/notebooks" dsifford/jupyter-ml'

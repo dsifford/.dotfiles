@@ -15,7 +15,11 @@ Plugin 'scrooloose/nerdtree'	 " NERDtree
 call vundle#end()
 filetype plugin indent on
 
+" Keymaps
+noremap <C-\> :NERDTreeToggle<CR>
+
 " General Settings
+set t_Co=256
 set number			" Show line numbers
 set wildmenu			" Better command menu
 set showcmd			" Show partial commands in last line of screen

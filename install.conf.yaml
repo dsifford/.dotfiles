@@ -51,6 +51,9 @@
     # Taskwarrior
     ~/.taskrc: taskrc
 
+    # Tmux
+    ~/.tmux.conf: tmux.conf
+
     # Vim
     ~/.vim: vim
     ~/.vimrc: vimrc

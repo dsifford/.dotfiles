@@ -18,6 +18,7 @@ go
 go-tools
 gparted
 highlight
+htop
 i3
 i3lock
 i3status
@@ -46,6 +47,7 @@ simplescreenrecorder
 task
 texlive-most
 time
+tmux
 ttf-dejavu
 ttf-hack
 unzip

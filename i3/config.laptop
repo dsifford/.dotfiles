@@ -16,6 +16,6 @@ bindsym $mod+Tab workspace Spotify
 bindsym $mod+Shift+Tab move container to workspace Spotify
 
 # Floating Terminal
-exec --no-startup-id urxvt -name MAINTERM
+exec --no-startup-id urxvt -name MAINTERM -e bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -nMain -sHOME"
 for_window [class="MAINTERM"] border pixel 0, floating enable, move position 0 0, resize set 1930 500,  move scratchpad
 bindsym Control+space [class="MAINTERM"] scratchpad show
