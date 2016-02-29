@@ -1,5 +1,6 @@
-arandr
 alsa-utils
+anki
+arandr
 bash-completion
 clang
 deluge
@@ -11,6 +12,7 @@ evince
 feh
 file-roller
 filezilla
+gimp
 git
 gnome-keyring
 gnome-screenshot
