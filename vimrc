@@ -7,10 +7,11 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Insert all Vundle Plugins below
 
-Plugin 'molokai'		 " Molokai color scheme
-Plugin 'godlygeek/tabular'	 " Markdown tab formatting
-Plugin 'plasticboy/vim-markdown' " Markdown
-Plugin 'scrooloose/nerdtree'	 " NERDtree
+Plugin 'molokai'			" Molokai color scheme
+Plugin 'godlygeek/tabular'		" Markdown tab formatting
+Plugin 'plasticboy/vim-markdown'	" Markdown
+Plugin 'scrooloose/nerdtree'		" NERDtree
+Plugin 'christoomey/vim-tmux-navigator' " Vim/tmux keybindings
 
 call vundle#end()
 filetype plugin indent on

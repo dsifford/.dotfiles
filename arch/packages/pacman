@@ -7,6 +7,7 @@ deluge
 dmenu
 docker
 docker-compose
+docker-machine
 dunst
 evince
 feh
@@ -32,6 +33,7 @@ network-manager-applet
 nodejs
 $nvidia
 $nvidia-libgl
+openssh
 parted
 pep8
 pulseaudio
@@ -41,6 +43,7 @@ python-pip
 python2
 python2-pip
 redshift
+reflector
 rsync
 ruby
 rxvt-unicode

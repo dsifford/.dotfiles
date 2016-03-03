@@ -20,6 +20,10 @@ source ~/.git-prompt.sh
 # Set a default prompt: user@host ~/current/working/dir (repository)
 export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m\]\n '
 
+# Bash options
+shopt -s checkwinsize # automatically adjust window size
+shopt -s cdspell      # correct spelling mistakes when using cd
+shopt -s dirspell     # correct spelling mistakes in directories
 
 #------------------Shell Scripts---------------------#
 
@@ -92,6 +96,11 @@ export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m
     alias dot='cd ~/.dotfiles'
     alias vimrc='vim ~/.vimrc'
 
+### Arch
+    # Verbosely rate the 200 most recently synchronized HTTP servers located in the US, 
+    # sort them by download rate, and overwrite the file /etc/pacman.d/mirrorlist
+    alias pacman-update='sudo reflector --verbose --country "United States" -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
+
 ### Git
     alias g='git'
     alias gs='git status'
@@ -118,4 +127,5 @@ export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m
     alias dpsa='docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}"'
 
     # Run a juypter container
-    alias jp='docker run --rm -it -p 8888:8888 -v "$(pwd):/notebooks" dsifford/jupyter-ml'
+    alias jp='docker run --rm -it -e GRANT_SUDO=yes --user root -p 8888:8888 -v "$(pwd):/home/jovyan/work" jupyter/scipy-notebook'
+
