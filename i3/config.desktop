@@ -7,10 +7,6 @@ workspace 2 output DP-4
 workspace 1 output HDMI-0
 workspace Spotify output HDMI-0
 
-# Startup Apps
-#exec --no-startup-id ckb-daemon
-#exec --no-startup-id ckb --background
-
 # Startup Scripts
 exec --no-startup-id bedroomlights
 

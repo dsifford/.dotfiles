@@ -14,6 +14,9 @@ export PAGER=less
 export TERM=tmux-256color
 export COLORTERM=tmux-256color
 
+# Fix tiny QT windows on 4k monitor
+[[ $(uname -n) == 'desktop' ]] && export QT_DEVICE_PIXEL_RATIO=2
+
 # Source git prompt script
 source ~/.git-prompt.sh
 
