@@ -49,8 +49,14 @@ shopt -s dirspell     # correct spelling mistakes in directories
        eval "$(docker-machine env $1)"
     }
     docker-clean () {
-        docker rm $(docker ps -aq -f status=exited)
-        docker rmi $(docker images -f "dangling=true" -q)
+	CONTAINERS=$(docker ps -aq -f status=exited)
+	IMAGES=$(docker images -q -f dangling=true)
+	if [[ $CONTAINERS ]]; then
+	    docker rm -v $CONTAINERS
+	fi
+	if [[ $IMAGES ]]; then
+	    docker rmi $IMAGES
+	fi
     }
 
     # Remove either untagged images or a variable number of images (1-9)

@@ -11,7 +11,6 @@ Plugin 'molokai'			" Molokai color scheme
 Plugin 'godlygeek/tabular'		" Markdown tab formatting
 Plugin 'plasticboy/vim-markdown'	" Markdown
 Plugin 'scrooloose/nerdtree'		" NERDtree
-Plugin 'christoomey/vim-tmux-navigator' " Vim/tmux keybindings
 
 call vundle#end()
 filetype plugin indent on
