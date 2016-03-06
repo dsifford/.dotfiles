@@ -31,6 +31,7 @@ touch   "${BASEDIR}/i3/config/config" \
 
 if [[ $(uname -n) == 'dsifford-LAPTOP' ]]; then
 	cat "${BASEDIR}/arch/Xconf/Xresources.common" > "${BASEDIR}/arch/Xresources"
+	cat "${BASEDIR}/arch/Xconf/Xresources.laptop" >> "${BASEDIR}/arch/Xresources"
 	cat "${BASEDIR}/i3/config.laptop" > "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/config.common" >> "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/config.laptop.bar" >> "${BASEDIR}/i3/config/config"

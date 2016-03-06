@@ -27,10 +27,6 @@ URxvt.color13: #ad1457
 URxvt.color14: #26a69a
 URxvt.color15: #eceff1
 
-! Font Options
-URxvt.font: xft:Hack:pixelsize=45:antialias=true:hinting=true
-URxvt.boldFont: xft:Hack:bold:pixelsize=45:antialias=true:hinting=true
-
 ! Scrollbar
 URxvt.scrollBar: false
 URxvt.scrollWithBuffer: true

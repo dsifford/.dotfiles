@@ -1,0 +1,8 @@
+
+!================================================!
+!             Begin Laptop Xresources            !
+!================================================!
+
+! Font Size
+URxvt.font: xft:Hack:pixelsize=20:antialias=true:hinting=true
+URxvt.boldFont: xft:Hack:bold:pixelsize=20:antialias=true:hinting=true

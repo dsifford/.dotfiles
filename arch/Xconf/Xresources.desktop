@@ -15,3 +15,7 @@ Xft.rgba: rgb
 ! Cursor Size
 Xcursor.theme: Adwaita
 Xcursor.size: 48
+
+! Font Size
+URxvt.font: xft:Hack:pixelsize=45:antialias=true:hinting=true
+URxvt.boldFont: xft:Hack:bold:pixelsize=45:antialias=true:hinting=true
