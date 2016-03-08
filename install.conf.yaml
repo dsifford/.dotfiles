@@ -1,59 +1,34 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+
 - clean: ['~']
 
 - link:
-
-    # Arch stuff
     /etc/pacman.conf:
-        create: true
         force: true
         path: arch/pacman.conf
-    ~/.xinitrc: arch/xinitrc
-    ~/.Xresources: arch/Xresources
-
-    # Dunst
-    ~/.config/dunst/dunstrc:
-        create: true
-        path: dunstrc
-
-    # Git
-    ~/.gitconfig: gitconfig
-    ~/.git-prompt.sh: scripts/git-prompt.sh
-
-    # i3
-    ~/.i3:
-        create: true
-        path: i3/config/
-
-    # Ranger
-    ~/.config/ranger/rc.conf:
-        create: true
-        path: ranger/rc.conf
-    ~/.config/ranger/rifle.conf:
-        create: true
-        path: ranger/rifle.conf
-
-    # Scripts
-    /usr/local/bin/bedroomlights:
-        create: true
-        path: scripts/bedroomlights
-
-    # Shell
+    /usr/local/bin/bedroomlights: scripts/bedroomlights
     ~/.bash_profile:
-        create: true
         force: true
         path: bash_profile
     ~/.bashrc:
-        create: true
         force: true
         path: bashrc
+    ~/.config/dunst/dunstrc: dunstrc
+    ~/.config/ranger/rc.conf: ranger/rc.conf
+    ~/.config/ranger/rifle.conf: ranger/rifle.conf
+    ~/.gitconfig: gitconfig
+    ~/.git-prompt.sh: scripts/git-prompt.sh
+    ~/.i3: i3/config/
     ~/.inputrc: inputrc
-
-    # Taskwarrior
     ~/.taskrc: taskrc
-
-    # Tmux
     ~/.tmux.conf: tmux.conf
-
-    # Vim
     ~/.vim: vim
     ~/.vimrc: vimrc
+    ~/.xinitrc: arch/xinitrc
+    ~/.Xresources: arch/Xresources
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]

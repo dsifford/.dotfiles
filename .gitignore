@@ -3,4 +3,3 @@ i3/config/i3status.conf
 vim/.netrwhist
 arch/Xresources
 vim/bundle
-!vim/bundle/Vundle.vim
