@@ -47,6 +47,7 @@ reflector
 rsync
 ruby
 rxvt-unicode
+shellcheck
 shotwell
 simplescreenrecorder
 task
