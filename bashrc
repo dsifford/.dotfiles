@@ -74,11 +74,6 @@ shopt -s dirspell     # correct spelling mistakes in directories
         git remote add origin https://github.com/dsifford/$1.git
     }
 
-### Python
-    pipi () {
-	sudo -H pip install $1 && sudo -H pip3 install $1
-    }
-
 ### Taskwarrior
     t () {
         if [[ ! $@ ]]; then task; else task $@ && task sync; fi
@@ -94,6 +89,8 @@ shopt -s dirspell     # correct spelling mistakes in directories
 
 ### Meta
     alias restart='source ~/.bashrc'
+    alias atom='atom-beta'
+    alias apm='apm-beta'
     alias grep='grep --color'
     alias ls='ls -hF1 --color=tty'
     alias dir='ls --color=auto --format=vertical'
