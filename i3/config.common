@@ -12,7 +12,7 @@ hide_edge_borders both
 exec --no-startup-id feh --no-fehbg --bg-fill /home/dsifford/.dotfiles/arch/Xconf/arch.jpg
 
 # Startup Daemons
-#exec --no-startup-id compton
+exec --no-startup-id compton
 exec --no-startup-id dunst
 
 # Startup Applets
@@ -38,8 +38,8 @@ for_window [class="Meld"] fullscreen enable
 # Spotify
 #exec --no-startup-id google-chrome-beta --app=https://play.spotify.com/
 #for_window [instance="play.spotify.com"] move to workspace Spotify
-#bindsym $mod+Tab workspace Spotify
-#bindsym $mod+Shift+Tab move container to workspace Spotify
+bindsym $mod+Tab workspace Spotify
+bindsym $mod+Shift+Tab move container to workspace Spotify
 
 # Tk windows (Python Plots)
 for_window [class="Tk"] floating enable

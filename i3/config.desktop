@@ -23,5 +23,9 @@ workspace Atom output HDMI-0
 # Slack
 for_window [class="Slack"] move to workspace 1;
 
+# Spotify
+exec --no-startup-id spotify --force-device-scale-factor=2
+for_window [class="Spotify"] move to workspace Spotify
+
 # Zeal
 for_window [class="Zeal"] floating enable, resize set 2080 2070, move scratchpad
