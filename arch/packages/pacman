@@ -61,6 +61,7 @@ ttf-hack
 unzip
 vim
 vlc
+w3m
 wget
 xclip
 @xf86-video-intel
