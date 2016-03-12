@@ -63,7 +63,6 @@ vim
 vlc
 wget
 xclip
-xdotool
 @xf86-video-intel
 xorg-server
 xorg-server-utils
