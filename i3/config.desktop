@@ -18,7 +18,7 @@ bindsym Control+space focus output DP-4, [instance="MAINTERM"] scratchpad show
 #===============APP WINDOW CONFIG================
 
 # Atom
-workspace Atom output HDMI-0
+workspace Atom output DP-4 
 
 # Slack
 for_window [class="Slack"] move to workspace 1;

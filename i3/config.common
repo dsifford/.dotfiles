@@ -48,7 +48,7 @@ for_window [class="Tk"] floating enable
 for_window [class="XTerm"] floating enable
 
 # Zeal
-bindsym Control+Shift+space [class="Zeal"] move position center, scratchpad show
+bindsym Control+Shift+space [class="Zeal"] scratchpad show, move position center
 
 #=====================KEYMAP=====================
 

@@ -48,9 +48,7 @@ shopt -s dirspell     # correct spelling mistakes in directories
     bind '"\C-o":"ranger-cd\C-m"'
 
 ### Docker
-    setenv () {
-       eval "$(docker-machine env $1)"
-    }
+    setenv () { eval "$(docker-machine env $1)"; }
     docker-clean () {
 	CONTAINERS=$(docker ps -aq -f status=exited)
 	IMAGES=$(docker images -q -f dangling=true)
@@ -68,6 +66,7 @@ shopt -s dirspell     # correct spelling mistakes in directories
 	elif [[ "$1" = [1-9] ]]; then docker rmi $(docker images -q | head -"$1")
 	fi
     }
+
 
 ### Git
     gra () {
@@ -131,6 +130,9 @@ shopt -s dirspell     # correct spelling mistakes in directories
 
     # Better format for "docker ps"
     alias dpsa='docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}"'
+
+    # Open an interactive bash session in container N (counting from top)
+    dx () { docker exec -it $(docker ps -q -n=$1 | tail -n 1) /bin/bash; } 
 
     # Run a juypter container
     alias jp='docker run --rm -it -e GRANT_SUDO=yes --user root -p 8888:8888 -v "$(pwd):/home/jovyan/work" jupyter/scipy-notebook'
