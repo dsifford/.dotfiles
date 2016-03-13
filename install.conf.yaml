@@ -16,7 +16,7 @@
     ~/.bashrc:
         force: true
         path: bashrc
-    ~/.config/dunst/dunstrc: dunstrc
+    ~/.config/dunst/dunstrc: compiled/dunstrc
     ~/.config/ranger/rc.conf: ranger/rc.conf
     ~/.config/ranger/rifle.conf: ranger/rifle.conf
     ~/.gitconfig: gitconfig

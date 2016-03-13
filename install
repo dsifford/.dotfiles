@@ -36,6 +36,7 @@ if [[ $(uname -n) == 'dsifford-LAPTOP' ]]; then
 	cat "${BASEDIR}/i3/config.common" >> "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/config.laptop.bar" >> "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/i3status.laptop.conf" > "${BASEDIR}/i3/config/i3status.conf"
+	cat "${BASEDIR}/arch/dunst/dunstrc.laptop" > "${BASEDIR}/compiled/dunstrc"
 else
 	cat "${BASEDIR}/arch/Xconf/Xresources.common" > "${BASEDIR}/arch/Xresources"
 	cat "${BASEDIR}/arch/Xconf/Xresources.desktop" >> "${BASEDIR}/arch/Xresources"
@@ -43,6 +44,7 @@ else
 	cat "${BASEDIR}/i3/config.common" >> "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/config.desktop.bar" >> "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/i3status.desktop.conf" > "${BASEDIR}/i3/config/i3status.conf"
+	cat "${BASEDIR}/arch/dunst/dunstrc.desktop" > "${BASEDIR}/compiled/dunstrc.desktop"
 fi
 
 
