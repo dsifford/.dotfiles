@@ -9,7 +9,7 @@ env.start()
 env.discover(1)
 
 # setup hue
-b = Bridge('192.168.0.101', '1bf65ff514536e0e70a846a26cacb459')
+b = Bridge('192.168.1.121', '1bf65ff514536e0e70a846a26cacb459')
 b.connect()
 
 bedroom = env.get_switch('Bedroom')
