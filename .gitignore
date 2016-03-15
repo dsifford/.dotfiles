@@ -3,4 +3,5 @@ i3/config/i3status.conf
 vim/.netrwhist
 arch/Xresources
 vim/bundle
-compiled
+compiled/*
+!compiled/.gitkeep
