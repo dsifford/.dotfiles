@@ -29,7 +29,7 @@ touch   "${BASEDIR}/i3/config/config" \
 		"${BASEDIR}/i3/config/i3status.conf" \
 		"${BASEDIR}/arch/Xresources"
 
-if [[ $(uname -n) == 'dsifford-LAPTOP' ]]; then
+if [[ $(uname -n) == 'laptop' ]]; then
 	cat "${BASEDIR}/arch/Xconf/Xresources.common" > "${BASEDIR}/arch/Xresources"
 	cat "${BASEDIR}/arch/Xconf/Xresources.laptop" >> "${BASEDIR}/arch/Xresources"
 	cat "${BASEDIR}/i3/config.laptop" > "${BASEDIR}/i3/config/config"
