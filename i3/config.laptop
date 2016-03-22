@@ -3,7 +3,7 @@
 #================================================
 
 # Display / Screen Config
-exec_always --no-startup-id xrandr --dpi 138/eDP1
+#exec_always --no-startup-id xrandr --dpi 138/eDP1
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20
@@ -17,3 +17,6 @@ for_window [class="Spotify"] move to workspace Spotify
 exec --no-startup-id urxvt -name MAINTERM -e bash -c "tmux -2 -q has-session && exec tmux -2 attach-session -d || exec tmux -2 new-session -nMain -sHOME"
 for_window [instance="MAINTERM"] border pixel 0, floating enable, move position 0 0, resize set 1930 500,  move scratchpad
 bindsym Control+space [instance="MAINTERM"] scratchpad show
+
+# Zeal
+for_window [class="Zeal"] floating enable, resize set 1500 1000, move scratchpad
