@@ -10,6 +10,7 @@ workspace Spotify output HDMI-0
 # Startup Scripts
 exec --no-startup-id bedroomlights
 bindsym XF86Sleep exec --no-startup-id wemo switch Bedroom toggle 
+bindsym Control+XF86Sleep exec --no-startup id hue toggle
 
 # Floating Terminal
 exec --no-startup-id urxvt -name MAINTERM -e bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -nMain -sHOME"

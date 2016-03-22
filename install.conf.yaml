@@ -10,6 +10,7 @@
         force: true
         path: arch/pacman.conf
     /usr/local/bin/bedroomlights: scripts/bedroomlights
+    /usr/local/bin/hue: scripts/hue
     ~/.bash_profile:
         force: true
         path: bash_profile

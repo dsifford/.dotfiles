@@ -3,7 +3,7 @@
 [[ "$-" != *i* ]] && return
 
 # Set up system path
-export PATH=$PATH:$HOME/gocode/bin:/usr/local/bin:/usr/local/go/bin
+export PATH=$PATH:$HOME/gocode/bin:/usr/local/bin:/usr/local/go/bin:$HOME/.gem/ruby/2.3.0/bin
 
 # System Environment Variables
 export GOPATH=$HOME/gocode
