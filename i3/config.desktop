@@ -10,7 +10,9 @@ workspace Spotify output HDMI-0
 # Startup Scripts
 exec --no-startup-id bedroomlights
 bindsym XF86Sleep exec --no-startup-id wemo switch Bedroom toggle 
-bindsym Control+XF86Sleep exec --no-startup id hue toggle
+bindsym Control+XF86Sleep exec --no-startup-id hue toggle
+bindsym Control+XF86AudioRaiseVolume exec --no-startup-id hue brightness 25
+bindsym Control+XF86AudioLowerVolume exec --no-startup-id hue brightness -25
 
 # Floating Terminal
 exec --no-startup-id urxvt -name MAINTERM -e bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -nMain -sHOME"
@@ -18,9 +20,6 @@ for_window [instance="MAINTERM"] border pixel 0, floating enable, move position 
 bindsym Control+space focus output DP-4, [instance="MAINTERM"] scratchpad show
 
 #===============APP WINDOW CONFIG================
-
-# Atom
-workspace Atom output HDMI-0 
 
 # Slack
 for_window [class="Slack"] move to workspace 1;
@@ -31,3 +30,9 @@ for_window [class="Spotify"] move to workspace Spotify
 
 # Zeal
 for_window [class="Zeal"] floating enable, resize set 2080 2070, move scratchpad
+
+#====================KEYMAP======================
+
+# Ctrl+$mod+Arrow => Move workspace to other monitor
+bindsym Control+$mod+Right move workspace to output right
+bindsym Control+$mod+Left move workspace to output left
