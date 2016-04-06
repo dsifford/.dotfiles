@@ -21,6 +21,14 @@ bindsym Control+space focus output DP-4, [instance="MAINTERM"] scratchpad show
 
 #===============APP WINDOW CONFIG================
 
+# Remote Messages
+exec --no-startup-id google-chrome-beta --app=http://192.168.1.234:333/
+for_window [title="Remote Messages"] move scratchpad
+bindsym Menu [title="Remote Messages"] scratchpad show
+
+# Simple Screen Recorder
+for_window [class="Simplescreenrecorder"] floating enable
+
 # Slack
 for_window [class="Slack"] move to workspace 1;
 
