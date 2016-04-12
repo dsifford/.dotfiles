@@ -65,7 +65,9 @@ vlc
 w3m
 wget
 xclip
+@xf86-input-libinput
 @xf86-video-intel
+@xorg-xinput
 xorg-server
 xorg-server-utils
 xorg-setxkbmap
