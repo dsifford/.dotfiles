@@ -3,7 +3,7 @@
 [[ "$-" != *i* ]] && return
 
 # Set up system path
-export PATH=$PATH:$HOME/gocode/bin:/usr/local/bin:/usr/local/go/bin:$HOME/.gem/ruby/2.3.0/bin
+export PATH=$PATH:$HOME/gocode/bin:$HOME/.npm-global/bin:/usr/local/bin:/usr/local/go/bin:$HOME/.gem/ruby/2.3.0/bin
 
 # System Environment Variables
 export GOPATH=$HOME/gocode
@@ -88,8 +88,6 @@ shopt -s dirspell     # correct spelling mistakes in directories
 
 ### Meta
     alias restart='source ~/.bashrc'
-    alias atom='atom-beta'
-    alias apm='apm-beta'
     alias grep='grep --color'
     alias ls='ls -hF1 --color=tty'
     alias dir='ls --color=auto --format=vertical'
@@ -105,6 +103,10 @@ shopt -s dirspell     # correct spelling mistakes in directories
     # Verbosely rate the 200 most recently synchronized HTTP servers located in the US, 
     # sort them by download rate, and overwrite the file /etc/pacman.d/mirrorlist
     alias pacman-update='sudo reflector --verbose --country "United States" -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
+
+    # Reset caps lock as escape
+    alias CAPS='setxkbmap -option caps:escape'
+    alias SPOTIFY='spotify --force-device-scale-factor=2 >/dev/null 2>&1 &'
 
 ### Git
     alias g='git'
@@ -137,3 +139,6 @@ shopt -s dirspell     # correct spelling mistakes in directories
     # Run a juypter container
     alias jp='docker run --rm -it -e GRANT_SUDO=yes --user root -p 8888:8888 -v "$(pwd):/home/jovyan/work" jupyter/scipy-notebook'
 
+
+export NVM_DIR="/home/dsifford/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -65,7 +65,8 @@ bindsym XF86AudioPrev  exec dbus-send --print-reply --dest=org.mpris.MediaPlayer
 bindsym XF86AudioStop  exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
 
 # Print Screen
-bindsym Print exec gnome-screenshot -iac
+bindsym Print exec shutter 
+for_window [class="shutter"] floating enable
 
 # $mod+Middle Mouse Button => kill window
 bindsym --whole-window $mod+button2 kill

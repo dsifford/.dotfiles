@@ -14,7 +14,7 @@ bar {
 		inactive_workspace #636363 #3c3b37     #dcdccc
 		urgent_workspace   #dca3a3 #3c3b37     #dca383
 	}
-	output DP-4
+	#output DP-4
 	font pango:DejaVu Sans Mono 8 
 	position top
 	tray_output none 
@@ -22,19 +22,19 @@ bar {
 	status_command i3status -c ~/.i3/i3status.conf
 }
 
-bar {
-    colors {
-	background #3c3b37
-	statusline #dcdccc
-		
-	# Type             border  background  font
-	focused_workspace  #93b3a3 #3c3b37     #93b3a3
-	active_workspace   #ffcfaf #3c3b37     #888888
-	inactive_workspace #636363 #3c3b37     #dcdccc
-	urgent_workspace   #dca3a3 #3c3b37     #dca383
-    }
-    position top
-    font pango:DejaVu Sans Mono 8
-    output HDMI-0
-    tray_output HDMI-0
-}
+#bar {
+ #   colors {
+#	background #3c3b37
+#	statusline #dcdccc
+#		
+#	# Type             border  background  font
+#	focused_workspace  #93b3a3 #3c3b37     #93b3a3
+#	active_workspace   #ffcfaf #3c3b37     #888888
+#	inactive_workspace #636363 #3c3b37     #dcdccc
+#	urgent_workspace   #dca3a3 #3c3b37     #dca383
+    #}
+    #position top 
+   # font pango:DejaVu Sans Mono 8
+  #  output DP-2 
+ #   tray_output DP-2 
+#}
