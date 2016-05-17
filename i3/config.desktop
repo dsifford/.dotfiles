@@ -3,7 +3,8 @@
 #================================================
 
 # Display / Screen Config
-exec --no-startup-id xrandr --output DP-4 --primary --mode 3840x2160 --pos 2160x0 --rotate normal --output DP-2 --mode 3840x2160 --pos 0x0 --rotate right
+exec --no-startup-id xrandr --output DP-2 --auto --pos 0x0 --rotate right
+exec --no-startup-id xrandr --output DP-4 --primary --auto --pos 2160x0
 workspace 2 output DP-4
 workspace 1 output DP-2 
 workspace Spotify output DP-2 

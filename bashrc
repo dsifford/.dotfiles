@@ -75,13 +75,13 @@ shopt -s dirspell     # correct spelling mistakes in directories
 
 ### Taskwarrior
     t () {
-        if [[ ! $@ ]]; then task; else task $@ && task sync; fi
+        if [[ ! $@ ]]; then task; else task "$@" && task sync; fi
     }
     ta () {
-    	task add $* && task sync
+    	task add "$*" && task sync
     }
     td () {
-   	task $1 done && task sync
+        task $1 done && task sync
     }
 
 #---------------------- Aliases-----------------------#
@@ -100,7 +100,7 @@ shopt -s dirspell     # correct spelling mistakes in directories
     alias vimrc='vim ~/.vimrc'
 
 ### Arch
-    # Verbosely rate the 200 most recently synchronized HTTP servers located in the US, 
+    # Verbosely rate the 200 most recently synchronized HTTP servers located in the US,
     # sort them by download rate, and overwrite the file /etc/pacman.d/mirrorlist
     alias pacman-update='sudo reflector --verbose --country "United States" -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
 
@@ -134,11 +134,25 @@ shopt -s dirspell     # correct spelling mistakes in directories
     alias dpsa='docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}"'
 
     # Open an interactive bash session in container N (counting from top)
-    dx () { docker exec -it $(docker ps -q -n=$1 | tail -n 1) /bin/bash; } 
+    dx () { docker exec -it $(docker ps -q -n=$1 | tail -n 1) /bin/bash; }
 
     # Run a juypter container
     alias jp='docker run --rm -it -e GRANT_SUDO=yes --user root -p 8888:8888 -v "$(pwd):/home/jovyan/work" jupyter/scipy-notebook'
 
+### SSH
+    SSH () {
+        case $1 in
+    	    aliem)
+                eval `ssh-agent -s`
+                ssh -i $HOME/.ssh/aliem_rsa -p 18765 acade220@c7563.sgvps.net -t "export TERM=xterm; cd www; bash"
+    		;;
 
-export NVM_DIR="/home/dsifford/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+            aliemu)
+                eval `ssh-agent -s`
+                ssh -i $HOME/.ssh/aliemu_dsa aliemu@c7563.sgvps.net -p 18765 -t "export TERM=xterm; cd www; bash"
+            ;;
+    	    *)
+    		    echo "the only available locations are 'aliem' or 'aliemu'"
+    		;;
+    	esac
+    }
