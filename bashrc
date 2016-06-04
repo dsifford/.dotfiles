@@ -109,6 +109,7 @@ shopt -s dirspell     # correct spelling mistakes in directories
     alias SPOTIFY='spotify --force-device-scale-factor=2 >/dev/null 2>&1 &'
 
 ### Git
+    alias git='hub'
     alias g='git'
     alias gs='git status'
     alias gss='git status -s'
