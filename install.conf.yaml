@@ -24,6 +24,7 @@
     ~/.gitconfig: gitconfig
     ~/.git-prompt.sh: scripts/git-prompt.sh
     ~/.i3: i3/config/
+    ~/.i3blocks.conf: i3/i3blocks.conf
     ~/.inputrc: inputrc
     ~/.taskrc: taskrc
     ~/.tmux.conf: tmux.conf

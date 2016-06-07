@@ -19,7 +19,7 @@ bar {
 	position top
 	tray_output none 
 	# using custom i3status.conf
-	status_command i3status -c ~/.i3/i3status.conf
+	status_command i3blocks
 }
 
 #bar {
