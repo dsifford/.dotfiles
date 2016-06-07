@@ -18,7 +18,9 @@ export COLORTERM=tmux-256color
 [[ $(uname -n) == 'desktop' ]] && export QT_AUTO_SCREEN_SCALE_FACTOR=2
 
 # Source git prompt script
-source ~/.git-prompt.sh
+source ~/.bash/git-prompt.sh
+source ~/.bash/git-completion.bash
+source ~/.bash/hub.bash_completion.sh
 
 # Set a default prompt: user@host ~/current/working/dir (repository)
 export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m\]\n '

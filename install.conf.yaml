@@ -22,7 +22,7 @@
     ~/.config/ranger/scope.sh: ranger/scope.sh
     ~/.config/ranger/rifle.conf: ranger/rifle.conf
     ~/.gitconfig: gitconfig
-    ~/.git-prompt.sh: scripts/git-prompt.sh
+    ~/.bash: bash/ 
     ~/.i3: i3/config/
     ~/.i3blocks.conf: i3/i3blocks.conf
     ~/.inputrc: inputrc
