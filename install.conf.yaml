@@ -9,8 +9,8 @@
     /etc/pacman.conf:
         force: true
         path: arch/pacman.conf
-    /usr/local/bin/bedroomlights: scripts/bedroomlights
-    /usr/local/bin/hue: scripts/hue
+    ~/bin/bedroomlights: scripts/bedroomlights
+    ~/bin/hue: scripts/hue
     ~/.bash_profile:
         force: true
         path: bash_profile
@@ -24,7 +24,6 @@
     ~/.gitconfig: gitconfig
     ~/.bash: bash/ 
     ~/.i3: i3/config/
-    ~/.i3blocks.conf: i3/i3blocks.conf
     ~/.inputrc: inputrc
     ~/.taskrc: taskrc
     ~/.tmux.conf: tmux.conf

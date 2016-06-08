@@ -10,6 +10,9 @@ if [[ $EUID == 0 || $HOME == '/root' ]]; then
 	exit 0
 fi
 
+# Make $HOME/bin if it doesn't exist
+mkdir -p $HOME/bin
+
 # Clone the vundle repo if it doesn't exist
 [ ! "$(ls -A ./vim/bundle/Vundle.vim)" ] && \
     git clone https://github.com/VundleVim/Vundle.vim.git ./vim/bundle/Vundle.vim
