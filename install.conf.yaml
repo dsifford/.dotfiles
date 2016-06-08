@@ -13,16 +13,16 @@
     ~/bin/hue: scripts/hue
     ~/.bash_profile:
         force: true
-        path: bash_profile
+        path: bash/bash_profile
     ~/.bashrc:
         force: true
-        path: bashrc
+        path: bash/bashrc
     ~/.config/dunst/dunstrc: compiled/dunstrc
     ~/.config/ranger/rc.conf: ranger/rc.conf
     ~/.config/ranger/scope.sh: ranger/scope.sh
     ~/.config/ranger/rifle.conf: ranger/rifle.conf
     ~/.gitconfig: gitconfig
-    ~/.bash: bash/ 
+    ~/.bash: bash/scripts 
     ~/.i3: i3/config/
     ~/.inputrc: inputrc
     ~/.taskrc: taskrc
