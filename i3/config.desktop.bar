@@ -4,37 +4,38 @@
 
 bar {
 	colors {
-		background #3c3b37
-		statusline #dcdccc
-		# separator #666666
+		background #282a36
+		statusline #f8f8f2
+		separator  #ff79c6
 
 		# Type             border  background  font
-		focused_workspace  #93b3a3 #3c3b37     #93b3a3
-		active_workspace   #ffcfaf #3c3b37     #888888
-		inactive_workspace #636363 #3c3b37     #dcdccc
-		urgent_workspace   #dca3a3 #3c3b37     #dca383
+		focused_workspace  #44475a #44475a     #50fa7b
+		active_workspace   #44475a #44475a     #f8f8f2
+		inactive_workspace #44475a #44475a     #6272a4
+		urgent_workspace   #44475a #44475a     #ff5555
 	}
-	#output DP-4
-	font pango:DejaVu Sans Mono 8 
+	output DP-4
+	font pango:Monaco 6
 	position top
-	tray_output none 
+	tray_output none
 	# using custom i3status.conf
 	status_command i3blocks -c $HOME/.i3/i3blocks.conf
 }
 
-#bar {
- #   colors {
-#	background #3c3b37
-#	statusline #dcdccc
-#		
-#	# Type             border  background  font
-#	focused_workspace  #93b3a3 #3c3b37     #93b3a3
-#	active_workspace   #ffcfaf #3c3b37     #888888
-#	inactive_workspace #636363 #3c3b37     #dcdccc
-#	urgent_workspace   #dca3a3 #3c3b37     #dca383
-    #}
-    #position top 
-   # font pango:DejaVu Sans Mono 8
-  #  output DP-2 
- #   tray_output DP-2 
-#}
+bar {
+    colors {
+        background #282a36
+        statusline #f8f8f2
+        separator  #ff79c6
+
+        # Type             border  background  font
+        focused_workspace  #44475a #44475a     #50fa7b
+		active_workspace   #44475a #44475a     #f8f8f2
+		inactive_workspace #44475a #44475a     #6272a4
+		urgent_workspace   #44475a #44475a     #ff5555
+    }
+    output DP-2
+    position top
+    font pango:Monaco 6
+    tray_output DP-2
+}

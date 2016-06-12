@@ -71,22 +71,27 @@ bindsym Print exec --no-startup-id gnome-screenshot -iac
 bindsym --whole-window $mod+button2 kill
 
 # $mod+Space => dmenu
-#bindsym $mod+space exec --no-startup-id dmenu_run -i -b -fn -*-*-*-*-*-*-20-*-*-*-*-*-*-*
+bindsym $mod+space exec --no-startup-id dmenu_run -l 0 -x 920 -y 1050 -w 2000 -h 60 -fn "Monaco-14" -nb "#2B303B" -nf "#8FA1B3" -sb "#8FA1B3" -sf "#2B303B" -p ">" -q -i -s 0
 
-bindsym $mod+space exec --no-startup-id dmenu_run -l 0 -x 920 -y 1050 -w 2000 -h 60 -fn "Monaco-14" -nb "#2B303B" -nf "#8FA1B3" -sb "#8FA1B3" -sf "#2B303B" -p ">" -q -i
-
-# $mod+Return => Re-enable unbound floating terminal 
+# $mod+Return => Re-enable unbound floating terminal
 bindsym $mod+Return exec --no-startup-id urxvt -name MAINTERM -e bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -nMain -sHOME"; floating enable;
 
-# $mod+Escape => Unfloat floating terminal 
+# $mod+Escape => Unfloat floating terminal
 bindsym $mod+Escape [instance="MAINTERM"] move scratchpad, scratchpad show, floating disable
+
+# Set borders to none
+new_window pixel 0
+new_float pixel 0
+
+# Disable window titlebars entirely
+for_window [class="^.*"] border pixel 0
 
 #================================================
 #             BEGIN i3 DEFAULTS
 #================================================
 
 # Set default font
-font pango:DejaVu Sans Mono 8
+font pango:Monaco 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -193,4 +198,3 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
