@@ -47,6 +47,7 @@ python2
 python2-pip
 redshift
 reflector
+rofi
 rsync
 ruby
 rxvt-unicode

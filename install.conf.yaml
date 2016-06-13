@@ -6,9 +6,7 @@
 - clean: ['~']
 
 - link:
-    /etc/pacman.conf:
-        force: true
-        path: arch/pacman.conf
+    ~/.atom/packages.cson: packages.cson
     ~/bin/bedroomlights: scripts/bedroomlights
     ~/bin/hue: scripts/hue
     ~/.bash_profile:

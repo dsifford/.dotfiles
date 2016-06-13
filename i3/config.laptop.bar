@@ -19,5 +19,5 @@ bar {
 	# i3bar Position
 	position top
 	# using custom i3status.conf
-	status_command i3status -c ~/.i3/i3status.conf
+	status_command i3blocks -c $HOME/.i3/i3blocks.laptop.conf 
 }

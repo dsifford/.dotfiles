@@ -23,7 +23,6 @@ exec --no-startup-id redshift-gtk -l 42.729336197453655:-82.99709570068359
 # Startup Apps
 exec --no-startup-id autokey-gtk
 exec --no-startup-id dropbox start
-exec --no-startup-id slack
 
 #===============APP WINDOW CONFIG================
 
@@ -59,10 +58,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle
 
 # Media controls
-bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-bindsym XF86AudioNext  exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
-bindsym XF86AudioPrev  exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
-bindsym XF86AudioStop  exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
+bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause"
+bindsym XF86AudioNext exec --no-startup-id "playerctl next" 
+bindsym XF86AudioPrev exec --no-startup-id "playerctl previous" 
+bindsym XF86AudioStop exec --no-startup-id "playerctl stop"
 
 # Print Screen
 bindsym Print exec --no-startup-id gnome-screenshot -iac
@@ -71,7 +70,10 @@ bindsym Print exec --no-startup-id gnome-screenshot -iac
 bindsym --whole-window $mod+button2 kill
 
 # $mod+Space => dmenu
-bindsym $mod+space exec --no-startup-id dmenu_run -l 0 -x 920 -y 1050 -w 2000 -h 60 -fn "Monaco-14" -nb "#2B303B" -nf "#8FA1B3" -sb "#8FA1B3" -sf "#2B303B" -p ">" -q -i -s 0
+#bindsym $mod+space exec --no-startup-id dmenu_run -l 0 -x 920 -y 1050 -w 2000 -h 60 -fn "Monaco-14" -nb "#2B303B" -nf "#8FA1B3" -sb "#8FA1B3" -sf "#2B303B" -p ">" -q -i -s 0
+
+bindsym $mod+Shift+space exec "rofi -show window"
+bindsym $mod+space exec "rofi -disable-history -show run"
 
 # $mod+Return => Re-enable unbound floating terminal
 bindsym $mod+Return exec --no-startup-id urxvt -name MAINTERM -e bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -nMain -sHOME"; floating enable;
@@ -138,7 +140,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+#bindsym $mod+Shift+space floating toggle
 
 # switch to workspace
 bindsym $mod+1 workspace 1

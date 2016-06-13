@@ -26,6 +26,13 @@ URxvt*loginShell: true
 *.color7:     #BFBFBF
 *.color15:    #E6E6E6
 
+! Rofi Theme (Dracula)
+rofi.color-enabled: true
+rofi.color-window: #282a36, #6272a4, #ff79c6
+rofi.color-normal: #282a36, #f8f8f2, #282a36, #44475a, #f8f8f2
+rofi.color-active: #282a36, #50fa7b, #282a36, #44475a, #50fa7b
+rofi.color-urgent: #282a36, #ff5555, #282a36, #44475a, #ff5555
+
 ! Scrollbar
 URxvt.scrollBar: false
 URxvt.scrollWithBuffer: true
