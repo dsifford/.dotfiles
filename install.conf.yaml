@@ -7,8 +7,9 @@
 
 - link:
     ~/.atom/packages.cson: packages.cson
-    ~/bin/bedroomlights: scripts/bedroomlights
-    ~/bin/hue: scripts/hue
+    ~/bin:
+        force: true
+        path: scripts
     ~/.bash_profile:
         force: true
         path: bash/bash_profile
