@@ -54,4 +54,4 @@ bindsym Control+$mod+Right move workspace to output right
 bindsym Control+$mod+Left move workspace to output left
 
 # Ctrl+Printscreen => Open simplescreenrecorder
-bindsym Control+Print exec simplescreenrecorder
+bindsym Control+Shift+Print exec simplescreenrecorder

@@ -64,7 +64,8 @@ bindsym XF86AudioPrev exec --no-startup-id "playerctl previous"
 bindsym XF86AudioStop exec --no-startup-id "playerctl stop"
 
 # Print Screen
-bindsym Print exec --no-startup-id gnome-screenshot -iac
+bindsym Print exec --no-startup-id gnome-screenshot -ac
+bindsym ctrl+Print exec --no-startup-id gnome-screenshot -iac
 
 # $mod+Middle Mouse Button => kill window
 bindsym --whole-window $mod+button2 kill

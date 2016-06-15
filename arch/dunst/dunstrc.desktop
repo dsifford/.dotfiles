@@ -1,5 +1,5 @@
 [global]
-    font = Monospace 28 
+    font = Monaco 28
 
     # Allow a small subset of html markup:
     #   <b>bold</b>
@@ -64,11 +64,11 @@
     # the top and down respectevly.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "1000x5-30+20"
+    geometry = "1000x5-50+60"
 
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
-    shrink = no
+    shrink = yes 
 
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing windowmanager is
@@ -94,7 +94,7 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = mouse
+    follow = none
 
     # Should a notification popped up from history be sticky or timeout
     # as if it would normally do.
@@ -114,13 +114,13 @@
     # Draw a line of "separatpr_height" pixel height between two
     # notifications.
     # Set to 0 to disable.
-    separator_height = 2
+    separator_height = 10 
 
     # Padding between text and separator.
-    padding = 8
+    padding = 10 
 
     # Horizontal padding.
-    horizontal_padding = 8
+    horizontal_padding = 20 
 
     # Define a color for the separator.
     # possible values are:
@@ -148,8 +148,8 @@
     icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
 [frame]
-    width = 3
-    color = "#aaaaaa"
+    width = 0 
+    color = "#ff00ff"
 
 [shortcuts]
 
@@ -175,18 +175,18 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#222222"
-    foreground = "#888888"
-    timeout = 10
+    background = "#282a36"
+    foreground = "#f8f8f2"
+    timeout = 5 
 
 [urgency_normal]
-    background = "#285577"
-    foreground = "#ffffff"
+    background = "#282a36"
+    foreground = "#f8f8f2"
     timeout = 10
 
 [urgency_critical]
-    background = "#900000"
-    foreground = "#ffffff"
+    background = "#282a36"
+    foreground = "#ff5555"
     timeout = 0
 
 
