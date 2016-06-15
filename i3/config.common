@@ -70,9 +70,7 @@ bindsym ctrl+Print exec --no-startup-id gnome-screenshot -iac
 # $mod+Middle Mouse Button => kill window
 bindsym --whole-window $mod+button2 kill
 
-# $mod+Space => dmenu
-#bindsym $mod+space exec --no-startup-id dmenu_run -l 0 -x 920 -y 1050 -w 2000 -h 60 -fn "Monaco-14" -nb "#2B303B" -nf "#8FA1B3" -sb "#8FA1B3" -sf "#2B303B" -p ">" -q -i -s 0
-
+# $mod+Space => rofi 
 bindsym Mod1+space exec "rofi -m 0 -show window"
 bindsym $mod+space exec "rofi -m 0 -disable-history -show run"
 
@@ -83,11 +81,11 @@ bindsym $mod+Return exec --no-startup-id urxvt -name MAINTERM -e bash -c "tmux -
 bindsym $mod+Escape [instance="MAINTERM"] move scratchpad, scratchpad show, floating disable
 
 # Set borders to none
-new_window pixel 0
-new_float pixel 0
+new_window pixel 1  
+new_float pixel 1 
 
 # Disable window titlebars entirely
-for_window [class="^.*"] border pixel 0
+#for_window [class="^.*"] border normal 
 
 #================================================
 #             BEGIN i3 DEFAULTS
@@ -187,7 +185,7 @@ mode "resize" {
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow right
+        bindsym l resize grow width 10 px or 10 ppt 
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -201,3 +199,10 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+# Class			border	backgr	text	indicator   child_border
+client.focused		#44475a #282836 #f8f8f2 #ff79c6	    #44475a
+client.focused_inactive #282a36 #282a36 #6272a4 #ff79c6     #282a36
+client.unfocused        #282a36 #282a36 #6272a4 #ff79c6     #282a36
+client.urgent		#282a36 #282a36 #ff5555 #ff79c6	    #282a36
+#client.placeholder

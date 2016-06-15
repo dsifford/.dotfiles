@@ -7,10 +7,10 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Insert all Vundle Plugins below
 
-Plugin 'molokai'			" Molokai color scheme
 Plugin 'godlygeek/tabular'		" Markdown tab formatting
 Plugin 'plasticboy/vim-markdown'	" Markdown
 Plugin 'scrooloose/nerdtree'		" NERDtree
+Plugin 'dracula/vim'			" Dracula theme
 
 call vundle#end()
 filetype plugin indent on
@@ -94,4 +94,4 @@ inoremap <C-U> <C-G>u<C-U>
 
 " Colors
 syntax enable
-colorscheme molokai
+colorscheme dracula 
