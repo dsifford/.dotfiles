@@ -113,6 +113,7 @@ shopt -s dirspell     # correct spelling mistakes in directories
 ### Git
     alias git='hub'
     alias g='git'
+    alias gb='git branch -a'
     alias gs='git status'
     alias gss='git status -s'
     alias gc='git checkout'
@@ -120,7 +121,6 @@ shopt -s dirspell     # correct spelling mistakes in directories
     alias gd='git difftool'
     alias gl='git log --oneline --decorate --all --graph'
     alias gca='git commit -a'
-    alias gp='git push'
     alias gf='git fetch'
 
 ### Docker
