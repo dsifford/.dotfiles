@@ -19,7 +19,6 @@ exec --no-startup-id dunst
 exec --no-startup-id nm-applet
 exec --no-startuo-id pasystray
 exec --no-startup-id redshift-gtk -l 42.729336197453655:-82.99709570068359
-exec --no-startup-id shutter
 
 # Startup Apps
 exec --no-startup-id autokey-gtk
@@ -52,6 +51,9 @@ for_window [class="XTerm"] floating enable
 bindsym Control+Shift+space [class="Zeal"] scratchpad show, move position center
 
 #=====================KEYMAP=====================
+
+# PrintScreen
+bindsym Print exec --no-startup-id sleep 0.2 && scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
 
 # Caps Lock => Escape
 exec --no-startup-id setxkbmap -option caps:escape
