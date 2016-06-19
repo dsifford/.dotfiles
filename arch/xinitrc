@@ -3,6 +3,5 @@
 
 numlockx &
 udiskie &
-xrandr --output DP-4 --primary --mode 3840x2160 --pos 2160x0 --rotate normal --output DP-2 --mode 3840x2160 --pos 0x0 --rotate right &
 
 exec i3 -V >> ~/i3log-$(date +'%F-%k-%M-%S') 2>&1
