@@ -3,9 +3,10 @@
 #================================================
 
 # Display / Screen Config
+exec --no-startup-id /home/dsifford/.screenlayout/layout.sh 
 workspace 2 output DP-4
-workspace 1 output DP-2
-workspace Spotify output DP-2
+workspace 1 output DP-2.8
+workspace Spotify output DP-2.8
 
 # Disable mouse warping
 mouse_warping none
