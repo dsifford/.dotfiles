@@ -3,10 +3,11 @@
 [[ "$-" != *i* ]] && return
 
 # Set up system path
-export PATH=$HOME/bin:$PATH:$HOME/gocode/bin:$HOME/.npm-global/bin:/usr/local/bin:/usr/local/go/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/.config/composer/vendor/bin
+export PATH=$HOME/bin:$PATH:$HOME/gocode/bin:/usr/local/bin:/usr/local/go/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/.config/composer/vendor/bin
 
 # System Environment Variables
 export GOPATH=$HOME/gocode
+export NPM_CONFIG_PREFIX=$HOME/.npm-global
 
 # Set EDITOR and PAGER
 export EDITOR=vim
