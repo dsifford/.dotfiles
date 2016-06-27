@@ -94,7 +94,7 @@ new_float pixel 1
 #================================================
 
 # Set default font
-font pango:Monaco 8
+font pango:Monaco 14 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

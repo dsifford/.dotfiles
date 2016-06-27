@@ -138,7 +138,7 @@ shopt -s dirspell     # correct spelling mistakes in directories
     alias dpsa='docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}"'
 
     # Open an interactive bash session in container N (counting from top)
-    dx () { docker exec -it $(docker ps -q -n=$1 | tail -n 1) /bin/bash; }
+    dx () { docker exec -it $(docker ps -q -n=$1 | tail -n 1) /bin/bash -c "export TERM=xterm; exec bash"; }
 
     # Run a juypter container
     alias jp='docker run --rm -it -e GRANT_SUDO=yes --user root -p 8888:8888 -v "$(pwd):/home/jovyan/work" jupyter/scipy-notebook'
