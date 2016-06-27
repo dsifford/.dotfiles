@@ -37,5 +37,5 @@ bar {
     output DP-2.8
     position top
     font pango:Monaco 14 
-    tray_output DP-2
+    tray_output DP-2.8
 }

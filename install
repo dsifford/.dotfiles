@@ -29,7 +29,6 @@ git submodule update --init --recursive "${DOTBOT_DIR}"
 
 # Create config files based on the the current computer
 touch   "${BASEDIR}/i3/config/config" \
-		"${BASEDIR}/i3/config/i3status.conf" \
 		"${BASEDIR}/arch/Xresources"
 
 if [[ $(uname -n) == 'laptop' ]]; then
@@ -38,7 +37,6 @@ if [[ $(uname -n) == 'laptop' ]]; then
 	cat "${BASEDIR}/i3/config.laptop" > "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/config.common" >> "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/config.laptop.bar" >> "${BASEDIR}/i3/config/config"
-	cat "${BASEDIR}/i3/i3status.laptop.conf" > "${BASEDIR}/i3/config/i3status.conf"
 	cat "${BASEDIR}/arch/dunst/dunstrc.laptop" > "${BASEDIR}/compiled/dunstrc"
 else
 	cat "${BASEDIR}/arch/Xconf/Xresources.common" > "${BASEDIR}/arch/Xresources"
@@ -46,7 +44,6 @@ else
 	cat "${BASEDIR}/i3/config.desktop" > "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/config.common" >> "${BASEDIR}/i3/config/config"
 	cat "${BASEDIR}/i3/config.desktop.bar" >> "${BASEDIR}/i3/config/config"
-	cat "${BASEDIR}/i3/i3status.desktop.conf" > "${BASEDIR}/i3/config/i3status.conf"
 	cat "${BASEDIR}/arch/dunst/dunstrc.desktop" > "${BASEDIR}/compiled/dunstrc"
 fi
 

@@ -38,12 +38,6 @@ for_window [class="Meld"] fullscreen enable
 bindsym $mod+Tab workspace Spotify
 bindsym $mod+Shift+Tab move container to workspace Spotify
 
-# Shutter
-for_window [class="shutter"] floating enable
-
-# Tk windows (Python Plots)
-for_window [class="Tk"] floating enable
-
 # XTerm
 for_window [class="XTerm"] floating enable
 
