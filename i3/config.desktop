@@ -3,7 +3,7 @@
 #================================================
 
 # Display / Screen Config
-exec --no-startup-id /home/dsifford/.screenlayout/layout.sh 
+exec --no-startup-id screenlayout 
 workspace 2 output DP-4
 workspace 1 output DP-2.8
 workspace Spotify output DP-2.8
@@ -20,7 +20,7 @@ bindsym Control+XF86AudioLowerVolume exec --no-startup-id hue brightness -25
 
 # Floating Terminal
 exec --no-startup-id urxvt -name MAINTERM -e bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -nMain -sHOME"
-for_window [instance="MAINTERM"] border pixel 0, floating enable, move position 2160px 66px, resize set 3850 1000, resize grow up, resize grow right, move scratchpad
+for_window [instance="MAINTERM"] border pixel 0, floating enable, move position 2160px 58px, resize set 3850 1000, resize grow up, resize grow right, move scratchpad
 bindsym Control+space focus output DP-4, [instance="MAINTERM"] scratchpad show
 
 #===============APP WINDOW CONFIG================
