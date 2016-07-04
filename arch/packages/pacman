@@ -2,6 +2,8 @@ alsa-utils
 anki
 arandr
 bash-completion
+bluez
+bluez-utils
 clang
 deluge
 dmenu
