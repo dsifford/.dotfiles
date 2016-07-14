@@ -12,7 +12,7 @@ export NPM_CONFIG_PREFIX=$HOME/.npm-global
 # Set EDITOR and PAGER
 export EDITOR=vim
 export PAGER=less
-export TERM=tmux-256color
+export TERM=xterm-256color
 export COLORTERM=tmux-256color
 
 # Fix tiny QT windows on 4k monitor
@@ -93,8 +93,6 @@ shopt -s dirspell     # correct spelling mistakes in directories
     alias restart='source ~/.bashrc'
     alias grep='grep --color'
     alias ls='ls -hF1 --color=tty'
-    alias dir='ls --color=auto --format=vertical'
-    alias vdir='ls --color=auto --format=long'
     alias agent='eval `ssh-agent -s`'
     alias bashrc='vim ~/.bashrc'
     alias i3c='if [[ $(uname -n) = "desktop" ]]; then vim ~/.dotfiles/i3/config.desktop; else vim ~/.dotfiles/i3/config.laptop; fi'
@@ -130,10 +128,6 @@ shopt -s dirspell     # correct spelling mistakes in directories
     alias dm='docker-machine'
     alias dc='docker-compose'
 
-    # Remove all containers / images
-    alias rma='docker rm $(docker ps -aq)'
-    alias rmia='docker rmi $(docker images -q)'
-
     # Better format for "docker ps"
     alias dpsa='docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}"'
 
@@ -143,20 +137,3 @@ shopt -s dirspell     # correct spelling mistakes in directories
     # Run a juypter container
     alias jp='docker run --rm -it -e GRANT_SUDO=yes --user root -p 8888:8888 -v "$(pwd):/home/jovyan/work" jupyter/scipy-notebook'
 
-### SSH
-    SSH () {
-        case $1 in
-    	    aliem)
-                eval `ssh-agent -s`
-                ssh -i $HOME/.ssh/aliem_rsa -p 18765 acade220@c7563.sgvps.net -t "export TERM=xterm; cd www; bash"
-    		;;
-
-            aliemu)
-                eval `ssh-agent -s`
-                ssh -i $HOME/.ssh/aliemu_dsa aliemu@c7563.sgvps.net -p 18765 -t "export TERM=xterm; cd www; bash"
-            ;;
-    	    *)
-    		    echo "the only available locations are 'aliem' or 'aliemu'"
-    		;;
-    	esac
-    }

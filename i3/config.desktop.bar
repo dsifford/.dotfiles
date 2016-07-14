@@ -14,8 +14,8 @@ bar {
 		inactive_workspace #44475a #44475a     #6272a4
 		urgent_workspace   #44475a #44475a     #ff5555
 	}
-	output DP-4
-	font pango:Monaco 14
+	output DP-2
+	font pango:Monaco 7 
 	position top
 	tray_output none
 	# using custom i3status.conf
@@ -34,8 +34,8 @@ bar {
 		inactive_workspace #44475a #44475a     #6272a4
 		urgent_workspace   #44475a #44475a     #ff5555
     }
-    output DP-2.8
+    output DP-4.8
     position top
-    font pango:Monaco 14 
-    tray_output DP-2.8
+    font pango:Monaco 7 
+    tray_output DP-4.8
 }
