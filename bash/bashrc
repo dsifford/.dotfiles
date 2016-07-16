@@ -22,6 +22,9 @@ export COLORTERM=tmux-256color
 source ~/.bash/git-prompt.sh
 source ~/.bash/git-completion.bash
 source ~/.bash/hub.bash_completion.sh
+source ~/.bash/docker-completion
+source ~/.bash/docker-compose-completion
+source ~/.bash/docker-machine-completion
 
 # Set a default prompt: user@host ~/current/working/dir (repository)
 export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m\]\n '

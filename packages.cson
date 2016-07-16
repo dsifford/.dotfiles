@@ -39,7 +39,6 @@ packages: [
   "language-rust"
   "linter"
   "linter-clang"
-  "linter-docker"
   "linter-eslint"
   "linter-golinter"
   "linter-js-yaml"
