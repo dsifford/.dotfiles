@@ -1,5 +1,4 @@
 alsa-utils
-anki
 arandr
 bash-completion
 bluez
@@ -51,7 +50,6 @@ redshift
 reflector
 rofi
 rsync
-ruby
 rxvt-unicode
 shellcheck
 shotwell
