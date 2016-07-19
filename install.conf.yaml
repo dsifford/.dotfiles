@@ -24,6 +24,7 @@
     ~/.bash: bash/scripts 
     ~/.i3: i3/config/
     ~/.inputrc: inputrc
+    ~/.rust-src: submodules/rust
     ~/.taskrc: taskrc
     ~/.tmux.conf: tmux.conf
     ~/.vim: vim
