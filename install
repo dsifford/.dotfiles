@@ -26,6 +26,7 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd "${BASEDIR}"
 git submodule update --init --recursive "${DOTBOT_DIR}"
+git submodule update --remote --merge
 
 # Create config files based on the the current computer
 touch   "${BASEDIR}/i3/config/config" \

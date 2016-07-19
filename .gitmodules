@@ -1,3 +1,6 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
+[submodule "submodules/rust"]
+	path = submodules/rust
+	url = https://github.com/rust-lang/rust.git
