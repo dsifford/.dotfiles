@@ -16,7 +16,6 @@ packages: [
   "emmet"
   "environment"
   "exception-reporting"
-  "file-types"
   "gist"
   "git-time-machine"
   "go-config"
