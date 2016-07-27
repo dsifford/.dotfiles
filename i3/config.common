@@ -48,7 +48,8 @@ bindsym Control+Shift+space [class="Zeal"] scratchpad show, move position center
 #=====================KEYMAP=====================
 
 # PrintScreen
-bindsym Print exec --no-startup-id sleep 0.2 && scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
+bindsym Print exec --no-startup-id maim -s /tmp/screenshot.png && xclip -selection clipboard -t image/png </tmp/screenshot.png
+bindsym Control+Print exec --no-startup-id maim -s /tmp/screenshot.png && gimp /tmp/screenshot.png
 
 # Caps Lock => Escape
 exec --no-startup-id setxkbmap -option caps:escape

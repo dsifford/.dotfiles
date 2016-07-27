@@ -17,7 +17,7 @@ export TERM=xterm-256color
 export COLORTERM=tmux-256color
 
 # Fix tiny QT windows on 4k monitor
-[[ $(uname -n) == 'desktop' ]] && export QT_AUTO_SCREEN_SCALE_FACTOR=2
+#[[ $(uname -n) == 'desktop' ]] && export QT_AUTO_SCREEN_SCALE_FACTOR=2
 
 # Source git prompt script
 source ~/.bash/git-prompt.sh
@@ -27,8 +27,28 @@ source ~/.bash/docker-completion
 source ~/.bash/docker-compose-completion
 source ~/.bash/docker-machine-completion
 
-# Set a default prompt: user@host ~/current/working/dir (repository)
-export PS1='\[\e[32m\]\u\[\e[m\] \[\e[33m\]\w\[\e[m\]\[\e[35m\]`__git_ps1`\[\e[m\]\n '
+
+# Format Prompt
+# user ~/current/working/dir (repository) DOCKER_MACHINE_NAME $
+
+NC='\[\e[m\]'
+BOLD='\[\e[1m\]'
+INV='\[\e[7m\]'
+GREEN='\[\e[32m\]'
+YELLOW='\[\e[33m\]'
+PINK='\[\e[35m\]'
+RED='\033[0;31m'
+BLUE='\[\033[0;34m\]'
+
+__docker_machine_ps1 () {
+    local format=${1:- [%s]}
+    if test ${DOCKER_MACHINE_NAME}; then
+        printf -- "${format}" "${DOCKER_MACHINE_NAME}"
+    fi
+}
+
+export PS1="${GREEN}\u ${YELLOW}\w${PINK}\$(__git_ps1)\$(__docker_machine_ps1 \" ${RED}${INV}${BOLD}%s\")\n${BLUE}${BOLD}\$${NC} "
+
 
 # Bash options
 shopt -s checkwinsize # automatically adjust window size
@@ -37,41 +57,49 @@ shopt -s dirspell     # correct spelling mistakes in directories
 
 #------------------Shell Scripts---------------------#
 
-
 ### Files / Directories
     mcd () {
         mkdir $1
-        cd $1
+        cd $1 || exit
     }
-    function ranger-cd {
-    	tempfile="$(mktemp -t tmp.XXXXXX)"
-	/usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
-	test -f "$tempfile" &&
-	if [ "$(cat -- "$tempfile")" != "$(echo -n 'pwd')" ]; then
-		cd -- "$(cat "$tempfile")"
-	fi
-	rm -f -- "$tempfile"
+    ranger-cd() {
+        tempfile="$(mktemp -t tmp.XXXXXX)"
+        /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+        test -f "$tempfile" &&
+        if [ "$(cat "$tempfile")" != "$(echo -n 'pwd')" ]; then
+            cd "$(cat "$tempfile")" || exit
+        fi
+        rm -f "$tempfile"
     }
     bind '"\C-o":"ranger-cd\C-m"'
 
 ### Docker
     setenv () { eval "$(docker-machine env $1)"; }
     docker-clean () {
-	CONTAINERS=$(docker ps -aq -f status=exited)
-	IMAGES=$(docker images -q -f dangling=true)
-	if [[ $CONTAINERS ]]; then
-	    docker rm -v $CONTAINERS
-	fi
-	if [[ $IMAGES ]]; then
-	    docker rmi $IMAGES
-	fi
+        local containers
+        local images
+        containers=$(docker ps -aq -f status=exited)
+        images=$(docker images -q -f dangling=true)
+        if [[ $containers ]]; then
+            docker rm -v $containers
+        fi
+        if [[ $images ]]; then
+            docker rmi $images
+        fi
     }
 
     # Remove either untagged images or a variable number of images (1-9)
     drmi () {
-	if [[ $1 = @(u|un) ]]; then docker rmi $(docker images -f dangling=true -q)
-	elif [[ "$1" = [1-9] ]]; then docker rmi $(docker images -q | head -"$1")
-	fi
+        if [[ $1 = @(u|un) ]]; then
+            docker rmi "$(docker images -f dangling=true -q)"
+        elif [[ "$1" = [1-9] ]]; then
+            docker rmi "$(docker images -q | head -"$1")"
+        fi
+    }
+
+    # Open an interactive bash session in container N (counting from top)
+    dx () {
+        docker exec -it "$(docker ps -q -n=$1 | tail -n 1) /bin/bash -c \"export TERM=xterm; exec bash\""
     }
 
 
@@ -85,10 +113,10 @@ shopt -s dirspell     # correct spelling mistakes in directories
         if [[ ! $@ ]]; then task; else task "$@" && task sync; fi
     }
     ta () {
-    	task add "$*" && task sync
+        task add "$*" && task sync
     }
     td () {
-        task $1 done && task sync
+        task "$1 done && task sync"
     }
 
 #---------------------- Aliases-----------------------#
@@ -103,6 +131,7 @@ shopt -s dirspell     # correct spelling mistakes in directories
     alias i3cm='vim ~/.dotfiles/i3/config.common'
     alias dot='cd ~/.dotfiles'
     alias vimrc='vim ~/.vimrc'
+    alias PACLIST='vim ~/.dotfiles/arch/package-list'
 
 ### Arch
     # Verbosely rate the 200 most recently synchronized HTTP servers located in the US,
@@ -135,9 +164,5 @@ shopt -s dirspell     # correct spelling mistakes in directories
     # Better format for "docker ps"
     alias dpsa='docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}"'
 
-    # Open an interactive bash session in container N (counting from top)
-    dx () { docker exec -it $(docker ps -q -n=$1 | tail -n 1) /bin/bash -c "export TERM=xterm; exec bash"; }
-
     # Run a juypter container
     alias jp='docker run --rm -it -e GRANT_SUDO=yes --user root -p 8888:8888 -v "$(pwd):/home/jovyan/work" jupyter/scipy-notebook'
-

@@ -43,6 +43,7 @@ i3status
 imagemagick
 inkscape
 jq
+maim
 meld
 network-manager-applet
 networkmanager
@@ -70,11 +71,11 @@ rsync
 rustup
 rxvt-unicode
 $samsung-magician
-scrot
 shellcheck
 shotwell
 simplescreenrecorder
 slack-desktop
+slop
 solaar
 spotify-beta
 sshpass
