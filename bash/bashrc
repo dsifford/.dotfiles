@@ -17,7 +17,7 @@ export TERM=xterm-256color
 export COLORTERM=tmux-256color
 
 # Fix tiny QT windows on 4k monitor
-#[[ $(uname -n) == 'desktop' ]] && export QT_AUTO_SCREEN_SCALE_FACTOR=2
+[[ $(uname -n) == 'desktop' ]] && export QT_AUTO_SCREEN_SCALE_FACTOR=2
 
 # Source git prompt script
 source ~/.bash/git-prompt.sh
@@ -99,7 +99,7 @@ shopt -s dirspell     # correct spelling mistakes in directories
 
     # Open an interactive bash session in container N (counting from top)
     dx () {
-        docker exec -it "$(docker ps -q -n=$1 | tail -n 1) /bin/bash -c \"export TERM=xterm; exec bash\""
+        docker exec -it $(docker ps -q -n=$1 | tail -n 1) /bin/bash -c "export TERM=xterm; exec bash"
     }
 
 
