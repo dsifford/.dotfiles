@@ -30,6 +30,7 @@ set smartcase			" Case insensitive unless typing with caps
 set autoindent			" Autoindent for language-specific settings
 set shiftwidth=4
 set softtabstop=4
+set timeoutlen=1000 ttimeoutlen=0 " Improve escape key delay
 
 " Sensible Vim Options
 set backspace=indent,eol,start
