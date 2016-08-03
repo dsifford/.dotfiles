@@ -65,6 +65,7 @@ packages: [
   "set-syntax"
   "seti-ui"
   "sort-lines"
+  "sourcerer"
   "Stylus"
   "Sublime-Style-Column-Selection"
   "sync-settings"

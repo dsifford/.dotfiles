@@ -130,8 +130,10 @@ shopt -s dirspell     # correct spelling mistakes in directories
     alias i3c='if [[ $(uname -n) = "desktop" ]]; then vim ~/.dotfiles/i3/config.desktop; else vim ~/.dotfiles/i3/config.laptop; fi'
     alias i3cm='vim ~/.dotfiles/i3/config.common'
     alias dot='cd ~/.dotfiles'
-    alias vimrc='vim ~/.vimrc'
     alias PACLIST='vim ~/.dotfiles/arch/package-list'
+    
+    alias npmc='npm-check -u'
+    alias npmcg='npm-check -gu'
 
 ### Arch
     # Verbosely rate the 200 most recently synchronized HTTP servers located in the US,
