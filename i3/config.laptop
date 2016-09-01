@@ -2,8 +2,8 @@
 #           BEGIN LAPTOP CONFIG
 #================================================
 
-# Display / Screen Config
-#exec_always --no-startup-id xrandr --dpi 138/eDP1
+# Touchpad configs
+exec --no-startup-id xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20
