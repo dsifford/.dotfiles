@@ -25,7 +25,6 @@
     ~/.i3: i3/config/
     ~/.inputrc: inputrc
     ~/.lesskey: lesskey
-    ~/.rust-src: submodules/rust
     ~/.taskrc: taskrc
     ~/.tmux.conf: tmux.conf
     ~/.vim: vim
