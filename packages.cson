@@ -62,6 +62,7 @@ packages: [
   "navigator-godef"
   "nerd-treeview"
   "package-sync"
+  "pdf-view"
   "pigments"
   "project-plus"
   "racer"
