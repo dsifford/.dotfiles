@@ -27,7 +27,6 @@
     ~/.lesskey: lesskey
     ~/.taskrc: taskrc
     ~/.tmux.conf: tmux.conf
-    ~/.tmux: tmux
     ~/.vim: vim
     ~/.vimrc: vimrc
     ~/.xinitrc: arch/xinitrc
