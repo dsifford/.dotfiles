@@ -23,6 +23,7 @@ set t_Co=256
 set number			" Show line numbers
 set wildmenu			" Better command menu
 set showcmd			" Show partial commands in last line of screen
+set pastetoggle=<F2>		" Toggle paste mode with F2
 
 " Usability
 set ignorecase			" Required for proper smartcase functionality
