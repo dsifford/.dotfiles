@@ -33,7 +33,7 @@ bindsym $mod+grave workspace Atom
 bindsym $mod+Shift+grave move container to workspace Atom
 
 # Meld
-for_window [class="Meld"] fullscreen enable
+# for_window [class="Meld"] fullscreen enable
 
 # Spotify
 bindsym $mod+Tab workspace Spotify
