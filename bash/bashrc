@@ -153,6 +153,7 @@ shopt -s dirspell     # correct spelling mistakes in directories
     alias gc='git checkout'
     alias gcm='git commit'
     alias gd='git difftool'
+    alias gdf='git diff --color | diff-so-fancy'
     alias gl='git log --oneline --decorate --all --graph'
     alias gca='git commit -a'
     alias gf='git fetch'
