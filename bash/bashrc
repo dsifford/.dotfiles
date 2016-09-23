@@ -113,10 +113,10 @@ shopt -s dirspell     # correct spelling mistakes in directories
         if [[ ! $@ ]]; then task; else task "$@" && task sync; fi
     }
     ta () {
-        task add "$*" && task sync
+        task add "$@" && task sync
     }
     td () {
-        task "$1 done && task sync"
+        task $1 done && task sync
     }
 
 #---------------------- Aliases-----------------------#

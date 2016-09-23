@@ -44,13 +44,14 @@ color.overdue=white on gray
 color.due.today=white on magenta bold
 color.due=white on rgb100
 color.active=rgb555 on rgb410
-color.tagged=white on blue bold
 color.blocked=white on color8
 color.blocking=black on color15
 
-# Project Colors
-color.project.school=on rgb010
-color.project.tv=color8
+# Tag Colors
+color.tagged=color15
+color.tag.school=on rgb010
+color.tag.aliem=white on rgb022
+color.tag.tv=color8
 
 # Urgency Settings for Projects
 urgency.user.project.tv.coefficient=-1
@@ -60,7 +61,7 @@ report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,s
 
 # Sync settings
 taskd.server=freecinc.com:53589
-taskd.key=\/home\/dsifford\/.task\/freecinc_4935230f.key.pem
-taskd.certificate=\/home\/dsifford\/.task\/freecinc_4935230f.cert.pem
-taskd.ca=\/home\/dsifford\/.task\/freecinc_4935230f.ca.pem
-taskd.credentials=FreeCinc\/freecinc_4935230f\/0b475c41-9f77-4966-8945-88966fae0be3
+taskd.key=\/home\/dsifford\/.task\/freecinc_884c52e1.key.pem
+taskd.certificate=\/home\/dsifford\/.task\/freecinc_884c52e1.cert.pem
+taskd.ca=\/home\/dsifford\/.task\/freecinc_884c52e1.ca.pem
+taskd.credentials=FreeCinc\/freecinc_884c52e1\/56e0fefa-a2b3-4c13-a80a-d9ca4e7238d7
