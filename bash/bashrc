@@ -165,7 +165,7 @@ shopt -s dirspell     # correct spelling mistakes in directories
     alias dc='docker-compose'
 
     # Better format for "docker ps"
-    alias dpsa='docker ps -a --format "table {{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}" | less -S'
+    alias dpsa='docker ps -a --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}" | less -S'
 
     # Run a juypter container
     alias jp='docker run --rm -it -e GRANT_SUDO=yes --user root -p 8888:8888 -v "$(pwd):/home/jovyan/work" jupyter/scipy-notebook'
