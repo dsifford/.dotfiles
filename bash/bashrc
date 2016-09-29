@@ -26,6 +26,7 @@ source ~/.bash/hub.bash_completion.sh
 source ~/.bash/docker-completion
 source ~/.bash/docker-compose-completion
 source ~/.bash/docker-machine-completion
+source ~/.bash/npm-completion
 
 
 # Format Prompt
@@ -169,3 +170,4 @@ shopt -s dirspell     # correct spelling mistakes in directories
 
     # Run a juypter container
     alias jp='docker run --rm -it -e GRANT_SUDO=yes --user root -p 8888:8888 -v "$(pwd):/home/jovyan/work" jupyter/scipy-notebook'
+
