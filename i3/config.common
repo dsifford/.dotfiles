@@ -67,6 +67,7 @@ bindsym XF86AudioStop exec --no-startup-id "playerctl stop"
 
 # $mod+Middle Mouse Button => kill window
 bindsym --whole-window $mod+button2 kill
+bindsym --whole-window $mod+Shift+button3 floating toggle
 
 # $mod+Space => rofi 
 bindsym Mod1+space exec "rofi -m 0 -show window"
