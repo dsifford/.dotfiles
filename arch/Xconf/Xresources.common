@@ -43,7 +43,7 @@ URxvt.scrollWithBuffer: true
 URxvt.perl-ext-common: default,clipboard,vtwheel,matcher
 
 ! Url-Launcher
-URxvt.url-launcher: /usr/bin/google-chrome-beta
+URxvt.url-launcher: /usr/bin/xdg-open 
 URxvt.matcher.button: 1
 
 ! Clipboard

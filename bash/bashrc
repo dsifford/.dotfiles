@@ -89,6 +89,13 @@ shopt -s dirspell     # correct spelling mistakes in directories
         fi
     }
 
+    docker-update-images() {
+	docker-clean
+	while read -r fudge; do
+  		docker pull "$fudge"
+	done <<< "$(docker images | grep -P '^[a-z].+' | awk '{printf "%s:%s\n", $1, $2}')"	
+    }
+
     # Remove either untagged images or a variable number of images (1-9)
     drmi () {
         if [[ $1 = @(u|un) ]]; then

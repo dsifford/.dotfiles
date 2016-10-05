@@ -58,7 +58,7 @@ packages: [
   "minimap-highlight-selected"
   "minimap-linter"
   "minimap-split-diff"
-  "navigator-godef"
+  "navigator-go"
   "nerd-treeview"
   "package-sync"
   "pdf-view"
