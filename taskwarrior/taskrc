@@ -61,7 +61,7 @@ report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,s
 
 # Sync settings
 taskd.server=freecinc.com:53589
-taskd.key=\/home\/dsifford\/.task\/freecinc_884c52e1.key.pem
-taskd.certificate=\/home\/dsifford\/.task\/freecinc_884c52e1.cert.pem
-taskd.ca=\/home\/dsifford\/.task\/freecinc_884c52e1.ca.pem
-taskd.credentials=FreeCinc\/freecinc_884c52e1\/56e0fefa-a2b3-4c13-a80a-d9ca4e7238d7
+taskd.key=\/home\/dsifford\/.task\/freecinc_1dbf0215.key.pem
+taskd.certificate=\/home\/dsifford\/.task\/freecinc_1dbf0215.cert.pem
+taskd.ca=\/home\/dsifford\/.task\/freecinc_1dbf0215.ca.pem
+taskd.credentials=FreeCinc\/freecinc_1dbf0215\/861ea477-29ee-4d55-93ad-24b28bdee831

@@ -6,10 +6,15 @@
 - clean: ['~']
 
 - link:
+    # Atom
     ~/.atom/packages.cson: packages.cson
+
+    # Scripts
     ~/bin:
         force: true
         path: scripts
+
+    # bash
     ~/.bash_profile:
         force: true
         path: bash/bash_profile
@@ -17,18 +22,33 @@
         force: true
         path: bash/bashrc
     ~/.bash: bash/scripts
+
+    # i3wm
+    ~/.i3: i3/config/
+
+    # Random Stuff
+    ~/.inputrc: inputrc
     ~/.config/dunst/dunstrc: compiled/dunstrc
     ~/.config/ranger/rc.conf: ranger/rc.conf
     ~/.config/ranger/scope.sh: ranger/scope.sh
     ~/.config/ranger/rifle.conf: ranger/rifle.conf
     ~/.gitconfig: gitconfig
-    ~/.i3: i3/config/
-    ~/.inputrc: inputrc
     ~/.lesskey: lesskey
-    ~/.taskrc: taskrc
+
+    # Taskwarrior
+    ~/.taskrc: taskwarrior/taskrc
+    ~/.task/freecinc_1dbf0215.ca.pem: taskwarrior/freecinc_1dbf0215.ca.pem
+    ~/.task/freecinc_1dbf0215.cert.pem: taskwarrior/freecinc_1dbf0215.cert.pem
+    ~/.task/freecinc_1dbf0215.key.pem: taskwarrior/freecinc_1dbf0215.key.pem
+
+    # tmux
     ~/.tmux.conf: tmux.conf
+
+    # VIM
     ~/.vim: vim
     ~/.vimrc: vimrc
+
+    # X
     ~/.xinitrc: arch/xinitrc
     ~/.Xresources: arch/Xresources
 
