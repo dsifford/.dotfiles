@@ -22,6 +22,7 @@ export COLORTERM=tmux-256color
 # Source git prompt script
 source ~/.bash/git-prompt.sh
 source ~/.bash/git-completion.bash
+source ~/.bash/git-extras-completion
 source ~/.bash/hub.bash_completion.sh
 source ~/.bash/docker-completion
 source ~/.bash/docker-compose-completion
