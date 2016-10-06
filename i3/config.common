@@ -77,8 +77,8 @@ bindsym $mod+Escape [instance="MAINTERM"] move scratchpad, scratchpad show, floa
 new_window pixel 1  
 new_float pixel 1 
 
-# Disable window titlebars entirely
-#for_window [class="^.*"] border normal 
+# Floating gif window
+for_window [class="Gifview"] floating enable;
 
 #================================================
 #             BEGIN i3 DEFAULTS
