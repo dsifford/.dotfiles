@@ -79,6 +79,7 @@ new_float pixel 1
 
 # Floating gif window
 for_window [class="Gifview"] floating enable;
+for_window [class="Animate"] floating enable, move position center;
 
 #================================================
 #             BEGIN i3 DEFAULTS
