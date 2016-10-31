@@ -32,6 +32,9 @@ for_window [class="Atom"] move to workspace Atom
 bindsym $mod+grave workspace Atom
 bindsym $mod+Shift+grave move container to workspace Atom
 
+# Meld
+for_window [class="Meld"] floating enable
+
 # Spotify
 bindsym $mod+Tab workspace Spotify
 bindsym $mod+Shift+Tab move container to workspace Spotify
