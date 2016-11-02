@@ -48,6 +48,7 @@ maim
 meld
 network-manager-applet
 networkmanager
+ngrok
 nodejs
 noto-fonts
 noto-fonts-emoji
@@ -57,6 +58,7 @@ parted
 pasystray
 playerctl
 $plex-media-server
+postman-bin
 pulseaudio
 pulseaudio-bluetooth
 pulseaudio-alsa
