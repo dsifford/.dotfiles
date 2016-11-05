@@ -50,7 +50,6 @@ packages: [
   "linter-stylint"
   "linter-tslint"
   "markdown-preview-enhanced"
-  "markdown-scroll-sync"
   "merge-conflicts"
   "metrics"
   "minimap"
