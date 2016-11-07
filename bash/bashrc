@@ -140,6 +140,7 @@ shopt -s dirspell     # correct spelling mistakes in directories
     alias i3cm='vim ~/.dotfiles/i3/config.common'
     alias dot='cd ~/.dotfiles'
     alias PACLIST='vim ~/.dotfiles/arch/package-list'
+    alias UNCRUSTIFY='echo sp_permit_cpp11_shift=true >> ~/.dotfiles/uncrustify.cfg'
     
     alias npmc='npm-check -u'
     alias npmcg='npm-check -gu'
