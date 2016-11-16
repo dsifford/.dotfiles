@@ -9,6 +9,7 @@ export PATH=$HOME/bin:$PATH:$HOME/gocode/bin:/usr/local/bin:/usr/local/go/bin:$H
 export GOPATH=$HOME/gocode
 export NPM_CONFIG_PREFIX=$HOME/.npm-global
 export CARGO_HOME=$HOME/.cargo
+export RUST_SRC_PATH=$HOME/.multirust/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 
 # Set EDITOR and PAGER
 export EDITOR=vim

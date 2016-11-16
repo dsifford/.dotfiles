@@ -87,6 +87,7 @@ task
 texlive-most
 time
 tmux
+tree
 ttf-dejavu
 ttf-font-awesome
 ttf-hack
