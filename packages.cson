@@ -60,6 +60,7 @@ packages: [
   "minimap-split-diff"
   "navigator-go"
   "nerd-treeview"
+  "output-panel"
   "package-sync"
   "pdf-view"
   "pigments"

@@ -9,7 +9,7 @@ export PATH=$HOME/bin:$PATH:$HOME/gocode/bin:/usr/local/bin:/usr/local/go/bin:$H
 export GOPATH=$HOME/gocode
 export NPM_CONFIG_PREFIX=$HOME/.npm-global
 export CARGO_HOME=$HOME/.cargo
-export RUST_SRC_PATH=$HOME/.multirust/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # Set EDITOR and PAGER
 export EDITOR=vim
@@ -62,8 +62,8 @@ shopt -s dirspell     # correct spelling mistakes in directories
 
 ### Files / Directories
     mcd () {
-        mkdir $1
-        cd $1 || exit
+        mkdir "$1"
+        cd "$1" || exit
     }
     ranger-cd() {
         tempfile="$(mktemp -t tmp.XXXXXX)"
@@ -77,25 +77,25 @@ shopt -s dirspell     # correct spelling mistakes in directories
     bind '"\C-o":"ranger-cd\C-m"'
 
 ### Docker
-    setenv () { eval "$(docker-machine env $1)"; }
+    setenv () { eval "$(docker-machine env "$1")"; }
     docker-clean () {
         local containers
         local images
         containers=$(docker ps -aq -f status=exited)
         images=$(docker images -q -f dangling=true)
         if [[ $containers ]]; then
-            docker rm -v $containers
+            docker rm -v "$containers"
         fi
         if [[ $images ]]; then
-            docker rmi $images
+            docker rmi "$images"
         fi
     }
 
     docker-update-images() {
-	docker-clean
-	while read -r fudge; do
-  		docker pull "$fudge"
-	done <<< "$(docker images | grep -P '^[a-z].+' | awk '{printf "%s:%s\n", $1, $2}')"	
+    	docker-clean
+    	while read -r fudge; do
+      		docker pull "$fudge"
+    	done <<< "$(docker images | grep -P '^[a-z].+' | awk '{printf "%s:%s\n", $1, $2}')"	
     }
 
     # Remove either untagged images or a variable number of images (1-9)
@@ -109,13 +109,22 @@ shopt -s dirspell     # correct spelling mistakes in directories
 
     # Open an interactive bash session in container N (counting from top)
     dx () {
-        docker exec -it $(docker ps -q -n=$1 | tail -n 1) /bin/bash -c "export TERM=xterm; exec bash"
+        docker exec -it "$(docker ps -q -n="$1" | tail -n 1)" /bin/bash -c "export TERM=xterm; exec bash"
     }
 
 
 ### Git
     gra () {
-        git remote add origin https://github.com/dsifford/$1.git
+        git remote add origin https://github.com/dsifford/"$1".git
+    }
+
+### Rust
+    rust () {
+        if [[ ! -f "$1" || ! "$1" =~ \.rs$ ]]; then
+            echo "Enter a valid rust source file."
+            return
+        fi
+	    rustc -o /tmp/rustfile "$1" && /tmp/rustfile
     }
 
 ### Taskwarrior
@@ -126,7 +135,7 @@ shopt -s dirspell     # correct spelling mistakes in directories
         task add "$@" && task sync
     }
     td () {
-        task $1 done && task sync
+        task "$1" done && task sync
     }
 
 #---------------------- Aliases-----------------------#
@@ -177,7 +186,4 @@ shopt -s dirspell     # correct spelling mistakes in directories
 
     # Better format for "docker ps"
     alias dpsa='docker ps -a --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}" | less -S'
-
-    # Run a juypter container
-    alias jp='docker run --rm -it -e GRANT_SUDO=yes --user root -p 8888:8888 -v "$(pwd):/home/jovyan/work" jupyter/scipy-notebook'
 
