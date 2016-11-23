@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
@@ -9,7 +10,8 @@ export PATH=$HOME/bin:$PATH:$HOME/gocode/bin:/usr/local/bin:/usr/local/go/bin:$H
 export GOPATH=$HOME/gocode
 export NPM_CONFIG_PREFIX=$HOME/.npm-global
 export CARGO_HOME=$HOME/.cargo
-export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+export RUST_SRC_PATH
+RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # Set EDITOR and PAGER
 export EDITOR=vim
@@ -29,6 +31,7 @@ source ~/.bash/docker-completion
 source ~/.bash/docker-compose-completion
 source ~/.bash/docker-machine-completion
 source ~/.bash/npm-completion
+source ~/.bash/cargo-completion
 
 
 # Format Prompt
@@ -45,13 +48,12 @@ BLUE='\[\033[0;34m\]'
 
 __docker_machine_ps1 () {
     local format=${1:- [%s]}
-    if test ${DOCKER_MACHINE_NAME}; then
+    if test "${DOCKER_MACHINE_NAME}"; then
         printf -- "${format}" "${DOCKER_MACHINE_NAME}"
     fi
 }
 
 export PS1="${GREEN}\u ${YELLOW}\w${PINK}\$(__git_ps1)\$(__docker_machine_ps1 \" ${RED}${INV}${BOLD}%s\")\n${BLUE}${BOLD}\$${NC} "
-
 
 # Bash options
 shopt -s checkwinsize # automatically adjust window size
@@ -146,6 +148,7 @@ shopt -s dirspell     # correct spelling mistakes in directories
     alias ls='ls -hF1 --color=tty'
     alias agent='eval `ssh-agent -s`'
     alias bashrc='vim ~/.bashrc'
+    alias devdocs='google-chrome-unstable --app-id=mnfehgbmkapmjnhcnbodoamcioleeooe &'
     alias i3c='if [[ $(uname -n) = "desktop" ]]; then vim ~/.dotfiles/i3/config.desktop; else vim ~/.dotfiles/i3/config.laptop; fi'
     alias i3cm='vim ~/.dotfiles/i3/config.common'
     alias dot='cd ~/.dotfiles'
