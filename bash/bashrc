@@ -4,15 +4,10 @@
 [[ "$-" != *i* ]] && return
 
 # Set up system path
-export PATH=$HOME/bin:$PATH:$HOME/gocode/bin:/usr/local/bin:/usr/local/go/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:$HOME/.yarn-global/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/.config/composer/vendor/bin
-
-# if [[ $(uname) == 'Darwin' ]]; then
-#     PATH+=":$(yarn global bin)"
-# fi
+export PATH=$HOME/bin:$PATH:$HOME/gocode/bin:/usr/local/bin:/usr/local/go/bin:$HOME/.cargo/bin:$HOME/.yarn-global/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/.config/composer/vendor/bin
 
 # System Environment Variables
 export GOPATH=$HOME/gocode
-export NPM_CONFIG_PREFIX=$HOME/.npm-global
 export PREFIX=$HOME/.yarn-global
 export CARGO_HOME=$HOME/.cargo
 export RUST_SRC_PATH
