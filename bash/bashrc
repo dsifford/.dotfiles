@@ -37,6 +37,7 @@ source ~/.bash/docker-compose-completion
 source ~/.bash/docker-machine-completion
 source ~/.bash/npm-completion
 source ~/.bash/cargo-completion
+source ~/.bash/rustup-completion
 
 
 # Format Prompt
