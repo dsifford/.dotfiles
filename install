@@ -21,8 +21,10 @@ set -e
 
 if [[ $(uname) == 'Darwin' ]]; then
 	CONFIG="install.conf.mac.yaml"
-else
+elif [[ $(uname -n) == 'desktop' ]]; then
 	CONFIG="install.conf.yaml"
+else
+    CONFIG="install.conf.laptop.yaml"
 fi
 
 DOTBOT_DIR="dotbot"
@@ -31,25 +33,5 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd "${BASEDIR}"
 git submodule update --init --recursive "${DOTBOT_DIR}"
-
-# Create config files based on the the current computer
-if [[ $(uname) != 'Darwin' ]]; then
-	touch "${BASEDIR}/i3/config/config" "${BASEDIR}/arch/Xresources"
-	if [[ $(uname -n) == 'desktop' ]]; then
-		cat "${BASEDIR}/arch/Xconf/Xresources.common" > "${BASEDIR}/arch/Xresources"
-		cat "${BASEDIR}/arch/Xconf/Xresources.desktop" >> "${BASEDIR}/arch/Xresources"
-		cat "${BASEDIR}/i3/config.desktop" > "${BASEDIR}/i3/config/config"
-		cat "${BASEDIR}/i3/config.common" >> "${BASEDIR}/i3/config/config"
-		cat "${BASEDIR}/i3/config.desktop.bar" >> "${BASEDIR}/i3/config/config"
-		cat "${BASEDIR}/arch/dunst/dunstrc.desktop" > "${BASEDIR}/compiled/dunstrc"
-	else
-		cat "${BASEDIR}/arch/Xconf/Xresources.common" > "${BASEDIR}/arch/Xresources"
-		cat "${BASEDIR}/arch/Xconf/Xresources.laptop" >> "${BASEDIR}/arch/Xresources"
-		cat "${BASEDIR}/i3/config.laptop" > "${BASEDIR}/i3/config/config"
-		cat "${BASEDIR}/i3/config.common" >> "${BASEDIR}/i3/config/config"
-		cat "${BASEDIR}/i3/config.laptop.bar" >> "${BASEDIR}/i3/config/config"
-		cat "${BASEDIR}/arch/dunst/dunstrc.laptop" > "${BASEDIR}/compiled/dunstrc"
-	fi
-fi
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"

@@ -54,9 +54,10 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
+    - [touch "$HOME/.dotfiles/i3/config/config" "$HOME/.dotfiles/arch/Xresources"]
     - [cat "$HOME/.dotfiles/arch/Xconf/Xresources.common" > "$HOME/.dotfiles/arch/Xresources"]
-    - [cat "$HOME/.dotfiles/arch/Xconf/Xresources.desktop" >> "$HOME/.dotfiles/arch/Xresources"]
-    - [cat "$HOME/.dotfiles/i3/config.desktop" > "$HOME/.dotfiles/i3/config/config"]
+    - [cat "$HOME/.dotfiles/arch/Xconf/Xresources.laptop" >> "$HOME/.dotfiles/arch/Xresources"]
+    - [cat "$HOME/.dotfiles/i3/config.laptop" > "$HOME/.dotfiles/i3/config/config"]
     - [cat "$HOME/.dotfiles/i3/config.common" >> "$HOME/.dotfiles/i3/config/config"]
-    - [cat "$HOME/.dotfiles/i3/config.desktop.bar" >> "$HOME/.dotfiles/i3/config/config"]
-    - [cat "$HOME/.dotfiles/arch/dunst/dunstrc.desktop" > "$HOME/.dotfiles/compiled/dunstrc"]
+    - [cat "$HOME/.dotfiles/i3/config.laptop.bar" >> "$HOME/.dotfiles/i3/config/config"]
+    - [cat "$HOME/.dotfiles/arch/dunst/dunstrc.laptop" > "$HOME/.dotfiles/compiled/dunstrc"]
