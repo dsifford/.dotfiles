@@ -4,11 +4,16 @@
 [[ "$-" != *i* ]] && return
 
 # Set up system path
-export PATH=$HOME/bin:$PATH:$HOME/gocode/bin:/usr/local/bin:/usr/local/go/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/.config/composer/vendor/bin
+export PATH=$HOME/bin:$PATH:$HOME/gocode/bin:/usr/local/bin:/usr/local/go/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:$HOME/.yarn-global/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/.config/composer/vendor/bin
+
+# if [[ $(uname) == 'Darwin' ]]; then
+#     PATH+=":$(yarn global bin)"
+# fi
 
 # System Environment Variables
 export GOPATH=$HOME/gocode
 export NPM_CONFIG_PREFIX=$HOME/.npm-global
+export PREFIX=$HOME/.yarn-global
 export CARGO_HOME=$HOME/.cargo
 export RUST_SRC_PATH
 RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
@@ -69,7 +74,11 @@ shopt -s dirspell     # correct spelling mistakes in directories
     }
     ranger-cd() {
         tempfile="$(mktemp -t tmp.XXXXXX)"
-        /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+	if [[ $(uname) == 'Darwin' ]]; then
+	    /usr/local/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+	else
+	    /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+	fi
         test -f "$tempfile" &&
         if [ "$(cat "$tempfile")" != "$(echo -n 'pwd')" ]; then
             cd "$(cat "$tempfile")" || exit
@@ -145,7 +154,7 @@ shopt -s dirspell     # correct spelling mistakes in directories
 ### Meta
     alias restart='source ~/.bashrc'
     alias grep='grep --color'
-    alias ls='ls -hF1 --color=tty'
+    alias ls='ls -FHG11'
     alias agent='eval `ssh-agent -s`'
     alias bashrc='vim ~/.bashrc'
     alias devdocs='google-chrome-unstable --app-id=mnfehgbmkapmjnhcnbodoamcioleeooe &'

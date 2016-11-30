@@ -1,0 +1,48 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+
+- clean: ['~']
+
+- link:
+    # Atom
+    ~/.atom/packages.cson: packages.cson
+
+    # Scripts
+    ~/bin:
+        force: true
+        path: scripts
+
+    # bash
+    ~/.bash_profile:
+        force: true
+        path: bash/bash_profile
+    ~/.bashrc:
+        force: true
+        path: bash/bashrc
+    ~/.bash: bash/scripts
+
+    # Random Stuff
+    ~/.inputrc: inputrc
+    ~/.config/ranger/rc.conf: ranger/rc.conf
+    ~/.config/ranger/scope.sh: ranger/scope.sh
+    ~/.config/ranger/rifle.conf: ranger/rifle.conf
+    ~/.gitconfig: gitconfig
+    ~/.lesskey: lesskey
+
+    # Taskwarrior
+    ~/.taskrc: taskwarrior/taskrc
+    ~/.task/freecinc_1dbf0215.ca.pem: taskwarrior/freecinc_1dbf0215.ca.pem
+    ~/.task/freecinc_1dbf0215.cert.pem: taskwarrior/freecinc_1dbf0215.cert.pem
+    ~/.task/freecinc_1dbf0215.key.pem: taskwarrior/freecinc_1dbf0215.key.pem
+
+    # tmux
+    ~/.tmux.conf: tmux.conf
+
+    # VIM
+    ~/.vim: vim
+    ~/.vimrc: vimrc
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
