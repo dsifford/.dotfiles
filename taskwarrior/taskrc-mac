@@ -51,7 +51,6 @@ color.blocking=black on color15
 color.tagged=color15
 color.tag.school=on rgb010
 color.tag.aliem=white on rgb022
-color.tag.tv=color8
 
 # Urgency Settings for Projects
 urgency.user.project.tv.coefficient=-1
