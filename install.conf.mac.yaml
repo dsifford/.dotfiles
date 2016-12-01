@@ -32,7 +32,7 @@
     ~/.lesskey: lesskey
 
     # Taskwarrior
-    ~/.taskrc: taskwarrior/taskrc
+    ~/.taskrc: taskwarrior/taskrc-mac
     ~/.task/freecinc_1dbf0215.ca.pem: taskwarrior/freecinc_1dbf0215.ca.pem
     ~/.task/freecinc_1dbf0215.cert.pem: taskwarrior/freecinc_1dbf0215.cert.pem
     ~/.task/freecinc_1dbf0215.key.pem: taskwarrior/freecinc_1dbf0215.key.pem

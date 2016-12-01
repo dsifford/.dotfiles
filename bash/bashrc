@@ -163,6 +163,14 @@ shopt -s dirspell     # correct spelling mistakes in directories
     alias npmc='npm-check -u'
     alias npmcg='npm-check -gu'
 
+    if [[ $(uname) == 'Darwin' ]]; then
+    	runcpp() {
+    	    g++ -std=c++11 "$@" -o /tmp/cpprunfile && /tmp/cpprunfile
+    	}
+
+	alias atom='atom-beta'
+    fi
+
 ### Arch
     # Verbosely rate the 200 most recently synchronized HTTP servers located in the US,
     # sort them by download rate, and overwrite the file /etc/pacman.d/mirrorlist
