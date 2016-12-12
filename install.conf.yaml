@@ -7,7 +7,8 @@
 
 - link:
     # Atom
-    ~/.atom/packages.cson: packages.cson
+    ~/.atom/packages.cson: atom/packages.cson
+    ~/.atom/init.js: atom/init.js
 
     # Scripts
     ~/bin:
