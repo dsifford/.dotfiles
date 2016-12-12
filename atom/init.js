@@ -16,7 +16,7 @@ function initForMac() {
 }
 
 function initForLinux() {
-    atom.condig.set('linter-rust.cargoPath', '/usr/bin/cargo');
+    atom.config.set('linter-rust.cargoPath', '/usr/bin/cargo');
     atom.config.set('linter-rust.rustcPath', '/usr/bin/rustc');
     atom.config.set('racer.rustSrcPath', '/home/dsifford/.multirust/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src');
     atom.packages.enablePackage('hidpi');
