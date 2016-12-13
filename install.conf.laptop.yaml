@@ -5,6 +5,16 @@
 
 - clean: ['~']
 
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+    - [touch "$HOME/.dotfiles/arch/i3/config/config" "$HOME/.dotfiles/arch/Xresources"]
+    - [cat "$HOME/.dotfiles/arch/Xconf/Xresources.common" > "$HOME/.dotfiles/arch/Xresources"]
+    - [cat "$HOME/.dotfiles/arch/Xconf/Xresources.laptop" >> "$HOME/.dotfiles/arch/Xresources"]
+    - [cat "$HOME/.dotfiles/arch/i3/config.laptop" > "$HOME/.dotfiles/arch/i3/config/config"]
+    - [cat "$HOME/.dotfiles/arch/i3/config.common" >> "$HOME/.dotfiles/arch/i3/config/config"]
+    - [cat "$HOME/.dotfiles/arch/i3/config.laptop.bar" >> "$HOME/.dotfiles/arch/i3/config/config"]
+    - [cat "$HOME/.dotfiles/arch/dunst/dunstrc.laptop" > "$HOME/.dotfiles/arch/dunstrc"]
+
 - link:
     # Atom
     ~/.atom/packages.cson: packages.cson
@@ -45,19 +55,9 @@
     ~/.tmux.conf: tmux.conf
 
     # VIM
-    ~/.vim: vim
-    ~/.vimrc: vimrc
+    ~/.vim: vim/vim
+    ~/.vimrc: vim/vimrc
 
     # X
     ~/.xinitrc: arch/xinitrc
     ~/.Xresources: arch/Xresources
-
-- shell:
-    - [git submodule update --init --recursive, Installing submodules]
-    - [touch "$HOME/.dotfiles/i3/config/config" "$HOME/.dotfiles/arch/Xresources"]
-    - [cat "$HOME/.dotfiles/arch/Xconf/Xresources.common" > "$HOME/.dotfiles/arch/Xresources"]
-    - [cat "$HOME/.dotfiles/arch/Xconf/Xresources.laptop" >> "$HOME/.dotfiles/arch/Xresources"]
-    - [cat "$HOME/.dotfiles/i3/config.laptop" > "$HOME/.dotfiles/i3/config/config"]
-    - [cat "$HOME/.dotfiles/i3/config.common" >> "$HOME/.dotfiles/i3/config/config"]
-    - [cat "$HOME/.dotfiles/i3/config.laptop.bar" >> "$HOME/.dotfiles/i3/config/config"]
-    - [cat "$HOME/.dotfiles/arch/dunst/dunstrc.laptop" > "$HOME/.dotfiles/compiled/dunstrc"]

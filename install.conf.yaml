@@ -5,6 +5,15 @@
 
 - clean: ['~']
 
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+    - [cat "$HOME/.dotfiles/arch/Xconf/Xresources.common" > "$HOME/.dotfiles/arch/Xresources"]
+    - [cat "$HOME/.dotfiles/arch/Xconf/Xresources.desktop" >> "$HOME/.dotfiles/arch/Xresources"]
+    - [cat "$HOME/.dotfiles/arch/i3/config.desktop" > "$HOME/.dotfiles/arch/i3/config/config"]
+    - [cat "$HOME/.dotfiles/arch/i3/config.common" >> "$HOME/.dotfiles/arch/i3/config/config"]
+    - [cat "$HOME/.dotfiles/arch/i3/config.desktop.bar" >> "$HOME/.dotfiles/arch/i3/config/config"]
+    - [cat "$HOME/.dotfiles/arch/dunst/dunstrc.desktop" > "$HOME/.dotfiles/arch/dunstrc"]
+
 - link:
     # Atom
     ~/.atom/packages.cson: atom/packages.cson
@@ -28,11 +37,11 @@
     ~/.bash: bash/scripts
 
     # i3wm
-    ~/.i3: i3/config/
+    ~/.i3: arch/i3/config/
 
     # Random Stuff
     ~/.inputrc: inputrc
-    ~/.config/dunst/dunstrc: compiled/dunstrc
+    ~/.config/dunst/dunstrc: arch/dunstrc
     ~/.config/ranger/rc.conf: ranger/rc.conf
     ~/.config/ranger/scope.sh: ranger/scope.sh
     ~/.config/ranger/rifle.conf: ranger/rifle.conf
@@ -49,18 +58,9 @@
     ~/.tmux.conf: tmux.conf
 
     # VIM
-    ~/.vim: vim
-    ~/.vimrc: vimrc
+    ~/.vim: vim/vim
+    ~/.vimrc: vim/vimrc
 
     # X
     ~/.xinitrc: arch/xinitrc
     ~/.Xresources: arch/Xresources
-
-- shell:
-    - [git submodule update --init --recursive, Installing submodules]
-    - [cat "$HOME/.dotfiles/arch/Xconf/Xresources.common" > "$HOME/.dotfiles/arch/Xresources"]
-    - [cat "$HOME/.dotfiles/arch/Xconf/Xresources.desktop" >> "$HOME/.dotfiles/arch/Xresources"]
-    - [cat "$HOME/.dotfiles/i3/config.desktop" > "$HOME/.dotfiles/i3/config/config"]
-    - [cat "$HOME/.dotfiles/i3/config.common" >> "$HOME/.dotfiles/i3/config/config"]
-    - [cat "$HOME/.dotfiles/i3/config.desktop.bar" >> "$HOME/.dotfiles/i3/config/config"]
-    - [cat "$HOME/.dotfiles/arch/dunst/dunstrc.desktop" > "$HOME/.dotfiles/compiled/dunstrc"]

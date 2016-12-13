@@ -1,7 +1,4 @@
-i3/config/config
-i3/config/i3status.conf
-vim/.netrwhist
-arch/Xresources
-vim/bundle
-compiled/*
-!compiled/.gitkeep
+arch/i3/config/config
+Xresources
+vim/vim/bundle
+dunstrc

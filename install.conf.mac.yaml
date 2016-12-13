@@ -5,6 +5,9 @@
 
 - clean: ['~']
 
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+
 - link:
     # Atom
     ~/.atom/packages.cson: packages.cson
@@ -45,8 +48,5 @@
     ~/.tmux.conf: tmux.conf
 
     # VIM
-    ~/.vim: vim
-    ~/.vimrc: vimrc
-
-- shell:
-    - [git submodule update --init --recursive, Installing submodules]
+    ~/.vim: vim/vim
+    ~/.vimrc: vim/vimrc
