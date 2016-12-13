@@ -73,7 +73,6 @@ packages: [
   "split-diff"
   "Stylus"
   "Sublime-Style-Column-Selection"
-  "sync-settings"
   "tester-go"
   "todo"
   "tree-view-autoresize"
