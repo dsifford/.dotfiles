@@ -26,7 +26,7 @@ function initForLinux() {
 
 function triggerEditorConfigOnSave() {
     atom.workspace.observeTextEditors(editor => {
-        editor.onDidSave(() => {
+        editor.buffer.onWillSave(() => {
             atom.commands.dispatch(atom.views.getView(editor), 'EditorConfig:fix-file');
             setTimeout(() => {
                 atom.notifications.getNotifications().forEach(n => {
