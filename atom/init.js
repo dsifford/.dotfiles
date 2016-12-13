@@ -8,6 +8,8 @@ atom.config.set('atom-beautify.rust.rustfmt_path', `${HOME_PATH}/.cargo/bin/rust
 if (ON_MAC) initForMac();
 else initForLinux();
 
+triggerEditorConfigOnSave();
+
 function initForMac() {
     atom.config.set('linter-rust.cargoPath', '/Users/dsifford/.cargo/bin/cargo');
     atom.config.set('linter-rust.rustcPath', '/Users/dsifford/.cargo/bin/rustc');
@@ -20,4 +22,18 @@ function initForLinux() {
     atom.config.set('linter-rust.rustcPath', '/usr/bin/rustc');
     atom.config.set('racer.rustSrcPath', '/home/dsifford/.multirust/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src');
     atom.packages.enablePackage('hidpi');
+}
+
+function triggerEditorConfigOnSave() {
+    atom.workspace.observeTextEditors(editor => {
+        editor.onDidSave(() => {
+            atom.commands.dispatch(atom.views.getView(editor), 'EditorConfig:fix-file');
+            setTimeout(() => {
+                atom.notifications.getNotifications().forEach(n => {
+                    if (n.getType() === 'success') n.dismiss();
+                });
+                atom.notifications.clear();
+            }, 1000);
+        });
+    });
 }
