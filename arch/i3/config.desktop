@@ -25,9 +25,6 @@ bindsym Control+space focus output DP-2, [instance="MAINTERM"] scratchpad show
 
 #===============APP WINDOW CONFIG================
 
-# DevDocs
-for_window [title="DevDocs*"] floating enable, resize set 2080 2070, move scratchpad;
-
 # Simple Screen Recorder
 for_window [class="Simplescreenrecorder"] floating enable
 
