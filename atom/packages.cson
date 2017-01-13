@@ -13,7 +13,6 @@ packages: [
   "dracula-theme"
   "editorconfig"
   "emmet"
-  "environment"
   "git-time-machine"
   "go-config"
   "go-debug"
