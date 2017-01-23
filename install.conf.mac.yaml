@@ -50,3 +50,6 @@
     # VIM
     ~/.vim: vim/vim
     ~/.vimrc: vim/vimrc
+
+    # VS Code
+    "~/Library/Application Support/Code/User": vscode

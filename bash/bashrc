@@ -54,7 +54,7 @@ __docker_machine_ps1 () {
     fi
 }
 
-export PS1="${GREEN}\u ${YELLOW}\w${PINK}\$(__git_ps1)\$(__docker_machine_ps1 \" ${RED}${INV}${BOLD}%s\")\n${BLUE}${BOLD}\$${NC} "
+export PS1="${GREEN}\u ${YELLOW}\w${PINK}\$(__git_ps1)\$(__docker_machine_ps1 \" ${RED}${INV}${BOLD}%s\") ${BLUE}${BOLD}\$${NC} "
 
 # Bash options
 shopt -s checkwinsize # automatically adjust window size

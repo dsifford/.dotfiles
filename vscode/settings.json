@@ -1,0 +1,23 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "editor.fontFamily": "Monaco, 'Courier New', monospace",
+    "editor.fontSize": 16,
+    "rust.cargoHomePath": "/Users/dsifford/.cargo/bin/cargo",
+    "editor.cursorBlinking": "blink",
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "before": [
+                ":"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.showCommands",
+                    "args": []
+                }
+            ]
+        }
+    ]
+,
+"typescript.check.tscVersion": false
+}
