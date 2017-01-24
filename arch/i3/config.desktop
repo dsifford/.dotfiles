@@ -7,6 +7,8 @@ exec --no-startup-id screenlayout
 workspace 1 output DP-4
 workspace 2 output DP-2
 workspace Spotify output DP-4
+workspace Atom output DP-2
+workspace Code output DP-2
 
 # Disable mouse warping
 mouse_warping none
@@ -24,6 +26,9 @@ for_window [instance="MAINTERM"] floating enable, border pixel 0, resize set 385
 bindsym Control+space focus output DP-2, [instance="MAINTERM"] scratchpad show
 
 #===============APP WINDOW CONFIG================
+
+# Chrome pop-up windows
+for_window[class="Google-chrome-unstable" window_role="pop-up"] floating enable, move position center
 
 # Simple Screen Recorder
 for_window [class="Simplescreenrecorder"] floating enable

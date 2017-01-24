@@ -32,6 +32,9 @@ for_window [class="Atom"] move to workspace Atom
 bindsym $mod+grave workspace Atom
 bindsym $mod+Shift+grave move container to workspace Atom
 
+# VS Code
+for_window [class="Code"] move to workspace Code
+
 # Zeal 
 bindsym Control+Shift+space [class="Zeal"] scratchpad show, move position center
 

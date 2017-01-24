@@ -1,0 +1,26 @@
+[
+	{
+		"name": "ALiEMU",
+		"rootPath": "$home/repos/ALiEM/ALiEMU",
+		"paths": [],
+		"group": ""
+	},
+	{
+		"name": "ALiEM",
+		"rootPath": "$home/repos/ALiEM/ALiEM",
+		"paths": [],
+		"group": ""
+	},
+	{
+		"name": "slackbot",
+		"rootPath": "$home/repos/ALiEM/slackbot",
+		"paths": [],
+		"group": ""
+	},
+	{
+		"name": "aliemcards",
+		"rootPath": "$home/repos/ALiEM/aliemcards",
+		"paths": [],
+		"group": ""
+	}
+]

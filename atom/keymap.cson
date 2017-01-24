@@ -22,7 +22,6 @@
     
 
 'atom-workspace atom-text-editor:not([mini])':
-    'ctrl-shift-M': 'unset!' # Needed to override emmett
     'ctrl-alt-\\': 'typescript:toggle-semantic-view'
     'ctrl-j': 'unset!'
 

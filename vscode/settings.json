@@ -19,5 +19,11 @@
         }
     ]
 ,
-"typescript.check.tscVersion": false
+"typescript.check.tscVersion": false,
+"vim.useSystemClipboard": true,
+"vim.useCtrlKeys": false,
+"files.associations": {
+    ".stylintrc": "json5",
+    ".babelrc": "json5"
+}
 }

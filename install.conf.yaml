@@ -61,6 +61,9 @@
     ~/.vim: vim/vim
     ~/.vimrc: vim/vimrc
 
+    # VS Code
+    ~/.config/Code/User: vscode
+
     # X
     ~/.xinitrc: arch/xinitrc
     ~/.Xresources: arch/Xresources
