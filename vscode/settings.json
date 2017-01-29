@@ -26,4 +26,6 @@
     ".stylintrc": "json5",
     ".babelrc": "json5"
 }
+,
+"shellcheck.customArgs": ["-x"]
 }

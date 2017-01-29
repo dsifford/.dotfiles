@@ -22,5 +22,11 @@
 		"rootPath": "$home/repos/ALiEM/aliemcards",
 		"paths": [],
 		"group": ""
+	},
+	{
+		"name": "wordpress",
+		"rootPath": "$home/repos/wordpress",
+		"paths": [],
+		"group": ""
 	}
 ]
