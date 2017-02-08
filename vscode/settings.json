@@ -28,4 +28,8 @@
 }
 ,
 "shellcheck.customArgs": ["-x"]
+,
+"todohighlight.isEnable": true,
+"editor.snippetSuggestions": "inline",
+"workbench.welcome.enabled": false
 }

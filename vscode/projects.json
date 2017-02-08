@@ -28,5 +28,11 @@
 		"rootPath": "$home/repos/wordpress",
 		"paths": [],
 		"group": ""
+	},
+	{
+		"name": "wp-graphql",
+		"rootPath": "$home/repos/ALiEM/wp-graphql",
+		"paths": [],
+		"group": ""
 	}
 ]
