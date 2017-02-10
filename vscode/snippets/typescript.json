@@ -20,5 +20,12 @@
 			"console.log($1);$0"
 		],
 		"description": "console.log()"
+	},
+	"Single line jsdoc comment": {
+		"prefix": "cm",
+		"body": [
+			"/** $1 */$0"
+		],
+		"description": "Insert a single line doc comment"
 	}
 }
