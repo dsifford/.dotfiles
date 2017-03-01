@@ -34,5 +34,17 @@
 		"rootPath": "$home/repos/ALiEM/wp-graphql",
 		"paths": [],
 		"group": ""
+	},
+	{
+		"name": "dracula-vscode",
+		"rootPath": "$home/repos/dracula-vscode",
+		"paths": [],
+		"group": ""
+	},
+	{
+		"name": "dotfiles",
+		"rootPath": "$home/.dotfiles",
+		"paths": [],
+		"group": ""
 	}
 ]

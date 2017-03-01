@@ -31,5 +31,24 @@
 ,
 "todohighlight.isEnable": true,
 "editor.snippetSuggestions": "inline",
-"workbench.welcome.enabled": false
+"workbench.welcome.enabled": false,
+"editor.wordWrap": false,
+"editor.renderIndentGuides": true,
+"window.zoomLevel": 0,
+"color-highlight.languages": [
+    "javascript",
+    "typescript",
+    "scss",
+    "css",
+    "sass",
+    "less",
+    "php",
+    "xml",
+    "html",
+    "json",
+    "styl",
+    "stylus",
+    "yaml"
+],
+"eslint.nodePath": "/home/dsifford/.yarn-global"
 }

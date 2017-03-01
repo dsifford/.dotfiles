@@ -1,0 +1,67 @@
+#!/usr/bin/env node
+const { readFile, writeFile } = require('fs');
+const { exec, spawn } = require('child_process');
+const SAVED_EXTENSIONS = process.env.HOME + '/.config/Code/User/extensions.json';
+const ARG = process.argv[2];
+
+if (ARG !== 'push' && ARG !== 'pull') {
+    console.log('Argument must be "push" or "pull"');
+    process.exit();
+}
+
+const listInstalled = execPromise('code --list-extensions').then(stdout => stdout.split('\n').filter(Boolean));
+const listSaved = readFilePromise(process.env.HOME + '/.config/Code/User/extensions.json');
+
+Promise.all([listInstalled, listSaved]).then(([installed, saved]) => {
+    if (ARG === 'push') {
+        writeFile(SAVED_EXTENSIONS, JSON.stringify(installed, null, 4), err => {
+            if (err) throw err;
+            console.log('Updated extensions.json.');
+        });
+        return;
+    }
+    
+    const orphaned = installed
+        .filter(ext => saved.indexOf(ext) === -1)
+        .map(ext => spawnPromise(`yes 0 | code --uninstall-extension ${ext}`));
+    const missing = saved
+        .filter(ext => installed.indexOf(ext) === -1)
+        .map(ext => execPromise(`code --install-extension ${ext}`));
+    
+    const removeOrphaned = Promise.all(orphaned);
+    const installMissing = Promise.all(missing);
+
+    return Promise.all([removeOrphaned, installMissing]).then(stdout => {
+        console.log('Done.');
+    });
+});
+
+function spawnPromise(cmd) {
+    return new Promise((res, rej) => {
+        const p = spawn(cmd, [], { shell: true });
+        p.stdout.on('data', data => {
+            res(data);
+        });
+        p.on('error', rej);
+        p.stderr.on('data', rej);
+    });
+}
+
+function execPromise(cmd) {
+    return new Promise((res, rej) => {
+        exec(cmd, (err, stdout, stderr) => {
+            if (err) rej(err);
+            if (stderr) rej(stderr);
+            res(stdout);
+        });
+    });
+}
+
+function readFilePromise(file) {
+    return new Promise((res, rej) => {
+        readFile(file, 'utf-8', (err, data) => {
+            if (err) rej(err);
+            res(JSON.parse(data).sort());
+        });
+    });
+}
