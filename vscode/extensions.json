@@ -1,5 +1,6 @@
 [
     "EditorConfig.EditorConfig",
+    "LaurentTreguier.uncrustify",
     "PeterJausovec.vscode-docker",
     "Tyriar.sort-lines",
     "alefragnani.project-manager",
@@ -14,6 +15,7 @@
     "jakeboone02.mediawiki",
     "kumar-harsh.graphql-for-vscode",
     "mrmlnc.vscode-json5",
+    "ms-vscode.cpptools",
     "naumovs.color-highlight",
     "saviorisdead.RustyCode",
     "sysoev.language-stylus",

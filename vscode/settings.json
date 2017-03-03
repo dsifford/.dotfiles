@@ -32,7 +32,7 @@
 "todohighlight.isEnable": true,
 "editor.snippetSuggestions": "inline",
 "workbench.welcome.enabled": false,
-"editor.wordWrap": false,
+"editor.wordWrap": "off",
 "editor.renderIndentGuides": true,
 "window.zoomLevel": 0,
 "color-highlight.languages": [
@@ -50,5 +50,9 @@
     "stylus",
     "yaml"
 ],
-"eslint.nodePath": "/home/dsifford/.yarn-global"
+"eslint.nodePath": "/home/dsifford/.yarn-global",
+"workbench.colorTheme": "Dracula",
+"workbench.iconTheme": "vs-seti",
+"editor.minimap.enabled": true,
+"uncrustify.configPath": "$HOME/.dotfiles/uncrustify.cfg"
 }
