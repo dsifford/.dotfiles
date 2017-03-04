@@ -1,58 +1,57 @@
-// Place your settings in this file to overwrite the default settings
 {
+    "color-highlight.languages": [
+        "javascript",
+        "typescript",
+        "scss",
+        "css",
+        "sass",
+        "less",
+        "php",
+        "xml",
+        "html",
+        "json",
+        "styl",
+        "stylus",
+        "yaml"
+    ],
+    "editor.cursorBlinking": "solid",
     "editor.fontFamily": "Monaco, 'Courier New', monospace",
     "editor.fontSize": 16,
+    "editor.minimap.enabled": true,
+    "editor.renderIndentGuides": true,
+    "editor.snippetSuggestions": "inline",
+    "editor.wordWrap": "off",
+    "eslint.nodePath": "/home/dsifford/.yarn-global",
+    "files.associations": {
+        ".babelrc": "json5",
+        ".stylintrc": "json5"
+    },
     "rust.cargoHomePath": "/Users/dsifford/.cargo/bin/cargo",
-    "editor.cursorBlinking": "blink",
+    "shellcheck.customArgs": [
+        "-x"
+    ],
+    "todohighlight.isEnable": true,
+    "typescript.check.tscVersion": false,
+    "uncrustify.configPath": "$HOME/.dotfiles/uncrustify.cfg",
     "vim.otherModesKeyBindingsNonRecursive": [
         {
+            "after": [],
             "before": [
                 ":"
             ],
-            "after": [],
             "commands": [
                 {
-                    "command": "workbench.action.showCommands",
-                    "args": []
+                    "args": [],
+                    "command": "workbench.action.showCommands"
                 }
             ]
         }
-    ]
-,
-"typescript.check.tscVersion": false,
-"vim.useSystemClipboard": true,
-"vim.useCtrlKeys": false,
-"files.associations": {
-    ".stylintrc": "json5",
-    ".babelrc": "json5"
-}
-,
-"shellcheck.customArgs": ["-x"]
-,
-"todohighlight.isEnable": true,
-"editor.snippetSuggestions": "inline",
-"workbench.welcome.enabled": false,
-"editor.wordWrap": "off",
-"editor.renderIndentGuides": true,
-"window.zoomLevel": 0,
-"color-highlight.languages": [
-    "javascript",
-    "typescript",
-    "scss",
-    "css",
-    "sass",
-    "less",
-    "php",
-    "xml",
-    "html",
-    "json",
-    "styl",
-    "stylus",
-    "yaml"
-],
-"eslint.nodePath": "/home/dsifford/.yarn-global",
-"workbench.colorTheme": "Dracula",
-"workbench.iconTheme": "vs-seti",
-"editor.minimap.enabled": true,
-"uncrustify.configPath": "$HOME/.dotfiles/uncrustify.cfg"
+    ],
+    "vim.useCtrlKeys": false,
+    "vim.useSolidBlockCursor": true,
+    "vim.useSystemClipboard": true,
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Dracula",
+    "workbench.iconTheme": "vs-seti",
+    "workbench.welcome.enabled": false
 }

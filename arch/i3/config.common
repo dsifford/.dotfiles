@@ -29,11 +29,11 @@ exec --no-startup-id dropbox start
 
 # Atom
 for_window [class="Atom"] move to workspace Atom
-bindsym $mod+grave workspace Atom
-bindsym $mod+Shift+grave move container to workspace Atom
 
 # VS Code
 for_window [class="Code"] move to workspace Code
+bindsym $mod+grave workspace Code
+bindsym $mod+Shift+grave move container to workspace Code
 
 # Zeal 
 bindsym Control+Shift+space [class="Zeal"] scratchpad show, move position center
@@ -65,19 +65,12 @@ bindsym XF86AudioNext exec --no-startup-id "playerctl next"
 bindsym XF86AudioPrev exec --no-startup-id "playerctl previous" 
 bindsym XF86AudioStop exec --no-startup-id "playerctl stop"
 
-# $mod+Middle Mouse Button => kill window
-bindsym --whole-window $mod+button2 kill
-bindsym --whole-window $mod+Shift+button3 floating toggle
+# $mod+Shift+Middle Mouse Button => kill window
+bindsym --whole-window $mod+Shift+button3 kill
 
 # $mod+Space => rofi 
 bindsym Mod1+space exec "rofi -m 0 -show window"
 bindsym $mod+space exec "rofi -m 0 -disable-history -show run"
-
-# $mod+Return => Re-enable unbound floating terminal
-bindsym $mod+Return exec --no-startup-id urxvt -name MAINTERM -e bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -nMain -sHOME"; floating enable;
-
-# $mod+Escape => Unfloat floating terminal
-bindsym $mod+Escape [instance="MAINTERM"] move scratchpad, scratchpad show, floating disable
 
 # Set borders to none
 new_window pixel 1  
