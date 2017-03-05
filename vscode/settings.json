@@ -53,5 +53,6 @@
     "window.zoomLevel": 0,
     "workbench.colorTheme": "Dracula",
     "workbench.iconTheme": "vs-seti",
-    "workbench.welcome.enabled": false
+    "workbench.welcome.enabled": false,
+    "color-highlight.matchWords": false
 }

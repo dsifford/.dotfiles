@@ -193,6 +193,7 @@ shopt -s dirspell     # correct spelling mistakes in directories
     alias gl='git log --oneline --decorate --all --graph'
     alias gca='git commit -a'
     alias gf='git fetch'
+    alias gp='git remote prune origin'
 
 ### Docker
     alias d='docker'
