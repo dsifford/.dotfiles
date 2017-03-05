@@ -14,7 +14,7 @@
         "stylus",
         "yaml"
     ],
-    "editor.cursorBlinking": "solid",
+    "editor.cursorBlinking": "blink",
     "editor.fontFamily": "Monaco, 'Courier New', monospace",
     "editor.fontSize": 16,
     "editor.minimap.enabled": true,
@@ -54,5 +54,6 @@
     "workbench.colorTheme": "Dracula",
     "workbench.iconTheme": "vs-seti",
     "workbench.welcome.enabled": false,
-    "color-highlight.matchWords": false
+    "color-highlight.matchWords": false,
+    "editor.renderWhitespace": "all"
 }
