@@ -48,12 +48,11 @@
         }
     ],
     "vim.useCtrlKeys": false,
-    "vim.useSolidBlockCursor": true,
     "vim.useSystemClipboard": true,
     "window.zoomLevel": 0,
     "workbench.colorTheme": "Dracula",
     "workbench.iconTheme": "vs-seti",
     "workbench.welcome.enabled": false,
     "color-highlight.matchWords": false,
-    "editor.renderWhitespace": "all"
+    "editor.renderWhitespace": "none"
 }

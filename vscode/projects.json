@@ -1,43 +1,43 @@
 [
 	{
 		"name": "ALiEMU",
-		"rootPath": "$home/repos/ALiEM/ALiEMU",
+		"rootPath": "$home/repos/_orgs/aliemteam/ALiEMU",
 		"paths": [],
 		"group": ""
 	},
 	{
 		"name": "ALiEM",
-		"rootPath": "$home/repos/ALiEM/ALiEM",
+		"rootPath": "$home/repos/_orgs/aliemteam/ALiEM",
 		"paths": [],
 		"group": ""
 	},
 	{
 		"name": "slackbot",
-		"rootPath": "$home/repos/ALiEM/slackbot",
+		"rootPath": "$home/repos/_orgs/aliemteam/slackbot",
 		"paths": [],
 		"group": ""
 	},
 	{
 		"name": "aliemcards",
-		"rootPath": "$home/repos/ALiEM/aliemcards",
+		"rootPath": "$home/repos/_orgs/aliemteam/aliemcards",
 		"paths": [],
 		"group": ""
 	},
 	{
 		"name": "wordpress",
-		"rootPath": "$home/repos/wordpress",
+		"rootPath": "$home/repos/_orgs/visiblevc/wordpress",
 		"paths": [],
 		"group": ""
 	},
 	{
 		"name": "wp-graphql",
-		"rootPath": "$home/repos/ALiEM/wp-graphql",
+		"rootPath": "$home/repos/_orgs/aliemteam/wp-graphql",
 		"paths": [],
 		"group": ""
 	},
 	{
 		"name": "dracula-vscode",
-		"rootPath": "$home/repos/dracula-vscode",
+		"rootPath": "$home/repos/_orgs/dracula/dracula-vscode",
 		"paths": [],
 		"group": ""
 	},
