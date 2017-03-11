@@ -48,8 +48,8 @@ bindsym $mod+Shift+Tab move container to workspace Spotify
 #=====================KEYMAP=====================
 
 # PrintScreen
-bindsym Print exec --no-startup-id maim -s /tmp/screenshot.png && xclip -selection clipboard -t image/png </tmp/screenshot.png
-bindsym Control+Print exec --no-startup-id maim -s /tmp/screenshot.png && gimp /tmp/screenshot.png
+bindsym Print exec --no-startup-id gscreenshot-cli -s -f /tmp/screenshot.png && xclip -selection clipboard -t image/png </tmp/screenshot.png
+bindsym Control+Print exec --no-startup-id maim -s /tmp/screenshot.png && krita /tmp/screenshot.png
 
 # Caps Lock => Escape
 exec --no-startup-id setxkbmap -option caps:escape

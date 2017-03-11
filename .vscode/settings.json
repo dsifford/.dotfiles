@@ -1,0 +1,8 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "files.associations": {
+        "bashrc": "shellscript",
+        "CODESYNC": "shellscript",
+        "screenlayout": "shellscript"
+    }
+}
