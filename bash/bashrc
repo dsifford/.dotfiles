@@ -159,10 +159,9 @@ export PS1="${GREEN}\u ${YELLOW}\w${PINK}\$(__git_ps1)\$(__docker_machine_ps1 \"
     
     alias yu='yarn upgrade-interactive'
     ygu() {
-        local file;
-        for file in $HOME/.yarn-global/bin/*; do
-            yarn global upgrade "${file##*/}"
-        done
+        local packages
+        packages=$(yarn global ls | grep -Po 'info..\K[^@]+' | xargs)
+        yarn global upgrade $packages
     }
 
     if [[ $(uname) == 'Darwin' ]]; then
