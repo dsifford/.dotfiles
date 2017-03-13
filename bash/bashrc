@@ -161,6 +161,7 @@ export PS1="${GREEN}\u ${YELLOW}\w${PINK}\$(__git_ps1)\$(__docker_machine_ps1 \"
     ygu() {
         local packages
         packages=$(yarn global ls | grep -Po 'info..\K[^@]+' | xargs)
+        # shellcheck disable=SC2086
         yarn global upgrade $packages
     }
 
