@@ -2,7 +2,7 @@
 {
     "files.associations": {
         "bashrc": "shellscript",
-        "CODESYNC": "shellscript",
+        "CODESYNC": "javascript",
         "screenlayout": "shellscript"
     }
 }
