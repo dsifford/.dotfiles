@@ -3,6 +3,7 @@
     "files.associations": {
         "bashrc": "shellscript",
         "CODESYNC": "javascript",
-        "screenlayout": "shellscript"
+        "screenlayout": "shellscript",
+        "install": "shellscript"
     }
 }

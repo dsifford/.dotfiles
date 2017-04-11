@@ -18,7 +18,7 @@ exec --no-startup-id dunst
 # Startup Applets
 exec --no-startup-id nm-applet
 exec --no-startuo-id pasystray
-exec --no-startup-id redshift-gtk -l 42.729336197453655:-82.99709570068359
+exec --no-startup-id redshift -l 42.729336197453655:-82.99709570068359
 exec --no-startup-id blueman-applet
 
 # Startup Apps

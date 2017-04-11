@@ -45,6 +45,7 @@
     ~/.config/ranger/rc.conf: ranger/rc.conf
     ~/.config/ranger/scope.sh: ranger/scope.sh
     ~/.config/ranger/rifle.conf: ranger/rifle.conf
+    ~/.config/ranger/colorschemes: ranger/colorschemes
     ~/.gitconfig: gitconfig
     ~/.lesskey: lesskey
 

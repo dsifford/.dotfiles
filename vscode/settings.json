@@ -14,17 +14,19 @@
         "stylus",
         "yaml"
     ],
-    "editor.cursorBlinking": "blink",
+    "color-highlight.matchWords": false,
+    "editor.cursorBlinking": "solid",
     "editor.fontFamily": "Monaco, 'Courier New', monospace",
     "editor.fontSize": 16,
     "editor.minimap.enabled": true,
     "editor.renderIndentGuides": true,
+    "editor.renderWhitespace": "none",
     "editor.snippetSuggestions": "inline",
     "editor.wordWrap": "off",
     "eslint.nodePath": "/home/dsifford/.yarn-global",
     "files.associations": {
         ".babelrc": "json5",
-        ".stylintrc": "json5"
+        ".stylintrc": "json"
     },
     "rust.cargoHomePath": "/Users/dsifford/.cargo/bin/cargo",
     "shellcheck.customArgs": [
@@ -50,9 +52,9 @@
     "vim.useCtrlKeys": false,
     "vim.useSystemClipboard": true,
     "window.zoomLevel": 0,
-    "workbench.colorTheme": "Dracula",
     "workbench.iconTheme": "vs-seti",
     "workbench.welcome.enabled": false,
-    "color-highlight.matchWords": false,
-    "editor.renderWhitespace": "none"
+    "projectManager.openInNewWindow": false,
+    "workbench.colorTheme": "Dracula",
+    "keyboard.dispatch": "keyCode"
 }
