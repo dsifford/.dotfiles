@@ -32,16 +32,17 @@ export COLORTERM=tmux-256color
 # Source all completions
 # shellcheck disable=SC1090
 {
-    source ~/.bash/git-prompt.sh
-    source ~/.bash/git-completion.bash
-    source ~/.bash/git-extras-completion
-    source ~/.bash/hub.bash_completion.sh
+    source ~/.bash/cargo-completion
     source ~/.bash/docker-completion
     source ~/.bash/docker-compose-completion
     source ~/.bash/docker-machine-completion
+    source ~/.bash/git-completion.bash
+    source ~/.bash/git-extras-completion
+    source ~/.bash/git-prompt.sh
+    source ~/.bash/hub.bash_completion.sh
     source ~/.bash/npm-completion
-    source ~/.bash/cargo-completion
     source ~/.bash/rustup-completion
+    source ~/.bash/yarn-completion.bash
 }
 
 
@@ -137,9 +138,6 @@ export PS1="${GREEN}\u ${YELLOW}\w${PINK}\$(__git_ps1)\$(__docker_machine_ps1 \"
     }
 
 ### Taskwarrior
-    t () {
-        if [[ ! $@ ]]; then task; else task "$@" && task sync; fi
-    }
     ta () {
         task add "$@" && task sync
     }
@@ -150,13 +148,11 @@ export PS1="${GREEN}\u ${YELLOW}\w${PINK}\$(__git_ps1)\$(__docker_machine_ps1 \"
 #---------------------- Aliases-----------------------#
 
 ### Meta
-    alias restart='source ~/.bashrc'
-    alias grep='grep --color'
     alias bashrc='vim ~/.bashrc'
     alias dot='cd ~/.dotfiles'
-    alias PACLIST='vim ~/.dotfiles/arch/package-list'
-    alias UNCRUSTIFY='echo sp_permit_cpp11_shift=true >> ~/.dotfiles/uncrustify.cfg'
-    
+    alias grep='grep --color'
+    alias restart='source ~/.bashrc'
+    alias t='task'
     alias yu='yarn upgrade-interactive'
     alias yug='yarn global upgrade-interactive'
 
@@ -169,11 +165,11 @@ export PS1="${GREEN}\u ${YELLOW}\w${PINK}\$(__git_ps1)\$(__docker_machine_ps1 \"
         }
     
     else
-        alias yy='yaourt -Syu --aur'
-        alias ls='ls -hF1 --color=tty'
-
+        alias PACLIST='vim ~/.dotfiles/arch/package-list'
         alias i3c='if [[ $(uname -n) = "desktop" ]]; then vim ~/.dotfiles/arch/i3/config.desktop; else vim ~/.dotfiles/arch/i3/config.laptop; fi'
         alias i3cm='vim ~/.dotfiles/arch/i3/config.common'
+        alias ls='ls -hF1 --color=tty'
+        alias yy='yaourt -Syu --aur'
     fi
 
 ### Arch
