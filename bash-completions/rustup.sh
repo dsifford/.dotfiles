@@ -37,6 +37,9 @@ _rustup() {
             doc)
                 cmd+="_doc"
                 ;;
+            docs)
+                cmd+="_docs"
+                ;;
             enable)
                 cmd+="_enable"
                 ;;
@@ -104,7 +107,7 @@ _rustup() {
 
     case "${cmd}" in
         rustup)
-            opts=" -v -h -V  --verbose --help --version   show install update default toolchain target component override run which doc man self telemetry set completions help"
+            opts=" -v -h -V  --verbose --help --version   show install update default toolchain target component override run which doc man self telemetry set completions help  docs"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
                 return 0
@@ -150,7 +153,7 @@ _rustup() {
             return 0
             ;;
         rustup_component_add)
-            opts=" -h -V  --toolchain --target --help --version  <component> "
+            opts=" -h -V  --toolchain --target --help --version  <component>... "
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
                 return 0
@@ -207,7 +210,7 @@ _rustup() {
             return 0
             ;;
         rustup_component_remove)
-            opts=" -h -V  --toolchain --target --help --version  <component> "
+            opts=" -h -V  --toolchain --target --help --version  <component>... "
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
                 return 0
@@ -259,6 +262,21 @@ _rustup() {
             COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
             return 0
             ;;
+        rustup_docs)
+            opts=" -h -V  --book --std --help --version  "
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+                return 0
+            fi
+            case "${prev}" in
+                
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+            return 0
+            ;;
         rustup_help)
             opts=" -h -V  --help --version  "
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
@@ -275,7 +293,7 @@ _rustup() {
             return 0
             ;;
         rustup_install)
-            opts=" -h -V  --help --version  <toolchain> "
+            opts=" -h -V  --help --version  <toolchain>... "
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
                 return 0
@@ -587,7 +605,7 @@ _rustup() {
             return 0
             ;;
         rustup_target_add)
-            opts=" -h -V  --toolchain --help --version  <target> "
+            opts=" -h -V  --toolchain --help --version  <target>... "
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
                 return 0
@@ -621,7 +639,7 @@ _rustup() {
             return 0
             ;;
         rustup_target_install)
-            opts=" -h -V  --toolchain --help --version  <target> "
+            opts=" -h -V  --toolchain --help --version  <target>... "
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
                 return 0
@@ -659,7 +677,7 @@ _rustup() {
             return 0
             ;;
         rustup_target_remove)
-            opts=" -h -V  --toolchain --help --version  <target> "
+            opts=" -h -V  --toolchain --help --version  <target>... "
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
                 return 0
@@ -678,7 +696,7 @@ _rustup() {
             return 0
             ;;
         rustup_target_uninstall)
-            opts=" -h -V  --toolchain --help --version  <target> "
+            opts=" -h -V  --toolchain --help --version  <target>... "
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
                 return 0
@@ -787,7 +805,7 @@ _rustup() {
             return 0
             ;;
         rustup_toolchain_add)
-            opts=" -h -V  --help --version  <toolchain> "
+            opts=" -h -V  --help --version  <toolchain>... "
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
                 return 0
@@ -817,7 +835,7 @@ _rustup() {
             return 0
             ;;
         rustup_toolchain_install)
-            opts=" -h -V  --help --version  <toolchain> "
+            opts=" -h -V  --help --version  <toolchain>... "
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
                 return 0
@@ -862,7 +880,7 @@ _rustup() {
             return 0
             ;;
         rustup_toolchain_remove)
-            opts=" -h -V  --help --version  <toolchain> "
+            opts=" -h -V  --help --version  <toolchain>... "
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
                 return 0
@@ -877,7 +895,7 @@ _rustup() {
             return 0
             ;;
         rustup_toolchain_uninstall)
-            opts=" -h -V  --help --version  <toolchain> "
+            opts=" -h -V  --help --version  <toolchain>... "
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
                 return 0
@@ -892,7 +910,7 @@ _rustup() {
             return 0
             ;;
         rustup_toolchain_update)
-            opts=" -h -V  --help --version  <toolchain> "
+            opts=" -h -V  --help --version  <toolchain>... "
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
                 return 0
@@ -907,7 +925,7 @@ _rustup() {
             return 0
             ;;
         rustup_update)
-            opts=" -h -V  --no-self-update --help --version  <toolchain> "
+            opts=" -h -V  --no-self-update --help --version  <toolchain>... "
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
                 return 0

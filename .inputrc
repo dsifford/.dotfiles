@@ -1,4 +1,4 @@
-# ~/.inputrc: readline initialization file.
+# shellcheck disable=2148
 
 set show-all-if-ambiguous off 
 set echo-control-characters off

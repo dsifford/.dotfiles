@@ -27,20 +27,14 @@ export TERM=xterm-256color
 export COLORTERM=tmux-256color
 
 # Fix tiny QT windows on 4k monitor
-[[ $(uname -n) == 'desktop' ]] && export QT_AUTO_SCREEN_SCALE_FACTOR=2
+[[ $(uname -n) == 'archlinux' ]] && export QT_AUTO_SCREEN_SCALE_FACTOR=2
 
 # Source all completions
 # shellcheck disable=SC1090
 {
-    . ~/.bash/cargo-completion
-    . ~/.bash/docker-completion
-    . ~/.bash/docker-compose-completion
-    . ~/.bash/docker-machine-completion
-    . ~/.bash/git-completion.bash
-    . ~/.bash/git-prompt.sh
-    . ~/.bash/hub.bash_completion.sh
-    . ~/.bash/npm-completion
-    . ~/.bash/rustup-completion
+    for completion in ~/.completions/*; do
+        . "$completion"
+    done
     for completion in /etc/bash_completion.d/*; do
         . "$completion"
     done
@@ -162,7 +156,7 @@ export PS1="${GREEN}\u ${YELLOW}\w${PINK}\$(__git_ps1)\$(__docker_machine_ps1 \"
     
     else
         alias PACLIST='vim ~/.dotfiles/arch/package-list'
-        alias i3c='if [[ $(uname -n) = "desktop" ]]; then vim ~/.dotfiles/arch/i3/config.desktop; else vim ~/.dotfiles/arch/i3/config.laptop; fi'
+        alias i3c='vim ~/.dotfiles/arch/i3/config.desktop'
         alias i3cm='vim ~/.dotfiles/arch/i3/config.common'
         alias ls='ls -hF1 --color=tty'
         alias yy='yaourt -Syu --aur'
@@ -183,13 +177,11 @@ export PS1="${GREEN}\u ${YELLOW}\w${PINK}\$(__git_ps1)\$(__docker_machine_ps1 \"
     alias gs='git status'
     alias gss='git status -s'
     alias gc='git checkout'
-    alias gcm='git commit'
     alias gd='git difftool &>/dev/null'
     alias gdf='git diff --color | diff-so-fancy'
     alias gl='git log --oneline --decorate --all --graph'
     alias gca='git commit -a'
     alias gf='git fetch'
-    alias gp='git remote prune origin'
 
 ### Docker
     alias d='docker'

@@ -1,9 +1,11 @@
 // Place your settings in this file to overwrite default and user settings.
 {
     "files.associations": {
-        "bashrc": "shellscript",
+        ".inputrc": "shellscript",
+        ".tmux.conf": "shellscript",
+        ".xinitrc": "shellscript",
         "CODESYNC": "javascript",
-        "screenlayout": "shellscript",
-        "install": "shellscript"
+        "install": "shellscript",
+        "screenlayout": "shellscript"
     }
 }

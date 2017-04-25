@@ -5,9 +5,6 @@
 
 - clean: ['~']
 
-- shell:
-    - [git submodule update --init --recursive, Installing submodules]
-
 - link:
     # Scripts
     ~/bin:
@@ -21,7 +18,7 @@
     ~/.bashrc:
         force: true
         path: bash/bashrc
-    ~/.bash: bash/scripts
+    ~/.completions: bash-completions
 
     # Random Stuff
     ~/.inputrc: inputrc
@@ -32,17 +29,17 @@
     ~/.lesskey: lesskey
 
     # Taskwarrior
-    ~/.taskrc: taskwarrior/taskrc-mac
+    ~/.taskrc: taskwarrior/.taskrc.mac.conf
     ~/.task/freecinc_1dbf0215.ca.pem: taskwarrior/freecinc_1dbf0215.ca.pem
     ~/.task/freecinc_1dbf0215.cert.pem: taskwarrior/freecinc_1dbf0215.cert.pem
     ~/.task/freecinc_1dbf0215.key.pem: taskwarrior/freecinc_1dbf0215.key.pem
 
     # tmux
-    ~/.tmux.conf: tmux.conf
+    ~/.tmux.conf: .tmux.conf
 
     # VIM
-    ~/.vim: vim/vim
-    ~/.vimrc: vim/vimrc
+    ~/.vim: vim
+    ~/.vimrc: .vimrc
 
     # VS Code
     "~/Library/Application Support/Code/User": vscode

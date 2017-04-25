@@ -1,34 +1,23 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC1090
 
-if [ ! -f /usr/bin/python ]; then
-	printf "Python must be installed first.\n"
-	exit 0
-fi
+[[ ! -f /usr/bin/python ]] && echo "Python must be installed first." && exit 1
+[[ $EUID == 0 || $HOME == '/root' ]] && echo "Don't run this as root." && exit 1
 
-if [[ $EUID == 0 || $HOME == '/root' ]]; then
-	printf "Don't run this with sudo\n"
-	exit 0
-fi
+config="install.conf.$(uname -n).yml"
+dotbot_dir="dotbot"
+dotbot_bin="bin/dotbot"
+basedir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Make $HOME/bin if it doesn't exist
 mkdir -p "$HOME"/bin
 
+# Update bash-completions
+. "$basedir/bash-completions/.sources.sh"
+
 set -e
 
-if [[ $(uname) == 'Darwin' ]]; then
-	CONFIG="install.conf.mac.yaml"
-elif [[ $(uname -n) == 'desktop' ]]; then
-	CONFIG="install.conf.yaml"
-else
-    CONFIG="install.conf.laptop.yaml"
-fi
-
-DOTBOT_DIR="dotbot"
-DOTBOT_BIN="bin/dotbot"
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-cd "${BASEDIR}"
-# git submodule update --init --recursive "${DOTBOT_DIR}"
+cd "$basedir"
 git submodule update --remote --merge
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+"${basedir}/${dotbot_dir}/${dotbot_bin}" -d "${basedir}" -c "${config}" "${@}"

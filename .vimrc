@@ -2,15 +2,15 @@ filetype plugin indent on
 
 " General Settings
 set t_Co=256
-set number			" Show line numbers
-set wildmenu			" Better command menu
-set showcmd			" Show partial commands in last line of screen
-set pastetoggle=<F2>		" Toggle paste mode with F2
+set number              " Show line numbers
+set wildmenu            " Better command menu
+set showcmd             " Show partial commands in last line of screen
+set pastetoggle=<F2>    " Toggle paste mode with F2
 
 " Usability
-set ignorecase			" Required for proper smartcase functionality
-set smartcase			" Case insensitive unless typing with caps
-set autoindent			" Autoindent for language-specific settings
+set ignorecase          " Required for proper smartcase functionality
+set smartcase           " Case insensitive unless typing with caps
+set autoindent          " Autoindent for language-specific settings
 set shiftwidth=4
 set softtabstop=4
 set timeoutlen=1000 ttimeoutlen=0 " Improve escape key delay
@@ -78,4 +78,4 @@ inoremap <C-U> <C-G>u<C-U>
 
 " Colors
 syntax enable
-colorscheme dracula 
+colorscheme dracula

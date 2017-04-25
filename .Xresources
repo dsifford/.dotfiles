@@ -63,3 +63,26 @@ XTerm*geometry: 60x20
 XTerm*renderFont: true
 XTerm*faceName: Hack
 XTerm*faceSize: 18
+
+!================================================!
+!            Begin Desktop Xresources            !
+!================================================!
+
+! Display Settings
+Xft.dpi: 180
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+! Cursor Size
+Xcursor.theme: Adwaita
+Xcursor.size: 48
+
+! Font Size
+URxvt.font: xft:Monaco-16
+
+! Rofi DPI
+rofi.dpi: 180
