@@ -33,7 +33,7 @@
     ~/.i3: arch/i3/config/
 
     # Random Stuff
-    ~/.inputrc: inputrc
+    ~/.inputrc: .inputrc
     ~/.config/dunst/dunstrc: arch/dunstrc
     ~/.config/ranger/rc.conf: ranger/rc.conf
     ~/.config/ranger/scope.sh: ranger/scope.sh
@@ -52,8 +52,8 @@
     ~/.tmux.conf: tmux.conf
 
     # VIM
-    ~/.vim: vim/vim
-    ~/.vimrc: vim/vimrc
+    ~/.vim: vim
+    ~/.vimrc: .vimrc
 
     # VS Code
     ~/.config/Code/User: vscode

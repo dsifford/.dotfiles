@@ -1,23 +1,25 @@
-[user]
-	email = dereksifford@gmail.com
-	name = Derek P Sifford
-[diff]
-	tool = meld
-[merge]
-	tool = meld
-[credential]
-	helper = store
-[core]
-	editor = vim
-	autocrlf = input
-[pull]
-	rebase = true
-[rerere]
-	enabled = true
 [alias]
 	lg = log --oneline --decorate --all --graph
 	supdate = submodule update --remote --merge
-[push]
-	default = simple
+[core]
+	editor = vim
+	autocrlf = input
+[credential]
+	helper = store
+[diff]
+	tool = meld
 [difftool]
 	prompt = false
+[merge]
+	tool = meld
+[pull]
+	rebase = true
+[push]
+	default = simple
+[rerere]
+	enabled = true
+[status]
+	submodulesummary = 1
+[user]
+	email = dereksifford@gmail.com
+	name = Derek P Sifford

@@ -13,10 +13,6 @@ fi
 # Make $HOME/bin if it doesn't exist
 mkdir -p "$HOME"/bin
 
-# Clone the vundle repo if it doesn't exist
-[ ! "$(ls -A ./vim/vim/bundle/Vundle.vim)" ] && \
-    git clone https://github.com/VundleVim/Vundle.vim.git ./vim/vim/bundle/Vundle.vim
-
 set -e
 
 if [[ $(uname) == 'Darwin' ]]; then
@@ -32,6 +28,7 @@ DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd "${BASEDIR}"
-git submodule update --init --recursive "${DOTBOT_DIR}"
+# git submodule update --init --recursive "${DOTBOT_DIR}"
+git submodule update --remote --merge
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
