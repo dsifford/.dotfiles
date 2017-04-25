@@ -32,17 +32,18 @@ export COLORTERM=tmux-256color
 # Source all completions
 # shellcheck disable=SC1090
 {
-    source ~/.bash/cargo-completion
-    source ~/.bash/docker-completion
-    source ~/.bash/docker-compose-completion
-    source ~/.bash/docker-machine-completion
-    source ~/.bash/git-completion.bash
-    source ~/.bash/git-extras-completion
-    source ~/.bash/git-prompt.sh
-    source ~/.bash/hub.bash_completion.sh
-    source ~/.bash/npm-completion
-    source ~/.bash/rustup-completion
-    source ~/.bash/yarn-completion.bash
+    . ~/.bash/cargo-completion
+    . ~/.bash/docker-completion
+    . ~/.bash/docker-compose-completion
+    . ~/.bash/docker-machine-completion
+    . ~/.bash/git-completion.bash
+    . ~/.bash/git-prompt.sh
+    . ~/.bash/hub.bash_completion.sh
+    . ~/.bash/npm-completion
+    . ~/.bash/rustup-completion
+    for completion in /etc/bash_completion.d/*; do
+        . "$completion"
+    done
 }
 
 
@@ -123,11 +124,6 @@ export PS1="${GREEN}\u ${YELLOW}\w${PINK}\$(__git_ps1)\$(__docker_machine_ps1 \"
         docker exec -it "$(docker ps -q -n="$1" | tail -n 1)" /bin/bash -c "export TERM=xterm; exec bash"
     }
 
-### Git
-    gra () {
-        git remote add origin https://github.com/dsifford/"$1".git
-    }
-
 ### Rust
     rust () {
         if [[ ! -f "$1" || ! "$1" =~ \.rs$ ]]; then
@@ -170,13 +166,12 @@ export PS1="${GREEN}\u ${YELLOW}\w${PINK}\$(__git_ps1)\$(__docker_machine_ps1 \"
         alias i3cm='vim ~/.dotfiles/arch/i3/config.common'
         alias ls='ls -hF1 --color=tty'
         alias yy='yaourt -Syu --aur'
+        # Verbosely rate the 200 most recently synchronized HTTP servers located in the US,
+        # sort them by download rate, and overwrite the file /etc/pacman.d/mirrorlist
+        alias pacman-update='sudo reflector --verbose --country "United States" -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
     fi
 
 ### Arch
-    # Verbosely rate the 200 most recently synchronized HTTP servers located in the US,
-    # sort them by download rate, and overwrite the file /etc/pacman.d/mirrorlist
-    alias pacman-update='sudo reflector --verbose --country "United States" -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
-
     # Reset caps lock as escape
     alias CAPS='setxkbmap -option caps:escape'
     alias SPOTIFY='spotify --force-device-scale-factor=2 >/dev/null 2>&1 &'
@@ -201,7 +196,3 @@ export PS1="${GREEN}\u ${YELLOW}\w${PINK}\$(__git_ps1)\$(__docker_machine_ps1 \"
     alias di='docker images'
     alias dm='docker-machine'
     alias dc='docker-compose'
-
-    # Better format for "docker ps"
-    alias dpsa='docker ps -a --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}" | less -S'
-

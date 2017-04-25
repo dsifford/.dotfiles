@@ -16,6 +16,7 @@
 	enabled = true
 [alias]
 	lg = log --oneline --decorate --all --graph
+	supdate = submodule update --remote --merge
 [push]
 	default = simple
 [difftool]

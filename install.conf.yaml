@@ -15,13 +15,6 @@
     - [cat "$HOME/.dotfiles/arch/dunst/dunstrc.desktop" > "$HOME/.dotfiles/arch/dunstrc"]
 
 - link:
-    # Atom
-    ~/.atom/packages.cson: atom/packages.cson
-    ~/.atom/init.js: atom/init.js
-    ~/.atom/keymap.cson: atom/keymap.cson
-    ~/.atom/snippets.cson: atom/snippets.cson
-    ~/.atom/styles.less: atom/styles.less
-
     # Scripts
     ~/bin:
         force: true

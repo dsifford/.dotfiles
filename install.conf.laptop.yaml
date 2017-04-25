@@ -16,9 +16,6 @@
     - [cat "$HOME/.dotfiles/arch/dunst/dunstrc.laptop" > "$HOME/.dotfiles/arch/dunstrc"]
 
 - link:
-    # Atom
-    ~/.atom/packages.cson: packages.cson
-
     # Scripts
     ~/bin:
         force: true

@@ -7,8 +7,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Insert all Vundle Plugins below
 
-Plugin 'godlygeek/tabular'		" Markdown tab formatting
-Plugin 'plasticboy/vim-markdown'	" Markdown
 Plugin 'scrooloose/nerdtree'		" NERDtree
 Plugin 'dracula/vim'			" Dracula theme
 
