@@ -1,6 +1,4 @@
-#
-# ~/.bash_profile
-#
+# shellcheck shell=bash disable=SC1090
 
 # Source bashrc
 [[ -f ~/.bashrc ]] && . ~/.bashrc

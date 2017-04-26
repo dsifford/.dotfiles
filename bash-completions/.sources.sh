@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 
 get_completions() {
-    local aliases=( d dc dm g )
-    local completions_dir
-    local src a
+    local completions_dir src a
+    local aliases=(
+        d   # docker
+        dc  # docker-compose
+        dm  # docker-machine
+        g   # git
+        y   # yarn
+    )
     local -A completion_sources=(
         [complete-alias]='https://raw.githubusercontent.com/cykerway/complete-alias/master/completions/bash_completion.sh'
         [cargo]='https://raw.githubusercontent.com/rust-lang/cargo/master/src/etc/cargo.bashcomp.sh'

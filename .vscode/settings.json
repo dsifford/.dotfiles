@@ -7,5 +7,6 @@
         "CODESYNC": "javascript",
         "install": "shellscript",
         "screenlayout": "shellscript"
-    }
+    },
+    "editor.renderWhitespace": "boundary"
 }
