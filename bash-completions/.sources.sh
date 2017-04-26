@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
 get_completions() {
+    local aliases=( d dc dm g )
     local completions_dir
-    local src
+    local src a
     local -A completion_sources=(
+        [complete-alias]='https://raw.githubusercontent.com/cykerway/complete-alias/master/completions/bash_completion.sh'
         [cargo]='https://raw.githubusercontent.com/rust-lang/cargo/master/src/etc/cargo.bashcomp.sh'
         [docker-compose]='https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose'
         [docker-machine]='https://raw.githubusercontent.com/docker/machine/master/contrib/completion/bash/docker-machine.bash'
@@ -18,7 +20,11 @@ get_completions() {
     for src in "${!completion_sources[@]}"; do
         echo Installing "$src" completions
         curl -# -o "$completions_dir/$src.sh" "${completion_sources[$src]}"
-    done 
+    done
+
+    for a in "${aliases[@]}"; do
+        echo "complete -F _complete_alias $a" >> "$completions_dir/complete-alias.sh"
+    done
 
     command -v rustup >/dev/null && rustup completions bash > "$completions_dir/rustup.sh"
 }

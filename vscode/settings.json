@@ -20,7 +20,7 @@
     "editor.fontSize": 16,
     "editor.minimap.enabled": true,
     "editor.renderIndentGuides": true,
-    "editor.renderWhitespace": "none",
+    "editor.renderWhitespace": "all",
     "editor.snippetSuggestions": "inline",
     "editor.wordWrap": "off",
     "eslint.nodePath": "/home/dsifford/.yarn-global",
@@ -55,6 +55,6 @@
     "workbench.iconTheme": "vs-seti",
     "workbench.welcome.enabled": false,
     "projectManager.openInNewWindow": false,
-    "workbench.colorTheme": "Dracula",
-    "keyboard.dispatch": "keyCode"
+    "keyboard.dispatch": "keyCode",
+    "workbench.colorTheme": "Dracula"
 }

@@ -40,7 +40,6 @@ export COLORTERM=tmux-256color
     done
 }
 
-
 # Format Prompt
 # user ~/current/working/dir (repository) DOCKER_MACHINE_NAME $
 
@@ -159,7 +158,6 @@ export PS1="${GREEN}\u ${YELLOW}\w${PINK}\$(__git_ps1)\$(__docker_machine_ps1 \"
         alias i3c='vim ~/.dotfiles/arch/i3/config.desktop'
         alias i3cm='vim ~/.dotfiles/arch/i3/config.common'
         alias ls='ls -hF1 --color=tty'
-        alias yy='yaourt -Syu --aur'
         # Verbosely rate the 200 most recently synchronized HTTP servers located in the US,
         # sort them by download rate, and overwrite the file /etc/pacman.d/mirrorlist
         alias pacman-update='sudo reflector --verbose --country "United States" -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'

@@ -241,12 +241,12 @@ mode "resize" {
         bindsym Down resize grow down 
         bindsym Up resize grow up
         bindsym Right resize grow right
-	
-	# shrink
-	bindsym $mod+Left resize shrink right
-	bindsym $mod+Down resize shrink up
-	bindsym $mod+Up resize shrink down
-	bindsym $mod+Right resize shrink left
+    
+    # shrink
+    bindsym $mod+Left resize shrink right
+    bindsym $mod+Down resize shrink up
+    bindsym $mod+Up resize shrink down
+    bindsym $mod+Right resize shrink left
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -255,34 +255,34 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Class			border	backgr	text	indicator   child_border
-client.focused		#44475a #282836 #f8f8f2 #ff79c6	    #44475a
-client.focused_inactive #282a36 #282a36 #6272a4 #ff79c6     #282a36
-client.unfocused        #282a36 #282a36 #6272a4 #ff79c6     #282a36
-client.urgent		#282a36 #282a36 #ff5555 #ff79c6	    #282a36
-#client.placeholder
+# Class                 border  backgr  text    indicator  child_border
+client.focused          #44475a #282836 #f8f8f2 #ff79c6    #44475a
+client.focused_inactive #282a36 #282a36 #6272a4 #ff79c6    #282a36
+client.unfocused        #282a36 #282a36 #6272a4 #ff79c6    #282a36
+client.urgent           #282a36 #282a36 #ff5555 #ff79c6    #282a36
+
 #==================================================
 #           BEGIN DESKTOP i3BAR SETTINGS
 #==================================================
 
 bar {
-	colors {
-		background #282a36
-		statusline #f8f8f2
-		separator  #ff79c6
+    colors {
+        background #282a36
+        statusline #f8f8f2
+        separator  #ff79c6
 
-		# Type             border  background  font
-		focused_workspace  #44475a #44475a     #50fa7b
-		active_workspace   #44475a #44475a     #f8f8f2
-		inactive_workspace #44475a #44475a     #6272a4
-		urgent_workspace   #44475a #44475a     #ff5555
-	}
-	output DP-2
-	font pango: Monaco 14 
-	position top
-	tray_output none
-	# using custom i3status.conf
-	status_command i3blocks -c $HOME/.i3/i3blocks.conf
+        # Type             border  background  font
+        focused_workspace  #44475a #44475a     #50fa7b
+        active_workspace   #44475a #44475a     #f8f8f2
+        inactive_workspace #44475a #44475a     #6272a4
+        urgent_workspace   #44475a #44475a     #ff5555
+    }
+    output DP-2
+    font pango: Monaco 14 
+    position top
+    tray_output none
+    # using custom i3status.conf
+    status_command i3blocks -c $HOME/.i3/i3blocks.conf
 }
 
 bar {
@@ -293,9 +293,9 @@ bar {
 
         # Type             border  background  font
         focused_workspace  #44475a #44475a     #50fa7b
-		active_workspace   #44475a #44475a     #f8f8f2
-		inactive_workspace #44475a #44475a     #6272a4
-		urgent_workspace   #44475a #44475a     #ff5555
+        active_workspace   #44475a #44475a     #f8f8f2
+        inactive_workspace #44475a #44475a     #6272a4
+        urgent_workspace   #44475a #44475a     #ff5555
     }
     output DP-4
     position top
