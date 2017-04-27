@@ -51,6 +51,7 @@ color.blocking=black on color15
 color.tagged=color15
 color.tag.school=on rgb010
 color.tag.aliem=white on rgb022
+color.tag.misc=black on white
 
 # Urgency Settings for Projects
 urgency.user.project.tv.coefficient=-1
@@ -60,7 +61,7 @@ report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,s
 
 # Sync settings
 taskd.server=freecinc.com:53589
-taskd.key=\/Users\/dsifford\/.task\/freecinc_1dbf0215.key.pem
-taskd.certificate=\/Users\/dsifford\/.task\/freecinc_1dbf0215.cert.pem
-taskd.ca=\/Users\/dsifford\/.task\/freecinc_1dbf0215.ca.pem
+taskd.key=~/.task\/freecinc.key.pem
+taskd.certificate=~/.task\/freecinc.cert.pem
+taskd.ca=~/.task\/freecinc.ca.pem
 taskd.credentials=FreeCinc\/freecinc_1dbf0215\/861ea477-29ee-4d55-93ad-24b28bdee831

@@ -33,10 +33,7 @@
     ~/.gitconfig: .gitconfig.global.conf
 
     # Taskwarrior
-    ~/.taskrc: taskwarrior/.taskrc.conf
-    ~/.task/freecinc_1dbf0215.ca.pem: taskwarrior/freecinc_1dbf0215.ca.pem
-    ~/.task/freecinc_1dbf0215.cert.pem: taskwarrior/freecinc_1dbf0215.cert.pem
-    ~/.task/freecinc_1dbf0215.key.pem: taskwarrior/freecinc_1dbf0215.key.pem
+    ~/.taskrc: .taskrc
 
     # tmux
     ~/.tmux.conf: .tmux.conf

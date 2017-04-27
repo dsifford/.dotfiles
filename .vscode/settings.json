@@ -3,6 +3,7 @@
     "files.associations": {
         ".inputrc": "shellscript",
         ".tmux.conf": "shellscript",
+        ".taskrc": "properties",
         ".xinitrc": "shellscript",
         "CODESYNC": "javascript",
         "install": "shellscript",

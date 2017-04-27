@@ -15,7 +15,13 @@ mkdir -p "$HOME"/bin
 # Update bash-completions
 . "$basedir/bash-completions/.sources.sh"
 
+# Exit immediately on exit failures
 set -e
+
+# Get secure files from lastpass
+lpass show --notes taskwarrior-ca > ~/.task/freecinc.ca.pem
+lpass show --notes taskwarrior-cert > ~/.task/freecinc.cert.pem
+lpass show --notes taskwarrior-key > ~/.task/freecinc.key.pem
 
 cd "$basedir"
 git submodule update --remote --merge
