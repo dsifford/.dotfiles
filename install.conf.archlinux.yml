@@ -6,45 +6,23 @@
 - clean: ['~']
 
 - link:
-    # Scripts
-    ~/bin:
-        force: true
-        path: scripts
-
-    # bash
+    ~/.Xresources:
     ~/.bash_profile:
-        force: true
-        path: .bash_profile
     ~/.bashrc:
-        force: true
-        path: .bashrc
-    ~/.completions: bash-completions
+    ~/.completions:
+    ~/.gitconfig:
+    ~/.i3:
+    ~/.inputrc:
+    ~/.taskrc:
+    ~/.tmux.conf:
+    ~/.vim:
+    ~/.vimrc:
+    ~/.xinitrc:
+    ~/bin:
 
-    # i3wm
-    ~/.i3: i3/
-
-    # Random Stuff
-    ~/.inputrc: .inputrc
-    ~/.config/dunst/dunstrc: dunstrc.conf
-    ~/.config/ranger/rc.conf: ranger/rc.conf
-    ~/.config/ranger/scope.sh: ranger/scope.sh
-    ~/.config/ranger/rifle.conf: ranger/rifle.conf
-    ~/.config/ranger/colorschemes: ranger/colorschemes
-    ~/.gitconfig: .gitconfig.global.conf
-
-    # Taskwarrior
-    ~/.taskrc: .taskrc
-
-    # tmux
-    ~/.tmux.conf: .tmux.conf
-
-    # VIM
-    ~/.vim: vim
-    ~/.vimrc: .vimrc
-
-    # VS Code
     ~/.config/Code/User: vscode
-
-    # X
-    ~/.xinitrc: .xinitrc
-    ~/.Xresources: .Xresources
+    ~/.config/dunst/dunstrc: dunstrc.conf
+    ~/.config/ranger/colorschemes: ranger/colorschemes
+    ~/.config/ranger/rc.conf: ranger/rc.conf
+    ~/.config/ranger/rifle.conf: ranger/rifle.conf
+    ~/.config/ranger/scope.sh: ranger/scope.sh
