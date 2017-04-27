@@ -64,62 +64,63 @@ export PS1="${GREEN}\u ${YELLOW}\w${PINK}\$(__git_ps1)\$(__docker_machine_ps1 \"
 #------------------Shell Scripts---------------------#
 
 ### Files / Directories
-    mcd() {
-        mkdir -p "$1"
-        cd "$1" || exit
-    }
+mcd() {
+    mkdir -p "$1"
+    cd "$1" || exit
+}
+
+ranger-cd() {
+    tempfile="$(mktemp -t tmp.XXXXXX)"
     
-    ranger-cd() {
-        tempfile="$(mktemp -t tmp.XXXXXX)"
-        
-        if [[ $(uname) == 'Darwin' ]]; then
-            /usr/local/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
-        else
-            /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
-        fi
-        
-        test -f "$tempfile" &&
-        if [ "$(cat "$tempfile")" != "$(echo -n 'pwd')" ]; then
-            cd "$(cat "$tempfile")" || exit
-        fi
-        
-        rm -f "$tempfile"
-    }
-    bind '"\C-o":"ranger-cd\C-m"'
+    if [[ $(uname) == 'Darwin' ]]; then
+        /usr/local/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+    else
+        /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+    fi
+    
+    test -f "$tempfile" &&
+    if [ "$(cat "$tempfile")" != "$(echo -n 'pwd')" ]; then
+        cd "$(cat "$tempfile")" || exit
+    fi
+    
+    rm -f "$tempfile"
+}
+bind '"\C-o":"ranger-cd\C-m"'
 
 ### Docker
-    setenv() { eval "$(docker-machine env "$1")"; }
 
-    # Remove either untagged images or a variable number of images (1-9)
-    drmi() {
-        if [[ $1 = @(u|un) ]]; then
-            docker rmi "$(docker images -f dangling=true -q)"
-        elif [[ "$1" = [1-9] ]]; then
-            docker rmi "$(docker images -q | head -"$1")"
-        fi
-    }
+setenv() { eval "$(docker-machine env "$1")"; }
 
-    # Open an interactive bash session in container N (counting from top)
-    dx() {
-        docker exec -it "$(docker ps -q -n="$1" | tail -n 1)" /bin/bash -c "export TERM=xterm; exec bash"
-    }
+# Remove either untagged images or a variable number of images (1-9)
+drmi() {
+    if [[ $1 = @(u|un) ]]; then
+        docker rmi "$(docker images -f dangling=true -q)"
+    elif [[ "$1" = [1-9] ]]; then
+        docker rmi "$(docker images -q | head -"$1")"
+    fi
+}
+
+# Open an interactive bash session in container N (counting from top)
+dx() {
+    docker exec -it "$(docker ps -q -n="$1" | tail -n 1)" /bin/bash -c "export TERM=xterm; exec bash"
+}
 
 ### Rust
-    rust() {
-        if [[ ! -f "$1" || ! "$1" =~ \.rs$ ]]; then
-            echo "Enter a valid rust source file."
-            return
-        fi
-        rustc -o /tmp/rustfile "$1" && /tmp/rustfile
-    }
+rust() {
+    if [[ ! -f "$1" || ! "$1" =~ \.rs$ ]]; then
+        echo "Enter a valid rust source file."
+        return
+    fi
+    rustc -o /tmp/rustfile "$1" && /tmp/rustfile
+}
 
 ### Taskwarrior
-    ta() {
-        task add "$@" && task sync
-    }
-    td() {
-        task "$1" 'done' && task sync
-    }
+ta() {
+    task add "$@" && task sync
+}
+td() {
+    task "$1" 'done' && task sync
+}
 
 #---------------------- Aliases-----------------------#
 
@@ -131,6 +132,23 @@ alias t='task'
 alias y='yarn'
 alias yu='yarn upgrade-interactive'
 alias yug='yarn global upgrade-interactive'
+
+### Git
+alias git='hub'
+alias g='git'
+alias gb='git branch -a'
+alias gs='git status'
+alias gss='git status -s'
+alias gc='git checkout'
+alias gl='git log --oneline --decorate --all --graph'
+alias gca='git commit -a'
+alias gf='git fetch'
+
+### Docker
+alias d='docker'
+alias di='docker images'
+alias dm='docker-machine'
+alias dc='docker-compose'
 
 if [[ $(uname) == 'Darwin' ]]; then
     
@@ -149,22 +167,3 @@ else
     # sort them by download rate, and overwrite the file /etc/pacman.d/mirrorlist
     alias pacman-update='sudo reflector --verbose --country "United States" -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
 fi
-
-### Git
-alias git='hub'
-alias g='git'
-alias gb='git branch -a'
-alias gs='git status'
-alias gss='git status -s'
-alias gc='git checkout'
-alias gd='git difftool &>/dev/null'
-alias gdf='git diff --color | diff-so-fancy'
-alias gl='git log --oneline --decorate --all --graph'
-alias gca='git commit -a'
-alias gf='git fetch'
-
-### Docker
-alias d='docker'
-alias di='docker images'
-alias dm='docker-machine'
-alias dc='docker-compose'

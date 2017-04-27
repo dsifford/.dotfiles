@@ -11,7 +11,6 @@ fi
 [ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
 
 /usr/bin/numlockx on
-# /home/dsifford/bin/screenlayout
 /usr/bin/xrandr --output DP-2 --primary --mode 3840x2160 --pos 2160x0 --rotate normal --output DP-4 --mode 3840x2160 --pos 0x0 --rotate right
 
 udiskie &
