@@ -4,7 +4,7 @@
 [[ ! -f /usr/bin/python ]] && echo "Python must be installed first." && exit 1
 [[ $EUID == 0 || $HOME == '/root' ]] && echo "Don't run this as root." && exit 1
 
-config="install.conf.$(uname -n).yml"
+config=".install.conf.$(uname -n).yml"
 dotbot_dir="dotbot"
 dotbot_bin="bin/dotbot"
 basedir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -25,7 +25,7 @@ while test $# -gt 0; do
 done
 
 # Update bash-completions
-. "$basedir/completions/.sources.sh"
+. "$basedir/shell/completions/.sources.sh"
 
 # Exit immediately on exit failures
 set -e

@@ -6,23 +6,19 @@
 - clean: ['~']
 
 - link:
-    ~/.Xresources:
     ~/.bash_profile:
     ~/.bashrc:
-    ~/.completions:
     ~/.gitconfig:
-    ~/.i3:
     ~/.inputrc:
+    ~/.shell:
     ~/.taskrc:
     ~/.tmux.conf:
     ~/.vim:
     ~/.vimrc:
-    ~/.xinitrc:
     ~/bin:
 
-    ~/.config/Code/User: vscode
-    ~/.config/dunst/dunstrc: dunstrc.conf
     ~/.config/ranger/colorschemes: ranger/colorschemes
     ~/.config/ranger/rc.conf: ranger/rc.conf
     ~/.config/ranger/rifle.conf: ranger/rifle.conf
     ~/.config/ranger/scope.sh: ranger/scope.sh
+    "~/Library/Application Support/Code/User": vscode

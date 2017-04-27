@@ -20,7 +20,8 @@ get_completions() {
         [hub]='https://raw.githubusercontent.com/github/hub/master/etc/hub.bash_completion.sh'
     )
 
-    completions_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    completions_dir="$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd )"
+    project_dir="$( cd "$completions_dir" && cd ../../ && pwd )"
 
     for src in "${!completion_sources[@]}"; do
         echo Installing "$src" completions

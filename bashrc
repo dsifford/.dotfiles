@@ -32,7 +32,7 @@ export COLORTERM=tmux-256color
 # Source all completions
 # shellcheck disable=SC1090
 {
-    for completion in ~/.completions/*; do
+    for completion in ~/.shell/completions/*; do
         . "$completion"
     done
     for completion in /etc/bash_completion.d/*; do
@@ -71,18 +71,18 @@ mcd() {
 
 ranger-cd() {
     tempfile="$(mktemp -t tmp.XXXXXX)"
-    
+
     if [[ $(uname) == 'Darwin' ]]; then
         /usr/local/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
     else
         /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
     fi
-    
+
     test -f "$tempfile" &&
     if [ "$(cat "$tempfile")" != "$(echo -n 'pwd')" ]; then
         cd "$(cat "$tempfile")" || exit
     fi
-    
+
     rm -f "$tempfile"
 }
 bind '"\C-o":"ranger-cd\C-m"'
@@ -151,9 +151,9 @@ alias dm='docker-machine'
 alias dc='docker-compose'
 
 if [[ $(uname) == 'Darwin' ]]; then
-    
+
     alias ls='ls -FHG11'
-    
+
     runcpp() {
         g++ -std=c++11 "$@" -o /tmp/cpprunfile && /tmp/cpprunfile
     }

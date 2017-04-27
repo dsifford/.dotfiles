@@ -10,7 +10,8 @@
         "xinitrc": "shellscript",
         "CODESYNC": "javascript",
         "install": "shellscript",
-        "screenlayout": "shellscript"
+        "screenlayout": "shellscript",
+        "vimrc": "viml"
     },
     "files.trimTrailingWhitespace": true,
     "editor.renderWhitespace": "boundary"
