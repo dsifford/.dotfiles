@@ -6,37 +6,19 @@
 - clean: ['~']
 
 - link:
-    # Scripts
-    ~/bin:
-        force: true
-        path: scripts
-
-    # bash
     ~/.bash_profile:
-        force: true
-        path: bash/bash_profile
     ~/.bashrc:
-        force: true
-        path: bash/bashrc
-    ~/.completions: bash-completions
+    ~/.completions:
+    ~/.gitconfig:
+    ~/.inputrc:
+    ~/.taskrc:
+    ~/.tmux.conf:
+    ~/.vim:
+    ~/.vimrc:
+    ~/bin:
 
-    # Random Stuff
-    ~/.inputrc: inputrc
+    ~/.config/ranger/colorschemes: ranger/colorschemes
     ~/.config/ranger/rc.conf: ranger/rc.conf
-    ~/.config/ranger/scope.sh: ranger/scope.sh
     ~/.config/ranger/rifle.conf: ranger/rifle.conf
-    ~/.gitconfig: gitconfig
-    ~/.lesskey: lesskey
-
-    # Taskwarrior
-    ~/.taskrc: .taskrc
-
-    # tmux
-    ~/.tmux.conf: .tmux.conf
-
-    # VIM
-    ~/.vim: vim
-    ~/.vimrc: .vimrc
-
-    # VS Code
+    ~/.config/ranger/scope.sh: ranger/scope.sh
     "~/Library/Application Support/Code/User": vscode
