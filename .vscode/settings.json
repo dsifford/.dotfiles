@@ -8,5 +8,6 @@
         "install": "shellscript",
         "screenlayout": "shellscript"
     },
+    "files.trimTrailingWhitespace": true,
     "editor.renderWhitespace": "boundary"
 }
