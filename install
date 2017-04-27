@@ -13,8 +13,9 @@ args=()
 while test $# -gt 0; do
     case "$1" in
         --packages)
-            [[ $(uname -n) == 'archlinux' ]] && args+=( --plugin-dir "$basedir/plugins/dotbot-pacaur" ) && args+=( -c "$basedir/packages.yml" )
-            [[ $(uname -n) == 'osx' ]] && args+=( --plugin-dir "$basedir/plugins/dotbot-brew" ) && args+=( -c "$basedir/packages.yml" )
+            [[ $(uname -n) == 'archlinux' ]] && args+=( --plugin-dir "$basedir/plugins/dotbot-pacaur" )
+            [[ $(uname -n) == 'osx' ]] && args+=( --plugin-dir "$basedir/plugins/dotbot-brew" )
+            args+=( -c "$basedir/.packages.yml" )
             shift
             ;;
         *)
