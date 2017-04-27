@@ -9,6 +9,21 @@ dotbot_dir="dotbot"
 dotbot_bin="bin/dotbot"
 basedir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+args=()
+while test $# -gt 0; do
+    case "$1" in
+        --packages)
+            [[ $(uname -n) == 'archlinux' ]] && args+=( --plugin-dir "$basedir/plugins/dotbot-pacaur" ) && args+=( -c "$basedir/packages.yml" )
+            [[ $(uname -n) == 'osx' ]] && args+=( --plugin-dir "$basedir/plugins/dotbot-brew" ) && args+=( -c "$basedir/packages.yml" )
+            shift
+            ;;
+        *)
+            args+=( "$1" )
+            shift
+            ;;
+    esac
+done
+
 # Update bash-completions
 . "$basedir/completions/.sources.sh"
 
@@ -23,4 +38,4 @@ lpass show --notes taskwarrior-key > ~/.task/freecinc.key.pem
 cd "$basedir"
 git submodule update --remote --merge
 
-"${basedir}/${dotbot_dir}/${dotbot_bin}" -d "${basedir}" -c "${config}" "${@}"
+"${basedir}/${dotbot_dir}/${dotbot_bin}" -d "${basedir}" -c "${config}" "${args[@]}"
