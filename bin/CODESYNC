@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#
+# Small script used for syncing VSCode extensions between machines
+#
 
 declare -A installed
 declare -A saved
