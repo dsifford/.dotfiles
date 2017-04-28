@@ -1,70 +1,32 @@
-#!/usr/bin/env node
-const { readFile, writeFile } = require('fs');
-const { exec, spawn } = require('child_process');
-const SAVED_EXTENSIONS = process.platform === 'darwin'
-    ? process.env.HOME + '/Library/Application Support/Code/User/extensions.json'
-    : process.env.HOME + '/.config/Code/User/extensions.json';
-const ARG = process.argv[2];
+#!/usr/bin/env bash
 
-if (ARG !== 'push' && ARG !== 'pull') {
-    console.log('Argument must be "push" or "pull"');
-    process.exit();
-}
+declare -A installed
+declare -A saved
 
-const listInstalled = execPromise('code --list-extensions').then(stdout => stdout.split('\n').filter(Boolean));
-const listSaved = readFilePromise(SAVED_EXTENSIONS);
+# Update extension list if "push" arg given
+case "$1" in
+    push)
+        code --list-extensions | sort > ~/.dotfiles/vscode/extensions.txt
+        echo Updated extensions.txt.
+        ;;
+esac
 
-Promise.all([listInstalled, listSaved]).then(([installed, saved]) => {
-    if (ARG === 'push') {
-        writeFile(SAVED_EXTENSIONS, JSON.stringify(installed, null, 4), err => {
-            if (err) throw err;
-            console.log('Updated extensions.json.');
-        });
-        return;
-    }
-    
-    const orphaned = installed
-        .filter(ext => saved.indexOf(ext) === -1)
-        .map(ext => spawnPromise(`yes 0 | code --uninstall-extension ${ext}`));
-    const missing = saved
-        .filter(ext => installed.indexOf(ext) === -1)
-        .map(ext => execPromise(`code --install-extension ${ext}`));
-    
-    const removeOrphaned = Promise.all(orphaned);
-    const installMissing = Promise.all(missing);
+# Get all currently installed extensions
+for i in $(code --list-extensions); do
+    installed["$i"]="$i"
+done
 
-    return Promise.all([removeOrphaned, installMissing]).then(stdout => {
-        console.log('Done.');
-        process.exit();
-    });
-});
+# Get the saved extension list
+while read -r i; do
+    saved["$i"]="$i"
+done < ~/.dotfiles/vscode/extensions.txt
 
-function spawnPromise(cmd) {
-    return new Promise((res, rej) => {
-        const p = spawn(cmd, [], { shell: true });
-        p.stdout.on('data', data => {
-            res(data);
-        });
-        p.on('error', rej);
-        p.stderr.on('data', rej);
-    });
-}
+# If an installed extension is not found in the extension list, remove it.
+for i in "${installed[@]}"; do
+    [ ! "${saved["$i"]}" ] && code --uninstall-extension "$i"
+done
 
-function execPromise(cmd) {
-    return new Promise((res, rej) => {
-        exec(cmd, (err, stdout, stderr) => {
-            if (err) rej(err);
-            if (stderr) rej(stderr);
-            res(stdout);
-        });
-    });
-}
-
-function readFilePromise(file) {
-    return new Promise((res, rej) => {
-        readFile(file, 'utf-8', (err, data) => {
-            if (err) rej(err);
-            res(JSON.parse(data).sort());
-        });
-    });
-}
+# If a saved extension is not installed, install it
+for i in "${saved[@]}"; do
+    [ ! "${installed[$i]}" ] && code --install-extension "$i"
+done

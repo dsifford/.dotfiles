@@ -25,21 +25,18 @@ export RUST_SRC_PATH
 [[ $(uname -n) == 'archlinux' ]] && export QT_AUTO_SCREEN_SCALE_FACTOR=2
 
 # Source all completions
-for completion in ~/.shell/completions/*; do
-    . "$completion"
-done
-for completion in /etc/bash_completion.d/*; do
-    . "$completion"
+for completion in ~/.shell/completions/* /etc/bash_completion.d/*; do
+    [ -f "$completion" ] && . "$completion"
 done
 
 # Set up system path
-. ~/.shell/.path
+. ~/.shell/.path.sh
 
 # Set up terminal prompt
-. ~/.shell/.prompt
+. ~/.shell/.prompt.sh
 
 # Import functions
-. ~/.shell/.functions
+. ~/.shell/.functions.sh
 
 # Import aliases
-. ~/.shell/.aliases
+. ~/.shell/.aliases.sh

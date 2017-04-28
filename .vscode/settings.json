@@ -1,17 +1,11 @@
 // Place your settings in this file to overwrite default and user settings.
 {
     "files.associations": {
-        ".aliases": "shellscript",
-        ".functions": "shellscript",
-        ".path": "shellscript",
-        ".prompt": "shellscript",
-        "CODESYNC": "javascript",
-        "TESTER": "shellscript",
+        "**/bin/*": "shellscript",
         "bash_profile": "shellscript",
         "bashrc": "shellscript",
         "inputrc": "shellscript",
         "install": "shellscript",
-        "screenlayout": "shellscript",
         "taskrc": "properties",
         "tmux.conf": "shellscript",
         "vimrc": "viml",
