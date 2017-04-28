@@ -1,12 +1,13 @@
-#================================================
-#           BEGIN DESKTOP CONFIG
-#================================================
 
-# Global mod key
+# Global mod key = Win/Cmd button
 set $mod Mod4
 
-# Hide container borders
+# Hide borders
 hide_edge_borders both
+
+# Set borders to none for all new windows
+new_window pixel 1
+new_float pixel 1
 
 # Set desktop background
 exec --no-startup-id feh --no-fehbg --bg-fill http://wallpapercave.com/wp/NyaITD5.png
@@ -18,7 +19,7 @@ exec --no-startup-id dunst
 # Startup Applets
 exec --no-startup-id nm-applet
 exec --no-startuo-id pasystray
-exec --no-startup-id redshift -l 42.729336197453655:-82.99709570068359
+exec --no-startup-id redshift -l geoclue2
 exec --no-startup-id blueman-applet
 
 # Startup Apps
@@ -29,7 +30,6 @@ exec --no-startup-id dropbox start
 workspace 1 output DP-4
 workspace 2 output DP-2
 workspace Spotify output DP-4
-workspace Atom output DP-2
 workspace Code output DP-2
 
 # Disable mouse warping
@@ -38,22 +38,26 @@ mouse_warping none
 # Floating Terminal
 exec --no-startup-id urxvt -name MAINTERM -e bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -nMain -sHOME"
 bindsym $mod+Home exec --no-startup-id urxvt -name MAINTERM -e bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -nMain -sHOME"
-for_window [instance="MAINTERM"] floating enable, border pixel 0, resize set 3850 1000, move position 2160px 45px, move scratchpad;
+for_window [instance="MAINTERM"] floating enable, border pixel 0, resize set 3850 1000, move position 2160px 45px, move scratchpad
 bindsym Control+space focus output DP-2, [instance="MAINTERM"] scratchpad show
 
 #===============APP WINDOW CONFIG================
+
+# Floating gif window
+for_window [class="Gifview"] floating enable
+for_window [class="Animate"] floating enable, move position center
 
 # Meld
 for_window [class="Meld"] floating enable
 
 # Chrome pop-up windows
-for_window[class="Google-chrome-unstable" window_role="pop-up"] floating enable, move position center
+for_window [class="Google-chrome-unstable" window_role="pop-up"] floating enable, move position center
 
 # Simple Screen Recorder
 for_window [class="Simplescreenrecorder"] floating enable
 
 # Slack
-for_window [class="Slack"] move to workspace 1;
+for_window [class="Slack"] move to workspace 1
 
 # Spotify
 exec --no-startup-id spotify --force-device-scale-factor=2
@@ -107,14 +111,6 @@ bindsym --whole-window $mod+Shift+button3 kill
 bindsym Mod1+space exec "rofi -m 0 -show window"
 bindsym $mod+space exec "rofi -m 0 -disable-history -show run"
 
-# Set borders to none
-new_window pixel 1
-new_float pixel 1
-
-# Floating gif window
-for_window [class="Gifview"] floating enable;
-for_window [class="Animate"] floating enable, move position center;
-
 #================================================
 #             BEGIN i3 DEFAULTS
 #================================================
@@ -122,7 +118,7 @@ for_window [class="Animate"] floating enable, move position center;
 # Set default font
 font pango:Monaco 7
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+# Use Mouse+$mod to drag floating windows to their desired position
 floating_modifier $mod
 
 # kill focused window
@@ -166,9 +162,6 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
-#bindsym $mod+Shift+space floating toggle
-
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -204,22 +197,22 @@ bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed 
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-        # grow
-        bindsym Left resize grow left
-        bindsym Down resize grow down
-        bindsym Up resize grow up
-        bindsym Right resize grow right
+    # grow
+    bindsym Left resize grow left
+    bindsym Down resize grow down
+    bindsym Up resize grow up
+    bindsym Right resize grow right
 
     # shrink
     bindsym $mod+Left resize shrink right
@@ -227,11 +220,10 @@ mode "resize" {
     bindsym $mod+Up resize shrink down
     bindsym $mod+Right resize shrink left
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
-
 bindsym $mod+r mode "resize"
 
 # Class                 border  backgr  text    indicator  child_border
