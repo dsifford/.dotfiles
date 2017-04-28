@@ -1,17 +1,21 @@
 // Place your settings in this file to overwrite default and user settings.
 {
     "files.associations": {
+        ".aliases": "shellscript",
+        ".functions": "shellscript",
+        ".path": "shellscript",
+        ".prompt": "shellscript",
+        "CODESYNC": "javascript",
         "TESTER": "shellscript",
         "bash_profile": "shellscript",
         "bashrc": "shellscript",
         "inputrc": "shellscript",
-        "tmux.conf": "shellscript",
-        "taskrc": "properties",
-        "xinitrc": "shellscript",
-        "CODESYNC": "javascript",
         "install": "shellscript",
         "screenlayout": "shellscript",
-        "vimrc": "viml"
+        "taskrc": "properties",
+        "tmux.conf": "shellscript",
+        "vimrc": "viml",
+        "xinitrc": "shellscript"
     },
     "files.trimTrailingWhitespace": true,
     "editor.renderWhitespace": "boundary"

@@ -123,4 +123,5 @@ complete -F _complete_alias d
 complete -F _complete_alias dc
 complete -F _complete_alias dm
 complete -F _complete_alias g
+complete -F _complete_alias t
 complete -F _complete_alias y

@@ -7,6 +7,7 @@ get_completions() {
         dc  # docker-compose
         dm  # docker-machine
         g   # git
+        t   # task
         y   # yarn
     )
     local -A completion_sources=(
@@ -18,10 +19,10 @@ get_completions() {
         [git-prompt]='https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh'
         [git]='https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash'
         [hub]='https://raw.githubusercontent.com/github/hub/master/etc/hub.bash_completion.sh'
+        [taskwarrior]='https://raw.githubusercontent.com/taskwarrior/task/2.5.1/scripts/bash/task.sh'
     )
 
     completions_dir="$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd )"
-    project_dir="$( cd "$completions_dir" && cd ../../ && pwd )"
 
     for src in "${!completion_sources[@]}"; do
         echo Installing "$src" completions
