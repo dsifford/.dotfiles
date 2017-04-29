@@ -25,8 +25,10 @@ class Default(ColorScheme):
                 attr = reverse
             else:
                 attr = normal
+
             if context.empty or context.error:
                 bg = red
+
             if context.border:
                 fg = black
             if context.media:
@@ -34,25 +36,32 @@ class Default(ColorScheme):
                     fg = yellow
                 else:
                     fg = magenta
+
             if context.container:
                 fg = red
+
             if context.directory:
                 attr |= bold
                 fg = blue
+
             elif context.executable and not \
                     any((context.media, context.container,
                          context.fifo, context.socket)):
                 attr |= bold
                 fg = green
+
             if context.socket:
                 fg = magenta
                 attr |= bold
+
             if context.fifo or context.device:
                 fg = yellow
                 if context.device:
                     attr |= bold
+
             if context.link:
                 fg = cyan if context.good else magenta
+
             if context.tag_marker and not context.selected:
                 attr |= bold
                 if fg in (red, magenta):
