@@ -19,12 +19,12 @@ exec --no-startup-id dunst
 # Startup Applets
 exec --no-startup-id nm-applet
 exec --no-startuo-id pasystray
-exec --no-startup-id redshift -l geoclue2
+exec --no-startup-id redshift-gtk
 exec --no-startup-id blueman-applet
 
 # Startup Apps
 exec --no-startup-id autokey-gtk
-exec --no-startup-id dropbox start
+exec --no-startup-id dropbox
 
 # Display / Screen Config
 workspace 1 output DP-4
