@@ -89,3 +89,35 @@
     - yarn
     - zeal
 
+- brew:
+    - asciinema
+    - bash
+    - bash-completion
+    - ctop
+    - docker
+    - docker-compose
+    - docker-machine
+    - git
+    - git-extras
+    - go
+    - grep
+    - htop
+    - hub
+    - jq
+    - lastpass-cli
+    - node
+    - python
+    - python3
+    - ranger
+    - rsync
+    - shellcheck
+    - subversion
+    - task
+    - tmux
+    - torus
+    - tree
+    - uncrustify
+    - vim
+    - wget
+    - yarn
+

@@ -1,4 +1,5 @@
 vscode/workspaceStorage
 TESTER
-ranger/colorschemes/__init__.py
+ranger/colorschemes/__init__.py*
+ranger/colorschemes/dsiffordscheme.pyo
 ranger/colorschemes/__pycache__
