@@ -109,7 +109,7 @@ bindsym --whole-window $mod+Shift+button3 kill
 
 # $mod+Space => rofi
 bindsym Mod1+space exec "rofi -m 0 -show window"
-bindsym $mod+space exec "rofi -m 0 -disable-history -show run"
+bindsym $mod+space exec "rofi -m 0 -disable-history -show drun"
 
 #================================================
 #             BEGIN i3 DEFAULTS
