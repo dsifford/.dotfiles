@@ -4612,3 +4612,4 @@ eval "$__docker_previous_extglob_setting"
 unset __docker_previous_extglob_setting
 
 complete -F _docker docker docker.exe dockerd dockerd.exe
+complete -F _docker d

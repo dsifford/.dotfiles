@@ -625,3 +625,4 @@ _docker_compose() {
 }
 
 complete -F _docker_compose docker-compose docker-compose.exe
+complete -F _docker_compose dc

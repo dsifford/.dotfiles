@@ -190,3 +190,4 @@ _task()
     return 0
 }
 complete -o nospace -F _task task
+complete -o nospace -F _task t

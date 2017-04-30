@@ -301,3 +301,4 @@ _docker_machine() {
 }
 
 complete -F _docker_machine docker-machine docker-machine.exe
+complete -F _docker_machine dm
