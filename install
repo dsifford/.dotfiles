@@ -7,7 +7,7 @@
 config=".install.conf.$(uname -n).yml"
 dotbot_dir="dotbot"
 dotbot_bin="bin/dotbot"
-basedir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+basedir="$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd )"
 
 args=()
 while test $# -gt 0; do
@@ -32,9 +32,15 @@ done
 set -e
 
 # Get secure files from lastpass
-lpass show --notes taskwarrior-ca > ~/.task/freecinc.ca.pem
-lpass show --notes taskwarrior-cert > ~/.task/freecinc.cert.pem
-lpass show --notes taskwarrior-key > ~/.task/freecinc.key.pem
+if command -v lpass >/dev/null; then
+    if [ ! -f ~/.task/freecinc.ca.pem ]; then
+        lpass show --notes taskwarrior-ca > ~/.task/freecinc.ca.pem
+        lpass show --notes taskwarrior-cert > ~/.task/freecinc.cert.pem
+        lpass show --notes taskwarrior-key > ~/.task/freecinc.key.pem
+    fi
+else
+    echo "lastpass-cli must be installed for obtaining private keys and certs."
+fi
 
 cd "$basedir"
 git submodule update --remote --merge
