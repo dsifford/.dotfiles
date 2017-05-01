@@ -5,6 +5,7 @@
     - cower
     - ctop
     - deluge
+    - diff-so-fancy
     - dmenu2
     - docker
     - docker-compose
@@ -76,7 +77,6 @@
     - ttf-ms-fonts
     - udiskie
     - uncrustify
-    - universalindentgui-svn
     - urxvt-clipboard
     - urxvt-vtwheel
     - vim
