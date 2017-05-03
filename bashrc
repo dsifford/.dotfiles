@@ -1,4 +1,4 @@
-# shellcheck shell=bash disable=SC1090
+# shellcheck shell=bash disable=SC1090,SC1091
 
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
@@ -23,6 +23,9 @@ export RUST_SRC_PATH
 
 # Fix tiny QT windows on 4k monitor
 [[ $(uname -n) == 'archlinux' ]] && export QT_AUTO_SCREEN_SCALE_FACTOR=2
+
+# Source bash-completion on mac
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 # Source all completions
 for completion in ~/.shell/completions/* /etc/bash_completion.d/*; do
