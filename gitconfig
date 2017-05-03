@@ -19,6 +19,7 @@
     rebase = true
 [push]
     default = simple
+	followTags = true
 [rerere]
     enabled = true
 [status]
