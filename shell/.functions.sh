@@ -20,6 +20,10 @@ hub-stub-conflicting-commands() {
         alias|fork|pr)
             /usr/bin/env git "$@"
             ;;
+        browse)
+            # Fix for random error that always shows up but doesn't actually matter
+            /usr/bin/env hub "$@" 2>/dev/null
+            ;;
         *)
             /usr/bin/env hub "$@"
     esac
