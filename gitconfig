@@ -1,4 +1,5 @@
 [alias]
+    d = diff
     lg = log --oneline --decorate --all --graph
     supdate = submodule update --remote --merge
 [core]

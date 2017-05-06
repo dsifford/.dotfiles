@@ -20,7 +20,7 @@ alias yu='yarn upgrade-interactive'
 alias yug='yarn global upgrade-interactive'
 
 ### Git
-alias git='hub'
+alias git='hub-stub-conflicting-commands'
 alias gb='git branch -a'
 alias gs='git status'
 alias gss='git status -s'

@@ -14,6 +14,17 @@ dx() {
     docker exec -it "$(docker ps -q -n="$1" | tail -n 1)" /bin/bash -c "export TERM=xterm; exec bash"
 }
 
+# Stub out "hub" when its commands conflict with better "git-extras" commands
+hub-stub-conflicting-commands() {
+    case "$1" in
+        alias|fork|pr)
+            /usr/bin/env git "$@"
+            ;;
+        *)
+            /usr/bin/env hub "$@"
+    esac
+}
+
 # Make a directory and immediately cd into it
 mcd() {
     mkdir -p "$1"
