@@ -55,5 +55,6 @@
     "workbench.welcome.enabled": false,
     "projectManager.openInNewWindow": false,
     "keyboard.dispatch": "keyCode",
-    "workbench.colorTheme": "Dracula"
+    "workbench.colorTheme": "Dracula",
+    "window.menuBarVisibility": "toggle"
 }
