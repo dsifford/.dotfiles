@@ -109,6 +109,7 @@
     - python
     - python3
     - ranger
+    - reattach-to-user-namespace
     - rsync
     - shellcheck
     - subversion
