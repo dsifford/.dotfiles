@@ -5,7 +5,7 @@
 [core]
     editor = vim
     autocrlf = input
-	pager = diff-so-fancy | less --tabs=4 -RFX
+    pager = diff-so-fancy | less --tabs=4 -RFX
 [credential]
     helper = store
 [diff]
@@ -13,14 +13,13 @@
 [difftool]
     prompt = false
 [difftool "vimdiff"]
-	cmd = vim -f -d -c \"wincmd l\" -c 'cd \"$GIT_PREFIX\"' \"$LOCAL\" \"$REMOTE\" # Open as non-readonly
+    cmd = vim -f -d -c \"wincmd l\" -c 'cd \"$GIT_PREFIX\"' \"$LOCAL\" \"$REMOTE\" # Open as non-readonly
 [merge]
     tool = meld
 [pull]
     rebase = true
 [push]
     default = simple
-	followTags = true
 [rerere]
     enabled = true
 [status]
