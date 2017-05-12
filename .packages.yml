@@ -1,5 +1,6 @@
 - pacaur:
     - asciinema
+    - atool
     - compton
     - coreutils
     - cower
@@ -92,6 +93,7 @@
 
 - brew:
     - asciinema
+    - atool
     - bash
     - bash-completion
     - ctop
