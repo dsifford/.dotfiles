@@ -55,6 +55,12 @@
     "workbench.welcome.enabled": false,
     "projectManager.openInNewWindow": false,
     "keyboard.dispatch": "keyCode",
-    "workbench.colorTheme": "Dracula",
-    "window.menuBarVisibility": "toggle"
+    "window.menuBarVisibility": "toggle",
+    "[cpp]": {
+        "editor.quickSuggestions": false
+    },
+    "[c]": {
+        "editor.quickSuggestions": false
+    },
+    "workbench.colorTheme": "Dracula"
 }
