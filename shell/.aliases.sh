@@ -34,10 +34,6 @@ if [[ $(uname) == 'Darwin' ]]; then
 
     alias ls='ls -FHG11'
 
-    # Quickly compile and run a small C++ program
-    runcpp() {
-        g++ -std=c++11 "$@" -o /tmp/cpprunfile && /tmp/cpprunfile
-    }
 fi
 
 # Arch linux machine

@@ -1,7 +1,7 @@
 # shellcheck shell=bash
 #
-# Version: 0.2.1
-# Yarn Version: 0.23.4
+# Version: 0.3.0
+# Yarn Version: 0.24.4
 #
 # bash completion for Yarn (https://github.com/yarnpkg/yarn)
 #
@@ -29,8 +29,8 @@ __yarn_get_package_fields() {
     fields=$(
         sed -n "/\"$parentField\": {/,/\}/p" < "$package" |
         tail -n +2 |
-        grep -Eo '"[[:alnum:]@/_-]+?"' |
-        grep -Eo '[[:alnum:]@/_-]+'
+        grep -Eo '"[[:alnum:]@:./_-]+?"' |
+        grep -Eo '[[:alnum:]@:./_-]+'
     )
     echo "$fields"
 }
@@ -40,9 +40,25 @@ __yarn_get_globals() {
     find "$(yarn global bin)" -type l -print0 | xargs -0 basename -a
 }
 
+# bash-completion _filedir backwards compatibility
 __yarn_filedir() {
-    COMPREPLY=( $( compgen -f -- "$cur" ) )
+    if [[ "$cur" == @* ]]; then
+        COMPREPLY=( $( compgen -f -- "./node_modules/$cur" | grep -Eo '@.+' ) )
+    else
+        COMPREPLY=( $( compgen -f -- "$cur" ) )
+    fi
     compopt -o nospace
+}
+
+# `_count_args` backwards compatibility
+# Be sure to set `args` and `counter` locally before calling
+__yarn_count_args() {
+    args=0
+    counter=1
+    while [[ $counter -lt $cword ]]; do
+        [[ ${words[$counter]} != -* ]] && (( args++ ))
+        (( counter++ ))
+    done
 }
 
 _yarn_add() {
@@ -125,6 +141,14 @@ _yarn_config() {
     esac
 }
 
+_yarn_create() {
+    local args  counter
+    __yarn_count_args
+    if [[ $args -eq 2 ]]; then
+        __yarn_filedir
+    fi
+}
+
 _yarn_global() {
     local subcommands=(
         add
@@ -179,20 +203,15 @@ _yarn_info() {
 
     [[ "$prev" == info ]] && return
 
-    # `_count_args` backwards compatibility
-    local args=1
-    local counter=1
-    while [[ $counter -lt $cword ]]; do
-        [[ ${words[$counter]} != -* ]] && (( args++ ))
-        (( counter++ ))
-    done
+    local args counter
+    __yarn_count_args
 
     case "$cur" in
         -*)
             COMPREPLY=( $( compgen -W "${flags[*]}" -- "$cur" ) )
             ;;
         *)
-            if [[ $args -eq 3 ]]; then
+            if [[ $args -eq 2 ]]; then
                 COMPREPLY=( $( compgen -W "${standard_fields[*]}" -- "$cur" ) )
             fi
             ;;
@@ -402,32 +421,31 @@ _yarn_why() {
     modules_folder="$(pwd)/node_modules"
     [ ! -d "$modules_folder" ] || [[ "$prev" != why ]] && return
 
-    if [[ "$cur" == ./* ]]; then
+    if [[ "$cur" == ./* || "$cur" == @*/ ]]; then
         __yarn_filedir
     else
         modules=$(
-            find node_modules/ -maxdepth 1 -type d | grep -Po 'node_modules/\K.+'
+            find node_modules/ -maxdepth 1 -type d | # first-level node_modules dirs
+            sed -e 's|node_modules/||'               # remove 'node_modules/' prefix
         )
+        if [[ "$cur" == @* ]]; then
+            modules=$(sed -e 's|$|/|' <<< "$modules") # append a trailing backslash
+            compopt -o nospace
+        fi
         COMPREPLY=( $( compgen -W "$modules" -- "$cur" ) )
     fi
 }
 
 _yarn_yarn() {
-    local args=1
-    local counter=1
-
-    # `_count_args` backwards compatibility
-    while [[ $counter -lt $cword ]]; do
-        [[ ${words[$counter]} != -* ]] && (( args++ ))
-        (( counter++ ))
-    done
+    local args counter
+    __yarn_count_args
 
     case "$cur" in
         -*)
             COMPREPLY=( $( compgen -W "${global_flags[*]}" -- "$cur" ) )
             ;;
         *)
-            if [[ $args -eq 1 ]]; then
+            if [[ $args -eq 0 ]]; then
                 COMPREPLY=( $( compgen -W "${commands[*]}" -- "$cur" ) )
             fi
             ;;
@@ -445,6 +463,7 @@ _yarn() {
         check
         clean
         config
+        create
         generate-lock-entry
         global
         help
@@ -513,8 +532,7 @@ _yarn() {
 
     COMPREPLY=()
     if command -v _init_completion >/dev/null 2>&1; then
-        _init_completion
-        _get_comp_words_by_ref cur prev words cword
+        _init_completion || return
     fi
 
     local command=yarn

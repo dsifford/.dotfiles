@@ -38,6 +38,7 @@ mcd() {
 # Change directory to the directory that currently in when exiting ranger
 # <C-o> opens ranger
 ranger-cd() {
+    local tempfile
     tempfile="$(mktemp -t tmp.XXXXXX)"
 
     if [[ $(uname) == 'Darwin' ]]; then
@@ -54,6 +55,15 @@ ranger-cd() {
     rm -f "$tempfile"
 }
 bind '"\C-o":"ranger-cd\C-m"'
+
+# Quickly compile and run a small C++ program
+runcpp() {
+    [ ! "$1" ] && return
+    local tempfile
+    tempfile="$(mktemp -t cpprunfile.XXXXXX)"
+    g++ -c -Wall -std=c++11 -g "$@" -o "$tempfile" && "$tempfile"
+    rm -f "$tempfile"
+}
 
 ### Compile and run a simple rust program
 rust() {
