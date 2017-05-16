@@ -1,9 +1,10 @@
 " Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'leafgarland/typescript-vim'
+Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdtree'
 call plug#end()
 
 " General Settings
@@ -21,6 +22,7 @@ set lazyredraw          " Improves perf under some conditions
 
 " Colors
 colorscheme dracula
+highlight Normal ctermbg=NONE
 
 " Keymaps
 map <C-\> :NERDTreeToggle<CR>
