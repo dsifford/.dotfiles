@@ -46,5 +46,11 @@
 		"rootPath": "$home/.dotfiles",
 		"paths": [],
 		"group": ""
+	},
+	{
+		"name": "yarn-completion",
+		"rootPath": "$home/repos/yarn-completion",
+		"paths": [],
+		"group": ""
 	}
 ]

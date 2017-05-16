@@ -3,3 +3,4 @@ TESTER
 ranger/colorschemes/__init__.py*
 ranger/colorschemes/dsiffordscheme.pyo
 ranger/colorschemes/__pycache__
+vim/plugged

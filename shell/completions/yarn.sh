@@ -1,7 +1,7 @@
 # shellcheck shell=bash
 #
-# Version: 0.3.0
-# Yarn Version: 0.24.4
+# Version: 0.3.2
+# Yarn Version: 0.25.2
 #
 # bash completion for Yarn (https://github.com/yarnpkg/yarn)
 #
@@ -16,15 +16,27 @@
 # Returns the object keys for a given first-level property
 # in a package.json file located in the current directory if it exists.
 #
+# Optional flags:
+#   -g      query the package.json of the globals
+#
 # @param $1 parentField  The first-level property of interest.
 #
 __yarn_get_package_fields() {
-    local parentField="$1"
-    local package
-    local fields
-    
+    local OPTIND opt fields package parentField
     package="$(pwd)/package.json"
-    [ ! -e "$package" ] && return
+
+    while getopts ":g" opt; do
+        case $opt in
+            g)
+                package="$HOME/.config/yarn/global/package.json"
+                ;;
+        esac
+    done
+    shift $(( OPTIND - 1 ))
+
+    parentField="$1"
+
+    [[ ! -e $package || ! $parentField ]] && return
 
     fields=$(
         sed -n "/\"$parentField\": {/,/\}/p" < "$package" |
@@ -33,11 +45,6 @@ __yarn_get_package_fields() {
         grep -Eo '[[:alnum:]@:./_-]+'
     )
     echo "$fields"
-}
-
-# Returns the names of the globally installed packages.
-__yarn_get_globals() {
-    find "$(yarn global bin)" -type l -print0 | xargs -0 basename -a
 }
 
 # bash-completion _filedir backwards compatibility
@@ -123,7 +130,7 @@ _yarn_config() {
         version-git-tag
         version-tag-prefix
     )
-    
+
     case "$prev" in
         get|delete)
             COMPREPLY=( $( compgen -W "${known_keys[*]}" -- "$cur" ) )
@@ -334,7 +341,7 @@ _yarn_publish() {
             return
             ;;
     esac
-    
+
     __yarn_filedir
 }
 
@@ -343,7 +350,7 @@ _yarn_remove() {
     local dependencies
     local devDependencies
     if [[ "$location" == 'global' ]]; then
-        dependencies=$(__yarn_get_globals)
+        dependencies=$(__yarn_get_package_fields -g dependencies)
         devDependencies=''
     else
         dependencies=$(__yarn_get_package_fields dependencies)
@@ -393,7 +400,7 @@ _yarn_upgrade() {
             ;;
     esac
     if [[ "$location" == global ]]; then
-        dependencies=$(__yarn_get_globals)
+        dependencies=$(__yarn_get_package_fields -g dependencies)
         devDependencies=''
     else
         dependencies=$(__yarn_get_package_fields dependencies)
@@ -531,8 +538,10 @@ _yarn() {
     )
 
     COMPREPLY=()
-    if command -v _init_completion >/dev/null 2>&1; then
-        _init_completion || return
+    if command -v _init_completion >/dev/null; then
+        _init_completion
+    else
+        _get_comp_words_by_ref cur prev words cword 
     fi
 
     local command=yarn

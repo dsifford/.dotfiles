@@ -6,10 +6,6 @@
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+r",
-        "command": "workbench.action.reloadWindow"
-    },
-    {
         "key": "j",
         "command": "list.focusDown",
         "when": "listFocus"

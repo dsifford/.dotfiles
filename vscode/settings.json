@@ -10,8 +10,6 @@
         "xml",
         "html",
         "json",
-        "styl",
-        "stylus",
         "yaml"
     ],
     "color-highlight.matchWords": false,
@@ -22,11 +20,7 @@
     "editor.renderIndentGuides": true,
     "editor.snippetSuggestions": "top",
     "editor.wordWrap": "off",
-    "eslint.nodePath": "/home/dsifford/.yarn-global",
-    "files.associations": {
-        ".babelrc": "json5",
-        ".stylintrc": "json"
-    },
+    "eslint.nodePath": "/home/dsifford/.yarn-global/bin",
     "rust.cargoHomePath": "/Users/dsifford/.cargo/bin/cargo",
     "shellcheck.customArgs": [
         "-x"
@@ -34,21 +28,6 @@
     "todohighlight.isEnable": true,
     "typescript.check.tscVersion": false,
     "uncrustify.configPath": "$HOME/.dotfiles/uncrustify.cfg",
-    "vim.otherModesKeyBindingsNonRecursive": [
-        {
-            "after": [],
-            "before": [
-                ":"
-            ],
-            "commands": [
-                {
-                    "args": [],
-                    "command": "workbench.action.showCommands"
-                }
-            ]
-        }
-    ],
-    "vim.useCtrlKeys": false,
     "vim.useSystemClipboard": true,
     "window.zoomLevel": 0,
     "workbench.iconTheme": "vs-seti",
@@ -62,5 +41,6 @@
     "[c]": {
         "editor.quickSuggestions": false
     },
-    "workbench.colorTheme": "Dracula"
+    "workbench.colorTheme": "Dracula",
+    "color-highlight.markerType": "dot-before"
 }

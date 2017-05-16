@@ -61,7 +61,7 @@ runcpp() {
     [ ! "$1" ] && return
     local tempfile
     tempfile="$(mktemp -t cpprunfile.XXXXXX)"
-    g++ -c -Wall -std=c++11 -g "$@" -o "$tempfile" && "$tempfile"
+    g++ -Wall -std=c++11 -g "$1" -o "$tempfile" && "$tempfile"
     rm -f "$tempfile"
 }
 
