@@ -33,7 +33,7 @@
     ? dmenu2
     ? dropbox
     ? dunst
-    ? evince
+    ? exercism-cli
     ? feh
     ? firefox
     ? gifsicle
@@ -89,6 +89,8 @@
     ? w3m
     ? xclip
     ? xorg-apps
+    ? zathura
+    ? zathura-pdf-poppler
     ? zeal
 
 - brew:

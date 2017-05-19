@@ -21,6 +21,16 @@
         "when": "explorerViewletVisible && filesExplorerFocus"
     },
     {
+        "key": "p",
+        "command": "list.collapse",
+        "when": "explorerViewletVisible && filesExplorerFocus"
+    },
+    {
+        "key": "shift+p",
+        "command": "list.focusFirst",
+        "when": "explorerViewletVisible && filesExplorerFocus"
+    },
+    {
         "key": "o",
         "command": "list.toggleExpand",
         "when": "listFocus"

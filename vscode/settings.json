@@ -27,7 +27,7 @@
     ],
     "todohighlight.isEnable": true,
     "typescript.check.tscVersion": false,
-    "uncrustify.configPath": "$HOME/.dotfiles/uncrustify.cfg",
+    "uncrustify.configPath": "/home/dsifford/.dotfiles/uncrustify.cfg",
     "vim.useSystemClipboard": true,
     "window.zoomLevel": 0,
     "workbench.iconTheme": "vs-seti",

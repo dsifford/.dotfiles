@@ -18,7 +18,6 @@ mrmlnc.vscode-remark
 ms-vscode.cpptools
 naumovs.color-highlight
 PeterJausovec.vscode-docker
-steve8708.Align
 sysoev.language-stylus
 timonwong.shellcheck
 Tyriar.sort-lines
