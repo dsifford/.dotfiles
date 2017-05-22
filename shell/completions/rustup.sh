@@ -107,7 +107,7 @@ _rustup() {
 
     case "${cmd}" in
         rustup)
-            opts=" -v -h -V  --verbose --help --version   show install update default toolchain target component override run which doc man self telemetry set completions help  docs"
+            opts=" -v -h -V  --verbose --help --version   show install uninstall update default toolchain target component override run which doc man self telemetry set completions help  docs"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
                 return 0
@@ -912,6 +912,21 @@ _rustup() {
         rustup_toolchain_update)
             opts=" -h -V  --help --version  <toolchain>... "
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+                return 0
+            fi
+            case "${prev}" in
+                
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+            return 0
+            ;;
+        rustup_uninstall)
+            opts=" -h -V  --help --version  <toolchain>... "
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
                 return 0
             fi
