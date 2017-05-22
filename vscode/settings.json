@@ -29,18 +29,12 @@
     "typescript.check.tscVersion": false,
     "uncrustify.configPath": "/home/dsifford/.dotfiles/uncrustify.cfg",
     "vim.useSystemClipboard": true,
-    "window.zoomLevel": 0,
     "workbench.iconTheme": "vs-seti",
     "workbench.welcome.enabled": false,
-    "projectManager.openInNewWindow": false,
     "keyboard.dispatch": "keyCode",
     "window.menuBarVisibility": "toggle",
-    "[cpp]": {
-        "editor.quickSuggestions": false
-    },
-    "[c]": {
-        "editor.quickSuggestions": false
-    },
     "workbench.colorTheme": "Dracula",
-    "color-highlight.markerType": "dot-before"
+    "color-highlight.markerType": "dot-before",
+    "vim.visualstar": true,
+    "vim.searchHighlightColor": "rgba(255, 0, 255, 0.8)"
 }
