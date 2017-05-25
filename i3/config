@@ -87,7 +87,7 @@ bindsym Control+$mod+Left move workspace to output left
 bindsym Control+Shift+Print exec simplescreenrecorder
 
 # PrintScreen
-bindsym Print exec --no-startup-id gscreenshot-cli -s -f /tmp/screenshot.png && xclip -selection clipboard -t image/png </tmp/screenshot.png
+bindsym Print exec gscreenshot-cli -sc 
 bindsym Control+Print exec --no-startup-id gscreenshot-cli -s -f /tmp/screenshot.png && krita /tmp/screenshot.png
 
 # Caps Lock => Escape

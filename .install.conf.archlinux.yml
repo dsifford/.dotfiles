@@ -15,6 +15,7 @@
     ~/.inputrc:
     ~/.taskrc:
     ~/.tmux.conf:
+    ~/.uncrustify.cfg:
     ~/.vim:
     ~/.vimrc:
     ~/.xinitrc:

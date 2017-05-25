@@ -36,5 +36,6 @@
     "workbench.colorTheme": "Dracula",
     "color-highlight.markerType": "dot-before",
     "vim.visualstar": true,
-    "vim.searchHighlightColor": "rgba(255, 0, 255, 0.8)"
+    "vim.searchHighlightColor": "rgba(0, 255, 0, 0.5)",
+    "editor.renderWhitespace": "none"
 }
