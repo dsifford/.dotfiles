@@ -57,22 +57,6 @@
     },
     {
         "key": "ctrl+\\",
-        "command": "workbench.files.action.focusFilesExplorer",
-        "when": "!filesExplorerFocus"
-    },
-    {
-        "key": "ctrl+shift+\\",
-        "command": "workbench.files.action.focusOpenEditorsView",
-        "when": "!openEditorsFocus"
-    },
-    {
-        "key": "ctrl+\\",
-        "command": "workbench.action.focusActiveEditorGroup",
-        "when": "filesExplorerFocus"
-    },
-    {
-        "key": "ctrl+shift+\\",
-        "command": "workbench.action.focusActiveEditorGroup",
-        "when": "openEditorsFocus"
+        "command": "workbench.action.toggleSidebarVisibility"
     }
 ]
