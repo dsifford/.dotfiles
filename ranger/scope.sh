@@ -64,6 +64,9 @@ if [ "$preview_images" = "True" ]; then
 fi
 
 case "$extension" in
+    sql)
+        exit 0
+        ;;
     # Archive extensions:
     7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|\
     rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)

@@ -36,8 +36,30 @@
     "workbench.colorTheme": "Dracula",
     "color-highlight.markerType": "dot-before",
     "vim.visualstar": true,
-    "vim.searchHighlightColor": "rgba(0, 255, 0, 0.5)",
-    "editor.renderWhitespace": "none",
+    "vim.searchHighlightColor": "rgba(80, 250, 123, 0.6)",
     "vim.enableNeovim": true,
-    "vim.disableAnnoyingNeovimMessage": true
+    "vim.disableAnnoyingNeovimMessage": true,
+    "vim.disableAnnoyingGcMessage": true,
+    "todohighlight.keywords": [
+        {
+            "text": "TODO:",
+            "color": "black",
+            "backgroundColor": "#50fa7b"
+        },
+        {
+            "text": "FIXME:",
+            "color": "#f8f8f2",
+            "backgroundColor": "#ff5555"
+        },
+        {
+            "text": "NOTE:",
+            "backgroundColor": "#8be9fd",
+            "color": "black"
+        },
+        {
+            "text": "HACK:",
+            "backgroundColor": "#ffb86c",
+            "color": "black"
+        }
+    ]
 }
