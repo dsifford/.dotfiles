@@ -10,10 +10,11 @@ dracula-theme.theme-dracula
 EditorConfig.EditorConfig
 eg2.tslint
 fallenwood.vimL
+hoovercj.haskell-linter
+justusadam.language-haskell
 kalitaalexey.vscode-rust
 kumar-harsh.graphql-for-vscode
 LaurentTreguier.uncrustify
-mrmlnc.vscode-json5
 mrmlnc.vscode-remark
 ms-vscode.cpptools
 naumovs.color-highlight
@@ -21,6 +22,7 @@ PeterJausovec.vscode-docker
 sysoev.language-stylus
 timonwong.shellcheck
 Tyriar.sort-lines
+UCL.haskelly
 vscodevim.vim
 vtfn.stylint
 WallabyJs.quokka-vscode
