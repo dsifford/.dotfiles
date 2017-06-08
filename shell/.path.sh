@@ -12,6 +12,7 @@ __parse_path() {
         ~/bin
         ~/.yarn-global/bin
         ~/.cargo/bin
+        ~/.local/bin
         /usr/local/bin
         /usr/local/sbin
         /usr/local/go/bin
