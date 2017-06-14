@@ -31,6 +31,16 @@
         "when": "explorerViewletVisible && filesExplorerFocus"
     },
     {
+        "key": "shift+j",
+        "command": "list.focusLastChild",
+        "when": "explorerViewletVisible && filesExplorerFocus"
+    },
+    {
+        "key": "shift+k",
+        "command": "list.focusFirstChild",
+        "when": "explorerViewletVisible && filesExplorerFocus"
+    },
+    {
         "key": "o",
         "command": "list.toggleExpand",
         "when": "listFocus"

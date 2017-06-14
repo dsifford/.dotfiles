@@ -9,15 +9,12 @@
         "php",
         "xml",
         "html",
-        "json",
         "yaml"
     ],
     "color-highlight.matchWords": false,
     "editor.cursorBlinking": "solid",
     "editor.fontFamily": "Monaco, 'Courier New', monospace",
     "editor.fontSize": 16,
-    "editor.minimap.enabled": true,
-    "editor.renderIndentGuides": true,
     "editor.snippetSuggestions": "top",
     "editor.wordWrap": "off",
     "eslint.nodePath": "/home/dsifford/.yarn-global/bin",
@@ -29,7 +26,6 @@
     "typescript.check.tscVersion": false,
     "uncrustify.configPath": "/home/dsifford/.dotfiles/uncrustify.cfg",
     "vim.useSystemClipboard": true,
-    "workbench.iconTheme": "vs-seti",
     "workbench.welcome.enabled": false,
     "keyboard.dispatch": "keyCode",
     "window.menuBarVisibility": "toggle",
@@ -61,5 +57,14 @@
             "backgroundColor": "#ffb86c",
             "color": "black"
         }
-    ]
+    ],
+    "extensions.autoUpdate": false,
+    "editor.rulers": [80, 120],
+    "workbench.colorCustomizations": {
+        "editorBracketMatch.background": "#FF79C680",
+        "editorBracketMatch.border": "#ff00ff"
+    },
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "all",
+    "prettier.tabWidth": 4
 }
