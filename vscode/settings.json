@@ -18,7 +18,7 @@
     "editor.snippetSuggestions": "top",
     "editor.wordWrap": "off",
     "eslint.nodePath": "/home/dsifford/.yarn-global/bin",
-    "rust.cargoHomePath": "/Users/dsifford/.cargo/bin/cargo",
+    "rust.cargoHomePath": "/usr/bin/cargo",
     "shellcheck.customArgs": [
         "-x"
     ],
@@ -35,7 +35,6 @@
     "vim.searchHighlightColor": "rgba(80, 250, 123, 0.6)",
     "vim.enableNeovim": true,
     "vim.disableAnnoyingNeovimMessage": true,
-    "vim.disableAnnoyingGcMessage": true,
     "todohighlight.keywords": [
         {
             "text": "TODO:",
@@ -65,6 +64,15 @@
         "editorBracketMatch.border": "#ff00ff"
     },
     "prettier.singleQuote": true,
-    "prettier.trailingComma": "all",
-    "prettier.tabWidth": 4
+    "prettier.trailingComma": "es5",
+    "prettier.tabWidth": 4,
+    "editor.renderWhitespace": "none",
+    "rust.rustup": {
+        "toolchain": "nightly-x86_64-unknown-linux-gnu",
+        "nightlyToolchain": "nightly-x86_64-unknown-linux-gnu"
+    },
+    "rust.mode": "rls",
+    "rust.rls": {
+        "useRustfmt": true
+    }
 }

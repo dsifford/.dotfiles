@@ -104,6 +104,11 @@ bindsym XF86AudioNext exec --no-startup-id "playerctl next"
 bindsym XF86AudioPrev exec --no-startup-id "playerctl previous"
 bindsym XF86AudioStop exec --no-startup-id "playerctl stop"
 
+# Hue lights hooks
+bindsym Control+XF86AudioNext exec --no-startup-id ~/.config/redshift/hooks/hue.py period-changed none daytime
+bindsym Control+XF86AudioPrev exec --no-startup-id ~/.config/redshift/hooks/hue.py period-changed none night
+bindsym Control+XF86AudioPlay exec --no-startup-id ~/.config/redshift/hooks/hue.py period-changed daytime night
+
 # $mod+Shift+Middle Mouse Button => kill window
 bindsym --whole-window $mod+Shift+button3 kill
 
