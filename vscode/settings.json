@@ -1,78 +1,70 @@
 {
-    "color-highlight.languages": [
-        "javascript",
-        "typescript",
-        "scss",
-        "css",
-        "sass",
-        "less",
-        "php",
-        "xml",
-        "html",
-        "yaml"
-    ],
-    "color-highlight.matchWords": false,
     "editor.cursorBlinking": "solid",
     "editor.fontFamily": "Monaco, 'Courier New', monospace",
     "editor.fontSize": 16,
+    "editor.renderWhitespace": "none",
+    "editor.rulers": [
+        80,
+        120
+    ],
     "editor.snippetSuggestions": "top",
     "editor.wordWrap": "off",
+    "emmet.useNewEmmet": true,
     "eslint.nodePath": "/home/dsifford/.yarn-global/bin",
+    "extensions.autoUpdate": false,
+    "keyboard.dispatch": "keyCode",
+    "prettier.printWidth": 100,
+    "prettier.singleQuote": true,
+    "prettier.tabWidth": 4,
+    "prettier.trailingComma": "es5",
     "rust.cargoHomePath": "/usr/bin/cargo",
+    "rust.mode": "rls",
+    "rust.rls": {
+        "useRustfmt": true
+    },
+    "rust.rustup": {
+        "nightlyToolchain": "nightly-x86_64-unknown-linux-gnu",
+        "toolchain": "nightly-x86_64-unknown-linux-gnu"
+    },
     "shellcheck.customArgs": [
         "-x"
     ],
     "todohighlight.isEnable": true,
-    "typescript.check.tscVersion": false,
-    "uncrustify.configPath": "/home/dsifford/.dotfiles/uncrustify.cfg",
-    "vim.useSystemClipboard": true,
-    "workbench.welcome.enabled": false,
-    "keyboard.dispatch": "keyCode",
-    "window.menuBarVisibility": "toggle",
-    "workbench.colorTheme": "Dracula",
-    "color-highlight.markerType": "dot-before",
-    "vim.visualstar": true,
-    "vim.searchHighlightColor": "rgba(80, 250, 123, 0.6)",
-    "vim.enableNeovim": true,
-    "vim.disableAnnoyingNeovimMessage": true,
     "todohighlight.keywords": [
         {
-            "text": "TODO:",
+            "backgroundColor": "#50fa7b",
             "color": "black",
-            "backgroundColor": "#50fa7b"
+            "text": "TODO:"
         },
         {
-            "text": "FIXME:",
+            "backgroundColor": "#ff5555",
             "color": "#f8f8f2",
-            "backgroundColor": "#ff5555"
+            "text": "FIXME:"
         },
         {
-            "text": "NOTE:",
             "backgroundColor": "#8be9fd",
-            "color": "black"
+            "color": "black",
+            "text": "NOTE:"
         },
         {
-            "text": "HACK:",
             "backgroundColor": "#ffb86c",
-            "color": "black"
+            "color": "black",
+            "text": "HACK:"
         }
     ],
-    "extensions.autoUpdate": false,
-    "editor.rulers": [80, 120],
+    "typescript.check.tscVersion": false,
+    "uncrustify.configPath": "/home/dsifford/.dotfiles/uncrustify.cfg",
+    "vim.disableAnnoyingNeovimMessage": true,
+    "vim.enableNeovim": true,
+    "vim.searchHighlightColor": "rgba(80, 250, 123, 0.6)",
+    "vim.useSystemClipboard": true,
+    "vim.visualstar": true,
+    "window.menuBarVisibility": "toggle",
     "workbench.colorCustomizations": {
         "editorBracketMatch.background": "#FF79C680",
         "editorBracketMatch.border": "#ff00ff"
     },
-    "prettier.singleQuote": true,
-    "prettier.trailingComma": "es5",
-    "prettier.tabWidth": 4,
-    "editor.renderWhitespace": "none",
-    "rust.rustup": {
-        "toolchain": "nightly-x86_64-unknown-linux-gnu",
-        "nightlyToolchain": "nightly-x86_64-unknown-linux-gnu"
-    },
-    "rust.mode": "rls",
-    "rust.rls": {
-        "useRustfmt": true
-    }
+    "workbench.colorTheme": "Dracula",
+    "editor.autoIndent": true,
+    "workbench.startupEditor": "none"
 }

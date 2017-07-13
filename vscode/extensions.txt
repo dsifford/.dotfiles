@@ -1,5 +1,6 @@
 alefragnani.project-manager
 alexdima.vscode-lcov
+blanu.vscode-styled-jsx
 bungcip.better-toml
 christian-kohler.path-intellisense
 dbaeumer.vscode-eslint
@@ -18,8 +19,8 @@ kumar-harsh.graphql-for-vscode
 LaurentTreguier.uncrustify
 mrmlnc.vscode-remark
 ms-vscode.cpptools
-naumovs.color-highlight
 PeterJausovec.vscode-docker
+richie5um2.vscode-sort-json
 sysoev.language-stylus
 timonwong.shellcheck
 Tyriar.sort-lines
