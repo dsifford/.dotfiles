@@ -66,5 +66,11 @@
     },
     "workbench.colorTheme": "Dracula",
     "editor.autoIndent": true,
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "emmet.includeLanguages": {
+        "typescript": "javascriptreact",
+        "typescriptreact": "javascriptreact"
+    },
+    "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
+    "window.zoomLevel": 0
 }
