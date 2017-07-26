@@ -1,4 +1,7 @@
 {
+    "C_Cpp.intelliSenseEngine": "Default",
+    "color-highlight.markerType": "dot-before",
+    "editor.autoIndent": true,
     "editor.cursorBlinking": "solid",
     "editor.fontFamily": "Monaco, 'Courier New', monospace",
     "editor.fontSize": 16,
@@ -9,8 +12,13 @@
     ],
     "editor.snippetSuggestions": "top",
     "editor.wordWrap": "off",
+    "emmet.includeLanguages": {
+        "typescript": "javascriptreact",
+        "typescriptreact": "javascriptreact"
+    },
+    "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
     "emmet.useNewEmmet": true,
-    "eslint.nodePath": "/home/dsifford/.yarn-global/bin",
+    "eslint.nodePath": "/Users/dsifford/.yarn-global/bin",
     "extensions.autoUpdate": false,
     "keyboard.dispatch": "keyCode",
     "prettier.printWidth": 100,
@@ -53,24 +61,19 @@
         }
     ],
     "typescript.check.tscVersion": false,
-    "uncrustify.configPath": "/home/dsifford/.dotfiles/uncrustify.cfg",
+    "uncrustify.configPath": "/Users/dsifford/.dotfiles/uncrustify.cfg",
     "vim.disableAnnoyingNeovimMessage": true,
     "vim.enableNeovim": true,
     "vim.searchHighlightColor": "rgba(80, 250, 123, 0.6)",
     "vim.useSystemClipboard": true,
     "vim.visualstar": true,
     "window.menuBarVisibility": "toggle",
+    "window.zoomLevel": 0,
     "workbench.colorCustomizations": {
         "editorBracketMatch.background": "#FF79C680",
         "editorBracketMatch.border": "#ff00ff"
     },
-    "workbench.colorTheme": "Dracula",
-    "editor.autoIndent": true,
+    "workbench.colorTheme": "Dracula Soft",
     "workbench.startupEditor": "none",
-    "emmet.includeLanguages": {
-        "typescript": "javascriptreact",
-        "typescriptreact": "javascriptreact"
-    },
-    "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
-    "window.zoomLevel": 0
+    "workbench.welcome.enabled": false
 }
