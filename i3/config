@@ -36,7 +36,7 @@ workspace Code output DP-2
 mouse_warping none
 
 # Adjust key repeat speed
-exec --no-startup-id xset r rate 200 30
+# exec --no-startup-id xset r rate 200 30
 
 # Floating Terminal
 exec --no-startup-id termite --name=MAINTERM -e 'bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -nMain -sHOME"'
