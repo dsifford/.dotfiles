@@ -10,6 +10,7 @@ shopt -s dirspell     # correct spelling mistakes in directories
 shopt -s globstar     # enable recursive glob matching
 
 export CARGO_HOME=~/.cargo
+export TERM=tmux-256color
 export COLORTERM=tmux-256color
 export EDITOR=vim
 export GOPATH=~/gocode
@@ -17,7 +18,6 @@ export LESSHISTFILE='-'
 export PAGER=less
 export PREFIX=~/.yarn-global
 export RUST_SRC_PATH
-export TERM=xterm-256color
 
 # Set up system path
 . ~/.shell/.path.sh

@@ -68,7 +68,6 @@
     ? reflector
     ? rofi
     ? rustup
-    ? rxvt-unicode-pixbuf
     ? sed
     ? simplescreenrecorder
     ? slack-desktop
@@ -76,6 +75,7 @@
     ? spotify
     ? stack
     ? sysstat
+    ? termite
     ? ttf-dejavu
     ? ttf-font-awesome
     ? ttf-liberation
@@ -83,8 +83,6 @@
     ? ttf-monaco
     ? ttf-ms-fonts
     ? udiskie
-    ? urxvt-clipboard
-    ? urxvt-vtwheel
     ? visual-studio-code
     ? vlc
     ? vlc-pause-click-plugin

@@ -18,7 +18,7 @@ exec --no-startup-id dunst
 
 # Startup Applets
 exec --no-startup-id nm-applet
-exec --no-startuo-id pasystray
+exec --no-startup-id pasystray
 exec --no-startup-id redshift-gtk
 exec --no-startup-id blueman-applet
 
@@ -35,10 +35,13 @@ workspace Code output DP-2
 # Disable mouse warping
 mouse_warping none
 
+# Adjust key repeat speed
+exec --no-startup-id xset r rate 200 30
+
 # Floating Terminal
-exec --no-startup-id urxvt -name MAINTERM -e bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -nMain -sHOME"
-bindsym $mod+Home exec --no-startup-id urxvt -name MAINTERM -e bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -nMain -sHOME"
-for_window [instance="MAINTERM"] floating enable, border pixel 0, resize set 3850 1000, move position 2160px 45px, move scratchpad
+exec --no-startup-id termite --name=MAINTERM -e 'bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -nMain -sHOME"'
+for_window [instance="MAINTERM"] floating enable, border pixel 0, resize set 3850 952, move position 2160px 45px, move scratchpad
+bindsym $mod+Home exec --no-startup-id termite --name=MAINTERM -e 'bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -nMain -sHOME"'
 bindsym Control+space focus output DP-2, [instance="MAINTERM"] scratchpad show
 
 #===============APP WINDOW CONFIG================
@@ -47,14 +50,14 @@ bindsym Control+space focus output DP-2, [instance="MAINTERM"] scratchpad show
 for_window [class="Gifview"] floating enable
 for_window [class="Animate"] floating enable, move position center
 
-# Meld
-for_window [class="Meld"] floating enable
-
 # Chrome pop-up windows
 for_window [class="Google-chrome-unstable" window_role="pop-up"] floating enable, move position center
 
 # Simple Screen Recorder
 for_window [class="Simplescreenrecorder"] floating enable
+
+# Kruler
+for_window [class="kruler"] floating enable
 
 # Slack
 for_window [class="Slack"] move to workspace 1
@@ -64,9 +67,6 @@ exec --no-startup-id spotify --force-device-scale-factor=2
 for_window [class="Spotify"] move to workspace Spotify
 bindsym $mod+Tab workspace Spotify
 bindsym $mod+Shift+Tab move container to workspace Spotify
-
-# XTerm
-for_window [class="XTerm"] floating enable, resize set 3000px 1000px, move position center
 
 # VS Code
 for_window [class="Code"] move to workspace Code
@@ -87,7 +87,7 @@ bindsym Control+$mod+Left move workspace to output left
 bindsym Control+Shift+Print exec simplescreenrecorder
 
 # PrintScreen
-bindsym Print exec gscreenshot-cli -sc 
+bindsym Print exec gscreenshot-cli -sc
 bindsym Control+Print exec --no-startup-id gscreenshot-cli -s -f /tmp/screenshot.png && krita /tmp/screenshot.png
 
 # Caps Lock => Escape

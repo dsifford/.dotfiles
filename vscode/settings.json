@@ -1,6 +1,5 @@
 {
     "C_Cpp.intelliSenseEngine": "Default",
-    "color-highlight.markerType": "dot-before",
     "editor.autoIndent": true,
     "editor.cursorBlinking": "solid",
     "editor.fontFamily": "Monaco, 'Courier New', monospace",
@@ -64,6 +63,38 @@
     "uncrustify.configPath": "/Users/dsifford/.dotfiles/uncrustify.cfg",
     "vim.disableAnnoyingNeovimMessage": true,
     "vim.enableNeovim": true,
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "after": [],
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.referenceSearch.trigger"
+                }
+            ]
+        },
+        {
+            "after": [],
+            "before": [
+                "<leader>",
+                "c"
+            ],
+            "commands": [
+                {
+                    "command": "cursorHome"
+                },
+                {
+                    "args": {
+                        "snippet": "// "
+                    },
+                    "command": "editor.action.insertSnippet"
+                }
+            ]
+        }
+    ],
     "vim.searchHighlightColor": "rgba(80, 250, 123, 0.6)",
     "vim.useSystemClipboard": true,
     "vim.visualstar": true,
@@ -73,7 +104,6 @@
         "editorBracketMatch.background": "#FF79C680",
         "editorBracketMatch.border": "#ff00ff"
     },
-    "workbench.colorTheme": "Dracula Soft",
-    "workbench.startupEditor": "none",
-    "workbench.welcome.enabled": false
+    "workbench.colorTheme": "Dracula",
+    "workbench.startupEditor": "none"
 }

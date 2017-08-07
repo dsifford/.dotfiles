@@ -2,10 +2,6 @@
 !            Begin Common Xresources             !
 !================================================!
 
-! General
-URxvt.visualBell: false
-URxvt*loginShell: true
-
 ! Dracula Xresources palette
 *.foreground: #F8F8F2
 *.background: #282A36
@@ -33,36 +29,17 @@ rofi.color-normal: #282a36, #f8f8f2, #282a36, #44475a, #f8f8f2
 rofi.color-active: #282a36, #50fa7b, #282a36, #44475a, #50fa7b
 rofi.color-urgent: #282a36, #ff5555, #282a36, #44475a, #ff5555
 
-! Scrollbar
-URxvt.scrollBar: false
-URxvt.scrollWithBuffer: true
-
 !================================================!
 !                   Extensions                   !
 !================================================!
-URxvt.perl-ext-common: default,clipboard,vtwheel,matcher
-
-! Url-Launcher
-URxvt.url-launcher: /usr/bin/xdg-open
-URxvt.matcher.button: 1
-
-! Clipboard
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-URxvt.keysym.C-V: perl:clipboard:paste
-URxvt.clipboard.copycmd:  xclip -i -selection clipboard
-URxvt.clipboard.pastecmd: xclip -o -selection clipboard
-
-! Misc
-URxvt.iso14755: false
-URxvt.iso14755_52: false
 
 ! Xterm
 XTerm*background: #000000
 XTerm*foreground: #FFFFFF
 XTerm*geometry: 60x20
 XTerm*renderFont: true
-XTerm*faceName: Hack
-XTerm*faceSize: 18
+XTerm*faceName: Monaco
+XTerm*faceSize: 16
 
 !================================================!
 !            Begin Desktop Xresources            !
@@ -81,14 +58,5 @@ Xft.rgba: rgb
 Xcursor.theme: Adwaita
 Xcursor.size: 48
 
-! Font Size
-URxvt.font: xft:Monaco-16
-
 ! Rofi DPI
 rofi.dpi: 180
-
-!Xterm escapes, word by word movement
-URxvt.keysym.Control-Up:     \033[1;5A
-URxvt.keysym.Control-Down:   \033[1;5B
-URxvt.keysym.Control-Left:   \033[1;5D
-URxvt.keysym.Control-Right:  \033[1;5C

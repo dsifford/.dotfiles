@@ -12,5 +12,6 @@
         "xinitrc": "shellscript"
     },
     "files.trimTrailingWhitespace": true,
-    "editor.renderWhitespace": "boundary"
+    "editor.renderWhitespace": "boundary",
+    "editor.detectIndentation": true
 }
