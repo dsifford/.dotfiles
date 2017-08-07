@@ -18,7 +18,6 @@
     ~/.vimrc:
     ~/bin:
 
-    ~/.config/ranger/colorschemes: ranger/colorschemes
     ~/.config/ranger/rc.conf: ranger/rc.conf
     ~/.config/ranger/rifle.conf: ranger/rifle.conf
     ~/.config/ranger/scope.sh: ranger/scope.sh
