@@ -30,6 +30,9 @@ alias gl='git log --oneline --decorate --all --graph'
 alias gca='git commit -a'
 alias gf='git fetch --prune'
 
+### Always use neovim
+alias vim='nvim'
+
 # Macbook
 if [[ $(uname) == 'Darwin' ]]; then
 

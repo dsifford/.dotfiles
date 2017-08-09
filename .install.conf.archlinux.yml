@@ -21,10 +21,11 @@
     ~/.xinitrc:
     ~/bin:
 
-    ~/.config/termite/config: termite.conf
     ~/.config/Code/User: vscode
     ~/.config/dunst/dunstrc: dunstrc.conf
     ~/.config/ranger/rc.conf: ranger/rc.conf
     ~/.config/ranger/rifle.conf: ranger/rifle.conf
     ~/.config/ranger/scope.sh: ranger/scope.sh
     ~/.config/redshift.conf: redshift.conf
+    ~/.config/termite/config: termite.conf
+    ~/.config/nvim: neovim
