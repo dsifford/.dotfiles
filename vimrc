@@ -3,8 +3,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'leafgarland/typescript-vim'
 Plug 'scrooloose/nerdtree'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'w0rp/ale'
 call plug#end()
 
 " General Settings
