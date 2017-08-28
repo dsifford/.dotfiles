@@ -22,5 +22,12 @@
             "\t$0",
             "});"
         ]
+    },
+    "import": {
+        "prefix": "imp",
+        "body": [
+            "import ${2:entities} from '${1:specifier}';$0"
+        ],
+        "description": "import statement"
     }
 }

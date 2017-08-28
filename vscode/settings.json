@@ -16,7 +16,6 @@
         "typescriptreact": "javascriptreact"
     },
     "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
-    "emmet.useNewEmmet": true,
     "eslint.nodePath": "/Users/dsifford/.yarn-global/bin",
     "extensions.autoUpdate": false,
     "keyboard.dispatch": "keyCode",
@@ -24,15 +23,6 @@
     "prettier.singleQuote": true,
     "prettier.tabWidth": 4,
     "prettier.trailingComma": "es5",
-    "rust.cargoHomePath": "/usr/bin/cargo",
-    "rust.mode": "rls",
-    "rust.rls": {
-        "useRustfmt": true
-    },
-    "rust.rustup": {
-        "nightlyToolchain": "nightly-x86_64-unknown-linux-gnu",
-        "toolchain": "nightly-x86_64-unknown-linux-gnu"
-    },
     "shellcheck.customArgs": [
         "-x"
     ],
@@ -59,7 +49,6 @@
             "text": "HACK:"
         }
     ],
-    "typescript.check.tscVersion": false,
     "uncrustify.configPath": "/Users/dsifford/.dotfiles/uncrustify.cfg",
     "vim.disableAnnoyingNeovimMessage": true,
     "vim.enableNeovim": true,
