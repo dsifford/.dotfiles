@@ -13,14 +13,15 @@ eg2.tslint
 esbenp.prettier-vscode
 fallenwood.vimL
 hoovercj.haskell-linter
+junstyle.php-cs-fixer
 justusadam.language-haskell
-kalitaalexey.vscode-rust
 kumar-harsh.graphql-for-vscode
 LaurentTreguier.uncrustify
 mrmlnc.vscode-remark
 ms-vscode.cpptools
 PeterJausovec.vscode-docker
 richie5um2.vscode-sort-json
+rust-lang.rust
 sysoev.language-stylus
 timonwong.shellcheck
 Tyriar.sort-lines
