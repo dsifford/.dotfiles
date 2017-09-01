@@ -15,6 +15,7 @@ fallenwood.vimL
 hoovercj.haskell-linter
 junstyle.php-cs-fixer
 justusadam.language-haskell
+kisstkondoros.vscode-codemetrics
 kumar-harsh.graphql-for-vscode
 LaurentTreguier.uncrustify
 mrmlnc.vscode-remark

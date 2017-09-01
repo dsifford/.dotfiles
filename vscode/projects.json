@@ -52,5 +52,11 @@
 		"rootPath": "$home/repos/yarn-completion",
 		"paths": [],
 		"group": ""
+	},
+	{
+		"name": "ABT",
+		"rootPath": "$home/repos/academic-bloggers-toolkit/development",
+		"paths": [],
+		"group": ""
 	}
 ]

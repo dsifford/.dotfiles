@@ -94,5 +94,11 @@
         "editorBracketMatch.border": "#ff00ff"
     },
     "workbench.colorTheme": "Dracula",
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "codemetrics.basics.CodeLensEnabled": false,
+    "codemetrics.basics.DiagnosticsEnabled": false,
+    "codemetrics.nodeconfiguration.ReturnStatement": 0,
+    "codemetrics.nodeconfiguration.CaseClause": 0,
+    "codemetrics.basics.ComplexityTemplate": "Complexity is {0}",
+    "codemetrics.nodeconfiguration.ContinueStatement": 0
 }
