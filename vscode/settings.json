@@ -100,5 +100,7 @@
     "codemetrics.nodeconfiguration.ReturnStatement": 0,
     "codemetrics.nodeconfiguration.CaseClause": 0,
     "codemetrics.basics.ComplexityTemplate": "Complexity is {0}",
-    "codemetrics.nodeconfiguration.ContinueStatement": 0
+    "codemetrics.nodeconfiguration.ContinueStatement": 0,
+    "vim.textwidth": 100,
+    "emmet.showSuggestionsAsSnippets": true
 }

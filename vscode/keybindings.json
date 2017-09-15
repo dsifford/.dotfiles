@@ -1,5 +1,5 @@
-// Place your key bindings in this file to overwrite the defaults
 [
+    // Place your key bindings in this file to overwrite the defaults
     {
         "key": "ctrl+shift+d",
         "command": "editor.action.copyLinesDownAction",
@@ -80,6 +80,28 @@
     {
         "key": "alt+tab",
         "command": "editor.emmet.action.expandAbbreviation",
-        "when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !config.emmet.useNewEmmet && !editorHasMultipleSelections && !editorHasSelection && !editorReadonly && !editorTabMovesFocus"
-    }
+        "when":
+            "config.emmet.triggerExpansionOnTab && editorTextFocus && !config.emmet.useNewEmmet && !editorHasMultipleSelections && !editorHasSelection && !editorReadonly && !editorTabMovesFocus"
+    },
+    {
+        "key": "alt+j",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+k",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+j",
+        "command": "editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+k",
+        "command": "editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+    },
+    { "key": "ctrl+f", "command": "editor.action.startFindReplaceAction" }
 ]

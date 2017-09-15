@@ -1,5 +1,6 @@
 alefragnani.project-manager
 alexdima.vscode-lcov
+bierner.markdown-preview-github-styles
 blanu.vscode-styled-jsx
 bungcip.better-toml
 christian-kohler.path-intellisense
@@ -13,6 +14,7 @@ eg2.tslint
 esbenp.prettier-vscode
 fallenwood.vimL
 hoovercj.haskell-linter
+James-Yu.latex-workshop
 junstyle.php-cs-fixer
 justusadam.language-haskell
 kisstkondoros.vscode-codemetrics
@@ -23,6 +25,7 @@ ms-vscode.cpptools
 PeterJausovec.vscode-docker
 richie5um2.vscode-sort-json
 rust-lang.rust
+SirTobi.pegjs-language
 sysoev.language-stylus
 timonwong.shellcheck
 Tyriar.sort-lines
