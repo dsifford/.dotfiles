@@ -36,5 +36,13 @@
             "import ${2:entities} from '${1:specifier}';$0"
         ],
         "description": "import statement"
+    },
+    "it block (tests)": {
+        "prefix": "it",
+        "body": [
+            "it('$1', ${2:async }() => {",
+            "\t$0",
+            "});"
+        ]
     }
 }
