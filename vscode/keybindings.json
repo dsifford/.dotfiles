@@ -41,6 +41,11 @@
         "when": "explorerViewletVisible && filesExplorerFocus"
     },
     {
+        "key": "ctrl+enter",
+        "command": "workbench.files.action.collapseExplorerFolders",
+        "when": "explorerViewletVisible && filesExplorerFocus"
+    },
+    {
         "key": "o",
         "command": "list.toggleExpand",
         "when": "listFocus"

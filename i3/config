@@ -129,6 +129,9 @@ floating_modifier $mod
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# Enable floating
+bindsym $mod+Shift+space floating enable
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
