@@ -35,12 +35,10 @@ alias vim='nvim'
 
 # Macbook
 if [[ $(uname) == 'Darwin' ]]; then
-
     alias ls='ls -FHG11'
-
 fi
 
-# Arch linux machine
+# Arch linux
 if [[ $(uname -n) == 'archlinux' ]]; then
     # Reset caps lock as escape
     alias CAPS='setxkbmap -option caps:escape'
@@ -49,4 +47,6 @@ if [[ $(uname -n) == 'archlinux' ]]; then
     # Verbosely rate the 200 most recently synchronized HTTP servers located in the US,
     # sort them by download rate, and overwrite the file /etc/pacman.d/mirrorlist
     alias pacman-update='sudo reflector --verbose --country "United States" -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
+    alias p='pacaur'
+    alias psyu='pacaur -Syu'
 fi
