@@ -15,6 +15,7 @@ exec --no-startup-id feh --no-fehbg --bg-fill http://wallpapercave.com/wp/NyaITD
 # Startup Daemons
 exec --no-startup-id compton -D 3
 exec --no-startup-id dunst
+exec --no-startup-id albert
 
 # Startup Applets
 exec --no-startup-id nm-applet
@@ -50,6 +51,9 @@ bindsym Control+space focus output DP-2, [instance="MAINTERM"] scratchpad show
 for_window [class="Gifview"] floating enable
 for_window [class="Animate"] floating enable, move position center
 
+# Floating YouTube window
+for_window [title="Floating for YouTube™" window_role="app"] floating enable
+
 # Chrome pop-up windows
 for_window [class="Google-chrome-unstable" window_role="pop-up"] floating enable, move position center
 
@@ -70,6 +74,7 @@ bindsym $mod+Shift+Tab move container to workspace Spotify
 
 # VS Code
 for_window [class="Code"] move to workspace Code
+for_window [class="Atom"] move to workspace Code
 bindsym $mod+grave workspace Code
 bindsym $mod+Shift+grave move container to workspace Code
 
@@ -111,10 +116,6 @@ bindsym Control+XF86AudioPlay exec --no-startup-id ~/.config/redshift/hooks/hue.
 
 # $mod+Shift+Middle Mouse Button => kill window
 bindsym --whole-window $mod+Shift+button3 kill
-
-# $mod+Space => rofi
-bindsym Mod1+space exec "rofi -m 0 -show window"
-bindsym $mod+space exec "rofi -m 0 -disable-history -show drun"
 
 #================================================
 #             BEGIN i3 DEFAULTS

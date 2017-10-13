@@ -14,7 +14,6 @@ eg2.tslint
 esbenp.prettier-vscode
 fallenwood.vimL
 hoovercj.haskell-linter
-James-Yu.latex-workshop
 junstyle.php-cs-fixer
 justusadam.language-haskell
 kisstkondoros.vscode-codemetrics
