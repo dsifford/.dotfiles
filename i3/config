@@ -36,8 +36,8 @@ workspace Code output DP-2
 # Disable mouse warping
 mouse_warping none
 
-# Adjust key repeat speed
-# exec --no-startup-id xset r rate 200 30
+# Disable focus follows mouse
+focus_follows_mouse no
 
 # Floating Terminal
 exec --no-startup-id termite --name=MAINTERM -e 'bash -c "tmux new -AD -s Home"'
@@ -46,6 +46,10 @@ bindsym $mod+Home exec --no-startup-id termite --name=MAINTERM -e 'bash -c "tmux
 bindsym Control+space focus output DP-2, [instance="MAINTERM"] scratchpad show
 
 #===============APP WINDOW CONFIG================
+
+# Albert
+bindsym $mod+space focus output DP-2, exec --no-startup-id albert toggle
+for_window [class="albert"] move to output DP-2, move position center
 
 # Floating gif window
 for_window [class="Gifview"] floating enable
@@ -77,6 +81,10 @@ for_window [class="Code"] move to workspace Code
 for_window [class="Atom"] move to workspace Code
 bindsym $mod+grave workspace Code
 bindsym $mod+Shift+grave move container to workspace Code
+
+# VirtualBox
+for_window [title=".*\[Running\] - Oracle VM VirtualBox$"] floating enable, resize set 2080 2070, move scratchpad
+bindsym $mod+v [title=".*\[Running\] - Oracle VM VirtualBox$"] scratchpad show, move position center
 
 # Zeal
 for_window [class="Zeal"] floating enable, resize set 2080 2070, move scratchpad

@@ -5,10 +5,7 @@
     "editor.fontFamily": "Monaco, 'Courier New', monospace",
     "editor.fontSize": 16,
     "editor.renderWhitespace": "none",
-    "editor.rulers": [
-        80,
-        120
-    ],
+    "editor.rulers": [80, 120],
     "editor.snippetSuggestions": "top",
     "editor.wordWrap": "off",
     "emmet.includeLanguages": {
@@ -23,9 +20,7 @@
     "prettier.singleQuote": true,
     "prettier.tabWidth": 4,
     "prettier.trailingComma": "es5",
-    "shellcheck.customArgs": [
-        "-x"
-    ],
+    "shellcheck.customArgs": ["-x"],
     "todohighlight.isEnable": true,
     "todohighlight.keywords": [
         {
@@ -52,38 +47,6 @@
     "uncrustify.configPath": "/Users/dsifford/.dotfiles/uncrustify.cfg",
     "vim.disableAnnoyingNeovimMessage": true,
     "vim.enableNeovim": true,
-    "vim.otherModesKeyBindingsNonRecursive": [
-        {
-            "after": [],
-            "before": [
-                "g",
-                "r"
-            ],
-            "commands": [
-                {
-                    "command": "editor.action.referenceSearch.trigger"
-                }
-            ]
-        },
-        {
-            "after": [],
-            "before": [
-                "<leader>",
-                "c"
-            ],
-            "commands": [
-                {
-                    "command": "cursorHome"
-                },
-                {
-                    "args": {
-                        "snippet": "// "
-                    },
-                    "command": "editor.action.insertSnippet"
-                }
-            ]
-        }
-    ],
     "vim.searchHighlightColor": "rgba(80, 250, 123, 0.6)",
     "vim.useSystemClipboard": true,
     "vim.visualstar": true,
@@ -95,13 +58,62 @@
     },
     "workbench.colorTheme": "Dracula",
     "workbench.startupEditor": "none",
-    "codemetrics.basics.CodeLensEnabled": false,
     "codemetrics.basics.DiagnosticsEnabled": false,
     "codemetrics.nodeconfiguration.ReturnStatement": 0,
     "codemetrics.nodeconfiguration.CaseClause": 0,
     "codemetrics.basics.ComplexityTemplate": "Complexity is {0}",
     "codemetrics.nodeconfiguration.ContinueStatement": 0,
+    "codemetrics.basics.DecorationModeEnabled": false,
     "vim.textwidth": 100,
     "emmet.showSuggestionsAsSnippets": true,
-    "vim.foldfix": true
+    "vim.foldfix": true,
+    "vim.leader": "<space>",
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "after": [],
+            "before": ["g", "r"],
+            "commands": [
+                {
+                    "command": "editor.action.referenceSearch.trigger"
+                }
+            ]
+        },
+        {
+            "after": [],
+            "before": ["<leader>", "c"],
+            "commands": [
+                {
+                    "command": "cursorHome"
+                },
+                {
+                    "args": {
+                        "snippet": "// "
+                    },
+                    "command": "editor.action.insertSnippet"
+                }
+            ]
+        },
+        {
+            "after": [],
+            "before": ["<leader>", "l"],
+            "commands": [
+                {
+                    "command": "settings.cycle",
+                    "args": {
+                        "id": "codelens",
+                        "overrideWorkspaceSettings": true,
+                        "values": [
+                            {
+                                "editor.codeLens": true
+                            },
+                            {
+                                "editor.codeLens": false
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "editor.codeLens": false
 }
