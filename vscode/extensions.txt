@@ -22,7 +22,6 @@ kisstkondoros.vscode-codemetrics
 kumar-harsh.graphql-for-vscode
 LaurentTreguier.uncrustify
 mrmlnc.vscode-remark
-ms-vscode.azure-account
 ms-vscode.cpptools
 PeterJausovec.vscode-docker
 richie5um2.vscode-sort-json
