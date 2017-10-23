@@ -17,6 +17,7 @@ alias bashrc='vim ~/.bashrc'
 alias dot='cd ~/.dotfiles'
 alias grep='grep --color'
 alias npmc='npm-check -u'
+alias npmcg='npm-check -ug'
 alias yu='yarn upgrade-interactive'
 alias yug='yarn global upgrade-interactive'
 
