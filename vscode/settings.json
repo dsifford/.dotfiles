@@ -115,5 +115,7 @@
             ]
         }
     ],
-    "editor.codeLens": false
+    "editor.codeLens": false,
+    "projectManager.treeview.visible": false,
+    "docker.showExplorer": false
 }
