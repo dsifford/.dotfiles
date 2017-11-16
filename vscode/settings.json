@@ -45,7 +45,6 @@
         }
     ],
     "uncrustify.configPath": "/Users/dsifford/.dotfiles/uncrustify.cfg",
-    "vim.disableAnnoyingNeovimMessage": true,
     "vim.enableNeovim": true,
     "vim.searchHighlightColor": "rgba(80, 250, 123, 0.6)",
     "vim.useSystemClipboard": true,
@@ -117,5 +116,8 @@
     ],
     "editor.codeLens": false,
     "projectManager.treeview.visible": false,
-    "docker.showExplorer": false
+    "docker.showExplorer": false,
+    "typescript.tsdk": "/home/dsifford/.yarn-global/lib/node_modules/typescript/lib",
+    "explorer.decorations.badges": false,
+    "editor.disableTranslate3d": true
 }

@@ -18,14 +18,17 @@ export LESSHISTFILE='-'
 export PAGER=less
 export PREFIX=~/.yarn-global
 export RUST_SRC_PATH
+RUST_SRC_PATH="$(rustc --print sysroot )/lib/rustlib/src/rust/src"
+
+if [[ $(uname -n) == 'archlinux' ]]; then
+    # Required for plexmediaserver cli
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}/opt/plexmediaserver"
+    # Fix tiny QT windows on 4k monitor
+    export QT_AUTO_SCREEN_SCALE_FACTOR=2
+fi
 
 # Set up system path
 . ~/.shell/.path.sh
-
-RUST_SRC_PATH="$(rustc --print sysroot )/lib/rustlib/src/rust/src"
-
-# Fix tiny QT windows on 4k monitor
-[[ $(uname -n) == 'archlinux' ]] && export QT_AUTO_SCREEN_SCALE_FACTOR=2
 
 # Source bash-completion on mac
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
