@@ -21,8 +21,6 @@ export RUST_SRC_PATH
 RUST_SRC_PATH="$(rustc --print sysroot )/lib/rustlib/src/rust/src"
 
 if [[ $(uname -n) == 'archlinux' ]]; then
-    # Required for plexmediaserver cli
-    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}/opt/plexmediaserver"
     # Fix tiny QT windows on 4k monitor
     export QT_AUTO_SCREEN_SCALE_FACTOR=2
 fi

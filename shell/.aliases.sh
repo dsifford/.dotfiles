@@ -50,4 +50,7 @@ if [[ $(uname -n) == 'archlinux' ]]; then
     alias pacman-update='sudo reflector --verbose --country "United States" -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
     alias p='pacaur'
     alias psyu='pacaur -Syu'
+
+    # Plex library scan
+    alias plex='LD_LIBRARY_PATH=/opt/plexmediaserver /opt/plexmediaserver/Plex\ Media\ Scanner'
 fi
