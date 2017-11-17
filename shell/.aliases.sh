@@ -43,7 +43,6 @@ fi
 if [[ $(uname -n) == 'archlinux' ]]; then
     # Reset caps lock as escape
     alias CAPS='setxkbmap -option caps:escape'
-    alias SPOTIFY='spotify --force-device-scale-factor=2 >/dev/null 2>&1 &'
     alias ls='ls -hF1 --color=tty'
     # Verbosely rate the 200 most recently synchronized HTTP servers located in the US,
     # sort them by download rate, and overwrite the file /etc/pacman.d/mirrorlist
