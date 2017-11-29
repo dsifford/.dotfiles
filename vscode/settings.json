@@ -119,5 +119,18 @@
     "docker.showExplorer": false,
     "typescript.tsdk": "/home/dsifford/.yarn-global/lib/node_modules/typescript/lib",
     "explorer.decorations.badges": false,
-    "editor.disableTranslate3d": true
+    "editor.disableTranslate3d": true,
+    "python.formatting.provider": "yapf",
+    "python.linting.flake8Enabled": true,
+    "python.formatting.yapfArgs": [
+        "--style",
+        "google"
+    ],
+    "python.linting.flake8Args": [
+        "--max-line-length", "100"
+    ],
+    "python.sortImports.args": [
+        "-ac"
+    ],
+    "python.linting.mypyEnabled": true
 }
