@@ -131,6 +131,5 @@
     ],
     "python.sortImports.args": [
         "-ac"
-    ],
-    "python.linting.mypyEnabled": true
+    ]
 }

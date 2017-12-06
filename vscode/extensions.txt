@@ -7,7 +7,6 @@ blanu.vscode-styled-jsx
 bungcip.better-toml
 dbaeumer.vscode-eslint
 djabraham.vscode-yaml-validation
-donjayamanne.python
 dracula-theme.theme-dracula
 EditorConfig.EditorConfig
 eg2.tslint
@@ -20,7 +19,7 @@ justusadam.language-haskell
 kisstkondoros.vscode-codemetrics
 kumar-harsh.graphql-for-vscode
 LaurentTreguier.uncrustify
-mrmlnc.vscode-remark
+ms-python.python
 ms-vscode.cpptools
 PeterJausovec.vscode-docker
 richie5um2.vscode-sort-json

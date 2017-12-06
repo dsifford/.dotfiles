@@ -29,7 +29,7 @@ alias gss='git status -s'
 alias gc='git checkout'
 alias gl='git log --oneline --decorate --all --graph'
 alias gca='git commit -a'
-alias gf='git fetch --prune'
+alias gf='git fetch --all --prune'
 
 ### Always use neovim
 alias vim='nvim'
