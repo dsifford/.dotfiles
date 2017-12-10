@@ -1,5 +1,7 @@
 alefragnani.project-manager
 alexdima.vscode-lcov
+bierner.emojisense
+bierner.markdown-checkbox
 bierner.markdown-emoji
 bierner.markdown-mermaid
 bierner.markdown-preview-github-styles
