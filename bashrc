@@ -17,6 +17,7 @@ export GOPATH=~/gocode
 export LESSHISTFILE='-'
 export PAGER=less
 export PREFIX=~/.yarn-global
+export NPM_CONFIG_PREFIX=~/.yarn-global
 export RUST_SRC_PATH
 RUST_SRC_PATH="$(rustc --print sysroot )/lib/rustlib/src/rust/src"
 
