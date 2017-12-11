@@ -40,10 +40,9 @@ mouse_warping none
 focus_follows_mouse no
 
 # Floating Terminal
-# FIXME: bug in arch linux currently with tmux and filesystem-2017 -- remove comments when fixed
-exec --no-startup-id termite --name=MAINTERM # FIXME: -e 'bash -c "tmux new -AD -s Home"'
+exec --no-startup-id termite --name=MAINTERM -e 'bash -c "tmux new -AD -s Home"'
 for_window [instance="MAINTERM"] floating enable, border pixel 0, resize set 3850 952, move position 2160 625, move scratchpad
-bindsym $mod+Home exec --no-startup-id termite --name=MAINTERM # FIXME: -e 'bash -c "tmux new -AD -s Home"'
+bindsym $mod+Home exec --no-startup-id termite --name=MAINTERM -e 'bash -c "tmux new -AD -s Home"'
 bindsym Control+space focus output DP-4, [instance="MAINTERM"] scratchpad show
 
 #===============APP WINDOW CONFIG================

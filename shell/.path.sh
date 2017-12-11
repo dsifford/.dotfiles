@@ -1,14 +1,12 @@
 # shellcheck shell=bash
 
 __parse_path() {
-    local IFS i current_path system_default cleaned_path
-    local -A pathmap
-    local patharr=()
+    local IFS i current_path system_default
 
     IFS=':' read -ra current_path <<< "$PATH"
     IFS=':' read -ra system_default <<< "$( getconf PATH )"
 
-    local my_path=(
+    local path=(
         ~/bin
         ~/.yarn-global/bin
         ~/.cargo/bin
@@ -17,22 +15,23 @@ __parse_path() {
         /usr/local/sbin
         /usr/local/go/bin
         ~/gocode/bin
-        "${current_path[@]}"
-        "${system_default[@]}"
     )
 
-    # Dedupe path
-    for i in "${my_path[@]}"; do
-        # Uncomment below to remove single elements from path
-        # if [[ $i == *ruby* ]]; then continue; fi
-        [[ ! ${pathmap[$i]} ]] && pathmap[$i]=1 && patharr+=( "$i:" )
+    local deduped_current_path=()
+    for i in "${current_path[@]}"; do
+        for j in "${path[@]}"; do
+            if [[ "$j" == "$i" ]]; then
+                continue 2
+            fi
+        done
+        for j in "${system_default[@]}"; do
+            if [[ "$j" == "$i" ]]; then
+                continue 2
+            fi
+        done
+        deduped_current_path+=( "$i" )
     done
-
-    # Concat to string
-    cleaned_path="${patharr[*]}"
-
-    # Remove whitespace
-    echo "${cleaned_path// /}"
+    echo "${path[*]} ${deduped_current_path[*]} ${system_default[*]}:" | tr ' ' ':'
 }
-path="$(__parse_path)"
-export PATH="$path"
+PATH="$(__parse_path)"
+export PATH
