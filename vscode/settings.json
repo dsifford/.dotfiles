@@ -10,7 +10,8 @@
     "editor.wordWrap": "off",
     "emmet.includeLanguages": {
         "typescript": "javascriptreact",
-        "typescriptreact": "javascriptreact"
+        "typescriptreact": "javascriptreact",
+        "php": "html"
     },
     "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
     "eslint.nodePath": "/Users/dsifford/.yarn-global/bin",
@@ -63,7 +64,6 @@
     "codemetrics.basics.ComplexityTemplate": "Complexity is {0}",
     "codemetrics.nodeconfiguration.ContinueStatement": 0,
     "codemetrics.basics.DecorationModeEnabled": false,
-    "vim.textwidth": 100,
     "emmet.showSuggestionsAsSnippets": true,
     "vim.foldfix": true,
     "vim.leader": "<space>",
@@ -112,6 +112,33 @@
                     }
                 }
             ]
+        },
+        {
+            "after": [],
+            "before": ["<leader>", "f"],
+            "commands": [
+                {
+                    "command": "editor.action.quickFix"
+                }
+            ] 
+        },
+        {
+            "after": [],
+            "before": ["<leader>", "b", "l"],
+            "commands": [
+                {
+                    "command": "gitlens.toggleLineBlame"
+                }
+            ]
+        },
+        {
+            "after": [],
+            "before": ["<leader>", "b", "f"],
+            "commands": [
+                {
+                    "command": "gitlens.toggleFileBlame"
+                }
+            ]
         }
     ],
     "editor.codeLens": false,
@@ -119,7 +146,6 @@
     "docker.showExplorer": false,
     "typescript.tsdk": "/home/dsifford/.yarn-global/lib/node_modules/typescript/lib",
     "explorer.decorations.badges": false,
-    "editor.disableTranslate3d": true,
     "python.formatting.provider": "yapf",
     "python.linting.flake8Enabled": true,
     "python.formatting.yapfArgs": [
@@ -131,5 +157,21 @@
     ],
     "python.sortImports.args": [
         "-ac"
-    ]
+    ],
+    "macros": {
+        "openFile": [
+            "list.select",
+            "workbench.action.toggleSidebarVisibility"
+        ]
+    },
+    "vim.easymotion": true,
+    "vim.easymotionMarkerFontFamily": "Monaco",
+    "vim.easymotionMarkerHeight": 20,
+    "vim.easymotionMarkerWidthPerChar": 10,
+    "vim.easymotionMarkerBackgroundColor": "#ff5555",
+    "vim.easymotionMarkerFontWeight": "bold",
+    "codemetrics.basics.OverviewRulerModeEnabled": false,
+    "scss.validate": false,
+    "css.validate": false,
+    "stylelint.enable": true
 }

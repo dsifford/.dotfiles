@@ -29,27 +29,27 @@ exec --no-startup-id dropbox
 
 # Display / Screen Config
 workspace 1 output DP-0
-workspace 2 output DP-4
+workspace 2 output DP-2
 workspace Spotify output DP-0
-workspace Code output DP-4 
+workspace Code output DP-2 
 
 # Disable mouse warping
 mouse_warping none
 
 # Disable focus follows mouse
-focus_follows_mouse no
+# focus_follows_mouse no
 
 # Floating Terminal
 exec --no-startup-id termite --name=MAINTERM -e 'bash -c "tmux new -AD -s Home"'
 for_window [instance="MAINTERM"] floating enable, border pixel 0, resize set 3850 952, move position 2160 625, move scratchpad
 bindsym $mod+Home exec --no-startup-id termite --name=MAINTERM -e 'bash -c "tmux new -AD -s Home"'
-bindsym Control+space focus output DP-4, [instance="MAINTERM"] scratchpad show
+bindsym Control+space focus output DP-2, [instance="MAINTERM"] scratchpad show
 
 #===============APP WINDOW CONFIG================
 
 # Albert
-bindsym $mod+space focus output DP-4, exec --no-startup-id albert toggle
-for_window [class="albert"] move to output DP-4, move position center
+bindsym $mod+space focus output DP-2, exec --no-startup-id albert toggle
+for_window [class="albert"] move to output DP-2, move position center
 
 # Floating gif window
 for_window [class="Gifview"] floating enable
@@ -265,7 +265,7 @@ bar {
         inactive_workspace #44475a #44475a     #6272a4
         urgent_workspace   #44475a #44475a     #ff5555
     }
-    output DP-4
+    output DP-2
     font pango: Monaco 14
     position top
     tray_output none

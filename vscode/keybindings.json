@@ -1,34 +1,18 @@
 [
-    // Place your key bindings in this file to overwrite the defaults
     {
         "key": "ctrl+shift+d",
         "command": "editor.action.copyLinesDownAction",
         "when": "editorTextFocus && !editorReadonly"
     },
     {
+        "key": "ctrl+enter",
+        "command": "macros.openFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder"
+    },
+    {
         "key": "j",
-        "command": "list.focusDown",
-        "when": "listFocus"
-    },
-    {
-        "key": "k",
-        "command": "list.focusUp",
-        "when": "listFocus"
-    },
-    {
-        "key": "enter",
-        "command": "list.select",
-        "when": "explorerViewletVisible && filesExplorerFocus"
-    },
-    {
-        "key": "p",
-        "command": "list.collapse",
-        "when": "explorerViewletVisible && filesExplorerFocus"
-    },
-    {
-        "key": "shift+p",
-        "command": "list.focusFirst",
-        "when": "explorerViewletVisible && filesExplorerFocus"
+        "command": "list.focusNext",
+        "when": "quickFixWidgetVisible && editorFocus"
     },
     {
         "key": "shift+j",
@@ -41,14 +25,9 @@
         "when": "explorerViewletVisible && filesExplorerFocus"
     },
     {
-        "key": "ctrl+enter",
-        "command": "workbench.files.action.collapseExplorerFolders",
-        "when": "explorerViewletVisible && filesExplorerFocus"
-    },
-    {
-        "key": "o",
-        "command": "list.toggleExpand",
-        "when": "listFocus"
+        "key": "ctrl+k",
+        "command": "selectPrevSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
     },
     {
         "key": "ctrl+j",
@@ -72,7 +51,18 @@
     },
     {
         "key": "ctrl+\\",
-        "command": "workbench.action.toggleSidebarVisibility"
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "editorTextFocus && !sidebarVisible"
+    },
+    {
+        "key": "ctrl+\\",
+        "command": "workbench.action.focusSideBar",
+        "when": "editorTextFocus && sidebarVisible"
+    },
+    {
+        "key": "ctrl+\\",
+        "command": "workbench.action.focusFirstEditorGroup",
+        "when": "!editorFocus"
     },
     {
         "key": "ctrl+shift+/",
@@ -85,8 +75,7 @@
     {
         "key": "alt+tab",
         "command": "editor.emmet.action.expandAbbreviation",
-        "when":
-            "config.emmet.triggerExpansionOnTab && editorTextFocus && !config.emmet.useNewEmmet && !editorHasMultipleSelections && !editorHasSelection && !editorReadonly && !editorTabMovesFocus"
+        "when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !config.emmet.useNewEmmet && !editorHasMultipleSelections && !editorHasSelection && !editorReadonly && !editorTabMovesFocus"
     },
     {
         "key": "alt+j",
@@ -108,5 +97,8 @@
         "command": "editor.action.insertCursorAbove",
         "when": "editorTextFocus"
     },
-    { "key": "ctrl+f", "command": "editor.action.startFindReplaceAction" }
+    {
+        "key": "ctrl+f",
+        "command": "editor.action.startFindReplaceAction"
+    }
 ]

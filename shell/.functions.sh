@@ -1,5 +1,16 @@
 # shellcheck shell=bash
 
+# codeclimate cli
+codeclimate() {
+    docker run \
+	--interactive --tty --rm \
+	--env CODECLIMATE_CODE="$PWD" \
+	--volume "$PWD":/code \
+	--volume /var/run/docker.sock:/var/run/docker.sock \
+	--volume /tmp/cc:/tmp/cc \
+	codeclimate/codeclimate "$@"
+}
+
 # Remove either untagged images or a variable number of images (1-9)
 drmi() {
     if [[ $1 = @(u|un) ]]; then

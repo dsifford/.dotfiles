@@ -6,14 +6,16 @@ bierner.markdown-emoji
 bierner.markdown-mermaid
 bierner.markdown-preview-github-styles
 blanu.vscode-styled-jsx
+bmewburn.vscode-intelephense-client
 bungcip.better-toml
 dbaeumer.vscode-eslint
-djabraham.vscode-yaml-validation
 dracula-theme.theme-dracula
+eamodio.gitlens
 EditorConfig.EditorConfig
 eg2.tslint
 esbenp.prettier-vscode
 fallenwood.vimL
+geddski.macros
 hoovercj.haskell-linter
 hoovercj.vscode-settings-cycler
 junstyle.php-cs-fixer
@@ -26,8 +28,8 @@ ms-vscode.cpptools
 PeterJausovec.vscode-docker
 richie5um2.vscode-sort-json
 rust-lang.rust
+shinnn.stylelint
 SirTobi.pegjs-language
-slb235.vscode-coffeelint
 sysoev.language-stylus
 timonwong.shellcheck
 Tyriar.sort-lines
@@ -35,3 +37,4 @@ vscodevim.vim
 vtfn.stylint
 WallabyJs.quokka-vscode
 wayou.vscode-todo-highlight
+wix.vscode-import-cost
