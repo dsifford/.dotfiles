@@ -139,7 +139,35 @@
                     "command": "gitlens.toggleFileBlame"
                 }
             ]
+        },
+        {
+            "after": [],
+            "before": ["<C-w>", ">"],
+            "commands": [
+                {
+                    "command": "workbench.action.increaseViewSize"
+                }
+            ]
+        },
+        {
+            "after": [],
+            "before": ["<C-w>", "<"],
+            "commands": [
+                {
+                    "command": "workbench.action.decreaseViewSize"
+                }
+            ]
+        },
+        {
+            "after": [],
+            "before": ["<C-w>", "="],
+            "commands": [
+                {
+                    "command": "workbench.action.evenEditorWidths"
+                }
+            ]
         }
+
     ],
     "editor.codeLens": false,
     "projectManager.treeview.visible": false,

@@ -4,25 +4,76 @@
         "command": "editor.action.copyLinesDownAction",
         "when": "editorTextFocus && !editorReadonly"
     },
+    // 
+    // File Explorer -----------------------------------------
+    // 
+    {
+        "key": "escape escape",
+        "command": "workbench.files.action.collapseExplorerFolders",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "a",
+        "command": "explorer.newFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "shift+a",
+        "command": "explorer.newFolder",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "p",
+        "command": "list.collapse",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "x",
+        "command": "list.collapse",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "s",
+        "command": "explorer.openToSide",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus && !explorerResourceIsFolder"
+    },
+    {
+        "key": "shift+j",
+        "command": "list.focusLastChild",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "shift+k",
+        "command": "list.focusFirstChild",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
     {
         "key": "ctrl+enter",
         "command": "macros.openFile",
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder"
     },
     {
+        "key": "ctrl+\\",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "editorTextFocus && !sidebarVisible"
+    },
+    {
+        "key": "ctrl+\\",
+        "command": "workbench.action.focusSideBar",
+        "when": "editorTextFocus && sidebarVisible"
+    },
+    {
+        "key": "ctrl+\\",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "!editorFocus"
+    },
+    //
+    // 
+    // 
+    {
         "key": "j",
         "command": "list.focusNext",
         "when": "quickFixWidgetVisible && editorFocus"
-    },
-    {
-        "key": "shift+j",
-        "command": "list.focusLastChild",
-        "when": "explorerViewletVisible && filesExplorerFocus"
-    },
-    {
-        "key": "shift+k",
-        "command": "list.focusFirstChild",
-        "when": "explorerViewletVisible && filesExplorerFocus"
     },
     {
         "key": "ctrl+k",
@@ -50,19 +101,20 @@
         "when": "inQuickOpen"
     },
     {
-        "key": "ctrl+\\",
-        "command": "workbench.action.toggleSidebarVisibility",
-        "when": "editorTextFocus && !sidebarVisible"
+        "key": "alt+l",
+        "command": "workbench.action.focusNextGroup"
     },
     {
-        "key": "ctrl+\\",
-        "command": "workbench.action.focusSideBar",
-        "when": "editorTextFocus && sidebarVisible"
+        "key": "alt+h",
+        "command": "workbench.action.focusPreviousGroup"
     },
     {
-        "key": "ctrl+\\",
-        "command": "workbench.action.focusFirstEditorGroup",
-        "when": "!editorFocus"
+        "key": "alt+shift+l",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "alt+shift+h",
+        "command": "workbench.action.previousEditor"
     },
     {
         "key": "ctrl+shift+/",
