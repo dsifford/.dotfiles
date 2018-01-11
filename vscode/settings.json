@@ -201,5 +201,6 @@
     "codemetrics.basics.OverviewRulerModeEnabled": false,
     "scss.validate": false,
     "css.validate": false,
-    "stylelint.enable": true
+    "stylelint.enable": true,
+    "gitlens.blame.line.enabled": false,
 }
