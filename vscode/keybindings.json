@@ -100,6 +100,9 @@
         "command": "workbench.action.quickOpenNavigatePrevious",
         "when": "inQuickOpen"
     },
+    //
+    // Tab/Pane navigation
+    //
     {
         "key": "alt+l",
         "command": "workbench.action.focusNextGroup"
@@ -109,21 +112,27 @@
         "command": "workbench.action.focusPreviousGroup"
     },
     {
-        "key": "alt+shift+l",
+        "key": "ctrl+alt+l",
         "command": "workbench.action.nextEditor"
     },
     {
-        "key": "alt+shift+h",
+        "key": "ctrl+alt+h",
         "command": "workbench.action.previousEditor"
     },
+    //
+    // Pane Sizing
+    //
     {
-        "key": "ctrl+shift+/",
-        "command": "editor.action.insertSnippet",
-        "when": "editorTextFocus",
-        "args": {
-            "snippet": "/**$0 */"
-        }
+        "key": "alt+shift+l",
+        "command": "workbench.action.increaseViewSize"
     },
+    {
+        "key": "alt+shift+h",
+        "command": "workbench.action.decreaseViewSize"
+    },
+    //
+    //
+    //
     {
         "key": "alt+tab",
         "command": "editor.emmet.action.expandAbbreviation",

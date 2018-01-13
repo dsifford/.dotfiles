@@ -71,7 +71,6 @@ for_window [class="kruler"] floating enable
 for_window [class="Slack"] move to workspace 1
 
 # Spotify
-exec --no-startup-id spotify --force-device-scale-factor=2
 for_window [class="Spotify"] move to workspace Spotify
 bindsym $mod+Tab workspace Spotify
 bindsym $mod+Shift+Tab move container to workspace Spotify
