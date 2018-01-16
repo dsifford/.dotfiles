@@ -18,13 +18,14 @@ fallenwood.vimL
 geddski.macros
 hoovercj.haskell-linter
 hoovercj.vscode-settings-cycler
-junstyle.php-cs-fixer
+ikappas.phpcs
 justusadam.language-haskell
 kisstkondoros.vscode-codemetrics
 kumar-harsh.graphql-for-vscode
 LaurentTreguier.uncrustify
 ms-python.python
 ms-vscode.cpptools
+persoderlind.vscode-phpcbf
 PeterJausovec.vscode-docker
 richie5um2.vscode-sort-json
 rust-lang.rust

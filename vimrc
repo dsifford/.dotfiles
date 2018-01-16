@@ -6,6 +6,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 Plug 'w0rp/ale'
 call plug#end()
 
@@ -27,4 +28,5 @@ colorscheme dracula
 highlight Normal ctermbg=NONE
 
 " Keymaps
+let mapleader=" "
 map <C-\> :NERDTreeToggle<CR>

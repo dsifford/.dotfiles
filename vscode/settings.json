@@ -17,7 +17,6 @@
     "eslint.nodePath": "/Users/dsifford/.yarn-global/bin",
     "extensions.autoUpdate": false,
     "keyboard.dispatch": "keyCode",
-    "prettier.printWidth": 100,
     "prettier.singleQuote": true,
     "prettier.tabWidth": 4,
     "prettier.trailingComma": "es5",
