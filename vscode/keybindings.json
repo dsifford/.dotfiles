@@ -4,6 +4,16 @@
         "command": "editor.action.copyLinesDownAction",
         "when": "editorTextFocus && !editorReadonly"
     },
+    {
+        "key": "cmd+shift+d",
+        "command": "editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+shift+i",
+        "command": "editor.action.formatDocument",
+        "when": "editorTextFocus && !editorReadonly"
+    },
     // 
     // File Explorer -----------------------------------------
     // 
@@ -67,6 +77,21 @@
         "command": "workbench.action.toggleSidebarVisibility",
         "when": "!editorFocus"
     },
+    {
+        "key": "cmd+\\",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "editorTextFocus && !sidebarVisible"
+    },
+    {
+        "key": "cmd+\\",
+        "command": "workbench.action.focusSideBar",
+        "when": "editorTextFocus && sidebarVisible"
+    },
+    {
+        "key": "cmd+\\",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "!editorFocus"
+    },
     //
     // 
     // 
@@ -96,7 +121,32 @@
         "when": "inQuickOpen"
     },
     {
-        "key": "ctrl+k",
+        "key": "cmd+k",
+        "command": "selectPrevSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    {
+        "key": "cmd+j",
+        "command": "selectNextSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    {
+        "key": "cmd+k",
+        "command": "selectPrevSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    {
+        "key": "cmd+j",
+        "command": "workbench.action.quickOpenNavigateNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "cmd+k",
+        "command": "workbench.action.quickOpenNavigatePrevious",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "cmd+k",
         "command": "workbench.action.quickOpenNavigatePrevious",
         "when": "inQuickOpen"
     },
@@ -130,9 +180,14 @@
         "key": "alt+shift+h",
         "command": "workbench.action.decreaseViewSize"
     },
-    //
-    //
-    //
+    {
+        "key": "cmd+shift+l",
+        "command": "workbench.action.increaseViewSize"
+    },
+    {
+        "key": "cmd+shift+h",
+        "command": "workbench.action.decreaseViewSize"
+    },
     {
         "key": "alt+tab",
         "command": "editor.emmet.action.expandAbbreviation",
