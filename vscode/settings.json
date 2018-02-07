@@ -14,7 +14,7 @@
         "php": "html"
     },
     "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
-    "eslint.nodePath": "/Users/dsifford/.yarn-global/bin",
+    "eslint.nodePath": "/home/dsifford/.yarn-global/bin",
     "extensions.autoUpdate": false,
     "keyboard.dispatch": "keyCode",
     "prettier.singleQuote": true,
@@ -44,7 +44,7 @@
             "text": "HACK:"
         }
     ],
-    "uncrustify.configPath": "/Users/dsifford/.dotfiles/uncrustify.cfg",
+    "uncrustify.configPath": "/home/dsifford/.dotfiles/uncrustify.cfg",
     "vim.enableNeovim": true,
     "vim.searchHighlightColor": "rgba(80, 250, 123, 0.6)",
     "vim.useSystemClipboard": true,
@@ -55,7 +55,7 @@
         "editorBracketMatch.background": "#FF79C680",
         "editorBracketMatch.border": "#ff00ff"
     },
-    "workbench.colorTheme": "Dracula Soft",
+    "workbench.colorTheme": "Dracula",
     "workbench.startupEditor": "none",
     "codemetrics.basics.DiagnosticsEnabled": false,
     "codemetrics.nodeconfiguration.ReturnStatement": 0,
@@ -171,7 +171,7 @@
     "editor.codeLens": false,
     "projectManager.treeview.visible": false,
     "docker.showExplorer": false,
-    "typescript.tsdk": "/Users/dsifford/.yarn-global/lib/node_modules/typescript/lib",
+    "typescript.tsdk": "/home/dsifford/.yarn-global/lib/node_modules/typescript/lib",
     "explorer.decorations.badges": false,
     "python.formatting.provider": "yapf",
     "python.linting.flake8Enabled": true,
@@ -201,7 +201,6 @@
     "scss.validate": false,
     "css.validate": false,
     "stylelint.enable": true,
-    "gitlens.blame.line.enabled": false,
     "gitlens.advanced.messages": {
         "suppressCommitHasNoPreviousCommitWarning": false,
         "suppressCommitNotFoundWarning": false,
@@ -209,7 +208,14 @@
         "suppressGitVersionWarning": false,
         "suppressLineUncommittedWarning": false,
         "suppressNoRepositoryWarning": false,
-        "suppressUpdateNotice": false,
+        "suppressUpdateNotice": true,
         "suppressWelcomeNotice": true
     },
+    "editor.acceptSuggestionOnEnter": "smart",
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": true,
+        "strings": true
+    },
+    "typescript.autoImportSuggestions.enabled": false,
 }
