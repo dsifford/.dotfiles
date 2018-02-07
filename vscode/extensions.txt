@@ -6,7 +6,6 @@ bierner.markdown-emoji
 bierner.markdown-mermaid
 bierner.markdown-preview-github-styles
 blanu.vscode-styled-jsx
-bmewburn.vscode-intelephense-client
 bungcip.better-toml
 dbaeumer.vscode-eslint
 dracula-theme.theme-dracula
