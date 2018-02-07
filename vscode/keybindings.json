@@ -38,6 +38,11 @@
         "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
     },
     {
+        "key": "m",
+        "command": "renameFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    {
         "key": "x",
         "command": "list.collapse",
         "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
