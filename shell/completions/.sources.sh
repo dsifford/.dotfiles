@@ -23,7 +23,7 @@ get_completions() {
         [git-prompt]='https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh'
         [git]='https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash'
         [hub]='https://raw.githubusercontent.com/github/hub/master/etc/hub.bash_completion.sh'
-        [task]='https://raw.githubusercontent.com/taskwarrior/task/2.5.1/scripts/bash/task.sh'
+        [task]='https://raw.githubusercontent.com/GothenburgBitFactory/taskwarrior/master/scripts/bash/task.sh'
         [yarn]='https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash'
     )
 

@@ -29,3 +29,4 @@
     ~/.config/redshift.conf: redshift.conf
     ~/.config/termite/config: termite.conf
     ~/.config/nvim: neovim
+    ~/.config/pacman/hooks: pacman/hooks
