@@ -1,21 +1,26 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC1090
+set -e
 
-[[ ! -f /usr/bin/python ]] && echo "Python must be installed first." && exit 1
-[[ $EUID == 0 || $HOME == '/root' ]] && echo "Don't run this as root." && exit 1
+command -v python > /dev/null || { echo "Python must be installed first."; exit 1; }
+[[ $USER == 'root' ]] && { echo "Don't run this as root."; exit 1; }
 
-config=".install.conf.$(uname -n).yml"
-dotbot_dir="dotbot"
-dotbot_bin="bin/dotbot"
-basedir="$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd )"
+dotfiles="$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd )"
+dotbot="$dotfiles/dotbot/bin/dotbot"
+dotbot_plugins="$dotfiles/.lib/plugins"
+config_dir="$dotfiles/.lib/config"
+configs=(
+    "$config_dir/config.yml"
+    "$config_dir/config.$(uname).yml"
+)
 
 args=()
 while test $# -gt 0; do
     case "$1" in
         --packages)
-            [[ $(uname -n) == 'archlinux' ]] && args+=( --plugin-dir "$basedir/plugins/dotbot-pacaur" )
-            [[ $(uname -n) == 'osx' ]] && args+=( --plugin-dir "$basedir/plugins/dotbot-brew" )
-            args+=( -c "$basedir/.packages.yml" )
+            configs+=(
+                "$config_dir/packages.$(uname).yml"
+            )
             shift
             ;;
         *)
@@ -25,24 +30,14 @@ while test $# -gt 0; do
     esac
 done
 
+# TODO: Move into a dotbot "shell" field
 # Update bash-completions
-. "$basedir/shell/completions/.sources.sh"
+. "$dotfiles/shell/completions/.sources.sh"
 
-# Exit immediately on exit failures
-set -e
+config_file="$(mktemp --suffix=.yml)"
+cat "${configs[@]}" > "$config_file"
 
-# Get secure files from lastpass
-if command -v lpass >/dev/null; then
-    if [ ! -f ~/.task/freecinc.ca.pem ]; then
-        lpass show --notes taskwarrior-ca > ~/.task/freecinc.ca.pem
-        lpass show --notes taskwarrior-cert > ~/.task/freecinc.cert.pem
-        lpass show --notes taskwarrior-key > ~/.task/freecinc.key.pem
-    fi
-else
-    echo "lastpass-cli must be installed for obtaining private keys and certs."
-fi
-
-cd "$basedir"
 git submodule update --remote --merge
+"$dotbot" -d "$dotfiles" -c "$config_file" --plugin-dir "$dotbot_plugins" "${args[@]}"
 
-"${basedir}/${dotbot_dir}/${dotbot_bin}" -d "${basedir}" -c "${config}" "${args[@]}"
+rm "$config_file"

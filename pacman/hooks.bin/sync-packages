@@ -1,0 +1,98 @@
+#!/bin/bash
+#
+# ALPM hook that runs after packages are explicitly installed or removed.
+#
+# Responsible for keeping the packages.Linux.yml file updated with explicitly
+# installed packages
+#
+
+# De-escalates back to normal priveledges if running as root
+if [ "$EUID" -eq 0 ]; then
+    script="${BASH_SOURCE[0]}"
+    sudo -u "$SUDO_USER" /bin/bash "$script"
+    exit
+fi
+
+FILE=~/.dotfiles/.lib/config/packages.Linux.yml
+
+[ ! -w "$FILE" ] && {
+    echo "'packages.Linux.yml' file can't be located or is not writable"
+    exit 1
+}
+
+# Takes a piped list of package information as input, formats each package
+# so that it prints out in tabular format with package descriptions as a yaml
+# array, and prints to stdout
+parse_package_list() {
+    sed -En '
+        /^Name/{
+            s/^Name\s+: (.+)$/    - \1/
+            h
+        }
+        /^Description/{
+            s/^Description\s+: (.+)$/\1/
+            H
+            x
+            s/\n/|# /
+            p
+        }
+    ' |
+    column --table -s '|' |
+    sed -E '
+        s/^(.+)$/    \1/
+    '
+}
+
+{
+
+    # Package groups that are currently installed
+    # This will rarely, if ever, change
+    groups=(
+        base
+        base-devel
+        i3
+        texlive-most
+        xorg
+    )
+
+    echo
+    echo '- trizen:'
+    echo '    # Groups'
+    printf -- '    - %s\n' "${groups[@]}"
+
+    # List all packages that satisfy the following criteria:
+    #   - Explicitly installed
+    #   - NOT part of one of the above package groups
+    #   - NOT a package from the Arch User Repository
+    echo
+    echo '    # Official Packages'
+    comm -23 \
+        <(
+            # All packages installed explicitly, excluding packages that
+            # are part of a package group
+            comm -23 <(
+                # All explicitly installed packages
+                pacman -Qqe |
+                sort
+            ) <(
+                # Exclude all explitly installed packages that are
+                # part of one of the above package groups
+                pacman -Qeg "${groups[@]}" |
+                awk '{ print $2 }' |
+                sort
+            )
+        ) \
+        <(
+            # All AUR packages
+            pacman -Qqm |
+            sort
+        ) |
+    pacman -Qi - | parse_package_list
+
+    # List of all packages explicitly installed from
+    # the Arch User Repository
+    echo
+    echo "    # AUR Packages"
+    pacman -Qmi | parse_package_list
+
+} > "$FILE"

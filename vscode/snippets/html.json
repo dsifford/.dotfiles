@@ -1,6 +1,0 @@
-{
-	"php tag": {
-		"prefix": "php",
-		"body": "<?php $0 ?>"
-	}
-}

@@ -1,0 +1,50 @@
+{
+    // Bash
+    "Path to current script": {
+        "scope": "shellscript",
+        "prefix": "dir",
+        "body":
+            "${1:SCRIPT_DIR}=\"$( cd \"$( dirname \"${BASH_SOURCE[0]}\" )\" && pwd )\""
+    },
+
+    // PHP
+    "PHP Tag": {
+        "scope": "php,html",
+        "prefix": "php",
+        "body": "<?php$0${1: ?>}"
+    },
+
+    // Typescript / Javascript
+    "Console log": {
+        "scope": "typescript,javascript,typescriptreact,javascriptreact",
+        "prefix": "cl",
+        "body": "console.log($1);$0",
+        "description": "console.log()"
+    },
+    "Describe Block": {
+        "scope": "typescript,javascript,typescriptreact,javascriptreact",
+        "prefix": "desc",
+        "body": [
+            // prettier-ignore
+            "describe('$1', () => {",
+            "\t$0",
+            "});"
+        ]
+    },
+    "it block (tests)": {
+        "scope": "typescript,javascript,typescriptreact,javascriptreact",
+        "prefix": "it",
+        "body": [
+            // prettier-ignore
+            "it('$1', ${2:async }() => {",
+            "\t$0",
+            "});"
+        ]
+    },
+    "import": {
+        "scope": "typescript,javascript,typescriptreact,javascriptreact",
+        "prefix": "imp",
+        "body": "import ${2:entities} from '${1:specifier}';$0",
+        "description": "import statement"
+    }
+}

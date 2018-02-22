@@ -19,7 +19,6 @@ exec --no-startup-id albert
 
 # Startup Applets
 exec --no-startup-id nm-applet
-exec --no-startup-id pasystray
 exec --no-startup-id redshift-gtk
 exec --no-startup-id blueman-applet
 
@@ -31,13 +30,10 @@ exec --no-startup-id dropbox
 workspace 1 output DP-0
 workspace 2 output DP-2
 workspace Spotify output DP-0
-workspace Code output DP-2 
+workspace Code output DP-2
 
 # Disable mouse warping
 mouse_warping none
-
-# Disable focus follows mouse
-# focus_follows_mouse no
 
 # Floating Terminal
 exec --no-startup-id termite --name=MAINTERM -e 'bash -c "tmux new -AD -s Home"'

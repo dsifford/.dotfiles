@@ -1,0 +1,13 @@
+[Trigger]
+Operation = Install
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Synchronizing package list
+Exec = /home/dsifford/.config/pacman/hooks.bin/sync-packages
+When = PostTransaction
+Depends = coreutils
+Depends = util-linux
+Depends = sed

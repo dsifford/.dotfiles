@@ -1,0 +1,34 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+
+- clean: ['~', '~/.config']
+
+- shell:
+    - description: Updating Plugins
+      command: ~/.dotfiles/.lib/shell/update-plugins.sh
+      stdout: true
+      stderr: false
+    - description: Synchronizing secure files
+      command: ~/.dotfiles/.lib/shell/lpass.sh
+
+- link:
+    # Directories
+    ~/.config/nvim: vim/nvim
+    ~/.config/ranger: ranger
+    ~/.shell:
+    ~/.vim:
+    ~/bin:
+
+    # Files
+    ~/.bash_logout: shell/.bash_logout
+    ~/.bash_profile: shell/.bash_profile
+    ~/.bashrc: shell/.bashrc
+    ~/.gitconfig: global.gitconfig
+    ~/.inputrc: shell/.inputrc
+    ~/.stylish-haskell.yaml: languages/.stylish-haskell.yaml
+    ~/.taskrc:
+    ~/.tmux.conf:
+    ~/.uncrustify.cfg: languages/.uncrustify.cfg
+    ~/.vimrc: vim/.vimrc

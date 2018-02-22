@@ -1,43 +1,43 @@
 #!/usr/bin/env bash
 
 get_completions() {
-    local completions_dir src
-
-    # Map of aliases to add to certain completions
-    local -A aliases=(
-        [docker]='complete -F _docker d'
-        [docker-compose]='complete -F _docker_compose dc'
-        [docker-machine]='complete -F _docker_machine dm'
-        [git]='__git_complete g __git_main'
-        [task]='complete -o nospace -F _task t'
-        [yarn]='complete -F _yarn y'
-    )
-
-    # Map of completions to install from source
-    local -A completion_sources=(
-        [cargo]='https://raw.githubusercontent.com/rust-lang/cargo/master/src/etc/cargo.bashcomp.sh'
-        [docker-compose]='https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose'
-        [docker-machine]='https://raw.githubusercontent.com/docker/machine/master/contrib/completion/bash/docker-machine.bash'
-        [exercism]='http://cli.exercism.io/exercism_completion.bash'
-        [docker]='https://raw.githubusercontent.com/docker/cli/master/contrib/completion/bash/docker'
-        [git-prompt]='https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh'
-        [git]='https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash'
-        [hub]='https://raw.githubusercontent.com/github/hub/master/etc/hub.bash_completion.sh'
-        [task]='https://raw.githubusercontent.com/GothenburgBitFactory/taskwarrior/master/scripts/bash/task.sh'
-        [yarn]='https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash'
-    )
-
+    declare completions_dir
     completions_dir="$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd )"
 
-    # Install each completion from source
-    for src in "${!completion_sources[@]}"; do
-        echo Installing "$src" completions
-        curl -# -o "$completions_dir/$src.sh" "${completion_sources[$src]}"
+    local completion_sources=(
+        https://raw.githubusercontent.com/rust-lang/cargo/master/src/etc/cargo.bashcomp.sh
+        https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose
+        https://raw.githubusercontent.com/docker/machine/master/contrib/completion/bash/docker-machine.bash
+        https://raw.githubusercontent.com/docker/cli/master/contrib/completion/bash/docker
+        https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+        https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+        https://raw.githubusercontent.com/github/hub/master/etc/hub.bash_completion.sh
+        https://raw.githubusercontent.com/GothenburgBitFactory/taskwarrior/master/scripts/bash/task.sh
+        https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash
+    )
+
+    local skipped=(
+        aliases
+        doctl.sh
+        npm.sh
+        rustup.sh
+    )
+
+    # Prune out old garbage
+    declare f
+    for f in "$completions_dir"/*; do
+        [[ " ${skipped[*]} " =~ [[:space:]]"$(basename "$f")"[[:space:]] ]] && continue
+        for src in "${completion_sources[@]}"; do
+            [ "$(basename "$f")" == "$(basename "$src")" ] && continue 2
+        done
+        echo "$( basename "$f" ) no longer needed. Pruning..."
+        rm "$f"
     done
 
-    # Add aliases
-    for src in "${!aliases[@]}"; do
-        printf "%s\n" "${aliases[$src]}" >> "$completions_dir/$src.sh"
+    # Install each completion from source if needed
+    declare src
+    for src in "${completion_sources[@]}"; do
+        wget -nc -q --show-progress -P "$completions_dir" "$src"
     done
 
     # Install completions using built-in CLI tool if available
@@ -45,5 +45,4 @@ get_completions() {
     command -v npm >/dev/null && npm completion > "$completions_dir/npm.sh"
     command -v doctl >/dev/null && doctl completion bash > "$completions_dir/doctl.sh"
 }
-
 get_completions

@@ -1,0 +1,40 @@
+set editing-mode vi
+set keyseq-timeout 1
+set bell-style none
+
+set show-mode-in-prompt on
+set vi-cmd-mode-string \e[0;7;31m(cmd)
+set vi-ins-mode-string (ins)
+
+# FIXME: These should be the default value already
+# set show-all-if-ambiguous off
+# set match-hidden-files on
+# set mark-directories on
+
+set blink-matching-paren on
+set colored-stats on
+set colored-completion-prefix on
+set completion-ignore-case on
+set echo-control-characters off
+set mark-symlinked-directories on
+
+############# KEYMAPS
+
+########
+## All Modes
+####
+"\C-r": re-read-init-file
+"\t": menu-complete                 # Use tab to cycle through completions, rather than dumping all options
+"\e[1;5C": forward-word             # Ctrl+right
+"\e[1;5D": backward-word            # Ctrl+left
+
+########
+## Insert Mode
+####
+set keymap vi-insert
+"\C-l": clear-screen
+
+########
+## Normal Mode
+####
+set keymap vi-command

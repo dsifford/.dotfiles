@@ -119,7 +119,7 @@
                 {
                     "command": "editor.action.quickFix"
                 }
-            ] 
+            ]
         },
         {
             "after": [],
@@ -208,6 +208,7 @@
         "suppressGitVersionWarning": false,
         "suppressLineUncommittedWarning": false,
         "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": true,
         "suppressUpdateNotice": true,
         "suppressWelcomeNotice": true
     },
@@ -218,4 +219,12 @@
         "strings": true
     },
     "typescript.autoImportSuggestions.enabled": false,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/__pycache__": true,
+    },
 }
