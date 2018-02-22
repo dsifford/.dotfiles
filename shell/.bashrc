@@ -12,7 +12,7 @@ shopt -s globstar     # enable recursive glob matching
 RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 export CARGO_HOME=~/.cargo
 export COLORTERM=screen-256color
-export EDITOR=vim
+export EDITOR=nvim
 export GOPATH=~/gocode
 export LESSHISTFILE='-'
 export NPM_CONFIG_PREFIX=~/.yarn-global
