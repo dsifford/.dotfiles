@@ -6,5 +6,5 @@
         ".inputrc": "properties",
         "vimrc": "viml",
         ".xinitrc": "shellscript",
-    }
+    },
 }

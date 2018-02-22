@@ -30,11 +30,7 @@ while test $# -gt 0; do
     esac
 done
 
-# TODO: Move into a dotbot "shell" field
-# Update bash-completions
-. "$dotfiles/shell/completions/.sources.sh"
-
-config_file="$(mktemp --suffix=.yml)"
+config_file="$(mktemp)"
 cat "${configs[@]}" > "$config_file"
 
 git submodule update --remote --merge

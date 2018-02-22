@@ -7,73 +7,143 @@ tap "caskroom/fonts"
 tap "caskroom/versions"
 tap "caskroom/cask"
 tap "manifoldco/brew"
+# GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
+# Portable Foreign Function Interface library
 brew "libffi"
+# Perl compatible regular expressions library
 brew "pcre"
+# Low-level library for pixel manipulation
 brew "pixman"
+# C/C++ and Java libraries for Unicode and globalization
 brew "icu4c"
+# General-purpose data compression with high compression ratio
 brew "xz"
+# Interpreted, interactive, object-oriented programming language
 brew "python3"
+# Icons for the GNOME project
 brew "adwaita-icon-theme"
+# Apache Portable Runtime library
 brew "apr"
+# Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
+# Record and share terminal sessions
 brew "asciinema"
+# GNOME accessibility toolkit
 brew "atk"
+# Automatic configure script builder
 brew "autoconf"
+# Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# Programmable completion for Bash 3.2
 brew "bash-completion"
+# Collection of portable C++ source libraries
 brew "boost"
+# GNU File, Shell, and Text utilities
 brew "coreutils"
+# Top-like interface for container metrics
 brew "ctop"
+# Pack, ship and run any application as a lightweight container
 brew "docker", link: false
+# Create Docker hosts locally and on cloud providers
 brew "docker-machine", restart_service: true
+# YAML Parser
 brew "libyaml"
+# Isolated development environments using Docker
 brew "docker-compose", link: false
+# Lint your Python code for style and logical errors
 brew "flake8"
+# GNU multiple precision arithmetic library
 brew "gmp"
+# GNU awk utility
 brew "gawk"
+# GNU compiler collection
 brew "gcc"
+# Distributed revision control system
 brew "git"
+# Small git utilities
 brew "git-extras"
+# GNU implementation of the famous stream editor
+brew "gnu-sed", args: ["with-default-names"]
+# ASN.1 structure parser library
 brew "libtasn1"
+# C string library for manipulating Unicode strings
 brew "libunistring"
+# Low-level cryptographic library
 brew "nettle"
+# GNU Transport Layer Security (TLS) Library
 brew "gnutls"
-brew "grep"
+# GNU grep, egrep and fgrep
+brew "grep", args: ["with-default-names"]
+# GSettings schemas for desktop components
 brew "gsettings-desktop-schemas"
+# Toolkit for creating graphical user interfaces
 brew "gtk+3"
+# Text view with syntax, undo/redo, and text marks
 brew "gtksourceview3"
+# The Haskell Tool Stack
 brew "haskell-stack", link: false
+# Convert source code to formatted text with syntax highlighting
 brew "highlight"
+# Add GitHub support to git on the command-line
 brew "hub"
+# Regular expressions library
 brew "oniguruma"
+# Lightweight and flexible command-line JSON processor
 brew "jq"
+# LastPass command-line interface tool
 brew "lastpass-cli"
+# Asynchronous event library
 brew "libevent"
+# GNOME XML library
 brew "libxml2"
+# Utility for directing compilation
 brew "make", args: ["with-default-names"]
+# Mac App Store command-line interface
 brew "mas"
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Utility for managing network connections
 brew "netcat"
+# Swiss-army knife of markup format conversion
 brew "pandoc"
+# Python dependency management tool
 brew "pipenv"
+# Python 2 bindings for the Cairo graphics library
 brew "py2cairo"
+# GNOME Python bindings (based on GObject Introspection)
 brew "pygobject3"
+# File browser
 brew "ranger"
+# Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
+# Utility that provides fast incremental file transfer
 brew "rsync"
+# Database of common MIME types
 brew "shared-mime-info"
+# Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# Version control system designed to be a better CVS
 brew "subversion"
+# Feature-rich console based todo list manager
 brew "task"
+# Terminal multiplexer
 brew "tmux"
+# Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Source code beautifier
 brew "uncrustify"
+# ODBC 3 connectivity for UNIX
 brew "unixodbc"
+# Vi 'workalike' with many additional features
 brew "vim"
+# Internet file retriever
 brew "wget"
+# JavaScript package manager
 brew "yarn"
+# A tool to automatically fix PHP coding standards issues
 brew "homebrew/php/php-cs-fixer"
+# PHP Mess Detector
 brew "homebrew/php/phpmd"
 cask "alfred"
 cask "bartender"

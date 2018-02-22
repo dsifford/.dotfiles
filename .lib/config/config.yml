@@ -6,12 +6,14 @@
 - clean: ['~', '~/.config']
 
 - shell:
-    - description: Updating Plugins
+    - description: Updating Dotbot Plugins
       command: ~/.dotfiles/.lib/shell/update-plugins.sh
       stdout: true
-      stderr: false
     - description: Synchronizing secure files
       command: ~/.dotfiles/.lib/shell/lpass.sh
+    - description: Updating bash completions
+      command: ~/.dotfiles/.lib/shell/update-completions.sh
+      stdout: true
 
 - link:
     # Directories

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if ! command -v wget > /dev/null; then
-    echo '[WARN] is not installed. Skipping plugin update...'
+    echo '[WARN] wget is not installed. Skipping plugin update...'
     exit 1
 fi
 
