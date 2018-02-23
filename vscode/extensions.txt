@@ -7,13 +7,13 @@ bierner.markdown-mermaid
 bierner.markdown-preview-github-styles
 blanu.vscode-styled-jsx
 bungcip.better-toml
-dbaeumer.vscode-eslint
 dracula-theme.theme-dracula
 eamodio.gitlens
 EditorConfig.EditorConfig
 eg2.tslint
 esbenp.prettier-vscode
 fallenwood.vimL
+foxundermoon.shell-format
 geddski.macros
 hoovercj.haskell-linter
 hoovercj.vscode-settings-cycler
@@ -30,6 +30,7 @@ PeterJausovec.vscode-docker
 richie5um2.vscode-sort-json
 rust-lang.rust
 shinnn.stylelint
+sidneys1.gitconfig
 SirTobi.pegjs-language
 sysoev.language-stylus
 timonwong.shellcheck

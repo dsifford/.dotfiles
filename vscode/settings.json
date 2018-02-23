@@ -14,7 +14,6 @@
         "php": "html"
     },
     "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
-    "eslint.nodePath": "/home/dsifford/.yarn-global/bin",
     "extensions.autoUpdate": false,
     "keyboard.dispatch": "keyCode",
     "prettier.singleQuote": true,
@@ -44,7 +43,7 @@
             "text": "HACK:"
         }
     ],
-    "uncrustify.configPath": "/home/dsifford/.dotfiles/uncrustify.cfg",
+    "uncrustify.configPath": "/home/dsifford/.uncrustify.cfg",
     "vim.enableNeovim": true,
     "vim.searchHighlightColor": "rgba(80, 250, 123, 0.6)",
     "vim.useSystemClipboard": true,

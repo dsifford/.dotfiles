@@ -26,6 +26,7 @@ declare -a skipped=(
     aliases
     doctl.sh
     npm.sh
+    pandoc.sh
     rustup.sh
 )
 
@@ -50,5 +51,6 @@ done
 command -v rustup >/dev/null && rustup completions bash > "$completions_dir/rustup.sh"
 command -v npm >/dev/null && npm completion > "$completions_dir/npm.sh"
 command -v doctl >/dev/null && doctl completion bash > "$completions_dir/doctl.sh"
+command -v pandoc >/dev/null && pandoc --bash-completion > "$completions_dir/pandoc.sh"
 
 exit 0

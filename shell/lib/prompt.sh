@@ -1,6 +1,5 @@
 # shellcheck shell=bash
 
-# TODO: Save this to helper file somewhere and import it because it'll be useful in other places too
 color() {
     declare reset='\[\e[0m\]'
     declare clr='\[\e[0'

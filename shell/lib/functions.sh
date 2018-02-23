@@ -1,32 +1,22 @@
 # shellcheck shell=bash
 
-# Remove either untagged images or a variable number of images (1-9)
-drmi() {
-    if [[ $1 = @(u|un) ]]; then
-        docker rmi "$(docker images -f dangling=true -q)"
-    elif [[ "$1" = [1-9] ]]; then
-        docker rmi "$(docker images -q | head -"$1")"
-    fi
-}
-
 # Stub out "hub" when its commands conflict with better "git-extras" commands
 hub-stub-conflicting-commands() {
     case "$1" in
         alias|fork|pr)
-            /usr/bin/env git "$@"
+            command git "$@"
             ;;
         browse)
             # Fix for random error that always shows up but doesn't actually matter
-            /usr/bin/env hub "$@" 2>/dev/null
+            command hub "$@" 2>/dev/null
             ;;
         *)
-            /usr/bin/env hub "$@"
+            command hub "$@"
     esac
 }
 
 # Colorize manpages
 man() {
-    # LESS_TERMCAP_so=$'\e[01;44;33m' \
     LESS_TERMCAP_md=$'\e[01;34m' \
     LESS_TERMCAP_me=$'\e[0m' \
     LESS_TERMCAP_se=$'\e[0m' \
@@ -36,14 +26,14 @@ man() {
     command man "$@"
 }
 
-## pstree colored output TODO: tweak this so numbers are better represented
+## pstree colored output
 if command -v pstree > /dev/null; then
     pstree() {
         command pstree -U "$@" | sed '
             s/[-a-zA-Z]\+/\x1B[32m&\x1B[0m/g
             s/[{}]/\x1B[31m&\x1B[0m/g
             s/[─┬─├─└│]/\x1B[34m&\x1B[0m/g
-        '
+        ' | less -r
     }
 fi
 
@@ -64,7 +54,7 @@ ranger-cd() {
     fi
     rm -f "$tempfile"
 }
-bind -x '"\C-o":"ranger-cd"'
+bind '"\C-o":"ranger-cd\n"'
 
 # Quickly compile and run a small C++ program
 runcpp() {
