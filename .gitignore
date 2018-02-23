@@ -9,4 +9,4 @@ shell/completions/*
 *.pyo
 __pycache__
 
-!shell/completions/.sources.sh
+!shell/completions/aliases.sh
