@@ -36,8 +36,8 @@ fi
 source_dirs=(
     /etc/bash_completion.d
     /usr/local/etc/bash_completion
-    ~/.dotfiles/shell/lib
     ~/.dotfiles/shell/completions
+    ~/.dotfiles/shell/lib
 )
 for item in "${source_dirs[@]}"; do
     [ ! -d "$item" ] && continue
