@@ -51,8 +51,6 @@ brew "docker-machine", restart_service: true
 brew "libyaml"
 # Isolated development environments using Docker
 brew "docker-compose", link: false
-# Lint your Python code for style and logical errors
-brew "flake8"
 # GNU multiple precision arithmetic library
 brew "gmp"
 # GNU awk utility
