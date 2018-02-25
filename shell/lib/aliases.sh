@@ -29,6 +29,7 @@ alias grep='grep --color'
 alias npmc='npm-check -u'
 alias npmcg='npm-check -ug'
 alias tmux='TERM=xterm tmux'
+alias info='info --vi-keys'
 
 ## Always use neovim
 alias vim='nvim'
