@@ -107,6 +107,8 @@ brew "netcat"
 brew "pandoc"
 # Python dependency management tool
 brew "pipenv"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
 # Python 2 bindings for the Cairo graphics library
 brew "py2cairo"
 # GNOME Python bindings (based on GObject Introspection)
@@ -149,7 +151,6 @@ cask "dash"
 cask "dropbox"
 cask "firefoxdeveloperedition"
 cask "flux"
-cask "google-drive"
 cask "haskell-platform"
 cask "iterm2"
 cask "karabiner-elements"
