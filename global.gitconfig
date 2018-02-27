@@ -3,19 +3,21 @@
     lg = log --oneline --decorate --all --graph
     supdate = submodule update --remote --merge
 [core]
-    editor = vim
+    editor = nvim
     autocrlf = input
     pager = diff-so-fancy | less --tabs=4 -RFX
 [credential]
     helper = store
+[merge]
+    tool = nvimdiff
+[mergetool]
+    prompt = true
+[mergetool "nvimdiff"]
+    cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [diff]
-    tool = vimdiff
+    tool = nvimdiff
 [difftool]
     prompt = false
-[difftool "vimdiff"]
-    cmd = vim -f -d -c \"wincmd l\" -c 'cd \"$GIT_PREFIX\"' \"$LOCAL\" \"$REMOTE\" # Open as non-readonly
-[merge]
-    tool = meld
 [pull]
     rebase = true
 [push]

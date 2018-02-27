@@ -19,9 +19,10 @@ set mark-symlinked-directories on
 ## All Modes
 ####
 "\C-r": re-read-init-file
-"\t": menu-complete                 # Use tab to cycle through completions, rather than dumping all options
-"\e[1;5C": forward-word             # Ctrl+right
-"\e[1;5D": backward-word            # Ctrl+left
+"\t": menu-complete                 # (Tab)         Cycle through completions, rather than dumping all options
+"\e[Z": complete                    # (Shift+Tab)   Default complete to show all options
+"\e[1;5C": forward-word             # (Ctrl+right)
+"\e[1;5D": backward-word            # (Ctrl+left)
 
 ########
 ## Insert Mode
