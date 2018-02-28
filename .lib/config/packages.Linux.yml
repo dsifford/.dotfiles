@@ -126,7 +126,6 @@
     - keybase-bin             # the Keybase Go client, filesystem, and GUI
     - ngrok                   # A tunneling, reverse proxy for developing and understanding networked, HTTP services
     - php-codesniffer         # PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files to detect and fix violations of a defined set of coding standards.
-    - php-cs-fixer            # Analyzes some PHP source code and tries to fix coding standards issues (PSR-1 and PSR-2 compatible).
     - plex-media-server       # Plex Media Server
     - postman-bin             # Build, test, and document your APIs faster
     - ranger-git              # A simple, vim-like file manager.
