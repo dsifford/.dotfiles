@@ -97,7 +97,7 @@
     "typescript.autoImportSuggestions.enabled": false,
     "typescript.tsdk":
         "/home/dsifford/.yarn-global/lib/node_modules/typescript/lib",
-    "uncrustify.configPath": "/home/dsifford/.uncrustify.cfg",
+    "uncrustify.configPath": "/Users/dsifford/.uncrustify.cfg",
     "vim.easymotion": true,
     "vim.easymotionMarkerBackgroundColor": "#ff5555",
     "vim.easymotionMarkerFontFamily": "Monaco",

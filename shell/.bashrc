@@ -27,6 +27,7 @@ if [[ $(uname) == Linux ]]; then
 fi
 
 if [[ $(uname) == Darwin ]]; then
+    [ -L /usr/local/share/bash-completion/bash_completion ] && . /usr/local/share/bash-completion/bash_completion
     unset MANPATH
     MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$(manpath)"
     export MANPATH
@@ -35,7 +36,8 @@ fi
 # Sources
 source_dirs=(
     /etc/bash_completion.d
-    /usr/local/etc/bash_completion
+    /usr/local/share/bash-completion/completions
+    /usr/local/etc/bash_completion.d
     ~/.dotfiles/shell/completions
     ~/.dotfiles/shell/lib
 )
@@ -43,6 +45,6 @@ for item in "${source_dirs[@]}"; do
     [ ! -d "$item" ] && continue
     while read -r __file; do
         . "$__file"
-    done < <(find "$item" -maxdepth 1 -type f ! -name ".*" | sort -r)
+    done < <(find -L "$item" -maxdepth 1 -type f ! -name ".*" | sort -r)
 done
 unset source_dirs item __file

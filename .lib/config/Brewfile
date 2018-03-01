@@ -35,8 +35,8 @@ brew "atk"
 brew "autoconf"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
-# Programmable completion for Bash 3.2
-brew "bash-completion"
+# Programmable completion for Bash 4.1+
+brew "bash-completion@2"
 # Collection of portable C++ source libraries
 brew "boost"
 # GNU File, Shell, and Text utilities
@@ -117,6 +117,8 @@ brew "pygobject3"
 brew "ranger"
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # Utility that provides fast incremental file transfer
 brew "rsync"
 # Database of common MIME types
