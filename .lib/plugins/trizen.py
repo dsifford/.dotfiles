@@ -74,7 +74,7 @@ class Trizen(dotbot.Plugin):
     #     # Make sure we are sudo so we don't have any problems
     #     subprocess.call('sudo --validate', shell=True)
 
-    #     cmd = 'Trizen --needed --noconfirm --noedit -Syu {}'.format(pkg)
+    #     cmd = 'trizen --needed --noconfirm --noedit -Syu {}'.format(pkg)
 
     #     self._log.info('Installing {}'.format(pkg))
 
