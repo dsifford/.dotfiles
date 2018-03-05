@@ -38,6 +38,11 @@ if command -v pstree >/dev/null; then
 	}
 fi
 
+## Always pipe the output of `help` to $PAGER
+help() {
+    command help "$@" | "$PAGER"
+}
+
 # Make a directory and immediately cd into it
 mcd() {
 	mkdir -p "$1"

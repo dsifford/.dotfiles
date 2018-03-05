@@ -11,7 +11,7 @@
     "docker.showExplorer": false,
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.autoIndent": true,
-    "editor.codeLens": false,
+    "editor.codeLens": true,
     "editor.cursorBlinking": "solid",
     "editor.fontFamily": "Monaco, 'Courier New', monospace",
     "editor.fontSize": 16,
@@ -40,7 +40,8 @@
         "**/.hg": true,
         "**/.svn": true,
         "**/CVS": true,
-        "**/__pycache__": true
+        "**/__pycache__": true,
+        "**/node_modules": true,
     },
     "gitlens.advanced.messages": {
         "suppressCommitHasNoPreviousCommitWarning": false,
@@ -69,7 +70,7 @@
     "python.sortImports.args": ["-ac"],
     "scss.validate": false,
     "shellcheck.customArgs": ["-x"],
-    "shellformat.flag": "-ci",
+    "shellformat.flag": "-ci -bn",
     "stylelint.enable": true,
     "todohighlight.isEnable": true,
     "todohighlight.keywords": [

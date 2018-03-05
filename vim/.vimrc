@@ -37,6 +37,7 @@ highlight Normal ctermbg=NONE
 " Keymaps
 let mapleader=" "                   " Use space as <leader>
 map <C-\> :NERDTreeToggle<CR>
+map <C-_> gcc
 
 " Plugin Settings
 let g:deoplete#enable_at_startup = 1

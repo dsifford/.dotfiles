@@ -15,7 +15,6 @@
     - blueman                    # GTK+ Bluetooth Manager
     - bluez-firmware             # Firmwares for Broadcom BCM203x and STLC2300 Bluetooth chips
     - bluez-utils                # Development and debugging utilities for the bluetooth protocol stack
-    - compton                    # X compositor that may fix tearing issues
     - deluge                     # A BitTorrent client with multiple user interfaces in a client/server model
     - diff-so-fancy              # Good-looking diffs with diff-highlight and more
     - docker                     # Pack, ship and run any application as a lightweight container
@@ -26,6 +25,7 @@
     - fdupes                     # a program for identifying or deleting duplicate files residing within specified directories
     - feh                        # Fast and light imlib2-based image viewer
     - ffmpeg                     # Complete solution to record, convert and stream audio and video
+    - ffmpegthumbnailer          # Lightweight video thumbnailer that can be used by file managers.
     - firefox-developer-edition  # Developer Edition of the popular Firefox web browser
     - flake8                     # The modular source code checker: pep8, pyflakes and co
     - gdb                        # The GNU Debugger

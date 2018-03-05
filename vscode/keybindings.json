@@ -69,23 +69,13 @@
     },
     {
         "key": "ctrl+\\",
-        "command": "workbench.action.toggleSidebarVisibility",
-        "when": "editorTextFocus && !sidebarVisible"
-    },
-    {
-        "key": "ctrl+\\",
         "command": "workbench.action.focusSideBar",
         "when": "editorTextFocus && sidebarVisible"
     },
     {
         "key": "ctrl+\\",
-        "command": "workbench.action.toggleSidebarVisibility",
-        "when": "!editorFocus"
-    },
-    {
-        "key": "cmd+\\",
-        "command": "workbench.action.toggleSidebarVisibility",
-        "when": "editorTextFocus && !sidebarVisible"
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "!editorTextFocus && sidebarVisible"
     },
     {
         "key": "cmd+\\",
@@ -94,8 +84,8 @@
     },
     {
         "key": "cmd+\\",
-        "command": "workbench.action.toggleSidebarVisibility",
-        "when": "!editorFocus"
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "!editorTextFocus && sidebarVisible"
     },
     //
     // 

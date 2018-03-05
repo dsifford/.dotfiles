@@ -13,7 +13,6 @@ new_float pixel 1
 exec --no-startup-id feh --no-fehbg --bg-fill http://wallpapercave.com/wp/NyaITD5.png
 
 # Startup Daemons
-exec --no-startup-id compton -D 3
 exec --no-startup-id dunst
 exec --no-startup-id albert
 
