@@ -17,16 +17,14 @@ brew "pcre"
 brew "pixman"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c"
-# General-purpose data compression with high compression ratio
-brew "xz"
-# Interpreted, interactive, object-oriented programming language
-brew "python3"
 # Icons for the GNOME project
 brew "adwaita-icon-theme"
 # Apache Portable Runtime library
 brew "apr"
 # Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Record and share terminal sessions
 brew "asciinema"
 # GNOME accessibility toolkit
@@ -109,6 +107,8 @@ brew "pandoc"
 brew "pipenv"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
+# Show ps output as a tree
+brew "pstree"
 # Python 2 bindings for the Cairo graphics library
 brew "py2cairo"
 # GNOME Python bindings (based on GObject Introspection)
