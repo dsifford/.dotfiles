@@ -9,6 +9,7 @@
 
     # Official Packages
     - arandr                     # Provide a simple visual front end for XRandR 1.2.
+    - archlinux-wallpaper        # A variety of Arch Linux branded wallpapers
     - asciinema                  # Record and share terminal sessions
     - atool                      # A script for managing file archives of various types
     - bash-completion            # Programmable completion for the bash shell
@@ -20,7 +21,6 @@
     - docker                     # Pack, ship and run any application as a lightweight container
     - docker-compose             # Fast, isolated development environments using Docker
     - docker-machine             # Machine management for a container-centric world
-    - dropbox                    # A free service that lets you bring your photos, docs, and videos anywhere and share them easily.
     - dunst                      # Customizable and lightweight notification-daemon
     - fdupes                     # a program for identifying or deleting duplicate files residing within specified directories
     - feh                        # Fast and light imlib2-based image viewer
@@ -118,6 +118,7 @@
     - autokey-py3             # Python 3 port of AutoKey, a desktop automation utility for Linux and X11 with new features.
     - ctop                    # Top-like interface for container metrics
     - doctl-bin               # A command line tool for DigitalOcean services
+    - dropbox                 # A free service that lets you bring your photos, docs, and videos anywhere and share them easily.
     - exercism-cli            # Command line client for exercism.io
     - git-extras              # GIT utilities -- repo summary, commit counting, repl, changelog population and more
     - google-chrome-dev       # The popular and trusted web browser by Google (Dev Channel)
