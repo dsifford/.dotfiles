@@ -3,9 +3,10 @@ filetype plugin indent on
 " Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'leafgarland/typescript-vim'
-Plug 'scrooloose/nerdtree'
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
