@@ -10,7 +10,14 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'ervandew/supertab'
 Plug 'w0rp/ale'
+Plug 'kshenoy/vim-signature'
+Plug 'junegunn/vim-easy-align'
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'bling/vim-bufferline'
 call plug#end()
 
 " General Settings
@@ -22,7 +29,7 @@ set tabstop=4                       " when indenting with '>', use 4 spaces widt
 set shiftwidth=4                    " On pressing tab, insert 4 spaces
 set expandtab                       " Convert tabs to spaces
 set clipboard=unnamedplus           " Use system clipboard
-au VimLeave * :!clear
+set hidden                          " Use hidden buffers
 
 " Usability
 set ignorecase                      " Required for proper smartcase functionality
@@ -40,9 +47,17 @@ let mapleader=" "                   " Use space as <leader>
 map <C-\> :NERDTreeToggle<CR>
 map <C-_> gcc
 
+" Autocommands
+autocmd VimLeave * :!clear          " Flush the screen's buffer on exit
+
 " Plugin Settings
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
-inoremap <expr><C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-inoremap <expr><CR> pumvisible() ? "\<C-y> " : "\<CR>"
+let g:SuperTabCrMapping = 1
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(LiveEasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+

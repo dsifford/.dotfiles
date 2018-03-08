@@ -9,7 +9,7 @@ defaultwidth=100
 nag=
 
 # Priority Settings
-color.uda.priority.H=rgb500
+color.uda.priority.H=yellow on red
 color.uda.priority.L=gray9
 color.uda.priority.M=yellow
 
@@ -52,11 +52,12 @@ color.blocking=black on color15
 
 # Project Colors
 color.project.aliem=on rgb022
-color.project.oss=black on blue
+color.project.oss.dracula=bright blue on black
+color.project.oss.misc=blue on black
 
 # Report Settings
 report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description.count,urgency
-report.next.sort=start+,project+,entry+
+report.next.sort=priority-,due+
 
 # Sync settings
 taskd.server=freecinc.com:53589

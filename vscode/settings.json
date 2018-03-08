@@ -207,6 +207,24 @@
                     "command": "workbench.action.evenEditorWidths"
                 }
             ]
+        },
+        {
+            "after": [],
+            "before": ["]", "c"],
+            "commands": [
+                {
+                    "command": "workbench.action.editor.nextChange"
+                }
+            ]
+        },
+        {
+            "after": [],
+            "before": ["[", "c"],
+            "commands": [
+                {
+                    "command": "workbench.action.editor.previousChange"
+                }
+            ]
         }
     ],
     "vim.searchHighlightColor": "rgba(80, 250, 123, 0.6)",
@@ -219,5 +237,19 @@
         "editorBracketMatch.border": "#ff00ff"
     },
     "workbench.colorTheme": "Dracula",
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "gitlens.keymap": "alternate",
+    "gitlens.gitExplorer.files.layout": "list",
+    "gitlens.codeLens.recentChange.command": "gitlens.diffWithPrevious",
+    "gitlens.codeLens.scopes": [
+        "document",
+        "containers",
+        "blocks"
+    ],
+    "gitlens.blame.highlight.locations": [
+        "line",
+        "overview",
+        "gutter"
+    ],
+    "gitlens.hovers.currentLine.over": "line"
 }

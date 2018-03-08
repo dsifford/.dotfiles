@@ -24,6 +24,8 @@ export TERM=screen-256color
 if [[ $(uname) == Linux ]]; then
     # Fix tiny QT windows on 4k monitor
     export QT_AUTO_SCREEN_SCALE_FACTOR=2
+    # Fix for deprecated gvfs-trash call
+    export ELECTRON_TRASH=gio
 fi
 
 if [[ $(uname) == Darwin ]]; then

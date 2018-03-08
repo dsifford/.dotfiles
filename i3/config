@@ -10,7 +10,8 @@ new_window pixel 1
 new_float pixel 1
 
 # Set desktop background
-exec --no-startup-id feh --no-fehbg --bg-fill /usr/share/archlinux/wallpaper/archlinux-simplyblack.png
+exec --no-startup-id feh --no-fehbg --bg-center -B "#000000" /usr/share/archlinux/wallpaper/archlinux-simplyblack.png 
+
 
 # Startup Daemons
 exec --no-startup-id dunst
