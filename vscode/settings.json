@@ -11,7 +11,7 @@
     "docker.showExplorer": false,
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.autoIndent": true,
-    "editor.codeLens": true,
+    "editor.codeLens": false,
     "editor.cursorBlinking": "solid",
     "editor.fontFamily": "Monaco, 'Courier New', monospace",
     "editor.fontSize": 16,

@@ -16,7 +16,6 @@ Plug 'kshenoy/vim-signature'
 Plug 'junegunn/vim-easy-align'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'bling/vim-bufferline'
 call plug#end()
 
@@ -29,7 +28,6 @@ set tabstop=4                       " when indenting with '>', use 4 spaces widt
 set shiftwidth=4                    " On pressing tab, insert 4 spaces
 set expandtab                       " Convert tabs to spaces
 set clipboard=unnamedplus           " Use system clipboard
-set hidden                          " Use hidden buffers
 
 " Usability
 set ignorecase                      " Required for proper smartcase functionality
