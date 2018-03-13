@@ -2,9 +2,6 @@
 # Files
 data.location=~/.task
 
-# Turn off max width
-defaultwidth=100
-
 # Turn off nag
 nag=
 
@@ -15,11 +12,11 @@ color.uda.priority.M=yellow
 
 uda.priority.label=Priority
 uda.priority.type=string
-uda.priority.values=H,M,,L
+uda.priority.values=H,M,L
 
 urgency.uda.priority.H.coefficient=6.0
-urgency.uda.priority.L.coefficient=1.8
 urgency.uda.priority.M.coefficient=3.9
+urgency.uda.priority.L.coefficient=-1.0
 
 # Colors
 color=on
@@ -57,7 +54,7 @@ color.project.oss.misc=blue on black
 
 # Report Settings
 report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description.count,urgency
-report.next.sort=priority-,due+
+report.next.sort=urgency-
 
 # Sync settings
 taskd.server=freecinc.com:53589

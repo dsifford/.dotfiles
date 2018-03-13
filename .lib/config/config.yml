@@ -30,6 +30,7 @@
     ~/.gitconfig: global.gitconfig
     ~/.inputrc: shell/.inputrc
     ~/.stylish-haskell.yaml: languages/.stylish-haskell.yaml
+    ~/.prettierrc.yml: languages/.prettierrc.yml
     ~/.taskrc:
     ~/.tmux.conf:
     ~/.uncrustify.cfg: languages/.uncrustify.cfg

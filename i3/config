@@ -1,3 +1,4 @@
+# vim:filetype=i3
 
 # Global mod key = Win/Cmd button
 set $mod Mod4
@@ -11,7 +12,6 @@ new_float pixel 1
 
 # Set desktop background
 exec --no-startup-id feh --no-fehbg --bg-center -B "#000000" /usr/share/archlinux/wallpaper/archlinux-simplyblack.png 
-
 
 # Startup Daemons
 exec --no-startup-id dunst
@@ -36,10 +36,10 @@ workspace Code output DP-2
 mouse_warping none
 
 # Floating Terminal
-exec --no-startup-id termite --name=MAINTERM -e 'bash -c "tmux new -AD -s Home"'
-for_window [instance="MAINTERM"] floating enable, border pixel 0, resize set 3850 952, move position 2160 50, move scratchpad
-bindsym $mod+Home exec --no-startup-id termite --name=MAINTERM -e 'bash -c "tmux new -AD -s Home"'
-bindsym Control+space focus output DP-2, [instance="MAINTERM"] scratchpad show
+exec --no-startup-id termite --name=FloatingTerminal -e 'bash -c "tmux new -AD -s Home"'
+for_window [instance="FloatingTerminal"] floating enable, border pixel 0, resize set 3850 952, move position 2160 50, move scratchpad
+bindsym $mod+Home exec --no-startup-id termite --name=FloatingTerminal -e 'bash -c "tmux new -AD -s Home"'
+bindsym Control+space focus output DP-2; exec --no-startup-id $HOME/.i3/scripts/toggle-floating-terminal.sh
 
 #===============APP WINDOW CONFIG================
 
@@ -51,17 +51,11 @@ for_window [class="albert"] move to output DP-2, move position center
 for_window [class="Gifview"] floating enable
 for_window [class="Animate"] floating enable, move position center
 
-# Floating YouTube window
-for_window [title="Floating for YouTube™" window_role="app"] floating enable
-
 # Chrome pop-up windows
 for_window [class="Google-chrome-unstable" window_role="pop-up"] floating enable, move position center
 
 # Simple Screen Recorder
 for_window [class="Simplescreenrecorder"] floating enable
-
-# Kruler
-for_window [class="kruler"] floating enable
 
 # Slack
 for_window [class="Slack"] move to workspace 1
@@ -76,10 +70,6 @@ for_window [class="Code"] move to workspace Code
 for_window [class="Atom"] move to workspace Code
 bindsym $mod+grave workspace Code
 bindsym $mod+Shift+grave move container to workspace Code
-
-# VirtualBox
-for_window [title=".*\[Running\] - Oracle VM VirtualBox$"] floating enable, resize set 2080 2070, move scratchpad
-bindsym $mod+v [title=".*\[Running\] - Oracle VM VirtualBox$"] scratchpad show, move position center
 
 # Zeal
 for_window [class="Zeal"] floating enable, resize set 2080 2070, move scratchpad

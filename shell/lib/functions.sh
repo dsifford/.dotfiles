@@ -1,5 +1,10 @@
 # shellcheck shell=bash
 
+# Print a newline separated list of posix compatible shell commands
+posix-utils() {
+    apropos -s 1p . | awk '{ print $1 }'
+}
+
 # Stub out "hub" when its commands conflict with better "git-extras" commands
 hub-stub-conflicting-commands() {
 	case "$1" in
