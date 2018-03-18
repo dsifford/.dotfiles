@@ -17,7 +17,7 @@
 
 - link:
     # Directories
-    ~/.config/nvim: vim/nvim
+    ~/.config/nvim/init.vim: vim/.init.vim
     ~/.config/ranger: ranger
     ~/.shell:
     ~/.vim:

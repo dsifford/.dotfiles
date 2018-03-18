@@ -1,91 +1,102 @@
-filetype plugin indent on
+" vim: set fdm=marker:
 
-" Plugins
-call plug#begin('~/.vim/plugged')
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'junegunn/vim-easy-align'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-surround'
-Plug 'w0rp/ale'
+source ~/.vim/plugins.vimrc
 
-" Look and feel
-Plug 'airblade/vim-gitgutter'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'vim-airline/vim-airline'
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-" Language / Syntax
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
 
-" Still not sure I want to keep
-Plug 'bling/vim-bufferline'
-Plug 'ervandew/supertab'
-Plug 'jiangmiao/auto-pairs'
-Plug 'kshenoy/vim-signature'
-call plug#end()
+" Section: Options {{{1
+" ---------------------
 
-" General Settings
-set t_Co=256
-set nowrap                          " Disable line wrapping
-set number                          " Show line numbers
-set showcmd                         " Show partial commands in last line of screen
-set pastetoggle=<F2>                " Toggle paste mode with F2
-set tabstop=4                       " when indenting with '>', use 4 spaces width
-set shiftwidth=4                    " Set hard tabs to 4 columns
-set softtabstop=4                   " Set soft tabs to 4 spaces
-set expandtab                       " Convert tabs to spaces
-set clipboard=unnamedplus           " Use system clipboard
-
-" Usability
-set ignorecase                      " Required for proper smartcase functionality
-set smartcase                       " Case insensitive unless typing with caps
-set lazyredraw                      " Improves perf under some conditions
-
-" Colors
 colorscheme dracula
-highlight Normal ctermbg=NONE
+set autowrite                 " Automatically save before commands like :next and :make
+set clipboard=unnamedplus     " Use system clipboard
+set history=200               " Truncate history at 200 lines
+set ignorecase                " Required for proper smartcase functionality
+set lazyredraw                " Improves perf under some conditions
+set listchars=tab:▸\ ,eol:¬   " Symbols for whitespace when 'set list' enabled
+set nowrap                    " Disable line wrapping
+set number                    " Show line numbers
+set pastetoggle=<F2>          " Toggle paste mode with F2
+set shiftround                " Round indents to nearest indent size when using < or >
+set smartcase                 " Case insensitive unless typing with caps
+set smarttab                  " sw at the start of the line, sts everywhere else
+set splitbelow                " Open horizontal splits below current buffer
+set splitright                " Open vertical splits to the right of current buffer
+set ts=4 sts=4 sw=4 expandtab " Tabs = 4 spaces by default
+set virtualedit=block         " Allow cursor to be placed in virtual positions when in visual block mode
+set wildmode=longest:full,full
+set winaltkeys=no             " Allows all ALT combinations to be mapped
 
-" Keymaps
-let mapleader=" "                   " Use space as <leader>
-map <C-\> :NERDTreeToggle<CR>
-map <C-_> gcc
+set wildignore+=tags,*.o,*.py?
 
-" Autocommands
-autocmd VimLeave * :!clear          " Flush the screen's buffer on exit
+" TODO: Enable this for markdown
+" set spelllang=en_us,medical
 
-" Plugin Settings
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-let g:SuperTabCrMapping = 1
+let mapleader = " "
 
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(LiveEasyAlign)
+if has('nvim')
+    set inccommand=split
+endif
 
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
 
-map <A-l> :insert hello<Esc>
+" Section: Plugin Settings {{{1
+" -----------------------------
 
-" ALE Fixers
-map <leader><C-i> <Plug>(ale_fix)
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
 let g:ale_sh_shfmt_options = '-i 4 -ci -bn'
 let g:ale_fixers = {
-\    'sh': [ 'shfmt'],
+\    'sh': [ 'shfmt' ],
 \    'markdown': [ 'prettier' ],
 \}
 
-" Tmux stuff
-let g:tmux_navigator_no_mappings = 1
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
 
-nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <A-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
-nnoremap <silent> <A-\> :TmuxNavigatePrevious<cr>
+let g:NERDTreeQuitOnOpen = 1
+
+let g:SuperTabDefaultCompletionType = "<C-n>"
+
+let g:tmux_navigator_no_mappings = 1 " Disables built-in mappings
+
+
+" Section: Mappings {{{1
+" ----------------------
+
+nnoremap Y  y$
+nnoremap <silent> <Leader><Leader>l :set list!<CR>
+nnoremap <silent> <Leader><Leader>n :set relativenumber!<CR>
+
+noremap <silent> <C-\> :NERDTreeToggle<CR>
+noremap <silent> <C-_> :Commentary<CR>
+
+nnoremap <silent> <A-h> :TmuxNavigateLeft<CR>
+nnoremap <silent> <A-j> :TmuxNavigateDown<CR>
+nnoremap <silent> <A-k> :TmuxNavigateUp<CR>
+nnoremap <silent> <A-l> :TmuxNavigateRight<CR>
+nnoremap <silent> <A-\> :TmuxNavigatePrevious<CR>
+
+nmap          <Leader>f <Plug>(ale_fix)
+nmap <silent> <C-k>     <Plug>(ale_previous_wrap)
+nmap <silent> <C-j>     <Plug>(ale_next_wrap)
+
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(LiveEasyAlign)
+
+" FIXME: this is broken
+nnoremap <C-p> :DeniteProjectDir file_old<CR>
+nnoremap <C-S-p> :DeniteProjectDir file_rec<CR>
+
+
+" Section: Autocommands {{{1
+" --------------------------
+
+filetype plugin indent on
+
+augroup Misc "{{{2
+    autocmd!
+
+    autocmd VimLeave * :!clear " Flush the screen's buffer on exit
+augroup END "}}}2
 

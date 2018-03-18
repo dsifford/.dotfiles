@@ -24,7 +24,7 @@ alias gf='git fetch --all --prune'
 # Misc
 alias reload='source ~/.bashrc'
 alias bashrc='vim ~/.bashrc'
-alias vimrc='vim ~/.vimrc'
+alias vimrc='vim ~/.dotfiles/vim/.vimrc'
 alias dot='cd ~/.dotfiles'
 alias grep='grep --color'
 alias npmc='npm-check -u'
