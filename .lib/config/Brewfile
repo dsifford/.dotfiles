@@ -27,8 +27,6 @@ brew "apr-util"
 brew "xz"
 # Record and share terminal sessions
 brew "asciinema"
-# GNOME accessibility toolkit
-brew "atk"
 # Automatic configure script builder
 brew "autoconf"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -71,8 +69,6 @@ brew "nettle"
 brew "gnutls"
 # GNU grep, egrep and fgrep
 brew "grep", args: ["with-default-names"]
-# GSettings schemas for desktop components
-brew "gsettings-desktop-schemas"
 # Toolkit for creating graphical user interfaces
 brew "gtk+3"
 # Text view with syntax, undo/redo, and text marks
