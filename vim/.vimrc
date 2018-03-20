@@ -2,6 +2,8 @@
 
 source ~/.vim/plugins.vimrc
 
+set termguicolors
+
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
@@ -27,7 +29,6 @@ set splitbelow                " Open horizontal splits below current buffer
 set splitright                " Open vertical splits to the right of current buffer
 set ts=4 sts=4 sw=4 expandtab " Tabs = 4 spaces by default
 set virtualedit=block         " Allow cursor to be placed in virtual positions when in visual block mode
-set wildmode=longest:full,full
 set winaltkeys=no             " Allows all ALT combinations to be mapped
 
 set wildignore+=tags,*.o,*.py?
@@ -44,12 +45,14 @@ endif
 
 " Section: Plugin Settings {{{1
 " -----------------------------
-
 let g:ale_sh_shfmt_options = '-i 4 -ci -bn'
 let g:ale_fixers = {
 \    'sh': [ 'shfmt' ],
 \    'markdown': [ 'prettier' ],
+\    'php': [ 'phpcbf' ],
 \}
+let g:ale_php_phpcs_standard = 'WordPress'
+let g:ale_php_phpcbf_standard = 'WordPress'
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1

@@ -12,6 +12,7 @@
     - archlinux-wallpaper        # A variety of Arch Linux branded wallpapers
     - asciinema                  # Record and share terminal sessions
     - atool                      # A script for managing file archives of various types
+    - aws-cli                    # Universal Command Line Interface for Amazon Web Services
     - bash-completion            # Programmable completion for the bash shell
     - blueman                    # GTK+ Bluetooth Manager
     - bluez-firmware             # Firmwares for Broadcom BCM203x and STLC2300 Bluetooth chips
@@ -106,6 +107,7 @@
     - xclip                      # Command line interface to the X11 clipboard
     - xdotool                    # Command-line X11 automation tool
     - xorg-xinit                 # X.Org initialisation program
+    - xterm                      # X Terminal Emulator
     - yapf                       # Python style guide checker
     - yarn                       # Fast, reliable, and secure dependency management
     - zathura                    # Minimalistic document viewer
