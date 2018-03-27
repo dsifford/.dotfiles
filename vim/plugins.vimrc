@@ -26,11 +26,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'machakann/vim-highlightedyank'
 
 " Language / Syntax
-Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'mattn/emmet-vim', { 'for': [ 'html', 'markdown' ] }
 Plug 'junegunn/vader.vim', { 'for': 'vim' }
 Plug 'justinmk/vim-syntax-extra', { 'for': 'c' }
+Plug 'sheerun/vim-polyglot'
 
 " Still not sure I want to keep
 Plug 'jiangmiao/auto-pairs'
