@@ -39,28 +39,69 @@ if has('nvim')
 endif
 
 " Plugin Settings: {{{1
-" -----------------------------
-let g:ale_sh_shfmt_options = '-i 4 -ci -bn'
+
+" Ale: {{{2
+
 let g:ale_fixers = {
 \    'sh': [ 'shfmt' ],
 \    'markdown': [ 'prettier' ],
 \    'php': [ 'phpcbf' ],
 \}
+
+let g:ale_sh_shfmt_options = '-i 4 -ci -bn'
 let g:ale_php_phpcs_standard = 'WordPress'
 let g:ale_php_phpcbf_standard = 'WordPress'
+
+"}}}2
+" Auto Pairs: {{{2
+
+" Disable toggle keybinding
+let g:AutoPairsShortcutToggle = ''
+
+"}}}2
+" Denite: {{{2
+
+" Use RipGrep
+if executable('rg')
+    call denite#custom#var('file_rec', 'command',
+        \ ['rg', '--files', '--glob', '!.git'])
+
+    call denite#custom#var('grep', 'command', ['rg'])
+    call denite#custom#var('grep', 'default_opts',
+            \ ['--vimgrep', '--no-heading'])
+    call denite#custom#var('grep', 'recursive_opts', [])
+    call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+    call denite#custom#var('grep', 'separator', ['--'])
+    call denite#custom#var('grep', 'final_opts', [])
+endif
+
+"}}}2
+" Deoplete: {{{
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 
+"}}}2
+" NERDTree: {{{2
+
+" Auto-close the NERDTree buffer when file opened
 let g:NERDTreeQuitOnOpen = 1
 
+"}}}2
+" SuperTab: {{{2
+
+" <Tab> begins at top of list
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
-let g:tmux_navigator_no_mappings = 1 " Disables built-in mappings
+"}}}2
+" Vim Tmux Navigator: {{{2
 
+" Disables built-in mappings
+let g:tmux_navigator_no_mappings = 1
+
+"}}}2
 
 " Mappings: {{{1
-" ----------------------
 
 nnoremap Y  y$
 nnoremap <silent> <Leader><Leader>l :set list!<CR>
@@ -74,8 +115,9 @@ nnoremap <silent> <Leader><Leader>s :echo "hi<" . synIDattr(synID(line("."),col(
 " Toggle fold
 nnoremap <silent> <Leader>z za
 
-noremap <silent> <C-\> :NERDTreeToggle<CR>
-noremap <silent> <C-_> :Commentary<CR>
+noremap  <silent> <C-\> :NERDTreeToggle<CR>
+noremap  <silent> <C-_> :Commentary<CR>
+inoremap <silent> <C-_> <Esc>:Commentary<CR>i
 
 nnoremap <silent> <A-h> :TmuxNavigateLeft<CR>
 nnoremap <silent> <A-j> :TmuxNavigateDown<CR>
@@ -90,10 +132,10 @@ nmap <silent> <C-j>     <Plug>(ale_next_wrap)
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(LiveEasyAlign)
 
-" FIXME: this is broken
-nnoremap <C-p> :DeniteProjectDir file_old<CR>
-nnoremap <C-S-p> :DeniteProjectDir file_rec<CR>
+nnoremap <C-p> :Denite file_rec<CR>
+nnoremap <A-p> :DeniteProjectDir file_old<CR>
 
+nnoremap <silent> <Leader>r :DeniteCursorWord grep:.<CR>
 
 " Autocommands: {{{1
 " --------------------------
