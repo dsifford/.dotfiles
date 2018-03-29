@@ -100,7 +100,14 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:tmux_navigator_no_mappings = 1
 
 "}}}2
+" UltiSnips {{{2
 
+" let g:UltiSnipsExpandTrigger='<CR>'
+" let g:UltiSnipsJumpForwardTrigger='<c-b>'
+" let g:UltiSnipsJumpBackwardTrigger='<c-z>'
+let g:UltiSnipsEditSplit='vertical'
+
+"}}}2
 " Mappings: {{{1
 
 nnoremap Y  y$
