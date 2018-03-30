@@ -1,5 +1,4 @@
 tap "homebrew/core"
-tap "homebrew/php"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "caskroom/drivers"
@@ -11,8 +10,6 @@ tap "manifoldco/brew"
 brew "gettext"
 # Portable Foreign Function Interface library
 brew "libffi"
-# Perl compatible regular expressions library
-brew "pcre"
 # Low-level library for pixel manipulation
 brew "pixman"
 # C/C++ and Java libraries for Unicode and globalization
@@ -25,6 +22,8 @@ brew "apr"
 brew "apr-util"
 # General-purpose data compression with high compression ratio
 brew "xz"
+# Interpreted, interactive, object-oriented programming language
+brew "python"
 # Record and share terminal sessions
 brew "asciinema"
 # Automatic configure script builder
@@ -46,7 +45,9 @@ brew "docker-machine", restart_service: true, link: false
 # YAML Parser
 brew "libyaml"
 # Isolated development environments using Docker
-brew "docker-compose", link: false
+brew "docker-compose"
+# Command-line tool to interact with exercism.io
+brew "exercism"
 # GNU multiple precision arithmetic library
 brew "gmp"
 # GNU awk utility
@@ -99,8 +100,10 @@ brew "neovim"
 brew "netcat"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
-# Python dependency management tool
-brew "pipenv"
+# General-purpose scripting language
+brew "php", link: false
+# Tool to automatically fix PHP coding standards issues
+brew "php-cs-fixer"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Show ps output as a tree
@@ -109,6 +112,8 @@ brew "pstree"
 brew "py2cairo"
 # GNOME Python bindings (based on GObject Introspection)
 brew "pygobject3"
+# Interpreted, interactive, object-oriented programming language
+brew "python@2"
 # File browser
 brew "ranger"
 # Reattach process (e.g., tmux) to background
@@ -131,20 +136,13 @@ brew "tmux"
 brew "tree"
 # Source code beautifier
 brew "uncrustify"
-# ODBC 3 connectivity for UNIX
-brew "unixodbc"
-# Vi 'workalike' with many additional features
-brew "vim"
 # Internet file retriever
 brew "wget"
 # JavaScript package manager
 brew "yarn"
-# A tool to automatically fix PHP coding standards issues
-brew "homebrew/php/php-cs-fixer"
-# PHP Mess Detector
-brew "homebrew/php/phpmd"
 cask "alfred"
 cask "bartender"
+cask "caffeine"
 cask "dash"
 cask "dropbox"
 cask "firefoxdeveloperedition"
