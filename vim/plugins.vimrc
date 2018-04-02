@@ -1,5 +1,5 @@
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/_plugins')
 
 if has('nvim')
     Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }

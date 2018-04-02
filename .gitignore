@@ -1,7 +1,7 @@
 .DS_store
 vscode/workspaceStorage
 TESTER
-vim/plugged
+vim/_plugins
 shell/completions/*
 *.pyo
 __pycache__
