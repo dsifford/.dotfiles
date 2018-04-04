@@ -51,6 +51,7 @@
         "suppressLineUncommittedWarning": false,
         "suppressNoRepositoryWarning": false,
         "suppressResultsExplorerNotice": true,
+        "suppressShowKeyBindingsNotice": true,
         "suppressUpdateNotice": true,
         "suppressWelcomeNotice": true
     },
@@ -238,7 +239,7 @@
     },
     "workbench.colorTheme": "Dracula",
     "workbench.startupEditor": "none",
-    "gitlens.keymap": "alternate",
+    "gitlens.keymap": "none",
     "gitlens.gitExplorer.files.layout": "list",
     "gitlens.codeLens.recentChange.command": "gitlens.diffWithPrevious",
     "gitlens.codeLens.scopes": [

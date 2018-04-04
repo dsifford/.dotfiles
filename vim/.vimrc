@@ -100,7 +100,7 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:tmux_navigator_no_mappings = 1
 
 "}}}2
-" UltiSnips {{{2
+" UltiSnips: {{{2
 
 " let g:UltiSnipsExpandTrigger='<CR>'
 " let g:UltiSnipsJumpForwardTrigger='<c-b>'
@@ -108,6 +108,21 @@ let g:tmux_navigator_no_mappings = 1
 let g:UltiSnipsEditSplit='vertical'
 
 "}}}2
+" LanguageClient: {{{2
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'javascript': ['typescript-language-server', '--stdio'],
+    \ 'typescript': ['typescript-language-server', '--stdio'],
+    \ }
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
+"}}}2
+
+"}}}1
 " Mappings: {{{1
 
 nnoremap Y  y$
@@ -154,4 +169,3 @@ augroup Misc "{{{2
 
     autocmd VimLeave * :!clear " Flush the screen's buffer on exit
 augroup END "}}}2
-

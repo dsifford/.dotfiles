@@ -33,6 +33,10 @@ Plug 'junegunn/vader.vim', { 'for': 'vim' }
 Plug 'justinmk/vim-syntax-extra', { 'for': 'c' }
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 " Still not sure I want to keep
 Plug 'jiangmiao/auto-pairs'
