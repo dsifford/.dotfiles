@@ -6,10 +6,6 @@ data.location=~/.task
 nag=
 
 # Priority Settings
-color.uda.priority.H=yellow on red
-color.uda.priority.L=gray9
-color.uda.priority.M=yellow
-
 uda.priority.label=Priority
 uda.priority.type=string
 uda.priority.values=H,M,L
@@ -20,37 +16,14 @@ urgency.uda.priority.L.coefficient=-1.0
 
 # Colors
 color=on
-color.header=white bold
-color.error=black on bright yellow
+color.tagged=
 
-color.burndown.pending=on color9
-color.burndown.started=on color11
-color.burndown.done=on rgb010
+color.label=white bold
+color.label.sort=white bold
 
-color.sync.added=green
-color.sync.changed=yellow
-color.sync.rejected=magenta
-
-color.calendar.today=color15 on rgb013
-color.calendar.due=color0 on color1
-color.calendar.due.today=color15 on color1
-color.calendar.overdue=color0 on color9
-color.calendar.weekend=on color235
-color.calendar.holiday=color0 on color11
-color.calendar.weeknumber=rgb013
-
-color.recurring=rgb013
-color.overdue=white on gray
-color.due.today=white on magenta bold
-color.due=white on rgb100
-color.active=rgb555 on rgb410
-color.blocked=white on color8
-color.blocking=black on color15
-
-# Project Colors
-color.project.aliem=on rgb022
-color.project.oss.dracula=bright blue on black
-color.project.oss.misc=blue on black
+color.uda.priority.H=red bold
+color.uda.priority.L=gray9
+color.uda.priority.M=yellow
 
 # Report Settings
 report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description.count,urgency
