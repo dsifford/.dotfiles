@@ -18,6 +18,8 @@ brew "icu4c"
 brew "adwaita-icon-theme"
 # Apache Portable Runtime library
 brew "apr"
+# SSL/TLS cryptography library
+brew "openssl"
 # Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
 # General-purpose data compression with high compression ratio
