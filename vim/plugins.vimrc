@@ -63,6 +63,7 @@ Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
 
 " Still not sure I want to keep
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'terryma/vim-multiple-cursors'
 
 call plug#end()
 

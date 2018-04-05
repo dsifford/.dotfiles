@@ -142,5 +142,5 @@
     - unetbootin              # Create bootable Live USB drives
     - universalindentgui-svn  # A GUI for GNU Indent, Uncrustify, Artistic Styler, PHP Stylist, Ruby Beautify, HTML Tidy and many other
     - visual-studio-code-bin  # Visual Studio Code: Editor for building and debugging modern web and cloud applications (official binary version)
-    - windscribe-cli          # Port of Windscribe's VPN command line interface
+    - windscribe-cli          # Port of Windscribe's command line interface
     - zeal-git                # A simple documentation browser
