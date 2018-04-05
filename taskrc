@@ -8,7 +8,7 @@ nag=
 # Priority Settings
 uda.priority.label=Priority
 uda.priority.type=string
-uda.priority.values=H,M,L
+uda.priority.values=H,M,,L
 
 urgency.uda.priority.H.coefficient=6.0
 urgency.uda.priority.M.coefficient=3.9

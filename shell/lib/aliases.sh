@@ -22,15 +22,16 @@ alias gca='git commit -a'
 alias gf='git fetch --all --prune'
 
 # Misc
-alias reload='source ~/.bashrc'
 alias bashrc='vim ~/.bashrc'
-alias vimrc='vim ~/.dotfiles/vim/.vimrc'
 alias dot='cd ~/.dotfiles'
+alias fzf='fzf-tmux'
 alias grep='grep --color'
+alias info='info --vi-keys'
 alias npmc='npm-check -u'
 alias npmcg='npm-check -ug'
+alias reload='source ~/.bashrc'
 alias tmux='TERM=xterm tmux'
-alias info='info --vi-keys'
+alias vimrc='vim ~/.dotfiles/vim/.vimrc'
 
 ## Always use neovim
 alias vim='nvim'

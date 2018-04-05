@@ -9,42 +9,23 @@ shopt -s checkwinsize # check the window size after each command and, if necessa
 shopt -s dirspell     # correct spelling mistakes in directories
 shopt -s globstar     # enable recursive glob matching
 
-RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
-export CARGO_HOME=~/.cargo
-export EDITOR=nvim
-export GOPATH=~/gocode
-export LESSHISTFILE='-'
-export NPM_CONFIG_PREFIX=~/.yarn-global
-export PAGER=less
-export PREFIX=~/.yarn-global
-export RUST_SRC_PATH
-
-if [[ $(uname) == Linux ]]; then
-    # Fix tiny QT windows on 4k monitor
-    export QT_AUTO_SCREEN_SCALE_FACTOR=2
-    # Fix for deprecated gvfs-trash call
-    export ELECTRON_TRASH=gio
-fi
-
-if [[ $(uname) == Darwin ]]; then
-    [ -L /usr/local/share/bash-completion/bash_completion ] && . /usr/local/share/bash-completion/bash_completion
-    unset MANPATH
-    MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$(manpath)"
-    export MANPATH
-fi
-
 # Sources
-source_dirs=(
+sources=(
     /etc/bash_completion.d
     /usr/local/share/bash-completion/completions
     /usr/local/etc/bash_completion.d
+    /usr/local/opt/fzf/shell/*.bash
+    /usr/share/fzf/*.bash
     ~/.dotfiles/shell/completions
     ~/.dotfiles/shell/lib
 )
-for item in "${source_dirs[@]}"; do
-    [ ! -d "$item" ] && continue
-    while read -r __file; do
-        . "$__file"
-    done < <(find -L "$item" -maxdepth 1 -type f ! -name ".*" | sort -r)
+for item in "${sources[@]}"; do
+    if [ -f "$item" ]; then
+        . "$item"
+    elif [ -d "$item" ]; then
+        while read -r src; do
+            . "$src"
+        done < <(find -L "$item" -maxdepth 1 -type f ! -name ".*" | sort -r)
+    fi
 done
-unset source_dirs item __file
+unset sources item src

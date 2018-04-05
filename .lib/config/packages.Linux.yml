@@ -29,6 +29,7 @@
     - ffmpegthumbnailer          # Lightweight video thumbnailer that can be used by file managers.
     - firefox-developer-edition  # Developer Edition of the popular Firefox web browser
     - flake8                     # The modular source code checker: pep8, pyflakes and co
+    - fzf                        # Command-line fuzzy finder
     - gdb                        # The GNU Debugger
     - ghc                        # The Glasgow Haskell Compiler
     - git                        # the fast distributed version control system

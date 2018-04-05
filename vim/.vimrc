@@ -29,9 +29,6 @@ set wildignore+=tags,*.o,*.py?
 
 colorscheme dracula
 
-" TODO: Enable this for markdown
-" set spelllang=en_us,medical
-
 let g:mapleader = ' '
 
 if has('nvim')
@@ -59,53 +56,26 @@ let g:ale_php_phpcbf_standard = 'WordPress'
 let g:AutoPairsShortcutToggle = ''
 
 "}}}2
-" Denite: {{{2
-
-" Use RipGrep
-if executable('rg')
-    call denite#custom#var('file_rec', 'command',
-        \ ['rg', '--files', '--glob', '!.git'])
-
-    call denite#custom#var('grep', 'command', ['rg'])
-    call denite#custom#var('grep', 'default_opts',
-            \ ['--vimgrep', '--no-heading'])
-    call denite#custom#var('grep', 'recursive_opts', [])
-    call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-    call denite#custom#var('grep', 'separator', ['--'])
-    call denite#custom#var('grep', 'final_opts', [])
-endif
-
-"}}}2
 " Deoplete: {{{
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 
 "}}}2
-" NERDTree: {{{2
+" Fzf: {{{2
 
-" Auto-close the NERDTree buffer when file opened
-let g:NERDTreeQuitOnOpen = 1
+" Add support for ripgrep
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
-"}}}2
-" SuperTab: {{{2
-
-" <Tab> begins at top of list
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-"}}}2
-" Vim Tmux Navigator: {{{2
-
-" Disables built-in mappings
-let g:tmux_navigator_no_mappings = 1
-
-"}}}2
-" UltiSnips: {{{2
-
-" let g:UltiSnipsExpandTrigger='<CR>'
-" let g:UltiSnipsJumpForwardTrigger='<c-b>'
-" let g:UltiSnipsJumpBackwardTrigger='<c-z>'
-let g:UltiSnipsEditSplit='vertical'
+nnoremap <C-p> :Files<CR>
+nnoremap <A-p> :GFiles<CR>
+" Grep word under cursor
+nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
 
 "}}}2
 " LanguageClient: {{{2
@@ -121,6 +91,42 @@ nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 "}}}2
+" NERDTree: {{{2
+
+" Auto-close the NERDTree buffer when file opened
+let g:NERDTreeQuitOnOpen = 1
+
+"}}}2
+" SuperTab: {{{2
+
+" <Tab> begins at top of list
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+"}}}2
+" UltiSnips: {{{2
+
+" FIXME:
+" let g:UltiSnipsExpandTrigger='<CR>'
+" let g:UltiSnipsJumpForwardTrigger='<c-b>'
+" let g:UltiSnipsJumpBackwardTrigger='<c-z>'
+let g:UltiSnipsEditSplit='vertical'
+
+"}}}2
+" Vim Tmux Navigator: {{{2
+
+" Disables built-in mappings
+let g:tmux_navigator_no_mappings = 1
+
+"}}}2
+
+"}}}1
+" Commands: {{{1
+
+" Reload .vimrc
+command! Reload source $MYVIMRC
+
+" Open .vimrc in a vertical split
+command! Vimrc vsplit ~/.dotfiles/vim/.vimrc
 
 "}}}1
 " Mappings: {{{1
@@ -135,7 +141,7 @@ nnoremap <silent> <Leader><Leader>s :echo "hi<" . synIDattr(synID(line("."),col(
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Toggle fold
-nnoremap <silent> <Leader>z za
+nnoremap <silent> <Enter> za
 
 noremap  <silent> <C-\> :NERDTreeToggle<CR>
 noremap  <silent> <C-_> :Commentary<CR>
@@ -154,18 +160,18 @@ nmap <silent> <C-j>     <Plug>(ale_next_wrap)
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(LiveEasyAlign)
 
-nnoremap <C-p> :Denite file_rec<CR>
-nnoremap <A-p> :DeniteProjectDir file_old<CR>
-
-nnoremap <silent> <Leader>r :DeniteCursorWord grep:.<CR>
-
+"}}}1
 " Autocommands: {{{1
 " --------------------------
 
 filetype plugin indent on
 
-augroup Misc "{{{2
-    autocmd!
+" Misc: {{{2
 
+augroup Misc
+    autocmd!
     autocmd VimLeave * :!clear " Flush the screen's buffer on exit
-augroup END "}}}2
+augroup END
+
+"}}}2
+

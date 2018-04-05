@@ -7,3 +7,4 @@ shell/completions/*
 __pycache__
 
 !shell/completions/aliases.sh
+*.spl
