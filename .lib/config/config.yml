@@ -35,3 +35,7 @@
     ~/.tmux.conf:
     ~/.uncrustify.cfg: languages/.uncrustify.cfg
     ~/.vimrc: vim/.vimrc
+
+- merge:
+    ~/.config: config
+

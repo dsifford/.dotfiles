@@ -1,6 +1,5 @@
 " vim: set fdm=marker:
 scriptencoding utf8
-
 source ~/.vim/plugins.vimrc
 
 " Options: {{{1
@@ -40,14 +39,21 @@ endif
 " Ale: {{{2
 
 let g:ale_fixers = {
-\    'sh': [ 'shfmt' ],
-\    'markdown': [ 'prettier' ],
-\    'php': [ 'phpcbf' ],
-\}
+            \    'json': [ 'prettier' ],
+            \    'markdown': [ 'prettier' ],
+            \    'php': [ 'phpcbf' ],
+            \    'python': [ 'yapf' ],
+            \    'sh': [ 'shfmt' ],
+            \}
 
-let g:ale_sh_shfmt_options = '-i 4 -ci -bn'
+let g:ale_linters = {
+            \   'php': [ 'phpcs', 'php', 'langserver' ],
+            \}
+
 let g:ale_php_phpcs_standard = 'WordPress'
 let g:ale_php_phpcbf_standard = 'WordPress'
+
+let g:ale_sh_shfmt_options = '-i 4 -ci -bn'
 
 "}}}2
 " Auto Pairs: {{{2
@@ -66,11 +72,11 @@ let g:deoplete#enable_smart_case = 1
 
 " Add support for ripgrep
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+            \ call fzf#vim#grep(
+            \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+            \   <bang>0 ? fzf#vim#with_preview('up:60%')
+            \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+            \   <bang>0)
 
 nnoremap <C-p> :Files<CR>
 nnoremap <A-p> :GFiles<CR>
@@ -81,10 +87,10 @@ nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
 " LanguageClient: {{{2
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'javascript': ['typescript-language-server', '--stdio'],
-    \ 'typescript': ['typescript-language-server', '--stdio'],
-    \ }
+            \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+            \ 'javascript': ['typescript-language-server', '--stdio'],
+            \ 'typescript': ['typescript-language-server', '--stdio'],
+            \ }
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
@@ -145,8 +151,8 @@ nnoremap <silent> <Leader><Leader>n :set relativenumber!<CR>
 
 " Show highlight scope under cursor
 nnoremap <silent> <Leader><Leader>s :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+            \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+            \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Toggle fold
 nnoremap <silent> <Enter> za

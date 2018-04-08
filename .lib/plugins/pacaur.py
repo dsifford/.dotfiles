@@ -1,5 +1,10 @@
-import sys, os, subprocess, dotbot, time
+# pylint: disable=missing-docstring
 from enum import Enum
+import os
+import subprocess
+import sys
+import dotbot
+
 
 class PkgStatus(Enum):
     UP_TO_DATE = 'Up to date'
@@ -8,6 +13,7 @@ class PkgStatus(Enum):
     ERROR = 'Errors occurred'
     BUILD_FAIL = 'Build failure'
     NOT_SURE = 'Could not determine'
+
 
 class Pacaur(dotbot.Plugin):
     _directives = ['pacman', 'pacaur']
@@ -43,7 +49,8 @@ class Pacaur(dotbot.Plugin):
                 self._log.error('Could not install package {}'.format(pkg))
 
         if all([result in successful for result in results.keys()]):
-            self._log.info('All {} packages installed successfully'.format(directive))
+            self._log.info(
+                'All {} packages installed successfully'.format(directive))
             success = True
         else:
             success = False
@@ -62,9 +69,8 @@ class Pacaur(dotbot.Plugin):
 
         self._log.info('Installing {}'.format(pkg))
 
-        process = subprocess.Popen(cmd, shell=True,
-                                   stdout=subprocess.PIPE,
-                                   stderr=subprocess.STDOUT)
+        process = subprocess.Popen(
+            cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
         out = []
 
@@ -84,10 +90,12 @@ class Pacaur(dotbot.Plugin):
             if out.find(self._strings[status]) >= 0:
                 return status
 
-        self._log.warn('Could not determine what happened with package {}'.format(pkg))
+        self._log.warn(
+            'Could not determine what happened with package {}'.format(pkg))
         return PkgStatus.NOT_SURE
 
-    def _bootstrap_pacaur(self):
+    @staticmethod
+    def _bootstrap_pacaur():
         dir_path = os.path.dirname(os.path.realpath(__file__))
         cmd = '{}/bootstrap-pacaur'.format(dir_path)
         return subprocess.call(cmd, shell=True)

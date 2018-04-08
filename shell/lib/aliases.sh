@@ -36,21 +36,20 @@ alias vimrc='vim ~/.dotfiles/vim/.vimrc'
 ## Always use neovim
 alias vim='nvim'
 
+command -v transmission-remote >/dev/null \
+    && alias tsm='transmission-remote'
+
 # Coreutils stuff
-if ls --version &> /dev/null; then
+if ls --version &>/dev/null; then
     alias ls='ls -hF1 --color=tty'
 else
     alias ls='ls -FHG11'
 fi
 
-# Macbook
 if [[ $(uname) == 'Darwin' ]]; then
     alias python='python3'
     alias pip='pip3'
-fi
-
-# Arch linux
-if [[ $(uname) == 'Linux' ]]; then
+else
     # Verbosely rate the 200 most recently synchronized HTTP servers located in the US,
     # sort them by download rate, and overwrite the file /etc/pacman.d/mirrorlist
     alias pacman-update='sudo reflector --verbose --country "United States" -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'

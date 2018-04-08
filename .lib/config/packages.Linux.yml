@@ -17,7 +17,6 @@
     - blueman                    # GTK+ Bluetooth Manager
     - bluez-firmware             # Firmwares for Broadcom BCM203x and STLC2300 Bluetooth chips
     - bluez-utils                # Development and debugging utilities for the bluetooth protocol stack
-    - deluge                     # A BitTorrent client with multiple user interfaces in a client/server model
     - diff-so-fancy              # Good-looking diffs with diff-highlight and more
     - docker                     # Pack, ship and run any application as a lightweight container
     - docker-compose             # Fast, isolated development environments using Docker
@@ -28,7 +27,6 @@
     - ffmpeg                     # Complete solution to record, convert and stream audio and video
     - ffmpegthumbnailer          # Lightweight video thumbnailer that can be used by file managers.
     - firefox-developer-edition  # Developer Edition of the popular Firefox web browser
-    - flake8                     # The modular source code checker: pep8, pyflakes and co
     - fzf                        # Command-line fuzzy finder
     - gdb                        # The GNU Debugger
     - ghc                        # The Glasgow Haskell Compiler
@@ -47,6 +45,7 @@
     - lastpass-cli               # LastPass command line interface tool
     - libreoffice-fresh          # LibreOffice branch which contains new features and program enhancements
     - linux-headers              # Header files and scripts for building modules for Linux kernel
+    - mpv                        # a free, open source, and cross-platform media player
     - neovim                     # Fork of Vim aiming to improve user experience, plugins, and GUIs
     - networkmanager             # Network connection manager and user applications
     - network-manager-applet     # Applet for managing network connections
@@ -82,6 +81,7 @@
     - python-rope                # Refactoring library
     - python-xdg                 # Python library to access freedesktop.org standards
     - redshift                   # Adjusts the color temperature of your screen according to your surroundings.
+    - reflector                  # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
     - ripgrep                    # A search tool that combines the usability of ag with the raw speed of grep
     - rsync                      # A file transfer program to keep remote files in sync
     - rustup                     # The Rust toolchain installer
@@ -95,6 +95,7 @@
     - termite                    # A simple VTE-based terminal
     - time                       # Utility for monitoring a program's use of system resources
     - tmux                       # A terminal multiplexer
+    - transmission-cli           # Fast, easy, and free BitTorrent client (CLI tools, daemon and web client)
     - tree                       # A directory listing program displaying a depth indented list of files
     - ttf-dejavu                 # Font family based on the Bitstream Vera Fonts with a wider range of characters
     - ttf-font-awesome           # Iconic font designed for Bootstrap
