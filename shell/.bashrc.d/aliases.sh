@@ -30,8 +30,9 @@ alias info='info --vi-keys'
 alias npmc='npm-check -u'
 alias npmcg='npm-check -ug'
 alias reload='source ~/.bashrc'
-alias tmux='TERM=xterm tmux'
+alias tmux='command tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
 alias vimrc='vim ~/.dotfiles/vim/.vimrc'
+alias wget='command wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 
 ## Always use neovim
 alias vim='nvim'

@@ -3,7 +3,7 @@
 " Download vim-plug if it doesn't already exist
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     augroup plugins_vimrc
         autocmd!
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -13,9 +13,9 @@ endif
 "Automatically install missing plugins on startup
 augroup plugins_vimrc
     autocmd VimEnter *
-        \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-        \|   PlugInstall --sync | q
-        \| endif
+                \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+                \|   PlugInstall --sync | q
+                \| endif
 augroup END
 
 "}}}
@@ -37,9 +37,9 @@ Plug 'w0rp/ale'
 
 if has('nvim')
     Plug 'autozimu/LanguageClient-neovim', {
-        \ 'branch': 'next',
-        \ 'do': 'bash install.sh',
-        \ }
+                \ 'branch': 'next',
+                \ 'do': 'bash install.sh',
+                \ }
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
 

@@ -1,5 +1,6 @@
 " vim: set fdm=marker:
 scriptencoding utf8
+
 source ~/.vim/plugins.vimrc
 
 " Options: {{{1
@@ -154,8 +155,8 @@ nnoremap <silent> <Leader><Leader>s :echo "hi<" . synIDattr(synID(line("."),col(
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-" Toggle fold
-nnoremap <silent> <Enter> za
+" " Toggle fold
+" nnoremap <silent> <Enter> za
 
 noremap  <silent> <C-\> :NERDTreeToggle<CR>
 noremap  <silent> <C-_> :Commentary<CR>

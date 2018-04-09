@@ -1,9 +1,12 @@
 
 # Files
-data.location=~/.task
+data.location=~/.local/share/task
 
 # Turn off nag
 nag=
+
+# Adjust default verbosity
+verbose=blank,label,footnote,new-id,affected,edit,special,project,sync,unwait
 
 # Priority Settings
 uda.priority.label=Priority
@@ -31,7 +34,11 @@ report.next.sort=urgency-
 
 # Sync settings
 taskd.server=freecinc.com:53589
-taskd.key=~/.task\/freecinc.key.pem
-taskd.certificate=~/.task\/freecinc.cert.pem
-taskd.ca=~/.task\/freecinc.ca.pem
-taskd.credentials=FreeCinc\/freecinc_1dbf0215\/861ea477-29ee-4d55-93ad-24b28bdee831
+# taskd.key=~/.task\/freecinc.key.pem
+# taskd.certificate=~/.task\/freecinc.cert.pem
+# taskd.ca=~/.task\/freecinc.ca.pem
+# taskd.credentials=FreeCinc\/freecinc_1dbf0215\/861ea477-29ee-4d55-93ad-24b28bdee831
+taskd.key=~/.local/share/task/freecinc.key.pem
+taskd.certificate=~/.local/share/task/freecinc.cert.pem
+taskd.ca=~/.local/share/task/freecinc.ca.pem
+taskd.credentials=FreeCinc/freecinc_1dbf0215/861ea477-29ee-4d55-93ad-24b28bdee831

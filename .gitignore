@@ -8,3 +8,4 @@ __pycache__
 
 !shell/completions/aliases.sh
 *.spl
+config/tmux/plugins

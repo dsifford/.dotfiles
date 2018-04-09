@@ -1,15 +1,22 @@
 # shellcheck shell=bash
 
-export CARGO_HOME=~/.cargo
+# XDG Base Directory Specification
+export XDG_CONFIG_HOME=~/.config
+export XDG_CACHE_HOME=~/.cache
+export XDG_DATA_HOME=~/.local/share
+
 export EDITOR=nvim
 export GOPATH=~/gocode
 export LESSHISTFILE='-'
-export NPM_CONFIG_PREFIX=~/.yarn-global
 export PAGER=less
+export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
+
+# FIXME: Move these things into appropriate XDG directories
+export CARGO_HOME=~/.cargo
+export NPM_CONFIG_PREFIX=~/.yarn-global
 export PREFIX=~/.yarn-global
 
 if [[ $(uname) == Darwin ]]; then
-    [ -L /usr/local/share/bash-completion/bash_completion ] && . /usr/local/share/bash-completion/bash_completion
     unset MANPATH
     MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$(manpath)"
     export MANPATH

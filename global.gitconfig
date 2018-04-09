@@ -2,30 +2,48 @@
     d = diff
     lg = log --oneline --decorate --all --graph
     supdate = submodule update --remote --merge
+
 [core]
     editor = nvim
     autocrlf = input
     pager = diff-so-fancy | less --tabs=4 -RFX
+
+[color "status"]
+    added = green
+    changed = blue
+
 [credential]
     helper = store
-[merge]
-    tool = nvimdiff
-[mergetool]
-    prompt = true
-[mergetool "nvimdiff"]
-    cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
 [diff]
     tool = nvimdiff
+
 [difftool]
     prompt = false
+
+[merge]
+    tool = nvimdiff
+
+[mergetool]
+    prompt = true
+
+[mergetool "nvimdiff"]
+    cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
 [pull]
     rebase = true
+
 [push]
     default = simple
+
 [rerere]
     enabled = true
+
 [status]
     submodulesummary = 1
+
 [user]
     email = dereksifford@gmail.com
     name = Derek P Sifford
+
+# vim: set ft=gitconfig:

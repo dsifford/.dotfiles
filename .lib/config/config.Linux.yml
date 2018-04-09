@@ -1,13 +1,7 @@
 
 - link:
-    # Directories
     ~/.config/Code/User: vscode
-    ~/.config/pacman: pacman
     ~/.i3:
 
-    # Files
-    ~/.config/dunst/dunstrc: dunstrc.conf
-    ~/.config/redshift.conf: redshift.conf
-    ~/.config/termite/config: termite.conf
-    ~/.xinitrc: xorg/.xinitrc
-    ~/.Xresources: xorg/.Xresources
+- merge:
+    '~': x11

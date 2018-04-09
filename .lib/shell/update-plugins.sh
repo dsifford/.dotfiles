@@ -8,7 +8,6 @@ fi
 PLUGINS_DIR=~/.dotfiles/.lib/plugins
 
 plugin_sources=(
-    https://raw.githubusercontent.com/d12frosted/dotbot-brew/master/brew.py
     https://raw.githubusercontent.com/ajlende/dotbot-pacaur/master/pacaur.py
 )
 

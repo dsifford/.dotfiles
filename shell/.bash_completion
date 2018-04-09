@@ -1,7 +1,11 @@
-#!/bin/bash
+# shellcheck shell=bash disable=SC1090
+
+for _cmpfile in "${XDG_DATA_HOME:-$HOME/.local/share}"/bash-completions/completions/*; do
+    . "$_cmpfile"
+done
+unset _cmpfile
 
 # Source all generated completions
-# shellcheck disable=SC1090
 {
 	command -v rustup >/dev/null &&
 		source <(rustup completions bash)
