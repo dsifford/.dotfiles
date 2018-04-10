@@ -50,6 +50,10 @@ brew "libyaml"
 brew "docker-compose"
 # Command-line tool to interact with exercism.io
 brew "exercism"
+# Collection of GNU find, xargs, and locate
+brew "findutils", args: ["with-default-names"]
+# Command-line fuzzy finder written in Go
+brew "fzf"
 # GNU multiple precision arithmetic library
 brew "gmp"
 # GNU awk utility
@@ -144,7 +148,6 @@ brew "wget"
 brew "yarn"
 cask "alfred"
 cask "bartender"
-cask "caffeine"
 cask "dash"
 cask "dropbox"
 cask "firefoxdeveloperedition"
@@ -169,6 +172,7 @@ cask "vmware-horizon-client"
 cask "windscribe"
 cask "caskroom/versions/atom-beta"
 cask "caskroom/versions/google-chrome-canary"
+mas "Amphetamine", id: 937984704
 mas "Gapplin", id: 768053424
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
