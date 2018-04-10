@@ -1,20 +1,29 @@
 # shellcheck shell=bash
+unset PREFIX
+unset NPM_CONFIG_PREFIX
+
+export EDITOR=nvim
+export LESSHISTFILE='-'
+export PAGER=less
 
 # XDG Base Directory Specification
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
 export XDG_DATA_HOME=~/.local/share
 
-export EDITOR=nvim
+# TODO:
 export GOPATH=~/gocode
-export LESSHISTFILE='-'
-export PAGER=less
-export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
 
-# FIXME: Move these things into appropriate XDG directories
-export CARGO_HOME=~/.cargo
-export NPM_CONFIG_PREFIX=~/.yarn-global
-export PREFIX=~/.yarn-global
+export ATOM_HOME="$XDG_DATA_HOME"/atom
+export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
+export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+export PYLINTHOME="$XDG_CACHE_HOME"/pylint
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export STACK_ROOT="$XDG_DATA_HOME"/stack
+export TASKRC="$XDG_CONFIG_HOME"/task/taskrc
+export UNCRUSTIFY_CONFIG="$XDG_CONFIG_HOME"/uncrustify/uncrustify.cfg
 
 if [[ $(uname) == Darwin ]]; then
     unset MANPATH

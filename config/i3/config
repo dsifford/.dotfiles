@@ -39,7 +39,7 @@ mouse_warping none
 exec --no-startup-id termite --name=FloatingTerminal -e 'bash -c "tmux -2u -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf new -AD -s home"'
 for_window [instance="FloatingTerminal"] floating enable, border pixel 0, resize set 3850 952, move position 2160 50, move scratchpad
 bindsym $mod+Home exec --no-startup-id termite --name=FloatingTerminal -e 'bash -c "tmux -2u -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf new -AD -s home"'
-bindsym Control+space focus output DP-2; exec --no-startup-id $HOME/.i3/scripts/toggle-floating-terminal.sh
+bindsym Control+space focus output DP-2; exec --no-startup-id ${XDG_CONFIG_HOME:-$HOME/.config}/i3/scripts/toggle-floating-terminal.sh
 
 #===============APP WINDOW CONFIG================
 
@@ -80,9 +80,6 @@ bindsym Control+Shift+space [class="Zeal"] scratchpad show, move position center
 # Ctrl+$mod+Arrow => Move workspace to other monitor
 bindsym Control+$mod+Right move workspace to output right
 bindsym Control+$mod+Left move workspace to output left
-
-# Ctrl+Printscreen => Open simplescreenrecorder
-bindsym Control+Shift+Print exec simplescreenrecorder
 
 # PrintScreen
 bindsym Print exec gscreenshot-cli -sc
@@ -255,7 +252,7 @@ bar {
     position top
     tray_output none
     # using custom i3status.conf
-    status_command i3blocks -c $HOME/.i3/i3blocks.conf
+    status_command i3blocks -c "${XDG_CONFIG_HOME:-$HOME/.config}"/i3/i3blocks.conf
 }
 
 bar {

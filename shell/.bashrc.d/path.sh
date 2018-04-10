@@ -1,43 +1,27 @@
 # shellcheck shell=bash
 
-path_append() {
-	declare -p path >/dev/null || exit 1
-	declare value="$2"
-	declare item
+declare newpath
+declare -a path=(
+    ~/.cargo/bin
+    ~/.local/bin
+    ~/.local/share/npm/bin
+    ~/gocode/bin
+    /usr/local/opt/coreutils/libexec/gnubin
+    /usr/local/bin
+    /usr/local/sbin
+    /usr/local/go/bin
+)
 
-	for item in "${path[@]}"; do
-		[ "$item" == "$value" ] && return
-	done
+mapfile -t path < <(
+    cat \
+        <(printf '%s\n' "${path[@]}") \
+        <(echo "$PATH" | tr ':' '\n') \
+        <(getconf PATH | tr ':' '\n'))
 
-	path+=("$value")
-}
+while read -r p; do
+    [ ! -d "$p" ] && continue
+    newpath="${newpath:+$newpath:}$p"
+done < <(awk '!x[$0]++' < <(printf '%s\n' "${path[@]}"))
 
-parse_path() {
-	declare output
-	declare item
-	declare -a path=(
-		~/bin
-		~/.yarn-global/bin
-		~/.cargo/bin
-		~/.local/bin
-		~/gocode/bin
-		/usr/local/opt/coreutils/libexec/gnubin
-		/usr/local/bin
-		/usr/local/sbin
-		/usr/local/go/bin
-	)
-
-	mapfile -d: -t -C path_append -c 1 <<<"${PATH}$(getconf PATH)"
-
-	for item in "${path[@]}"; do
-		[[ ! -d "$item" ]] && continue
-		output+="$([ -z "$output" ] && echo -n "$item" || echo -n ":$item")"
-	done
-
-	echo "$output"
-}
-
-PATH="$(parse_path)"
-export PATH
-
-unset parse_path path_append
+PATH="$newpath"
+unset path p newpath

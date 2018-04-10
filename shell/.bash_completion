@@ -5,6 +5,8 @@ for _cmpfile in "${XDG_DATA_HOME:-$HOME/.local/share}"/bash-completions/completi
 done
 unset _cmpfile
 
+
+# TODO: Fix this and the rest of the file so it loads on demand
 # Source all generated completions
 {
 	command -v rustup >/dev/null &&

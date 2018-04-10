@@ -1,0 +1,61 @@
+#!/bin/bash
+
+if ! command -v pdfseparate >/dev/null || ! command -v pdfunite >/dev/null; then
+    echo 'Must have "pdfseparate" and "pdfunite" available in path'
+    exit 1;
+fi
+
+declare -i start
+declare -i end
+declare input_file
+declare output_file
+declare tempdirname
+declare -a fileslist
+
+while getopts ":s:e:h" opt; do
+    case "$opt" in
+        s)
+            start="$OPTARG"
+            ;;
+        e)
+            end="$OPTARG"
+            ;;
+        h)
+            echo "usage: pdfextract [-s start-page] [-e end-page] input-pdf output-pdf"
+            exit 0
+            ;;
+        \?)
+            echo "invalid option $OPTARG"
+            exit 1
+            ;;
+        :)
+            echo "Option $OPTARG requires an argument"
+            exit 1
+            ;;
+    esac
+done
+shift $((OPTIND - 1))
+
+if [[ $# -ne 2 ]]; then
+    echo "Must specify input and output pdf files"
+    exit 1
+fi
+
+input_file="$(realpath "$1")"
+output_file="$(realpath "$2")"
+
+if [[ ! -f $input_file ]]; then
+    echo "file $input_file does not exist"
+    exit 1
+fi
+
+tempdirname="$(mktemp -d)"
+
+cd "$tempdirname" || exit 1
+
+pdfseparate -f "$start" -l "$end" "$input_file" '%04d.pdf'
+mapfile -t fileslist < <(find . -type f -name '*.pdf' | sort)
+pdfunite "${fileslist[@]}" "$output_file"
+
+rm -r "$tempdirname"
+

@@ -1,7 +1,6 @@
 
 - link:
     ~/.config/Code/User: vscode
-    ~/.i3:
 
 - merge:
     '~': x11

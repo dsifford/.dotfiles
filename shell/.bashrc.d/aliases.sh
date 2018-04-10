@@ -28,17 +28,22 @@ alias fzf='fzf-tmux'
 alias grep='grep --color'
 alias info='info --vi-keys'
 alias npmc='npm-check -u'
-alias npmcg='npm-check -ug'
+alias posix-utils='apropos -s 1p .'
+alias npmcg='PREFIX="$XDG_DATA_HOME"/npm npm-check -ug'
 alias reload='source ~/.bashrc'
 alias tmux='command tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
 alias vimrc='vim ~/.dotfiles/vim/.vimrc'
 alias wget='command wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+alias svn='command svn --config-dir "$XDG_CONFIG_HOME"/subversion'
 
 ## Always use neovim
 alias vim='nvim'
 
 command -v transmission-remote >/dev/null \
     && alias tsm='transmission-remote'
+
+command -v nvidia-settings >/dev/null \
+    && alias nvidia-settings='command nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
 
 # Coreutils stuff
 if ls --version &>/dev/null; then

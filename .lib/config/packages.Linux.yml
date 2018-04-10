@@ -86,7 +86,6 @@
     - rsync                      # A file transfer program to keep remote files in sync
     - rustup                     # The Rust toolchain installer
     - shellcheck                 # Shell script analysis tool
-    - simplescreenrecorder       # A feature-rich screen recorder that supports X11 and OpenGL.
     - slop                       # Utility to query the user for a selection and print the region to stdout
     - stack                      # The Haskell Tool Stack
     - subversion                 # A Modern Concurrent Version Control System
@@ -141,7 +140,6 @@
     - ttf-monaco              # A monospaced sans-serif typeface by Apple Inc.
     - ttf-ms-fonts            # Core TTF Fonts from Microsoft
     - unetbootin              # Create bootable Live USB drives
-    - universalindentgui-svn  # A GUI for GNU Indent, Uncrustify, Artistic Styler, PHP Stylist, Ruby Beautify, HTML Tidy and many other
     - visual-studio-code-bin  # Visual Studio Code: Editor for building and debugging modern web and cloud applications (official binary version)
     - windscribe-cli          # Port of Windscribe's command line interface
     - zeal-git                # A simple documentation browser
