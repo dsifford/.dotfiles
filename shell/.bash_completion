@@ -1,34 +1,35 @@
 # shellcheck shell=bash disable=SC1090
-
-for _cmpfile in "${XDG_DATA_HOME:-$HOME/.local/share}"/bash-completions/completions/*; do
-    . "$_cmpfile"
-done
-unset _cmpfile
-
-
-# TODO: Fix this and the rest of the file so it loads on demand
-# Source all generated completions
-{
-	command -v rustup >/dev/null &&
-		source <(rustup completions bash)
-	command -v npm >/dev/null &&
-		source <(npm completion)
-	command -v doctl >/dev/null &&
-		source <(doctl completion bash)
-	command -v pandoc >/dev/null &&
-		source <(pandoc --bash-completion)
-}
+command -v __load_completion >/dev/null || exit 1
 
 # Add completion aliases where needed
-command -v _docker >/dev/null &&
-	complete -F _docker d
-command -v _docker_compose >/dev/null &&
-	complete -F _docker_compose dc
-command -v _docker_machine >/dev/null &&
-	complete -F _docker_machine dm
-command -v __git_complete >/dev/null &&
-	__git_complete g __git_main
-command -v _task >/dev/null &&
-	complete -o nospace -F _task t
-command -v _yarn >/dev/null &&
-	complete -F _yarn y
+command -v docker >/dev/null \
+    && __load_completion docker \
+    && command -v _docker >/dev/null \
+    && complete -F _docker d
+
+command -v docker-compose >/dev/null \
+    && __load_completion docker-compose \
+    && command -v _docker_compose >/dev/null \
+    && complete -F _docker_compose dc
+
+command -v docker-machine >/dev/null \
+    && __load_completion docker-machine \
+    && command -v _docker_machine >/dev/null \
+    && complete -F _docker_machine dm
+
+command -v git >/dev/null \
+    && __load_completion git \
+    && command -v __git_complete >/dev/null \
+    && command -v __git_main >/dev/null \
+    && __git_complete g __git_main
+
+command -v task >/dev/null \
+    && __load_completion task \
+    && command -v _task >/dev/null \
+    && complete -o nospace -F _task t
+
+command -v yarn >/dev/null \
+    && __load_completion yarn \
+    && command -v _yarn >/dev/null \
+    && complete -F _yarn y
+

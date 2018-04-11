@@ -25,6 +25,7 @@ export STACK_ROOT="$XDG_DATA_HOME"/stack
 export TASKRC="$XDG_CONFIG_HOME"/task/taskrc
 export UNCRUSTIFY_CONFIG="$XDG_CONFIG_HOME"/uncrustify/uncrustify.cfg
 export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 
 # fzf
 if command -v fzf >/dev/null; then
