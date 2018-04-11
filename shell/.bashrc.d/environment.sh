@@ -28,6 +28,7 @@ export UNCRUSTIFY_CONFIG="$XDG_CONFIG_HOME"/uncrustify/uncrustify.cfg
 if [[ $(uname) == Darwin ]]; then
     unset MANPATH
     MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$(manpath)"
+	export XDG_RUNTIME_DIR="$TMPDIR"
     export MANPATH
 else
     # Fix tiny QT windows on 4k monitor
