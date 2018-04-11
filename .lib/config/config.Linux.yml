@@ -2,5 +2,3 @@
 - link:
     ~/.config/Code/User: vscode
 
-- merge:
-    '~': x11
