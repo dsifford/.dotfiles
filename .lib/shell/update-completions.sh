@@ -20,7 +20,6 @@ if ! command -v wget >/dev/null; then
     exit 1
 fi
 
-# FIXME: add way to change name so bash-completion can find all of these
 declare -A completion_sources=(
     [cargo]='https://raw.githubusercontent.com/rust-lang/cargo/master/src/etc/cargo.bashcomp.sh'
     ['docker-compose']='https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose'
@@ -33,9 +32,7 @@ declare -A completion_sources=(
     [yarn]='https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash'
 )
 
-# printf '%s\n' "${completion_sources[@]}" | xargs -n 1 -P 0 -I{} wget -q --show-progress -N -P "$completions_dir" '{}'
-
 parallel --link \
-    wget -q -N -O "$completions_dir"/'{1}' '{2}' \
+    wget --hsts-file="$XDG_CACHE_HOME/wget-hsts" -q -N -O "$completions_dir"/'{1}' '{2}' \
     ::: "${!completion_sources[@]}" \
     ::: "${completion_sources[@]}"
