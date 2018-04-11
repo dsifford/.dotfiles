@@ -25,18 +25,6 @@ export STACK_ROOT="$XDG_DATA_HOME"/stack
 export TASKRC="$XDG_CONFIG_HOME"/task/taskrc
 export UNCRUSTIFY_CONFIG="$XDG_CONFIG_HOME"/uncrustify/uncrustify.cfg
 
-if [[ $(uname) == Darwin ]]; then
-    unset MANPATH
-    MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$(manpath)"
-	export XDG_RUNTIME_DIR="$TMPDIR"
-    export MANPATH
-else
-    # Fix tiny QT windows on 4k monitor
-    export QT_AUTO_SCREEN_SCALE_FACTOR=2
-    # Fix for deprecated gvfs-trash call
-    export ELECTRON_TRASH=gio
-fi
-
 # fzf
 if command -v fzf >/dev/null; then
 	# use ripgrep instead for better speed and ignored file support
@@ -52,5 +40,17 @@ fi
 if command -v rustc >/dev/null; then
 	RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 	export RUST_SRC_PATH
+fi
+
+if [[ $(uname) == Darwin ]]; then
+    unset MANPATH
+    MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$(manpath)"
+	export XDG_RUNTIME_DIR="$TMPDIR"
+    export MANPATH
+else
+    # Fix tiny QT windows on 4k monitor
+    export QT_AUTO_SCREEN_SCALE_FACTOR=2
+    # Fix for deprecated gvfs-trash call
+    export ELECTRON_TRASH=gio
 fi
 
