@@ -18,14 +18,15 @@ export ATOM_HOME="$XDG_DATA_HOME"/atom
 export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
 export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 export PYLINTHOME="$XDG_CACHE_HOME"/pylint
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export STACK_ROOT="$XDG_DATA_HOME"/stack
 export TASKRC="$XDG_CONFIG_HOME"/task/taskrc
 export UNCRUSTIFY_CONFIG="$XDG_CONFIG_HOME"/uncrustify/uncrustify.cfg
-export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 
 # fzf
 if command -v fzf >/dev/null; then
