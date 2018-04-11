@@ -46,4 +46,16 @@
     email = dereksifford@gmail.com
     name = Derek P Sifford
 
+[url "ssh://git@github.com"]
+    insteadOf = https://github.com
+    insteadOf = http://github.com
+
+[url "ssh://git@gitlab.com"]
+    insteadOf = https://gitlab.com
+    insteadOf = http://gitlab.com
+
+[url "ssh://git@bitbucket.org"]
+    insteadOf = https://bitbucket.org
+    insteadOf = http://bitbucket.org
+
 # vim: set ft=gitconfig:
