@@ -30,25 +30,25 @@ export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 
 # fzf
 if command -v fzf >/dev/null; then
-	# use ripgrep instead for better speed and ignored file support
+    # use ripgrep instead for better speed and ignored file support
     export FZF_DEFAULT_COMMAND='rg --files . | sort'
-	export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-	export FZF_DEFAULT_OPTS='--height 40% --reverse'
-	[ -n "$TMUX" ] && {
-		export FZF_TMUX=1
-	}
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_DEFAULT_OPTS='--height 40% --reverse'
+    [ -n "$TMUX" ] && {
+        export FZF_TMUX=1
+    }
 fi
 
 # rustc
 if command -v rustc >/dev/null; then
-	RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
-	export RUST_SRC_PATH
+    RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+    export RUST_SRC_PATH
 fi
 
 if [[ $(uname) == Darwin ]]; then
     unset MANPATH
     MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$(manpath)"
-	export XDG_RUNTIME_DIR="$TMPDIR"
+    export XDG_RUNTIME_DIR="$TMPDIR"
     export MANPATH
 else
     # Fix tiny QT windows on 4k monitor
@@ -56,4 +56,3 @@ else
     # Fix for deprecated gvfs-trash call
     export ELECTRON_TRASH=gio
 fi
-
