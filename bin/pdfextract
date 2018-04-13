@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if ! command -v pdfseparate >/dev/null || ! command -v pdfunite >/dev/null; then
     echo 'Must have "pdfseparate" and "pdfunite" available in path'
