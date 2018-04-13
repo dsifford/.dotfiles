@@ -40,6 +40,8 @@ brew "boost"
 brew "coreutils"
 # Top-like interface for container metrics
 brew "ctop"
+# Good-lookin' diffs with diff-highlight and more
+brew "diff-so-fancy"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
 # Create Docker hosts locally and on cloud providers
