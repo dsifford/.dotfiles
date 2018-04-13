@@ -19,6 +19,7 @@ export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
 export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
+export HISTFILE="$XDG_DATA_HOME"/bash/history
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 export PYLINTHOME="$XDG_CACHE_HOME"/pylint
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup

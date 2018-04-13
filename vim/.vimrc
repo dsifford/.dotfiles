@@ -156,7 +156,7 @@ nnoremap <silent> <Leader><Leader>s :echo "hi<" . synIDattr(synID(line("."),col(
             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " " Toggle fold
-" nnoremap <silent> <Enter> za
+nnoremap <silent> <Enter> za
 
 noremap  <silent> <C-\> :NERDTreeToggle<CR>
 noremap  <silent> <C-_> :Commentary<CR>
