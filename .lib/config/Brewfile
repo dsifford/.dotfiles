@@ -106,6 +106,8 @@ brew "mas"
 brew "neovim"
 # Utility for managing network connections
 brew "netcat"
+# Platform built on V8 to build network applications
+brew "node"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # Shell command parallelization utility
