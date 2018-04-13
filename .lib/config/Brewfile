@@ -41,11 +41,13 @@ brew "coreutils"
 # Top-like interface for container metrics
 brew "ctop"
 # Pack, ship and run any application as a lightweight container
-brew "docker", link: false
+brew "docker"
 # Create Docker hosts locally and on cloud providers
 brew "docker-machine", restart_service: true, link: false
 # YAML Parser
 brew "libyaml"
+# Interpreted, interactive, object-oriented programming language
+brew "python@2"
 # Isolated development environments using Docker
 brew "docker-compose"
 # Command-line tool to interact with exercism.io
@@ -106,8 +108,10 @@ brew "neovim"
 brew "netcat"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# Shell command parallelization utility
+brew "parallel"
 # General-purpose scripting language
-brew "php", link: false
+brew "php"
 # Tool to automatically fix PHP coding standards issues
 brew "php-cs-fixer"
 # PDF rendering library (based on the xpdf-3.0 code base)
@@ -118,8 +122,6 @@ brew "pstree"
 brew "py2cairo"
 # GNOME Python bindings (based on GObject Introspection)
 brew "pygobject3"
-# Interpreted, interactive, object-oriented programming language
-brew "python@2"
 # File browser
 brew "ranger"
 # Reattach process (e.g., tmux) to background
