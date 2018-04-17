@@ -42,6 +42,8 @@
 
 [status]
     submodulesummary = 1
+    showUntrackedFiles = all
+    showStash = true
 
 [user]
     email = dereksifford@gmail.com

@@ -59,6 +59,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/emmet-vim', { 'for': [ 'html', 'markdown' ] }
 Plug 'justinmk/vim-syntax-extra', { 'for': 'c' }
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+Plug 'mhartington/nvim-typescript', { 'for': 'typescript' }
 Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
 
 " Still not sure I want to keep
