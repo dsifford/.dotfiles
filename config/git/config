@@ -1,7 +1,7 @@
 [alias]
-    d = diff
+    br = branch -a
     lg = log --oneline --decorate --all --graph
-    supdate = submodule update --remote --merge
+    submodule-update = submodule update --remote --merge
 
 [core]
     editor = nvim
