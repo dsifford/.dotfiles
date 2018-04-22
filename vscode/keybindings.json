@@ -9,11 +9,6 @@
         "command": "editor.action.copyLinesDownAction",
         "when": "editorTextFocus && !editorReadonly"
     },
-    {
-        "key": "cmd+shift+i",
-        "command": "editor.action.formatDocument",
-        "when": "editorTextFocus && !editorReadonly"
-    },
     // 
     // File Explorer -----------------------------------------
     // 

@@ -22,6 +22,7 @@
 
     # Files
     ~/.vimrc: vim/.vimrc
+    $XDG_CONFIG_HOME/redshift.conf: config/redshift/redshift.conf
 
 - merge:
     '~': languages

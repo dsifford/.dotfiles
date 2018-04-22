@@ -14,7 +14,7 @@
     "editor.codeLens": false,
     "editor.cursorBlinking": "solid",
     "editor.fontFamily": "Monaco, 'Courier New', monospace",
-    "editor.fontSize": 16,
+    "editor.fontSize": 18,
     "editor.quickSuggestions": {
         "comments": true,
         "other": true,
@@ -160,7 +160,7 @@
             "before": ["<leader>", "f"],
             "commands": [
                 {
-                    "command": "editor.action.quickFix"
+                    "command": "editor.action.formatDocument"
                 }
             ]
         },

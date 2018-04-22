@@ -57,13 +57,13 @@ Plug 'machakann/vim-highlightedyank'
 
 " Language / Syntax
 Plug 'mattn/emmet-vim', { 'for': [ 'html', 'markdown' ] }
-Plug 'justinmk/vim-syntax-extra', { 'for': 'c' }
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-Plug 'mhartington/nvim-typescript', { 'for': 'typescript' }
-Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
+Plug 'plasticboy/vim-markdown'
+Plug 'justinmk/vim-syntax-extra'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'PotatoesMaster/i3-vim-syntax'
 
 " Still not sure I want to keep
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'junegunn/goyo.vim'
 Plug 'terryma/vim-multiple-cursors'
 
 call plug#end()

@@ -78,7 +78,6 @@
     - python-pip                 # The PyPA recommended tool for installing Python packages
     - python-pylint              # Analyzes Python code looking for bugs and signs of poor quality
     - python-xdg                 # Python library to access freedesktop.org standards
-    - redshift                   # Adjusts the color temperature of your screen according to your surroundings.
     - reflector                  # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
     - ripgrep                    # A search tool that combines the usability of ag with the raw speed of grep
     - rsync                      # A file transfer program to keep remote files in sync
@@ -131,6 +130,8 @@
     - plex-media-server       # Plex Media Server
     - postman-bin             # Build, test, and document your APIs faster
     - ranger-git              # A simple, vim-like file manager.
+    - redshift-git            # Adjusts the color temperature of your screen according to your surroundings (development version)
+    - redshift-gtk-git        # Adjusts the color temperature of your screen according to your surroundings (development version)
     - shfmt                   # Format shell programs
     - solaar                  # Device manager for Logitech's Unifying receiver peripherals
     - spotify                 # A proprietary music streaming service
