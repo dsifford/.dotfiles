@@ -1,14 +1,13 @@
-" vim: set fdm=marker:
 scriptencoding utf8
+filetype plugin indent on
 
 source ~/.vim/plugins.vimrc
 
-" Options: 
-" ---------------------
+" Options: {{{1
+colorscheme dracula
 
 set autowrite                 " Automatically save before commands like :next and :make
 set clipboard=unnamedplus     " Use system clipboard
-set formatoptions-=o          " Don't add comment when newline added with o or O
 set history=200               " Truncate history at 200 lines
 set ignorecase                " Required for proper smartcase functionality
 set lazyredraw                " Improves perf under some conditions
@@ -22,28 +21,30 @@ set smarttab                  " sw at the start of the line, sts everywhere else
 set splitbelow                " Open horizontal splits below current buffer
 set splitright                " Open vertical splits to the right of current buffer
 set termguicolors             " Force GUI colors in terminals
-set ts=4 sts=4 sw=4 expandtab " Tabs = 4 spaces by default
 set virtualedit=block         " Allow cursor to be placed in virtual positions when in visual block mode
 set winaltkeys=no             " Allows all ALT combinations to be mapped
 
-set wildignore+=tags,*.o,*.py?
+" Tabs = 4 spaces by default
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 
-colorscheme dracula
+set wildignore+=tags,*.o,*.py?
 
 let g:mapleader = ' '
 
 if has('nvim')
     set inccommand=split
 endif
-
-" Plugin Settings: 
-
-" Airline: 
+"}}}1
+" Plugin Settings: {{{1
+" Airline: {{{2
 
 let g:airline#extensions#ale#enabled = 1
 
-
-" Ale: 
+"}}}2
+" Ale: {{{2
 
 let g:ale_fixers = {
             \    'json': [ 'prettier' ],
@@ -66,25 +67,41 @@ let g:ale_sh_shfmt_options = '-i 4 -ci -bn'
 
 let g:airline#extensions#ale#enabled = 1
 
+nmap          <Leader>f <Plug>(ale_fix)
+nmap <silent> <C-k>     <Plug>(ale_previous_wrap)
+nmap <silent> <C-j>     <Plug>(ale_next_wrap)
 
-" Auto Pairs: 
+"}}}2
+" Auto Pairs: {{{2
 
 " Disable toggle keybinding
 let g:AutoPairsShortcutToggle = ''
 
+"}}}2
+" Commentary: {{{2
 
-" Deoplete: 
+noremap  <silent> <C-_> :Commentary<CR>
+inoremap <silent> <C-_> <Esc>:Commentary<CR>i
+
+"}}}2
+" Deoplete: {{{2
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 
+"}}}2
+" EasyAlign: {{{2
 
-" Fzf: 
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(LiveEasyAlign)
+
+"}}}2
+" Fzf: {{{2
 
 let g:fzf_action = {
-    \ 'ctrl-t': 'tab split',
-    \ 'ctrl-i': 'split',
-    \ 'ctrl-s': 'vsplit' }
+            \ 'ctrl-t': 'tab split',
+            \ 'ctrl-i': 'split',
+            \ 'ctrl-s': 'vsplit' }
 
 " Add support for ripgrep
 command! -bang -nargs=* Rg
@@ -100,8 +117,8 @@ nnoremap <C-b> :Buffers<CR>
 " Grep word under cursor
 nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
 
-
-" LanguageClient: 
+"}}}2
+" LanguageClient: {{{2
 
 let g:LanguageClient_serverCommands = {
             \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
@@ -113,22 +130,28 @@ nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
-
-" NERDTree: 
+"}}}2
+" NERDTree: {{{2
 
 " Auto-close the NERDTree buffer when file opened
 let g:NERDTreeQuitOnOpen = 1
 
 noremap  <silent> <C-\> :NERDTreeToggle<CR>
 
+"}}}2
+" Scriptease: {{{2
 
-" SuperTab: 
+" Show syntax groups under cursor
+nmap <silent> <Leader>s <Plug>ScripteaseSynnames
+
+"}}}2
+" SuperTab: {{{2
 
 " <Tab> begins at top of list
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
-
-" UltiSnips: 
+"}}}2
+" UltiSnips: {{{2
 
 " FIXME:
 " let g:UltiSnipsExpandTrigger='<CR>'
@@ -136,24 +159,29 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 " let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 let g:UltiSnipsEditSplit='vertical'
 
-
-" Vim Markdown: 
+"}}}2
+" Vim Markdown: {{{2
 
 " Restrict italics to single line only
 let g:vim_markdown_emphasis_multiline = 0
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 
-
-" Vim Tmux Navigator: 
+"}}}2
+" Vim Tmux Navigator: {{{2
 
 " Disables built-in mappings
 let g:tmux_navigator_no_mappings = 1
 
+nnoremap <silent> <A-h> :TmuxNavigateLeft<CR>
+nnoremap <silent> <A-j> :TmuxNavigateDown<CR>
+nnoremap <silent> <A-k> :TmuxNavigateUp<CR>
+nnoremap <silent> <A-l> :TmuxNavigateRight<CR>
+nnoremap <silent> <A-\> :TmuxNavigatePrevious<CR>
 
-
-
-" Commands: 
+"}}}2
+"}}}1
+" Commands: {{{1
 
 " Reload .vimrc
 command! Reload source $MYVIMRC
@@ -161,8 +189,8 @@ command! Reload source $MYVIMRC
 " Open .vimrc in a vertical split
 command! Vimrc vsplit ~/.dotfiles/vim/.vimrc
 
-
-" Mappings: 
+"}}}1
+" Mappings: {{{1
 
 nnoremap Y  y$
 nnoremap <silent> <Leader><Leader>l :set list!<CR>
@@ -172,29 +200,8 @@ nnoremap <silent> <Leader><Leader>n :set relativenumber!<CR>
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
-" Show highlight scope under cursor
-nnoremap <silent> <Leader>s :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-            \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-            \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
-" " Toggle fold
+" Toggle fold
 nnoremap <silent> <Enter> za
-
-noremap  <silent> <C-_> :Commentary<CR>
-inoremap <silent> <C-_> <Esc>:Commentary<CR>i
-
-nnoremap <silent> <A-h> :TmuxNavigateLeft<CR>
-nnoremap <silent> <A-j> :TmuxNavigateDown<CR>
-nnoremap <silent> <A-k> :TmuxNavigateUp<CR>
-nnoremap <silent> <A-l> :TmuxNavigateRight<CR>
-nnoremap <silent> <A-\> :TmuxNavigatePrevious<CR>
-
-nmap          <Leader>f <Plug>(ale_fix)
-nmap <silent> <C-k>     <Plug>(ale_previous_wrap)
-nmap <silent> <C-j>     <Plug>(ale_next_wrap)
-
-nmap ga <Plug>(EasyAlign)
-xmap ga <Plug>(LiveEasyAlign)
 
 " FIXME: Put this in autoload
 " Zoom / Restore window.
@@ -212,23 +219,29 @@ endfunction
 command! ZoomToggle call s:ZoomToggle()
 nnoremap <silent> <Leader><CR> :ZoomToggle<CR>
 
+"}}}1
+" Autocommands: {{{1
 
-" Autocommands: 
-" --------------------------
-
-filetype plugin indent on
-
-" Misc: 
-
-augroup Misc
+augroup dsifford_misc
     autocmd!
-    autocmd VimLeave * :!clear " Flush the screen's buffer on exit
-    " autocmd BufEnter * if &ft !~ '^nerdtree$' | silent! lcd %:p:h | endif
+
+    " Toggle quickfix with <Esc>
+    autocmd FileType qf nnoremap <buffer><silent> <Esc> :quit<CR>
+
+    " Load the final overrides after startup process completes
+    autocmd VimEnter * :source ~/.vim/after.vimrc
+
+    " Flush the screen's buffer on exit
+    autocmd VimLeave * :!clear
+
+    " Fixes issue with autocwd
     autocmd BufEnter *
-        \ if &ft !~ '^nerdtree$' |
-        \   silent! lcd %:p:h |
-        \ endif
+                \ if &ft !~ '^nerdtree$' |
+                \   silent! lcd %:p:h |
+                \ endif
+
 augroup END
 
+"}}}1
 
-
+" vim: set fdm=marker:

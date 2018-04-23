@@ -10,14 +10,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     augroup END
 endif
 
-"Automatically install missing plugins on startup
-augroup plugins_vimrc
-    autocmd VimEnter *
-                \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-                \|   PlugInstall --sync | q
-                \| endif
-augroup END
-
 "}}}
 
 call plug#begin('~/.vim/_plugins')
@@ -36,10 +28,8 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'w0rp/ale'
 
 if has('nvim')
-    Plug 'autozimu/LanguageClient-neovim', {
-                \ 'branch': 'next',
-                \ 'do': 'bash install.sh',
-                \ }
+    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+        Plug 'roxma/LanguageServer-php-neovim',  { 'do': 'composer install && composer run-script parse-stubs' }
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
 
@@ -56,11 +46,15 @@ Plug 'vim-airline/vim-airline'
 Plug 'machakann/vim-highlightedyank'
 
 " Language / Syntax
+Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim', { 'for': [ 'html', 'markdown' ] }
 Plug 'plasticboy/vim-markdown'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
+
+" Misc
+Plug 'tpope/vim-scriptease'
 
 " Still not sure I want to keep
 Plug 'junegunn/goyo.vim'

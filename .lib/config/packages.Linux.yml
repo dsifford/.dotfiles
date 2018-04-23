@@ -17,6 +17,7 @@
     - blueman                    # GTK+ Bluetooth Manager
     - bluez-firmware             # Firmwares for Broadcom BCM203x and STLC2300 Bluetooth chips
     - bluez-utils                # Development and debugging utilities for the bluetooth protocol stack
+    - composer                   # Dependency Manager for PHP
     - diff-so-fancy              # Good-looking diffs with diff-highlight and more
     - docker                     # Pack, ship and run any application as a lightweight container
     - docker-compose             # Fast, isolated development environments using Docker
