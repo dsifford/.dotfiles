@@ -48,10 +48,8 @@ Plug 'machakann/vim-highlightedyank'
 " Language / Syntax
 Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim', { 'for': [ 'html', 'markdown' ] }
-Plug 'plasticboy/vim-markdown'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'PotatoesMaster/i3-vim-syntax'
 
 " Misc
 Plug 'tpope/vim-scriptease'

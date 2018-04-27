@@ -44,7 +44,7 @@ endif
 let g:airline#extensions#ale#enabled = 1
 
 "}}}2
-" Ale: {{{2
+" ALE: {{{2
 
 let g:ale_fixers = {
             \    'json': [ 'prettier' ],
@@ -53,7 +53,7 @@ let g:ale_fixers = {
             \    'python': [ 'yapf' ],
             \    'scss': [ 'prettier' ],
             \    'sh': [ 'shfmt' ],
-            \    'typescript': [ 'prettier' ],
+            \    'typescript': [ 'prettier', 'tslint' ],
             \}
 
 let g:ale_linters = {
@@ -135,8 +135,30 @@ nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 " Auto-close the NERDTree buffer when file opened
 let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeBookmarksFile = $XDG_CACHE_HOME . '/nerdtree/bookmarks'
+let g:NERDTreeMinimalUI = 1
+
+let g:NERDTreeIgnore = [
+            \ 'node_modules$[[dir]]'
+            \ ]
 
 noremap  <silent> <C-\> :NERDTreeToggle<CR>
+
+"}}}2
+" Polyglot: {{{2
+
+let g:polyglot_disabled = [
+            \ 'php',
+            \ 'scss',
+            \ 'typescript',
+            \]
+
+" Markdown: {{{3
+" Restrict italics to single line only
+let g:vim_markdown_emphasis_multiline = 0
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_frontmatter = 1
+"}}}3
 
 "}}}2
 " Scriptease: {{{2
@@ -160,14 +182,6 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsEditSplit='vertical'
 
 "}}}2
-" Vim Markdown: {{{2
-
-" Restrict italics to single line only
-let g:vim_markdown_emphasis_multiline = 0
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_frontmatter = 1
-
-"}}}2
 " Vim Tmux Navigator: {{{2
 
 " Disables built-in mappings
@@ -183,11 +197,10 @@ nnoremap <silent> <A-\> :TmuxNavigatePrevious<CR>
 "}}}1
 " Commands: {{{1
 
-" Reload .vimrc
 command! Reload source $MYVIMRC
-
-" Open .vimrc in a vertical split
+command! ReloadSyntax call vimrc#ReloadSyntax()
 command! Vimrc vsplit ~/.dotfiles/vim/.vimrc
+command! ZoomToggle call vimrc#ZoomToggle()
 
 "}}}1
 " Mappings: {{{1
@@ -202,21 +215,7 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " Toggle fold
 nnoremap <silent> <Enter> za
-
-" FIXME: Put this in autoload
-" Zoom / Restore window.
-function! s:ZoomToggle() abort
-    if exists('t:zoomed') && t:zoomed
-        execute t:zoom_winrestcmd
-        let t:zoomed = 0
-    else
-        let t:zoom_winrestcmd = winrestcmd()
-        resize
-        vertical resize
-        let t:zoomed = 1
-    endif
-endfunction
-command! ZoomToggle call s:ZoomToggle()
+" Toggle window fullscreen
 nnoremap <silent> <Leader><CR> :ZoomToggle<CR>
 
 "}}}1

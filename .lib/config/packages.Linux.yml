@@ -47,7 +47,6 @@
     - libreoffice-fresh          # LibreOffice branch which contains new features and program enhancements
     - linux-headers              # Header files and scripts for building modules for Linux kernel
     - mpv                        # a free, open source, and cross-platform media player
-    - neovim                     # Fork of Vim aiming to improve user experience, plugins, and GUIs
     - networkmanager             # Network connection manager and user applications
     - network-manager-applet     # Applet for managing network connections
     - nmap                       # Utility for network discovery and security auditing
@@ -73,6 +72,7 @@
     - pulseaudio-bluetooth       # Bluetooth support for PulseAudio
     - python                     # Next generation of the python high-level scripting language
     - python2                    # A high-level scripting language
+    - python2-neovim             # Python 2 client for neovim
     - python2-pip                # The PyPA recommended tool for installing Python packages
     - python-lxml                # Python3 binding for the libxml2 and libxslt libraries
     - python-neovim              # Python 3 client for neovim
@@ -126,6 +126,7 @@
     - gscreenshot             # A simple screenshot tool supporting multiple backends
     - hub-git                 # cli interface for Github
     - keybase-bin             # the Keybase Go client, filesystem, and GUI
+    - neovim-git              # Fork of Vim aiming to improve user experience, plugins, and GUIs.
     - ngrok                   # A tunneling, reverse proxy for developing and understanding networked, HTTP services
     - php-codesniffer         # PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files to detect and fix violations of a defined set of coding standards.
     - plex-media-server       # Plex Media Server
