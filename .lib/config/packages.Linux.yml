@@ -23,6 +23,7 @@
     - docker-compose             # Fast, isolated development environments using Docker
     - docker-machine             # Machine management for a container-centric world
     - dunst                      # Customizable and lightweight notification-daemon
+    - fd                         # Simple, fast and user-friendly alternative to find
     - fdupes                     # a program for identifying or deleting duplicate files residing within specified directories
     - feh                        # Fast and light imlib2-based image viewer
     - ffmpeg                     # Complete solution to record, convert and stream audio and video

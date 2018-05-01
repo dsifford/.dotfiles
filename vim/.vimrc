@@ -33,6 +33,7 @@ set tabstop=4
 set wildignore+=tags,*.o,*.py?
 
 let g:mapleader = ' '
+let g:netrw_home=$XDG_CACHE_HOME . '/vim'
 
 if has('nvim')
     set inccommand=split
@@ -78,6 +79,12 @@ nmap <silent> <C-j>     <Plug>(ale_next_wrap)
 let g:AutoPairsShortcutToggle = ''
 
 "}}}2
+" Colorizer: {{{2
+
+let g:colorizer_auto_filetype='css,scss'
+let g:colorizer_colornames = 0
+
+"}}}2
 " Commentary: {{{2
 
 noremap  <silent> <C-_> :Commentary<CR>
@@ -111,8 +118,8 @@ command! -bang -nargs=* Rg
             \           : fzf#vim#with_preview('right:50%:hidden', '?'),
             \   <bang>0)
 
-nnoremap <C-p> :Files<CR>
-nnoremap <A-p> :GFiles<CR>
+nnoremap <A-p> :Files<CR>
+nnoremap <C-p> :GFiles -co --exclude-standard<CR>
 nnoremap <C-b> :Buffers<CR>
 " Grep word under cursor
 nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
@@ -128,6 +135,7 @@ let g:LanguageClient_serverCommands = {
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> gr :call LanguageClient_textDocument_references()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 "}}}2
@@ -137,6 +145,7 @@ nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeBookmarksFile = $XDG_CACHE_HOME . '/nerdtree/bookmarks'
 let g:NERDTreeMinimalUI = 1
+let g:NERDTreeHijackNetrw=1
 
 let g:NERDTreeIgnore = [
             \ 'node_modules$[[dir]]'
@@ -151,6 +160,7 @@ let g:polyglot_disabled = [
             \ 'php',
             \ 'scss',
             \ 'typescript',
+            \ 'yaml',
             \]
 
 " Markdown: {{{3

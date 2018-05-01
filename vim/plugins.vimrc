@@ -22,7 +22,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/fzf', { 'do': './install --all' } | Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': './install --bin' } | Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'w0rp/ale'
@@ -38,6 +38,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-sneak'
+Plug 'terryma/vim-multiple-cursors'
 
 " Look and feel
 Plug 'airblade/vim-gitgutter'
@@ -56,7 +57,7 @@ Plug 'tpope/vim-scriptease'
 
 " Still not sure I want to keep
 Plug 'junegunn/goyo.vim'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'chrisbra/Colorizer'
 
 call plug#end()
 
