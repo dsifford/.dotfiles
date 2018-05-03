@@ -34,6 +34,7 @@ set wildignore+=tags,*.o,*.py?
 
 let g:mapleader = ' '
 let g:netrw_home=$XDG_CACHE_HOME . '/vim'
+let g:sh_fold_enabled=1
 
 if has('nvim')
     set inccommand=split

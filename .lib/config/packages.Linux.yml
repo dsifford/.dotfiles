@@ -32,6 +32,7 @@
     - fzf                        # Command-line fuzzy finder
     - gdb                        # The GNU Debugger
     - ghc                        # The Glasgow Haskell Compiler
+    - ghc-static                 # The Glasgow Haskell Compiler - Static Libraries and Documentation
     - git                        # the fast distributed version control system
     - gnome-keyring              # Stores passwords and encryption keys
     - gnu-netcat                 # GNU rewrite of netcat, the network piping application
