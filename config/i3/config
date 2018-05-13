@@ -83,7 +83,7 @@ bindsym Control+$mod+Left move workspace to output left
 
 # PrintScreen
 bindsym Print exec gscreenshot-cli -sc
-bindsym Control+Print exec --no-startup-id gscreenshot-cli -s -f /tmp/screenshot.png && krita /tmp/screenshot.png
+bindsym Control+Print exec --no-startup-id gscreenshot-cli -s -f /tmp/screenshot.png && gimp /tmp/screenshot.png
 
 # Caps Lock => Escape
 exec --no-startup-id setxkbmap -option caps:escape

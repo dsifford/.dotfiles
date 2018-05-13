@@ -53,14 +53,19 @@ let g:ale_fixers = {
             \    'markdown': [ 'prettier' ],
             \    'php': [ 'phpcbf' ],
             \    'python': [ 'yapf' ],
-            \    'scss': [ 'prettier' ],
+            \    'scss': [ 'prettier', 'stylelint' ],
             \    'sh': [ 'shfmt' ],
             \    'typescript': [ 'prettier', 'tslint' ],
+            \    'typescriptreact': [ 'prettier', 'tslint' ],
             \}
 
 let g:ale_linters = {
             \   'php': [ 'phpcs', 'php', 'langserver' ],
+            \   'typescript': [ 'tslint', 'tsserver' ],
+            \   'typescriptreact': [ 'tslint', 'tsserver' ],
             \}
+
+let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
 
 let g:ale_php_phpcs_standard = 'WordPress'
 let g:ale_php_phpcbf_standard = 'WordPress'
@@ -94,8 +99,13 @@ inoremap <silent> <C-_> <Esc>:Commentary<CR>i
 "}}}2
 " Deoplete: {{{2
 
+call deoplete#custom#option({
+            \ 'smart_case': v:true,
+            \ 'complete_method': 'omnifunc'
+            \ })
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
+
+call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
 
 "}}}2
 " EasyAlign: {{{2
@@ -111,10 +121,15 @@ let g:fzf_action = {
             \ 'ctrl-i': 'split',
             \ 'ctrl-s': 'vsplit' }
 
+function! s:CompleteRg(arg_lead, line, pos)
+    let l:args = join(split(a:line)[1:])
+    return systemlist('get_completions rg ' . l:args)
+endfunction
+
 " Add support for ripgrep
-command! -bang -nargs=* Rg
+command! -bang -complete=customlist,s:CompleteRg -nargs=* Rg
             \ call fzf#vim#grep(
-            \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+            \   'rg --column --line-number --no-heading --color=always '.<q-args>, 1,
             \   <bang>0 ? fzf#vim#with_preview('up:60%')
             \           : fzf#vim#with_preview('right:50%:hidden', '?'),
             \   <bang>0)
@@ -129,9 +144,11 @@ nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
 " LanguageClient: {{{2
 
 let g:LanguageClient_serverCommands = {
-            \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
             \ 'javascript': ['typescript-language-server', '--stdio'],
+            \ 'python': ['pyls'],
+            \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
             \ 'typescript': ['typescript-language-server', '--stdio'],
+            \ 'typescriptreact': ['typescript-language-server', '--stdio'],
             \ }
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
@@ -190,7 +207,23 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 " let g:UltiSnipsExpandTrigger='<CR>'
 " let g:UltiSnipsJumpForwardTrigger='<c-b>'
 " let g:UltiSnipsJumpBackwardTrigger='<c-z>'
-let g:UltiSnipsEditSplit='vertical'
+" let g:UltiSnipsEditSplit='vertical'
+
+" let g:UltiSnipsJumpForwardTrigger='<tab>'
+" let g:UltiSnipsJumpBackwardTrigger='<S-tab>'
+" let g:UltiSnipsExpandTrigger='<nop>'
+" let g:ulti_expand_or_jump_res = 0
+" function! <SID>ExpandSnippetOrReturn()
+"   let l:snippet = UltiSnips#ExpandSnippetOrJump()
+"   if g:ulti_expand_or_jump_res > 0
+"     return l:snippet
+"   else
+"     return "\<CR>"
+"   endif
+" endfunction
+" inoremap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "\<CR>"
+
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 
 "}}}2
 " Vim Tmux Navigator: {{{2
@@ -217,8 +250,8 @@ command! ZoomToggle call vimrc#ZoomToggle()
 " Mappings: {{{1
 
 nnoremap Y  y$
+nnoremap <silent> <Leader>l :set relativenumber!<CR>
 nnoremap <silent> <Leader><Leader>l :set list!<CR>
-nnoremap <silent> <Leader><Leader>n :set relativenumber!<CR>
 
 " Make j and k move through soft line breaks
 nnoremap <expr> j v:count ? 'j' : 'gj'
@@ -229,6 +262,9 @@ nnoremap <silent> <Enter> za
 " Toggle window fullscreen
 nnoremap <silent> <Leader><CR> :ZoomToggle<CR>
 
+" Search project with ripgrep
+nnoremap <Leader>/ :Rg<Space>
+
 "}}}1
 " Autocommands: {{{1
 
@@ -238,18 +274,25 @@ augroup dsifford_misc
     " Toggle quickfix with <Esc>
     autocmd FileType qf nnoremap <buffer><silent> <Esc> :quit<CR>
 
-    " Load the final overrides after startup process completes
-    autocmd VimEnter * :source ~/.vim/after.vimrc
-
     " Flush the screen's buffer on exit
     autocmd VimLeave * :!clear
 
-    " Fixes issue with autocwd
-    autocmd BufEnter *
-                \ if &ft !~ '^nerdtree$' |
-                \   silent! lcd %:p:h |
-                \ endif
+    " Set cwd to file directory for cd_filetypes
+    if ! exists('s:initial_wd')
+        let s:initial_wd = getcwd()
+    endif
+    let s:cd_filetypes = [
+                \ 'typescript',
+                \ 'typescriptreact',
+                \ ]
+    autocmd BufRead,BufNewFile * if index(s:cd_filetypes, &ft) == -1      |
+                \          silent exec 'lcd ' . fnameescape(s:initial_wd) |
+                \      else                                               |
+                \          lcd %:p:h                                      |
+                \      endif
 
+    " Don't add comment when newline added with o or O for any filetype
+    autocmd FileType * set formatoptions-=o | set formatoptions+=r
 augroup END
 
 "}}}1

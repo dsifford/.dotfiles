@@ -31,6 +31,7 @@ if has('nvim')
     Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
         Plug 'roxma/LanguageServer-php-neovim',  { 'do': 'composer install && composer run-script parse-stubs' }
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+        Plug 'Shougo/neoinclude.vim'
 endif
 
 " General Enhancements
@@ -58,6 +59,7 @@ Plug 'tpope/vim-scriptease'
 " Still not sure I want to keep
 Plug 'junegunn/goyo.vim'
 Plug 'chrisbra/Colorizer'
+Plug 'davidhalter/jedi-vim'
 
 call plug#end()
 

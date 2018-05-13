@@ -11,6 +11,7 @@
     - arandr                     # Provide a simple visual front end for XRandR 1.2.
     - archlinux-wallpaper        # A variety of Arch Linux branded wallpapers
     - asciinema                  # Record and share terminal sessions
+    - asp                        # Arch Linux build source file management tool
     - atool                      # A script for managing file archives of various types
     - aws-cli                    # Universal Command Line Interface for Amazon Web Services
     - bash-completion            # Programmable completion for the bash shell
@@ -33,6 +34,7 @@
     - gdb                        # The GNU Debugger
     - ghc                        # The Glasgow Haskell Compiler
     - ghc-static                 # The Glasgow Haskell Compiler - Static Libraries and Documentation
+    - gimp                       # GNU Image Manipulation Program
     - git                        # the fast distributed version control system
     - gnome-keyring              # Stores passwords and encryption keys
     - gnu-netcat                 # GNU rewrite of netcat, the network piping application
@@ -44,7 +46,6 @@
     - imagemagick                # An image viewing/manipulation program
     - inkscape                   # Professional vector graphics editor
     - jq                         # Command-line JSON processor
-    - krita                      # Edit and paint images
     - lastpass-cli               # LastPass command line interface tool
     - libreoffice-fresh          # LibreOffice branch which contains new features and program enhancements
     - linux-headers              # Header files and scripts for building modules for Linux kernel
@@ -74,13 +75,8 @@
     - pulseaudio-bluetooth       # Bluetooth support for PulseAudio
     - python                     # Next generation of the python high-level scripting language
     - python2                    # A high-level scripting language
-    - python2-neovim             # Python 2 client for neovim
     - python2-pip                # The PyPA recommended tool for installing Python packages
-    - python-lxml                # Python3 binding for the libxml2 and libxslt libraries
-    - python-neovim              # Python 3 client for neovim
     - python-pip                 # The PyPA recommended tool for installing Python packages
-    - python-pylint              # Analyzes Python code looking for bugs and signs of poor quality
-    - python-xdg                 # Python library to access freedesktop.org standards
     - reflector                  # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
     - ripgrep                    # A search tool that combines the usability of ag with the raw speed of grep
     - rsync                      # A file transfer program to keep remote files in sync
