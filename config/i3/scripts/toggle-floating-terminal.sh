@@ -10,8 +10,8 @@ declare -i is_fullscreen_mode
 i3_tree="$(
     i3-msg -t get_tree \
         | jq --arg instance "$instance" '
-            recurse(.nodes[]) 
-            | .floating_nodes[] 
+            recurse(.nodes[])
+            | .floating_nodes[]
             | select(.nodes[].window_properties.instance == $instance)
         '
 )"
@@ -36,7 +36,7 @@ has_fullscreen_mark="$(
 
 if [[ "$current_output" =~ i3 ]]; then
     if ((has_fullscreen_mark)); then
-        i3-msg '[instance="'$instance'"] scratchpad show, fullscreen toggle, unmark'" $mark"
+        i3-msg '[instance="'$instance'"] scratchpad show, fullscreen enable, unmark'" $mark"
     else
         i3-msg '[instance="'$instance'"] scratchpad show'
     fi

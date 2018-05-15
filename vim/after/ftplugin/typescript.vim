@@ -12,5 +12,9 @@ setl include=import\_s.\\zs[^'\"]*\\ze
 setl includeexpr=TsIncludeExpr(v:fname)
 setl suffixesadd=.ts,.tsx
 
+nnoremap <buffer> <silent> K :ALEHover<CR>
+nnoremap <buffer> <silent> gd :ALEGoToDefinition<CR>
+nnoremap <buffer> <silent> gr :ALEFindReferences<CR>
+
 let &l:path .= ',' . finddir('node_modules', expand('%:p:h') . ';' . $HOME)
 
