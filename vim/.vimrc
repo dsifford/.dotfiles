@@ -33,7 +33,6 @@ set tabstop=4
 set wildignore+=tags,*.o,*.py?
 
 let g:mapleader = ' '
-let g:netrw_home=$XDG_CACHE_HOME . '/vim'
 let g:sh_fold_enabled=1
 
 if has('nvim')
@@ -118,8 +117,8 @@ xmap ga <Plug>(LiveEasyAlign)
 
 let g:fzf_action = {
             \ 'ctrl-t': 'tab split',
-            \ 'ctrl-i': 'split',
-            \ 'ctrl-s': 'vsplit' }
+            \ 'ctrl-o': 'split',
+            \ 'ctrl-v': 'vsplit' }
 
 function! s:CompleteRg(arg_lead, line, pos)
     let l:args = join(split(a:line)[1:])
@@ -140,6 +139,12 @@ nnoremap <C-b> :Buffers<CR>
 " Grep word under cursor
 nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
 
+augroup dsifford_fzf
+    autocmd!
+    autocmd  FileType fzf set laststatus=0 noshowmode noruler
+          \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+augroup END
+
 "}}}2
 " LanguageClient: {{{2
 
@@ -157,19 +162,23 @@ nnoremap <silent> gr :call LanguageClient_textDocument_references()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 "}}}2
-" NERDTree: {{{2
+" Netrw: {{{2
 
 " Auto-close the NERDTree buffer when file opened
-let g:NERDTreeQuitOnOpen = 1
-let g:NERDTreeBookmarksFile = $XDG_CACHE_HOME . '/nerdtree/bookmarks'
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeHijackNetrw=1
+" let g:NERDTreeQuitOnOpen = 1
+" let g:NERDTreeBookmarksFile = $XDG_CACHE_HOME . '/nerdtree/bookmarks'
+" let g:NERDTreeMinimalUI = 1
 
-let g:NERDTreeIgnore = [
-            \ 'node_modules$[[dir]]'
-            \ ]
+" let g:NERDTreeIgnore = [
+"             \ 'node_modules$[[dir]]'
+"             \ ]
 
-noremap  <silent> <C-\> :NERDTreeToggle<CR>
+let g:netrw_home=$XDG_CACHE_HOME . '/vim'
+let g:netrw_banner = 0
+let g:netrw_list_hide = netrw_gitignore#Hide()
+
+" Toggle Netrw window
+noremap <silent> <expr> <C-\> &ft ==# 'netrw' ? ':bd<CR>' : ':Explore!<CR>'
 
 "}}}2
 " Polyglot: {{{2

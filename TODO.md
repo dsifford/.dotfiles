@@ -8,3 +8,4 @@ Vim command
 ```sh
 $ vim +PlugUpgrade +PlugClean +PlugUpdate +PlugInstall +qall!
 ```
+Make fzf-vim use tree structure possibly: `tree -F --prune --noreport lib/ | fzf`
