@@ -2,11 +2,22 @@
 # shellcheck disable=SC1090
 set -e
 
-command -v python > /dev/null || { echo "Python must be installed first."; exit 1; }
-[[ $USER == 'root' ]] && { echo "Don't run this as root."; exit 1; }
+[[ $USER == 'root' ]] && {
+    echo "Don't run this as root."
+    exit 1
+}
 
-dotfiles="$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd )"
-dotbot="$dotfiles/dotbot/bin/dotbot"
+command -v python3 >/dev/null || {
+    echo "Python 3 must be installed first."
+    exit 1
+}
+
+command -v dotbot >/dev/null || {
+    echo "dotbot must be installed first."
+    exit 1
+}
+
+dotfiles="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 dotbot_plugins="$dotfiles/.lib/plugins"
 config_dir="$dotfiles/.lib/config"
 configs=(
@@ -24,16 +35,15 @@ while test $# -gt 0; do
             shift
             ;;
         *)
-            args+=( "$1" )
+            args+=("$1")
             shift
             ;;
     esac
 done
 
 config_file="$(mktemp)"
-cat "${configs[@]}" > "$config_file"
+cat "${configs[@]}" >"$config_file"
 
-git submodule update --remote --merge
-"$dotbot" -d "$dotfiles" -c "$config_file" --plugin-dir "$dotbot_plugins" "${args[@]}"
+dotbot -d "$dotfiles" -c "$config_file" --plugin-dir "$dotbot_plugins" "${args[@]}"
 
 rm "$config_file"

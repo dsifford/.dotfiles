@@ -16,7 +16,6 @@ alias git='hub-stub-conflicting-commands'
 alias gb='git branch -a'
 alias gs='git status'
 alias gc='git checkout'
-alias gca='git commit -a'
 alias gf='git fetch --all --prune'
 
 # Misc
@@ -36,9 +35,6 @@ alias svn='command svn --config-dir "$XDG_CONFIG_HOME"/subversion'
 
 ## Always use neovim
 alias vim='nvim'
-
-command -v transmission-remote >/dev/null \
-    && alias tsm='transmission-remote'
 
 command -v nvidia-settings >/dev/null \
     && alias nvidia-settings='command nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'

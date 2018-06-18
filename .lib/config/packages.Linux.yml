@@ -59,6 +59,7 @@
     - noto-fonts-emoji           # Google Noto emoji fonts
     - npm                        # A package manager for javascript
     - ntfs-3g                    # NTFS filesystem driver and utilities
+    - ntp                        # Network Time Protocol reference implementation
     - numlockx                   # Turns on the numlock key in X11.
     - nvidia                     # NVIDIA drivers for linux
     - nvidia-settings            # Tool for configuring the NVIDIA graphics driver

@@ -17,7 +17,7 @@ call plug#begin('~/.vim/_plugins')
 Plug 'tpope/vim-sensible'
 
 " Essential
-Plug 'tpope/vim-commentary'
+Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
@@ -27,7 +27,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'w0rp/ale'
 
 if has('nvim')
-    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
         Plug 'roxma/LanguageServer-php-neovim',  { 'do': 'composer install && composer run-script parse-stubs' }
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
         Plug 'Shougo/neoinclude.vim'
@@ -37,27 +37,25 @@ endif
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'
-Plug 'terryma/vim-multiple-cursors'
 
 " Look and feel
 Plug 'airblade/vim-gitgutter'
+Plug 'chrisbra/Colorizer'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'vim-airline/vim-airline'
 Plug 'machakann/vim-highlightedyank'
+Plug 'vim-airline/vim-airline'
 
 " Language / Syntax
-Plug 'sheerun/vim-polyglot'
-Plug 'mattn/emmet-vim', { 'for': [ 'html', 'markdown' ] }
+Plug 'davidhalter/jedi-vim'
 Plug 'justinmk/vim-syntax-extra'
+Plug 'mattn/emmet-vim'
+Plug 'sheerun/vim-polyglot'
 Plug 'HerringtonDarkholme/yats.vim'
 
 " Misc
 Plug 'tpope/vim-scriptease'
 
 " Still not sure I want to keep
-Plug 'junegunn/goyo.vim'
-Plug 'chrisbra/Colorizer'
-Plug 'davidhalter/jedi-vim'
 
 call plug#end()
 

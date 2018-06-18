@@ -8,6 +8,7 @@ colorscheme dracula
 
 set autowrite                 " Automatically save before commands like :next and :make
 set clipboard=unnamedplus     " Use system clipboard
+set hidden                    " Use hidden buffers liberally
 set history=200               " Truncate history at 200 lines
 set ignorecase                " Required for proper smartcase functionality
 set lazyredraw                " Improves perf under some conditions
@@ -33,7 +34,7 @@ set tabstop=4
 set wildignore+=tags,*.o,*.py?
 
 let g:mapleader = ' '
-let g:sh_fold_enabled=1
+let g:maplocalleader = '\\'
 
 if has('nvim')
     set inccommand=split
@@ -44,8 +45,18 @@ endif
 
 let g:airline#extensions#ale#enabled = 1
 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#tab_min_count = 2
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+" :~:.
+
 "}}}2
 " ALE: {{{2
+
+let g:ale_linters_explicit = 1
 
 let g:ale_fixers = {
             \    'json': [ 'prettier' ],
@@ -60,12 +71,14 @@ let g:ale_fixers = {
 
 let g:ale_linters = {
             \   'php': [ 'phpcs', 'php', 'langserver' ],
+            \   'sh': [ 'shellcheck' ],
             \   'typescript': [ 'tslint', 'tsserver' ],
             \   'typescriptreact': [ 'tslint', 'tsserver' ],
             \}
 
 let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
 
+let g:ale_python_mypy_options = '--no-incremental --cache-dir=/dev/null'
 let g:ale_php_phpcs_standard = 'WordPress'
 let g:ale_php_phpcbf_standard = 'WordPress'
 
@@ -90,12 +103,6 @@ let g:colorizer_auto_filetype='css,scss'
 let g:colorizer_colornames = 0
 
 "}}}2
-" Commentary: {{{2
-
-noremap  <silent> <C-_> :Commentary<CR>
-inoremap <silent> <C-_> <Esc>:Commentary<CR>i
-
-"}}}2
 " Deoplete: {{{2
 
 call deoplete#custom#option({
@@ -111,6 +118,20 @@ call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
 
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(LiveEasyAlign)
+
+"}}}2
+" Emmet: {{{2
+
+let g:user_emmet_leader_key='<C-e>'
+
+imap <C-e><C-e> <Plug>(emmet-expand-abbr)
+imap <C-e><C-]> <Plug>(emmet-move-next)
+imap <C-e><C-[> <Plug>(emmet-move-prev)
+
+augroup emmet_vim
+    autocmd!
+    autocmd FileType html,xml,css,scss,sass,typescriptreact EmmetInstall
+augroup END
 
 "}}}2
 " Fzf: {{{2
@@ -134,10 +155,12 @@ command! -bang -complete=customlist,s:CompleteRg -nargs=* Rg
             \   <bang>0)
 
 nnoremap <A-p> :Files<CR>
-nnoremap <C-p> :GFiles -co --exclude-standard<CR>
+nnoremap <C-p> :GFiles<CR>
 nnoremap <C-b> :Buffers<CR>
 " Grep word under cursor
 nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
+
+command! GFiles call fzf#run(fzf#wrap({ 'source': 'GFiles' }))
 
 augroup dsifford_fzf
     autocmd!
@@ -152,28 +175,38 @@ let g:LanguageClient_serverCommands = {
             \ 'javascript': ['typescript-language-server', '--stdio'],
             \ 'python': ['pyls'],
             \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+            \ 'sh': ['bash-language-server', 'start'],
             \ 'typescript': ['typescript-language-server', '--stdio'],
             \ 'typescriptreact': ['typescript-language-server', '--stdio'],
             \ }
 
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> gr :call LanguageClient_textDocument_references()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+nnoremap          <A-Space> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K         :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd        :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> gs        :call LanguageClient_textDocument_documentSymbol()<CR>
+nnoremap <silent> gS        :call LanguageClient_workspace_symbol()<CR>
+nnoremap <silent> gr        :call LanguageClient_textDocument_references()<CR>
+nnoremap <silent> <F2>      :call LanguageClient_textDocument_rename()<CR>
+
+"}}}2
+" NERDCommenter: {{{2
+
+let g:NERDSpaceDelims = 1
+
+let g:NERDCustomDelimiters = {
+            \ 'typescript': { 'left': '//', 'leftAlt': '/**', 'rightAlt': '*/' },
+            \ 'typescriptreact': { 'left': '//', 'leftAlt': '/**', 'rightAlt': '*/' },
+            \}
+
+nmap     <silent> <C-_> <Plug>NERDCommenterToggle
+vmap     <silent> <C-_> <Plug>NERDCommenterToggle
+inoremap <silent> <C-_> <Cmd><Plug>(NERDCommenterToggle)<CR>
 
 "}}}2
 " Netrw: {{{2
 
-" Auto-close the NERDTree buffer when file opened
-" let g:NERDTreeQuitOnOpen = 1
-" let g:NERDTreeBookmarksFile = $XDG_CACHE_HOME . '/nerdtree/bookmarks'
-" let g:NERDTreeMinimalUI = 1
-
-" let g:NERDTreeIgnore = [
-"             \ 'node_modules$[[dir]]'
-"             \ ]
-
-let g:netrw_home=$XDG_CACHE_HOME . '/vim'
+let g:netrw_liststyle=3
+let g:netrw_home=stdpath('cache')
 let g:netrw_banner = 0
 let g:netrw_list_hide = netrw_gitignore#Hide()
 
@@ -189,13 +222,6 @@ let g:polyglot_disabled = [
             \ 'typescript',
             \ 'yaml',
             \]
-
-" Markdown: {{{3
-" Restrict italics to single line only
-let g:vim_markdown_emphasis_multiline = 0
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_frontmatter = 1
-"}}}3
 
 "}}}2
 " Scriptease: {{{2
@@ -267,7 +293,7 @@ nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " Toggle fold
-nnoremap <silent> <Enter> za
+nnoremap <silent>         <CR> :pc <Bar> :exe ':silent! normal za\r'<CR>
 " Toggle window fullscreen
 nnoremap <silent> <Leader><CR> :ZoomToggle<CR>
 
@@ -286,22 +312,14 @@ augroup dsifford_misc
     " Flush the screen's buffer on exit
     autocmd VimLeave * :!clear
 
-    " Set cwd to file directory for cd_filetypes
-    if ! exists('s:initial_wd')
-        let s:initial_wd = getcwd()
-    endif
-    let s:cd_filetypes = [
-                \ 'typescript',
-                \ 'typescriptreact',
-                \ ]
-    autocmd BufRead,BufNewFile * if index(s:cd_filetypes, &ft) == -1      |
-                \          silent exec 'lcd ' . fnameescape(s:initial_wd) |
-                \      else                                               |
-                \          lcd %:p:h                                      |
-                \      endif
-
     " Don't add comment when newline added with o or O for any filetype
     autocmd FileType * set formatoptions-=o | set formatoptions+=r
+
+    " FIXME: Pending the fix to php syntax
+    " Fixes issues with PHP and other languages changing global foldmethod
+    autocmd BufLeave * set foldmethod=manual
+    autocmd BufEnter *.php setl foldmethod=syntax
+
 augroup END
 
 "}}}1

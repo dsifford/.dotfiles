@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+
+import i3ipc
+
+i3 = i3ipc.Connection()
+
+
+def get_current_output(rect):
+    for output in i3.get_outputs():
+        if not output.current_workspace:
+            continue
+        if output.rect.x <= rect.x:
+            return output
+    raise Exception('Could\'t identify current output')
+
+
+def on_focus(container, e):
+    if e.container.name != 'FLOATING_PLAYER_WINDOW' \
+            or 'FLOATING_ACTIVE' not in e.container.marks:
+        return
+
+    output = get_current_output(e.container.props.rect)
+    rect = e.container.props.rect
+
+    if rect.height + rect.y > output.rect.height / 2:
+        container.command('move position {:d} {:d}'.format(
+            rect.x, (output.rect.y + 55)))
+    else:
+        container.command('move position {:d} {:d}'.format(
+            rect.x, (output.rect.height - rect.height - 20)))
+
+    container.command('focus tiling')
+
+
+i3.on('window::focus', on_focus)
+
+i3.main()

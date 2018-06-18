@@ -16,6 +16,7 @@ exec --no-startup-id feh --no-fehbg --bg-center -B "#000000" /usr/share/archlinu
 # Startup Daemons
 exec --no-startup-id dunst
 exec --no-startup-id albert
+exec --no-startup-id ~/.config/i3/daemons/floating_youtube_controller
 
 # Startup Applets
 exec --no-startup-id nm-applet
@@ -106,6 +107,8 @@ bindsym Control+XF86AudioNext exec --no-startup-id ~/.config/redshift/hooks/hue.
 
 # $mod+Shift+Middle Mouse Button => kill window
 bindsym --whole-window $mod+Shift+button3 kill
+
+bindsym Control+Escape [title="FLOATING_PLAYER_WINDOW"] mark --toggle FLOATING_ACTIVE
 
 #================================================
 #             BEGIN i3 DEFAULTS

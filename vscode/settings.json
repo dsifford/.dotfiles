@@ -20,7 +20,7 @@
         "other": true,
         "strings": true
     },
-    "editor.renderWhitespace": "none",
+    "editor.renderWhitespace": "all",
     "editor.rulers": [80, 120],
     "editor.snippetSuggestions": "top",
     "editor.wordWrap": "off",
@@ -31,7 +31,7 @@
     },
     "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
     "emmet.showSuggestionsAsSnippets": true,
-    "explorer.decorations.badges": false,
+    "explorer.decorations.badges": true,
     "extensions.autoUpdate": false,
     "files.exclude": {
         "**/*.pyo": true,
@@ -253,5 +253,6 @@
         "gutter"
     ],
     "gitlens.hovers.currentLine.over": "line",
-    "vim.sneak": true
+    "vim.sneak": true,
+    "gitlens.historyExplorer.enabled": true
 }
