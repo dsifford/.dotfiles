@@ -30,6 +30,7 @@
     - ffmpeg                     # Complete solution to record, convert and stream audio and video
     - ffmpegthumbnailer          # Lightweight video thumbnailer that can be used by file managers.
     - firefox-developer-edition  # Developer Edition of the popular Firefox web browser
+    - fish                       # Smart and user friendly shell intended mostly for interactive use
     - fzf                        # Command-line fuzzy finder
     - gdb                        # The GNU Debugger
     - ghc                        # The Glasgow Haskell Compiler

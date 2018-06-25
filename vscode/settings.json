@@ -20,7 +20,7 @@
         "other": true,
         "strings": true
     },
-    "editor.renderWhitespace": "all",
+    "editor.renderWhitespace": "none",
     "editor.rulers": [80, 120],
     "editor.snippetSuggestions": "top",
     "editor.wordWrap": "off",

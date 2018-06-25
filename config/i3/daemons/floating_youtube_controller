@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
 
+from enum import Enum
 import i3ipc
 
-i3 = i3ipc.Connection()
+
+class Padding(Enum):
+    TOP = 70
+    RIGHT = 20
+    BOTTOM = 20
+    LEFT = 20
 
 
 def get_current_output(rect):
@@ -14,6 +20,25 @@ def get_current_output(rect):
     raise Exception('Could\'t identify current output')
 
 
+def get_x_position(output_rect, rect) -> int:
+    on_left = \
+        output_rect.x + (output_rect.width / 2) > rect.x + (rect.width / 2)
+    if on_left:
+        return output_rect.x + Padding.LEFT.value
+    else:
+        return (output_rect.x + output_rect.width) - (
+            rect.width + Padding.RIGHT.value)
+
+
+def get_y_position(output_rect, rect) -> int:
+    on_top = \
+        rect.y + (rect.height / 2) > output_rect.y + (output_rect.height / 2)
+    if on_top:
+        return output_rect.y + Padding.TOP.value
+    else:
+        return output_rect.y + output_rect.height - rect.height - Padding.BOTTOM.value
+
+
 def on_focus(container, e):
     if e.container.name != 'FLOATING_PLAYER_WINDOW' \
             or 'FLOATING_ACTIVE' not in e.container.marks:
@@ -22,16 +47,12 @@ def on_focus(container, e):
     output = get_current_output(e.container.props.rect)
     rect = e.container.props.rect
 
-    if rect.height + rect.y > output.rect.height / 2:
-        container.command('move position {:d} {:d}'.format(
-            rect.x, (output.rect.y + 55)))
-    else:
-        container.command('move position {:d} {:d}'.format(
-            rect.x, (output.rect.height - rect.height - 20)))
+    container.command('move position {:d} {:d}'.format(
+        get_x_position(output.rect, rect), get_y_position(output.rect, rect)))
 
     container.command('focus tiling')
 
 
+i3 = i3ipc.Connection()
 i3.on('window::focus', on_focus)
-
 i3.main()

@@ -14,6 +14,7 @@ set ignorecase                " Required for proper smartcase functionality
 set lazyredraw                " Improves perf under some conditions
 set listchars=tab:▸\ ,eol:¬   " Symbols for whitespace when 'set list' enabled
 set nowrap                    " Disable line wrapping
+set noshowmode                " Dont show mode in the command line -- using Airline for that
 set number                    " Show line numbers
 set pastetoggle=<F2>          " Toggle paste mode with F2
 set shiftround                " Round indents to nearest indent size when using < or >
@@ -71,6 +72,7 @@ let g:ale_fixers = {
 
 let g:ale_linters = {
             \   'php': [ 'phpcs', 'php', 'langserver' ],
+            \   'scss': [ 'stylelint' ],
             \   'sh': [ 'shellcheck' ],
             \   'typescript': [ 'tslint', 'tsserver' ],
             \   'typescriptreact': [ 'tslint', 'tsserver' ],
@@ -107,11 +109,13 @@ let g:colorizer_colornames = 0
 
 call deoplete#custom#option({
             \ 'smart_case': v:true,
-            \ 'complete_method': 'omnifunc'
             \ })
 let g:deoplete#enable_at_startup = 1
 
 call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
+
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
 "}}}2
 " EasyAlign: {{{2
@@ -149,7 +153,7 @@ endfunction
 " Add support for ripgrep
 command! -bang -complete=customlist,s:CompleteRg -nargs=* Rg
             \ call fzf#vim#grep(
-            \   'rg --column --line-number --no-heading --color=always '.<q-args>, 1,
+            \   'rg --column --line-number --no-heading --color=always --smart-case ' . <q-args> . ' ' . system('git rev-parse --show-toplevel 2>/dev/null || pwd'), 1,
             \   <bang>0 ? fzf#vim#with_preview('up:60%')
             \           : fzf#vim#with_preview('right:50%:hidden', '?'),
             \   <bang>0)
@@ -164,8 +168,8 @@ command! GFiles call fzf#run(fzf#wrap({ 'source': 'GFiles' }))
 
 augroup dsifford_fzf
     autocmd!
-    autocmd  FileType fzf set laststatus=0 noshowmode noruler
-          \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+    autocmd  FileType fzf set laststatus=0
+          \| autocmd BufLeave <buffer> set laststatus=2
 augroup END
 
 "}}}2
@@ -205,13 +209,12 @@ inoremap <silent> <C-_> <Cmd><Plug>(NERDCommenterToggle)<CR>
 "}}}2
 " Netrw: {{{2
 
-let g:netrw_liststyle=3
 let g:netrw_home=stdpath('cache')
 let g:netrw_banner = 0
 let g:netrw_list_hide = netrw_gitignore#Hide()
 
 " Toggle Netrw window
-noremap <silent> <expr> <C-\> &ft ==# 'netrw' ? ':bd<CR>' : ':Explore!<CR>'
+noremap <silent> <expr> <C-\> &ft ==# 'netrw' ? ':Rex<CR>' : ':Explore!<CR>'
 
 "}}}2
 " Polyglot: {{{2
@@ -237,26 +240,6 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 
 "}}}2
 " UltiSnips: {{{2
-
-" FIXME:
-" let g:UltiSnipsExpandTrigger='<CR>'
-" let g:UltiSnipsJumpForwardTrigger='<c-b>'
-" let g:UltiSnipsJumpBackwardTrigger='<c-z>'
-" let g:UltiSnipsEditSplit='vertical'
-
-" let g:UltiSnipsJumpForwardTrigger='<tab>'
-" let g:UltiSnipsJumpBackwardTrigger='<S-tab>'
-" let g:UltiSnipsExpandTrigger='<nop>'
-" let g:ulti_expand_or_jump_res = 0
-" function! <SID>ExpandSnippetOrReturn()
-"   let l:snippet = UltiSnips#ExpandSnippetOrJump()
-"   if g:ulti_expand_or_jump_res > 0
-"     return l:snippet
-"   else
-"     return "\<CR>"
-"   endif
-" endfunction
-" inoremap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "\<CR>"
 
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 
@@ -299,6 +282,8 @@ nnoremap <silent> <Leader><CR> :ZoomToggle<CR>
 
 " Search project with ripgrep
 nnoremap <Leader>/ :Rg<Space>
+
+nnoremap ZA :confirm wqall<CR>
 
 "}}}1
 " Autocommands: {{{1

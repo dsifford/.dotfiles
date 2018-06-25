@@ -56,6 +56,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'tpope/vim-scriptease'
 
 " Still not sure I want to keep
+Plug 'Shougo/echodoc.vim'
 
 call plug#end()
 
