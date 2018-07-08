@@ -1,48 +1,47 @@
 import os
 import sys
-import subprocess
-import dotbot
 from enum import Enum
+from subprocess import DEVNULL, call
+
+import dotbot
 
 
 class PkgStatus(Enum):
-    UP_TO_DATE = 'Up to date'
-    INSTALLED = 'Installed'
-    NOT_FOUND = 'Not found'
-    ERROR = 'Errors occurred'
-    BUILD_FAIL = 'Build failure'
-    NOT_SURE = 'Could not determine'
+    UP_TO_DATE = "Up to date"
+    INSTALLED = "Installed"
+    NOT_FOUND = "Not found"
+    ERROR = "Errors occurred"
+    BUILD_FAIL = "Build failure"
+    NOT_SURE = "Could not determine"
 
 
 class Trizen(dotbot.Plugin):
-    _directives = ['trizen']
-
-    # def __init__(self, context):
-    #     super(Trizen, self).__init__(self)
-    #     self._context = context
-    #     self._strings = {}
-    #     self._strings[PkgStatus.UP_TO_DATE] = 'nothing to do'
-    #     self._strings[PkgStatus.INSTALLED] = 'Total Installed Size'
-    #     self._strings[PkgStatus.NOT_FOUND] = 'no results found'
-    #     self._strings[PkgStatus.BUILD_FAIL] = 'failed to build'
-    #     self._strings[PkgStatus.ERROR] = 'Errors occurred'
+    _directive = "trizen"
 
     def can_handle(self, directive):
-        return directive in self._directives
+        if directive == self._directive:
+            try:
+                output = call(["trizen", "--version"], stdout=DEVNULL, stderr=DEVNULL)
+                return output == 0
+            except FileNotFoundError:
+                self._log.error("trizen not installed on this system")
+                return False
+        return False
 
     def handle(self, directive, data):
-        if not self.can_handle(directive):
-            raise ValueError('Trizen cannot handle directive {}'.format(directive))
-        if not os.uname().release.endswith('ARCH'):
-            self._log.info('Not on an Arch Linux machine. Skipping {} directive'.format(directive))
-            return True
+        #  if not os.uname().release.endswith("ARCH"):
+        #  self._log.info(
+        #  "Not on an Arch Linux machine. Skipping {} directive".format(directive)
+        #  )
+        #  return True
         # TODO:
         # if self._bootstrap_Trizen() != 0:
         #     raise Exception('Trizen could not be installed on your system')
         return self._process_packages(directive, data)
 
     def _process_packages(self, directive, packages):
-        self._log.info('{}'.format(packages))
+        if input('Install aur packages? (y/N) ') in ['y', 'Y']:
+            self._log.info("{}".format(packages['aur']))
         sys.exit(0)
         # TODO:
         # results = {}

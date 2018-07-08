@@ -1,6 +1,6 @@
 # shellcheck shell=bash disable=SC1090
 
-[ -f "$XDG_DATA_HOME"/bash-completion/completions/git-prompt ] &&
+[[ -f $XDG_DATA_HOME/bash-completion/completions/git-prompt ]] &&
 	. "$XDG_DATA_HOME"/bash-completion/completions/git-prompt
 
 color() {

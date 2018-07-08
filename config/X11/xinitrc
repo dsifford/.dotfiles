@@ -15,6 +15,9 @@ fi
 # Increase key repeat rate
 xset r rate 200 60
 
+# Caps Lock => Escape
+setxkbmap -option caps:escape
+
 # Init display output
 xrandr \
     --output DP-2 \
@@ -30,4 +33,4 @@ xrandr \
 numlockx &
 udiskie &
 
-exec i3
+exec i3 --shmlog-size=26214400

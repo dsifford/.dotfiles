@@ -57,7 +57,8 @@ parse_package_list() {
 
     echo
     echo '- trizen:'
-    echo '    # Groups'
+    echo '    # Package Groups'
+    echo '    groups:'
     printf -- '    - %s\n' "${groups[@]}"
 
     # List all packages that satisfy the following criteria:
@@ -66,6 +67,7 @@ parse_package_list() {
     #   - NOT a package from the Arch User Repository
     echo
     echo '    # Official Packages'
+    echo '    official:'
     comm -23 \
         <(
             # All packages installed explicitly, excluding packages that
@@ -92,7 +94,8 @@ parse_package_list() {
     # List of all packages explicitly installed from
     # the Arch User Repository
     echo
-    echo "    # AUR Packages"
+    echo '    # AUR Packages'
+    echo '    aur:'
     pacman -Qmi | parse_package_list
 
 } > "$FILE"

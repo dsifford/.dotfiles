@@ -32,41 +32,79 @@
     #  * anything else will be interpreted as a X color.
     separator_color = auto
 
-    alignment = right                           # Alignment of message text
-    markup = yes                                # Allow a <b>, <i>, <s>, and <u> html markup
-    bounce_freq = 0                             # The frequency with which text that is longer than the notification scrolls
-    browser = /usr/bin/google-chrome-unstable   # Browser for opening urls in context menu
-    dmenu = /usr/bin/dmenu -p dunst:            # dmenu path
-    follow = none                               # Display notification on focused monitor. ("mouse", "keyboard", "none")
+    # Alignment of message text
+    alignment = right                           
+
+    # Allow a <b>, <i>, <s>, and <u> html markup
+    markup = yes                               
+
+    # The frequency with which text that is longer than the notification scrolls
+    bounce_freq = 0                             
+
+    frame_width = 0
+    frame_color = "#ff00ff"
+
+    # Browser for opening urls in context menu
+    browser = /usr/bin/google-chrome-unstable   
+
+    # Display notification on focused monitor. ("mouse", "keyboard", "none")
+    follow = none                               
+
     font = Monaco 18 
-    history_length = 20                         # Maximum amount of notifications kept in history
+
+    # Maximum amount of notifications kept in history
+    history_length = 20                         
+
     horizontal_padding = 20
-    icon_position = off                         # Align icons left/right/off
-    idle_threshold = 0                          # Don't remove messages, if the user is idle (no mouse or keyboard input)
-    ignore_newline = no                         # Ignore newlines '\n' in notifications.
-    indicate_hidden = yes                       # Show how many messages are currently hidden (because of geometry)
+
+    # Align icons left/right/off
+    icon_position = off                         
+
+    # Don't remove messages, if the user is idle (no mouse or keyboard input)
+    idle_threshold = 0                          
+
+    # Ignore newlines '\n' in notifications.
+    ignore_newline = no                         
+
+    # Show how many messages are currently hidden (because of geometry)
+    indicate_hidden = yes                       
+
     line_height = 0
-    monitor = 0                                 # Which monitor should the notifications be displayed on
-    padding = 10                                # Padding between text and separator
-    separator_height = 10                       # Draw a line of "separator_height" pixel height between two notifications
-    show_age_threshold = 60                     # Show age of message if message is older than show_age_threshold seconds
-    show_indicators = yes                       # Display indicators for URLs (U) and actions (A)
-    shrink = yes                                # Shrink window if it's smaller than the width.  Will be ignored if width is 0
-    sort = yes                                  # Sort messages by urgency
-    startup_notification = false                # Print a notification on startup
-    sticky_history = no                         # Should a notification popped up from history be sticky
-    transparency = 0                            # The transparency of the window. Range: [0; 100]
-    word_wrap = yes                             # Split notifications into multiple lines if they don't fit into geometry
 
-    # Paths to default icons.
-    icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    # Which monitor should the notifications be displayed on
+    monitor = 0                                 
 
-[frame]
-    width = 0
-    color = "#ff00ff"
+    # Padding between text and separator
+    padding = 10                                
+
+    # Draw a line of "separator_height" pixel height between two notifications
+    separator_height = 10                       
+
+    # Show age of message if message is older than show_age_threshold seconds
+    show_age_threshold = 60                     
+
+    # Display indicators for URLs (U) and actions (A)
+    show_indicators = yes                       
+
+    # Shrink window if it's smaller than the width.  Will be ignored if width is 0
+    shrink = yes                                
+
+    # Sort messages by urgency
+    sort = yes                                  
+
+    # Print a notification on startup
+    startup_notification = false                
+
+    # Should a notification popped up from history be sticky
+    sticky_history = no                         
+
+    # The transparency of the window. Range: [0; 100]
+    transparency = 0                            
+
+    # Split notifications into multiple lines if they don't fit into geometry
+    word_wrap = yes                             
 
 [shortcuts]
-
     # Shortcuts are specified as [modifier+][modifier+]...key
     # Available modifiers are "ctrl", "mod1" (the alt-key), "mod2",
     # "mod3" and "mod4" (windows-key).

@@ -36,9 +36,9 @@ has_fullscreen_mark="$(
 
 if [[ "$current_output" =~ i3 ]]; then
     if ((has_fullscreen_mark)); then
-        i3-msg '[instance="'$instance'"] scratchpad show, fullscreen enable, unmark'" $mark"
+        i3-msg 'focus output primary; [instance="'$instance'"] scratchpad show, fullscreen enable, unmark'" $mark"
     else
-        i3-msg '[instance="'$instance'"] scratchpad show'
+        i3-msg 'focus output primary; [instance="'$instance'"] scratchpad show'
     fi
 else
     if ((is_fullscreen_mode)); then

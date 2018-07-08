@@ -49,11 +49,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'davidhalter/jedi-vim'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'mattn/emmet-vim'
-Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot', { 'do': './build' }
 Plug 'HerringtonDarkholme/yats.vim'
 
 " Misc
 Plug 'tpope/vim-scriptease'
+Plug 'junegunn/vader.vim'
 
 " Still not sure I want to keep
 Plug 'Shougo/echodoc.vim'

@@ -2,13 +2,10 @@
 
 declare newpath
 declare -a path=(
-    ~/.cargo/bin
     ~/.local/bin
-    ~/.local/share/npm/bin
-    ~/gocode/bin
+    "$XDG_DATA_HOME"/{cargo,go,npm}/bin
     /usr/local/opt/coreutils/libexec/gnubin
-    /usr/local/bin
-    /usr/local/sbin
+    /usr/local/{bin,sbin}
     /usr/local/go/bin
 )
 

@@ -1,0 +1,1 @@
+launch /usr/bin/env bash -c "tmux -2u -f $XDG_CONFIG_HOME/tmux/tmux.conf new -AD -s home"

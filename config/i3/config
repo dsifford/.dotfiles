@@ -1,277 +1,316 @@
-# vim:filetype=i3
+# i3 config file (v4)
+# Reference: https://i3wm.org/docs/userguide.html
 
-# Global mod key = Win/Cmd button
-set $mod Mod4
+# Variable Definitions {{{
+set $i3_daemon_path $XDG_CONFIG_HOME/i3/daemons
+set $i3_script_path $XDG_CONFIG_HOME/i3/scripts
 
-# Hide borders
-hide_edge_borders both
+# Vim-like pseudo-mappings
+# use `xmodmap -pm` for full list of mod mappings
+set $<M>   Mod4+
+set $<M-S> Mod4+Shift+
+set $<C>   Control+
+set $<C-S> Control+Shift+
 
-# Set borders to none for all new windows
-new_window pixel 1
-new_float pixel 1
+set $main_monitor     DP-2
+set $vertical_monitor DP-0
 
-# Set desktop background
-exec --no-startup-id feh --no-fehbg --bg-center -B "#000000" /usr/share/archlinux/wallpaper/archlinux-simplyblack.png
+set $font_title pango:Monaco, monospace, FontAwesome5Free 7
+set $font_bar   pango:Monaco, monospace, FontAwesome5Free 14
 
-# Startup Daemons
-exec --no-startup-id dunst
-exec --no-startup-id albert
-exec --no-startup-id ~/.config/i3/daemons/floating_youtube_controller
+set $bar_height 56
 
-# Startup Applets
-exec --no-startup-id nm-applet
-exec --no-startup-id redshift-gtk
-exec --no-startup-id blueman-applet
+set $ws_spotify "0:&#xf1bc;"
+set $ws_slack   "0:&#xf198;"
+set $ws_code    "0:&#xf120;"
 
-# Startup Apps
-exec --no-startup-id autokey-gtk
-exec --no-startup-id dropbox
+set_from_resource $fg        Dracula.fg        #000000
+set_from_resource $bg        Dracula.bg        #000000
+set_from_resource $bgdark    Dracula.bgdark    #000000
+set_from_resource $red       Dracula.red       #000000
+set_from_resource $green     Dracula.green     #000000
+set_from_resource $yellow    Dracula.yellow    #000000
+set_from_resource $cyan      Dracula.cyan      #000000
+set_from_resource $purple    Dracula.purple    #000000
+set_from_resource $pink      Dracula.pink      #000000
+set_from_resource $comment   Dracula.comment   #000000
+set_from_resource $orange    Dracula.orange    #000000
+set_from_resource $selection Dracula.selection #000000
 
-# Display / Screen Config
-workspace 1 output DP-0
-workspace 2 output DP-2
-workspace Spotify output DP-0
-workspace Code output DP-2
+# }}}
+# General Settings {{{
 
-# Disable mouse warping
+default_border none
+default_floating_border none
+floating_modifier Mod4
+font $font_title
+hide_edge_borders smart
 mouse_warping none
+workspace_auto_back_and_forth yes
 
-# Floating Terminal
-exec --no-startup-id termite --name=FloatingTerminal -e 'bash -c "tmux -2u -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf new -AD -s home"'
-for_window [instance="FloatingTerminal"] floating enable, border pixel 0, resize set 3850 952, move position 2160 50, move scratchpad
-bindsym $mod+Home exec --no-startup-id termite --name=FloatingTerminal -e 'bash -c "tmux -2u -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf new -AD -s home"'
-bindsym Control+space focus output DP-2; exec --no-startup-id ${XDG_CONFIG_HOME:-$HOME/.config}/i3/scripts/toggle-floating-terminal.sh
+# Improve pop-up and task dialog functionality
+for_window [window_role="pop-up|task_dialog"] floating enable, move position center
 
-#===============APP WINDOW CONFIG================
+# }}}
+# Colors {{{
 
-# Albert
-bindsym $mod+space focus output DP-2, exec --no-startup-id albert toggle
-for_window [class="albert"] move to output DP-2, move position center
+# class                 border     bg      fg       indicator child_border
+client.focused          $selection $bgdark $fg      $pink     $selection
+client.focused_inactive $bg        $bg     $comment $pink     $bg
+client.unfocused        $bg        $bg     $comment $pink     $bg
+client.urgent           $bg        $bg     $red     $pink     $bg
 
-# Floating gif window
-for_window [class="Gifview"] floating enable
-for_window [class="Animate"] floating enable, move position center
+# }}}
+# Workspace Config {{{
 
-# Chrome pop-up windows
-for_window [class="Google-chrome-unstable" window_role="pop-up"] floating enable, move position center
+workspace $ws_spotify output $vertical_monitor
+workspace $ws_slack   output $vertical_monitor
+workspace 2           output $main_monitor
+workspace $ws_code    output $main_monitor
 
-# Simple Screen Recorder
-for_window [class="Simplescreenrecorder"] floating enable
+assign [class="^Slack$"]      $ws_slack
+assign [instance="^spotify$"] $ws_spotify
+assign [class="Atom|Code"]    $ws_code
 
-# Slack
-for_window [class="Slack"] move to workspace 1
+# necessary due to strange bug with spotify
+for_window [instance="spotify"] move to workspace $ws_spotify
 
-# Spotify
-for_window [class="Spotify"] move to workspace Spotify
-bindsym $mod+Tab workspace Spotify
-bindsym $mod+Shift+Tab move container to workspace Spotify
+bindsym $<M>grave   workspace $ws_code
+bindsym $<M-S>grave move container to workspace $ws_code
 
-# VS Code
-for_window [class="Code"] move to workspace Code
-for_window [class="Atom"] move to workspace Code
-bindsym $mod+grave workspace Code
-bindsym $mod+Shift+grave move container to workspace Code
+bindsym $<M>Tab   workspace $ws_spotify
+bindsym $<M-S>Tab move container to workspace $ws_spotify
 
-# Zeal
-for_window [class="Zeal"] floating enable, resize set 2080 2070, move scratchpad
-bindsym Control+Shift+space [class="Zeal"] scratchpad show, move position center
+# }}}
+# Application Configs {{{
 
-#====================KEYMAP======================
+# Albert {{{2
 
-# Ctrl+$mod+Arrow => Move workspace to other monitor
-bindsym Control+$mod+Right move workspace to output right
-bindsym Control+$mod+Left move workspace to output left
+bindsym $<M>space exec --no-startup-id albert toggle
 
-# PrintScreen
-bindsym Print exec gscreenshot-cli -sc
-bindsym Control+Print exec --no-startup-id gscreenshot-cli -s -f /tmp/screenshot.png && gimp /tmp/screenshot.png
+# }}}2
+# Floating YouTube player {{{2
 
-# Caps Lock => Escape
-exec --no-startup-id setxkbmap -option caps:escape
+for_window [title="^FLOATING_PLAYER_WINDOW$"] sticky enable
+bindsym Pause [title="^FLOATING_PLAYER_WINDOW$"] mark --toggle FLOATING_ACTIVE
 
-# Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle
+# }}}2
+# Terminal {{{2
 
-# Media controls
-bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause"
-bindsym XF86AudioNext exec --no-startup-id "playerctl next"
-bindsym XF86AudioPrev exec --no-startup-id "playerctl previous"
-bindsym XF86AudioStop exec --no-startup-id "playerctl stop"
+for_window [instance="FloatingTerminal"] \
+    floating enable, \
+    sticky enable, \
+    resize set 3840 1034, \
+    move position 2160 $bar_height, \
+    move scratchpad
+bindsym $<C>space exec --no-startup-id $i3_script_path/toggle-floating-terminal
+bindsym $<M>Home  exec --no-startup-id kitty --name=FloatingTerminal
+for_window [instance="FloatingTerminal"] floating enable, sticky enable, resize set 3840 1002, move position 2160 $bar_height, move scratchpad
 
-# Hue lights hooks
-bindsym Control+XF86AudioPrev exec --no-startup-id ~/.config/redshift/hooks/hue.py period-changed none night
-bindsym Control+XF86AudioPlay exec --no-startup-id ~/.config/redshift/hooks/hue.py period-changed daytime transition
-bindsym Control+XF86AudioNext exec --no-startup-id ~/.config/redshift/hooks/hue.py period-changed none daytime
+# }}}2
+# Zeal {{{2
 
-# $mod+Shift+Middle Mouse Button => kill window
-bindsym --whole-window $mod+Shift+button3 kill
+for_window [class="Zeal"] \
+    floating enable, \
+    resize set 2080 2070, \
+    move scratchpad
 
-bindsym Pause [title="FLOATING_PLAYER_WINDOW"] mark --toggle FLOATING_ACTIVE
+bindsym $<C-S>space [class="Zeal"] scratchpad show, move position center
 
-#================================================
-#             BEGIN i3 DEFAULTS
-#================================================
+# }}}2
 
-# Set default font
-font pango:Monaco 7
-
-# Use Mouse+$mod to drag floating windows to their desired position
-floating_modifier $mod
-
-# kill focused window
-bindsym $mod+Shift+q kill
-
-# Enable floating
-bindsym $mod+Shift+space floating enable
+# }}}
+# Mappings {{{
 
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $<M>l exec --no-startup-id $i3_script_path/focus-adjacent
+bindsym $<M>h exec --no-startup-id $i3_script_path/focus-adjacent -p
+bindsym $<M>j focus down
+bindsym $<M>k focus up
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# toggle fullscreen
+bindsym $<M>Return fullscreen toggle
 
-# move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# split in horizontal orientation
-bindsym $mod+Control+h split horizontal
-
-# split in vertical orientation
-bindsym $mod+Control+v split vertical
-
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+# toggle between split and tabbed layouts
+bindsym $<M>w layout toggle splith tabbed
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $<M>1 workspace 1
+bindsym $<M>2 workspace 2
+bindsym $<M>3 workspace 3
+bindsym $<M>4 workspace 4
+bindsym $<M>5 workspace 5
+bindsym $<M>6 workspace 6
+bindsym $<M>7 workspace 7
+bindsym $<M>8 workspace 8
+bindsym $<M>9 workspace 9
+bindsym $<M>0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $<M-S>1 move container to workspace 1
+bindsym $<M-S>2 move container to workspace 2
+bindsym $<M-S>3 move container to workspace 3
+bindsym $<M-S>4 move container to workspace 4
+bindsym $<M-S>5 move container to workspace 5
+bindsym $<M-S>6 move container to workspace 6
+bindsym $<M-S>7 move container to workspace 7
+bindsym $<M-S>8 move container to workspace 8
+bindsym $<M-S>9 move container to workspace 9
+bindsym $<M-S>0 move container to workspace 10
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
+# screenshots
+bindsym Print     exec gscreenshot-cli -sc
+bindsym $<C>Print exec --no-startup-id gscreenshot-cli -s -f /tmp/screenshot.png && gimp /tmp/screenshot.png
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+# audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5%
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   1 toggle
 
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# media controls
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym XF86AudioStop exec --no-startup-id playerctl stop
 
-# resize window (you can also use the mouse for that)
+# hue lights hooks
+bindsym $<C>XF86AudioPrev exec --no-startup-id ~/.config/redshift/hooks/hue.py period-changed none    night
+bindsym $<C>XF86AudioPlay exec --no-startup-id ~/.config/redshift/hooks/hue.py period-changed daytime transition
+bindsym $<C>XF86AudioNext exec --no-startup-id ~/.config/redshift/hooks/hue.py period-changed none    daytime
+
+# kill window
+bindsym --whole-window $<M-S>button3 kill
+bindsym $<M-S>q kill
+
+# reload = reload the configuration file
+# restart = restart i3 inplace (preserves layout/session, can be used to upgrade i3)
+bindsym $<M-S>c reload
+bindsym $<M-S>r restart
+
+# exit i3 (also logs out of Xsession)
+bindsym $<M-S>e exec --no-startup-id i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your Xsession.' -b 'Yes, exit i3' 'i3-msg exit'
+
+# }}}
+# Binding Modes {{{
+
 mode "resize" {
-    # These bindings trigger as soon as you enter the resize mode
+    # {{{2
 
     # Pressing left will shrink the window’s width.
     # Pressing right will grow the window’s width.
     # Pressing up will shrink the window’s height.
     # Pressing down will grow the window’s height.
-    bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
+    bindsym h resize shrink width  10 px or 10 ppt
+    bindsym j resize grow   height 10 px or 10 ppt
     bindsym k resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
+    bindsym l resize grow   width  10 px or 10 ppt
 
     # grow
-    bindsym Left resize grow left
-    bindsym Down resize grow down
-    bindsym Up resize grow up
+    bindsym Left  resize grow left
+    bindsym Down  resize grow down
+    bindsym Up    resize grow up
     bindsym Right resize grow right
 
     # shrink
-    bindsym $mod+Left resize shrink right
-    bindsym $mod+Down resize shrink up
-    bindsym $mod+Up resize shrink down
-    bindsym $mod+Right resize shrink left
+    bindsym $<M>Left  resize shrink right
+    bindsym $<M>Down  resize shrink up
+    bindsym $<M>Up    resize shrink down
+    bindsym $<M>Right resize shrink left
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
+
+    # }}}2
 }
-bindsym $mod+r mode "resize"
+bindsym $<M>r mode "resize"
 
-# Class                 border  backgr  text    indicator  child_border
-client.focused          #44475a #282836 #f8f8f2 #ff79c6    #44475a
-client.focused_inactive #282a36 #282a36 #6272a4 #ff79c6    #282a36
-client.unfocused        #282a36 #282a36 #6272a4 #ff79c6    #282a36
-client.urgent           #282a36 #282a36 #ff5555 #ff79c6    #282a36
-
-#==================================================
-#           BEGIN DESKTOP i3BAR SETTINGS
-#==================================================
+# }}}
+# Bar {{{
 
 bar {
-    colors {
-        background #282a36
-        statusline #f8f8f2
-        separator  #ff79c6
-
-        # Type             border  background  font
-        focused_workspace  #44475a #44475a     #50fa7b
-        active_workspace   #44475a #44475a     #f8f8f2
-        inactive_workspace #44475a #44475a     #6272a4
-        urgent_workspace   #44475a #44475a     #ff5555
-    }
-    output DP-2
-    font pango: Monaco 14
+    # Vertical Monitor {{{2
+    output $vertical_monitor
     position top
+
+    tray_output $vertical_monitor
+    tray_padding 5px
+
+    strip_workspace_numbers yes
+
+    colors {
+        background $bg
+        statusline $fg
+        separator  $pink
+
+        # type             border     bg         font
+        focused_workspace  $selection $selection $green
+        active_workspace   $selection $selection $fg
+        inactive_workspace $selection $selection $comment
+        urgent_workspace   $selection $selection $red
+    }
+
+    font $font_bar
+    # }}}2
+}
+
+bar {
+    # Primary Monitor {{{2
+    output $main_monitor
+    position top
+
     tray_output none
-    # using custom i3status.conf
-    status_command i3blocks -c "${XDG_CONFIG_HOME:-$HOME/.config}"/i3/i3blocks.conf
-}
 
-bar {
+    separator_symbol "⸽"
+    strip_workspace_numbers yes
+
     colors {
-        background #282a36
-        statusline #f8f8f2
-        separator  #ff79c6
+        background $bg
+        statusline $fg
+        separator  $pink
 
-        # Type             border  background  font
-        focused_workspace  #44475a #44475a     #50fa7b
-        active_workspace   #44475a #44475a     #f8f8f2
-        inactive_workspace #44475a #44475a     #6272a4
-        urgent_workspace   #44475a #44475a     #ff5555
+        # type             border     background font
+        focused_workspace  $selection $selection $green
+        active_workspace   $selection $selection $fg
+        inactive_workspace $selection $selection $comment
+        urgent_workspace   $selection $selection $red
     }
-    output DP-0
-    position top
-    font pango: Monaco 14
-    tray_output DP-0
+
+    font $font_bar
+
+    # using custom i3status
+    status_command i3blocks -c $XDG_CONFIG_HOME/i3/i3blocks.conf
+    # }}}2
 }
+
+# }}}
+# Autostart {{{
+
+# feh
+exec_always --no-startup-id feh \
+    --no-fehbg \
+    --bg-center \
+    -B "#000000" \
+    /usr/share/archlinux/wallpaper/archlinux-simplyblack.png
+
+# floating terminal
+exec --no-startup-id kitty --name=FloatingTerminal
+
+# systemd units
+exec --no-startup-id systemctl --user start redshift-gtk.service
+
+# apps
+exec --no-startup-id albert
+exec --no-startup-id autokey-gtk
+exec --no-startup-id blueman-applet
+exec --no-startup-id dropbox
+exec --no-startup-id dunst
+exec --no-startup-id nm-applet
+exec --no-startup-id redshift-gtk
+
+# i3ipc daemons
+exec --no-startup-id $i3_daemon_path/floating_youtube_controller
+
+# }}}
+
+# vim: fdm=marker ft=i3

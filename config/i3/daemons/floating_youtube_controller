@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
-
 from enum import Enum
+
 import i3ipc
+
+from Xlib import display
+
+FLOATING_NAME = "FLOATING_PLAYER_WINDOW"
+FLOATING_MARK = "FLOATING_ACTIVE"
 
 
 class Padding(Enum):
@@ -11,48 +16,120 @@ class Padding(Enum):
     LEFT = 20
 
 
-def get_current_output(rect):
-    for output in i3.get_outputs():
-        if not output.current_workspace:
-            continue
-        if output.rect.x <= rect.x:
-            return output
-    raise Exception('Could\'t identify current output')
+def has_floating_fullscreen_window(self, workspace) -> bool:
+    return next(
+        (
+            True
+            for i in self.get_tree().find_fullscreen()
+            if i.floating and i.workspace().name == workspace.name
+        ),
+        False,
+    )
+
+
+def get_con_output_name(self, con) -> str:
+    rect = con.props.rect
+    return next(
+        (
+            o.name
+            for o in self.get_outputs()
+            if (o.rect.x <= rect.x <= o.rect.x + o.rect.width)
+            and (o.rect.y <= rect.y <= o.rect.y + o.rect.height)
+        ),
+        None,
+    )
+
+
+def get_floating_window(self):
+    return next(iter(self.get_tree().find_named(FLOATING_NAME)), None)
 
 
 def get_x_position(output_rect, rect) -> int:
-    on_left = \
-        output_rect.x + (output_rect.width / 2) > rect.x + (rect.width / 2)
+    on_left = output_rect.x + (output_rect.width / 2) > rect.x + (rect.width / 2)
     if on_left:
         return output_rect.x + Padding.LEFT.value
     else:
-        return (output_rect.x + output_rect.width) - (
-            rect.width + Padding.RIGHT.value)
+        return (output_rect.x + output_rect.width) - (rect.width + Padding.RIGHT.value)
 
 
 def get_y_position(output_rect, rect) -> int:
-    on_top = \
-        rect.y + (rect.height / 2) > output_rect.y + (output_rect.height / 2)
+    on_top = rect.y + (rect.height / 2) > output_rect.y + (output_rect.height / 2)
     if on_top:
         return output_rect.y + Padding.TOP.value
     else:
         return output_rect.y + output_rect.height - rect.height - Padding.BOTTOM.value
 
 
-def on_focus(container, e):
-    if e.container.name != 'FLOATING_PLAYER_WINDOW' \
-            or 'FLOATING_ACTIVE' not in e.container.marks:
+def mouse_is_hovered(rect) -> bool:
+    mouse = display.Display().screen().root.query_pointer()._data
+    mouse_x, mouse_y = mouse["root_x"], mouse["root_y"]
+    return (rect.x <= mouse_x <= rect.x + rect.width) and (
+        rect.y <= mouse_y <= rect.y + rect.height
+    )
+
+
+def translate_window(self, container) -> None:
+    current_workspace = self.get_tree().find_focused().workspace().name
+    rect = container.props.rect
+    output = next(
+        (i for i in self.get_outputs() if i.current_workspace == current_workspace),
+        None,
+    )
+    container.command(
+        (
+            "move position"
+            f" {get_x_position(output.rect, rect)}"
+            f" {get_y_position(output.rect, rect)};"
+            " focus tiling"
+        )
+    )
+
+
+def on_terminal_fullscreen(self, e) -> None:
+    yt_window = get_floating_window(self)
+    if (
+        e.container.window_instance != "FloatingTerminal"
+        or yt_window is None
+        or FLOATING_MARK not in yt_window.marks
+        or not e.container.fullscreen_mode
+    ):
         return
+    if get_con_output_name(self, yt_window) == get_con_output_name(self, e.container):
+        self.command("focus output left")
+        translate_window(self, yt_window)
+        self.command("focus output right")
 
-    output = get_current_output(e.container.props.rect)
-    rect = e.container.props.rect
 
-    container.command('move position {:d} {:d}'.format(
-        get_x_position(output.rect, rect), get_y_position(output.rect, rect)))
+def on_window_focus(self, e) -> None:
+    yt_window = get_floating_window(self)
+    if (
+        yt_window is None
+        or FLOATING_MARK not in yt_window.marks
+        or yt_window.id != e.container.id
+        or not mouse_is_hovered(e.container.props.rect)
+    ):
+        return
+    translate_window(self, yt_window)
 
-    container.command('focus tiling')
+
+def on_workspace_focus(self, e) -> None:
+    yt_window = get_floating_window(self)
+    if (
+        yt_window is None
+        or FLOATING_MARK not in yt_window.marks
+        or has_floating_fullscreen_window(self, e.current)
+        or yt_window.workspace().id == e.current.id
+    ):
+        return
+    yt_window.command("unmark")
+    translate_window(self, get_floating_window(self))
+    yt_window.command(f"mark {FLOATING_MARK}")
 
 
 i3 = i3ipc.Connection()
-i3.on('window::focus', on_focus)
+
+i3.on("window::focus", on_window_focus)
+i3.on("workspace::focus", on_workspace_focus)
+i3.on("window::fullscreen_mode", on_terminal_fullscreen)
+
 i3.main()

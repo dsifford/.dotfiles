@@ -1,0 +1,49 @@
+set editing-mode   vi
+set keyseq-timeout 1
+set bell-style     none
+
+set show-mode-in-prompt on
+set vi-ins-mode-string  "(ins)"
+set vi-cmd-mode-string  "(\1\e[31m\2cmd\1\e[0m\2)"
+
+set blink-matching-paren       on
+set colored-stats              on
+set colored-completion-prefix  on
+set completion-ignore-case     on
+set echo-control-characters    off
+set mark-symlinked-directories on
+
+# Mappings {{{
+
+# All Modes {{{2
+
+"\C-r":    re-read-init-file
+
+# Cycle through completions, rather than dumping all options
+TAB:       menu-complete
+
+# (Shift+Tab) Default complete to show all options
+"\e[Z":    menu-complete-backward
+
+# (Ctrl+right)
+"\e[1;5C": forward-word
+
+# (Ctrl+left)
+"\e[1;5D": backward-word
+
+# }}}2
+# Insert Mode {{{2
+
+set keymap vi-insert
+"\C-l": clear-screen
+
+# }}}2
+# Normal Mode {{{2
+
+set keymap vi-command
+
+# }}}2
+
+# }}}
+
+# vim: fdm=marker

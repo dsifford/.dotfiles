@@ -6,13 +6,13 @@
 - clean: ['~', '~/.config', '~/.local/bin']
 
 - shell:
-    - description: Updating Dotbot Plugins
-      command: ~/.dotfiles/.lib/shell/update-plugins.sh
-      stdout: true
     - description: Synchronizing secure files
-      command: ~/.dotfiles/.lib/shell/lpass.sh
+      command: ~/.dotfiles/.lib/shell/lpass
     - description: Updating bash completions
-      command: ~/.dotfiles/.lib/shell/update-completions.sh
+      command: ~/.dotfiles/.lib/shell/update-completions
+      stdout: true
+    - description: Updating pipsi packages
+      command: ~/.dotfiles/.lib/shell/update-pipsi-packages
       stdout: true
 
 - link:

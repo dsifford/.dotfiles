@@ -1,25 +1,55 @@
-# This plugin shows all files located inside the .dotfiles directory by default
+# This plugin improves the default hidden file filter
+# by respecting .gitignore if one exists
+from __future__ import absolute_import, division, print_function
+from logging import getLogger
+from os import getenv, path, getcwd
+from subprocess import run, PIPE, CalledProcessError
+from typing import Optional, List
 
-from __future__ import (absolute_import, division, print_function)
-from os import getenv, path
-import ranger.container.directory
-# from logging import getLogger
+from ranger.container.fsobject import FileSystemObject  # pyre-ignore
+import ranger.container.directory  # pyre-ignore
 
-ACCEPT_FILE_OLD = ranger.container.directory.accept_file
+log = getLogger(__file__)
+ignored_cache = {}
 
-DOTFILES_PATH = "{}/.dotfiles/".format(getenv('HOME', '/home/dsifford'))
-
-# LOG = getLogger(__file__)
+accept_file_core = ranger.container.directory.accept_file
 
 
-# Define a new one
-def custom_accept_file(fobj, filters):
-    ignored = ['.git', '__pycache__']
-    if (fobj.path.startswith(DOTFILES_PATH) and
-            path.basename(fobj.path) not in ignored):
+def get_ignored_files(curr_path: str) -> Optional[List[str]]:
+    try:
+        ignored_files = (
+            run(
+                f"cd {curr_path} && git check-ignore * .[^.]*",
+                check=True,
+                stdout=PIPE,
+                stderr=PIPE,
+                shell=True,
+            )
+            .stdout.decode("utf-8")
+            .strip()
+            .split("\n")
+        )
+        return ignored_files
+    except CalledProcessError as err:
+        return [] if err.returncode == 1 else None
+
+
+def accept_file(fobj: FileSystemObject, filters: list):
+    filter_hidden_active = next(
+        (i for i in filters if i.__name__ is "hidden_filter_func"), None
+    )
+    if not filter_hidden_active:
         return True
-    return ACCEPT_FILE_OLD(fobj, filters)
+    workdir = fobj.dirname
+    filename = fobj.basename
+    if workdir in ignored_cache:
+        ignored = ignored_cache[workdir]
+    else:
+        ignored = get_ignored_files(fobj.dirname)
+        ignored_cache[workdir] = ignored
+    if ignored is not None:
+        return False if filename in [*ignored, ".git"] else True
+    return accept_file_core(fobj, filters)
 
 
-# Overwrite the old function
-ranger.container.directory.accept_file = custom_accept_file
+ranger.container.directory.accept_file = accept_file

@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+command -v pipsi >/dev/null || {
+    echo 'pipsi is not installed. Skipping...'
+    exit 1
+}
+
+shopt -s nullglob
+
+update_package() {
+    package_dir="$1"
+    pipsi upgrade "$(basename "$package_dir")" | sed -n \
+        -e '/^\(Installing\|Successfully installed\).*/p' \
+        -e 's/^\(Requirement already up-to-date: .*\) in [^(]* \((.*)\)/\1 \2/p'
+    # shellcheck source=/dev/null
+    . "$package_dir"/bin/activate
+    pip install --upgrade pip | sed -n \
+        -e '/^\(Installing\|Successfully installed\).*/p'
+    deactivate
+}
+
+for package_dir in "$PIPSI_HOME"/*; do
+    update_package "$package_dir" &
+done
+
+wait

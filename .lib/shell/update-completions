@@ -6,14 +6,16 @@ completions_dir="${XDG_DATA_HOME:?XDG_DATA_HOME must be defined}/bash-completion
 mkdir -p "$completions_dir"
 
 # install generated completions
-command -v rustup >/dev/null \
-    && rustup completions bash >"$completions_dir"/rustup
-command -v npm >/dev/null \
-    && npm completion >"$completions_dir"/npm
 command -v doctl >/dev/null \
     && doctl completion bash >"$completions_dir"/doctl
+command -v npm >/dev/null \
+    && npm completion >"$completions_dir"/npm
 command -v pandoc >/dev/null \
     && pandoc --bash-completion >"$completions_dir"/pandoc
+command -v poetry >/dev/null \
+    && poetry completions bash >"$completions_dir"/poetry
+command -v rustup >/dev/null \
+    && rustup completions bash >"$completions_dir"/rustup
 
 if ! command -v wget >/dev/null; then
     echo '[WARN] wget is not installed. Skipping plugin update...'
@@ -25,7 +27,7 @@ declare -A completion_sources=(
     ['docker-compose']='https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose'
     [docker]='https://raw.githubusercontent.com/docker/cli/master/contrib/completion/bash/docker'
     ['docker-machine']='https://raw.githubusercontent.com/docker/machine/master/contrib/completion/bash/docker-machine.bash'
-	[git]="https://raw.githubusercontent.com/git/git/v$(git --version | awk '{ print $3 }' | head -n 1)/contrib/completion/git-completion.bash"
+    [git]="https://raw.githubusercontent.com/git/git/v$(git --version | awk '{ print $3 }' | head -n 1)/contrib/completion/git-completion.bash"
     ['git-prompt']="https://raw.githubusercontent.com/git/git/v$(git --version | awk '{ print $3 }' | head -n 1)/contrib/completion/git-prompt.sh"
     [hub]='https://raw.githubusercontent.com/github/hub/master/etc/hub.bash_completion.sh'
     [task]='https://raw.githubusercontent.com/GothenburgBitFactory/taskwarrior/master/scripts/bash/task.sh'

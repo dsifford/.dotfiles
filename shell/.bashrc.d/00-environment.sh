@@ -1,4 +1,4 @@
-# shellcheck shell=bash
+# shellcheck shell=bash disable=2155
 unset PREFIX
 unset NPM_CONFIG_PREFIX
 
@@ -11,23 +11,29 @@ export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
 export XDG_DATA_HOME=~/.local/share
 
-# TODO:
-export GOPATH=~/gocode
-
 export ATOM_HOME="$XDG_DATA_HOME"/atom
 export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
 export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
+export GOPATH="$XDG_DATA_HOME"/go
 export HISTFILE="$XDG_DATA_HOME"/bash/history
+export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
+export MACHINE_STORAGE_PATH="$XDG_DATA_HOME"/docker-machine
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
+export PIPSI_HOME="$XDG_DATA_HOME"/pipsi
 export PYLINTHOME="$XDG_CACHE_HOME"/pylint
+export PYLINTRC="$XDG_CONFIG_HOME"/pylint/pylintrc
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export STACK_ROOT="$XDG_DATA_HOME"/stack
 export TASKRC="$XDG_CONFIG_HOME"/task/taskrc
 export UNCRUSTIFY_CONFIG="$XDG_CONFIG_HOME"/uncrustify/uncrustify.cfg
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
+export npm_config_devdir="$XDG_CACHE_HOME"/node-gyp
 
 # fzf
 if command -v fzf >/dev/null; then

@@ -20,7 +20,7 @@
     colorMoved = default
 
 [difftool]
-    prompt = false
+    trustExitCode = true
 
 [merge]
     tool = nvimdiff

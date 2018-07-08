@@ -57,34 +57,12 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 "}}}2
 " ALE: {{{2
 
+let g:ale_completion_enabled = 1
 let g:ale_linters_explicit = 1
-
-let g:ale_fixers = {
-            \    'json': [ 'prettier' ],
-            \    'markdown': [ 'prettier' ],
-            \    'php': [ 'phpcbf' ],
-            \    'python': [ 'yapf' ],
-            \    'scss': [ 'prettier', 'stylelint' ],
-            \    'sh': [ 'shfmt' ],
-            \    'typescript': [ 'prettier', 'tslint' ],
-            \    'typescriptreact': [ 'prettier', 'tslint' ],
-            \}
-
-let g:ale_linters = {
-            \   'php': [ 'phpcs', 'php', 'langserver' ],
-            \   'scss': [ 'stylelint' ],
-            \   'sh': [ 'shellcheck' ],
-            \   'typescript': [ 'tslint', 'tsserver' ],
-            \   'typescriptreact': [ 'tslint', 'tsserver' ],
-            \}
 
 let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
 
-let g:ale_python_mypy_options = '--no-incremental --cache-dir=/dev/null'
-let g:ale_php_phpcs_standard = 'WordPress'
-let g:ale_php_phpcbf_standard = 'WordPress'
-
-let g:ale_sh_shfmt_options = '-i 4 -ci -bn'
+let g:ale_javascript_prettier_options = '--config-precedence prefer-file --single-quote --trailing-comma es5 --tab-width 4 --prose-wrap always'
 
 let g:airline#extensions#ale#enabled = 1
 
@@ -175,13 +153,11 @@ augroup END
 "}}}2
 " LanguageClient: {{{2
 
+let g:LanguageClient_diagnosticsSignsMax = 25
+
 let g:LanguageClient_serverCommands = {
-            \ 'javascript': ['typescript-language-server', '--stdio'],
             \ 'python': ['pyls'],
             \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-            \ 'sh': ['bash-language-server', 'start'],
-            \ 'typescript': ['typescript-language-server', '--stdio'],
-            \ 'typescriptreact': ['typescript-language-server', '--stdio'],
             \ }
 
 nnoremap          <A-Space> :call LanguageClient_contextMenu()<CR>
@@ -202,9 +178,10 @@ let g:NERDCustomDelimiters = {
             \ 'typescriptreact': { 'left': '//', 'leftAlt': '/**', 'rightAlt': '*/' },
             \}
 
-nmap     <silent> <C-_> <Plug>NERDCommenterToggle
-vmap     <silent> <C-_> <Plug>NERDCommenterToggle
-inoremap <silent> <C-_> <Cmd><Plug>(NERDCommenterToggle)<CR>
+" Toggle comment with Ctrl+/
+nmap <silent> <C-_> <Plug>NERDCommenterToggle
+vmap <silent> <C-_> <Plug>NERDCommenterToggle
+imap <silent> <C-_> <Esc><C-_>
 
 "}}}2
 " Netrw: {{{2
@@ -260,9 +237,10 @@ nnoremap <silent> <A-\> :TmuxNavigatePrevious<CR>
 " Commands: {{{1
 
 command! Reload source $MYVIMRC
+command! Vimrc  vsplit ~/.dotfiles/vim/.vimrc
+
 command! ReloadSyntax call vimrc#ReloadSyntax()
-command! Vimrc vsplit ~/.dotfiles/vim/.vimrc
-command! ZoomToggle call vimrc#ZoomToggle()
+command! ZoomToggle   call vimrc#ZoomToggle()
 
 "}}}1
 " Mappings: {{{1
@@ -285,6 +263,9 @@ nnoremap <Leader>/ :Rg<Space>
 
 nnoremap ZA :confirm wqall<CR>
 
+" Open vimrc with F12
+nnoremap <F12> :Vimrc<CR>
+
 "}}}1
 " Autocommands: {{{1
 
@@ -304,7 +285,13 @@ augroup dsifford_misc
     " Fixes issues with PHP and other languages changing global foldmethod
     autocmd BufLeave * set foldmethod=manual
     autocmd BufEnter *.php setl foldmethod=syntax
+augroup END
 
+augroup dsifford_diff_cursorline
+    autocmd!
+
+    autocmd FilterWritePost * if &diff | set cursorline | endif
+    autocmd BufEnter * if &diff | set cursorline | endif
 augroup END
 
 "}}}1

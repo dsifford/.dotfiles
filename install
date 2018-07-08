@@ -41,9 +41,4 @@ while test $# -gt 0; do
     esac
 done
 
-config_file="$(mktemp)"
-cat "${configs[@]}" >"$config_file"
-
-dotbot -d "$dotfiles" -c "$config_file" --plugin-dir "$dotbot_plugins" "${args[@]}"
-
-rm "$config_file"
+dotbot -d "$dotfiles" -c <(cat "${configs[@]}") --plugin-dir "$dotbot_plugins" "${args[@]}"

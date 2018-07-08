@@ -1,11 +1,9 @@
-alefragnani.project-manager
 alexdima.vscode-lcov
 bierner.emojisense
 bierner.markdown-checkbox
 bierner.markdown-emoji
 bierner.markdown-mermaid
 bierner.markdown-preview-github-styles
-blanu.vscode-styled-jsx
 bungcip.better-toml
 dracula-theme.theme-dracula
 eamodio.gitlens
@@ -24,7 +22,6 @@ kumar-harsh.graphql-for-vscode
 LaurentTreguier.uncrustify
 ms-python.python
 ms-vscode.cpptools
-ms-vsliveshare.vsliveshare
 persoderlind.vscode-phpcbf
 PeterJausovec.vscode-docker
 richie5um2.vscode-sort-json
@@ -37,6 +34,5 @@ timonwong.shellcheck
 Tyriar.sort-lines
 vscodevim.vim
 vtfn.stylint
-WallabyJs.quokka-vscode
 wayou.vscode-todo-highlight
 wix.vscode-import-cost

@@ -36,6 +36,11 @@
         && command -v _task \
         && complete -o nospace -F _task t
 
+    command -v trizen \
+        && __load_completion trizen \
+        && command -v _trizen \
+        && complete -o default -F _trizen p
+
     command -v yarn \
         && __load_completion yarn \
         && command -v _yarn \

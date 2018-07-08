@@ -8,9 +8,7 @@ shopt -s cdspell      # correct spelling mistakes when using cd
 shopt -s checkwinsize # check the window size after each command and, if necessary, update the values of LINES and COLUMNS
 shopt -s dirspell     # correct spelling mistakes in directories
 shopt -s globstar     # enable recursive glob matching
-
-. ~/.bashrc.d/environment.sh
-. ~/.bashrc.d/path.sh
+shopt -s nullglob     # expand non-matching globs to a null string
 
 # Vendor sources
 sources=(
@@ -18,13 +16,8 @@ sources=(
     /usr/local/opt/fzf/shell/*.bash
     /usr/share/fzf/*.bash
 )
-for item in "${sources[@]}"; do
-    if [ -f "$item" ]; then
-        . "$item"
-    fi
-done
-unset sources item src
 
-. ~/.bashrc.d/functions.sh
-. ~/.bashrc.d/aliases.sh
-. ~/.bashrc.d/prompt.sh
+for f in ~/.bashrc.d/* "${sources[@]}"; do
+    [[ -f $f ]] && . "$f"
+done
+unset f sources

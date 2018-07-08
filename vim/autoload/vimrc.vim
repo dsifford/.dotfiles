@@ -9,11 +9,10 @@ function! vimrc#ReloadSyntax()
     silent! LanguageClientStart
 endfunction
 
-
 " Zoom / Restore active window
 function! vimrc#ZoomToggle()
     if exists('t:zoomed') && t:zoomed
-        execute t:zoom_winrestcmd
+        exec t:zoom_winrestcmd
         let t:zoomed = 0
     else
         let t:zoom_winrestcmd = winrestcmd()
