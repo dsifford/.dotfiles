@@ -2,7 +2,7 @@
 
 # Redirect all stdout to /dev/null
 {
-    command -v __load_completion || exit 1
+    command -v __load_completion || return
 
     # Add completion aliases where needed
     command -v docker \

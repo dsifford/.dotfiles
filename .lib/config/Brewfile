@@ -1,10 +1,10 @@
-tap "homebrew/core"
 tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-drivers"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
+tap "homebrew/core"
 tap "homebrew/services"
-tap "caskroom/drivers"
-tap "caskroom/fonts"
-tap "caskroom/versions"
-tap "caskroom/cask"
 tap "manifoldco/brew"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
@@ -22,10 +22,8 @@ brew "apr"
 brew "openssl"
 # Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
-# General-purpose data compression with high compression ratio
-brew "xz"
 # Interpreted, interactive, object-oriented programming language
-brew "python"
+brew "python", link: false
 # Record and share terminal sessions
 brew "asciinema"
 # Automatic configure script builder
@@ -43,7 +41,7 @@ brew "ctop"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Pack, ship and run any application as a lightweight container
-brew "docker"
+brew "docker", link: false
 # Create Docker hosts locally and on cloud providers
 brew "docker-machine", restart_service: true, link: false
 # YAML Parser
@@ -51,7 +49,7 @@ brew "libyaml"
 # Interpreted, interactive, object-oriented programming language
 brew "python@2"
 # Isolated development environments using Docker
-brew "docker-compose"
+brew "docker-compose", link: false
 # Command-line tool to interact with exercism.io
 brew "exercism"
 # Collection of GNU find, xargs, and locate
@@ -72,8 +70,6 @@ brew "git-extras"
 brew "gnu-sed", args: ["with-default-names"]
 # ASN.1 structure parser library
 brew "libtasn1"
-# C string library for manipulating Unicode strings
-brew "libunistring"
 # Low-level cryptographic library
 brew "nettle"
 # GNU Transport Layer Security (TLS) Library
@@ -114,10 +110,6 @@ brew "node"
 brew "pandoc"
 # Shell command parallelization utility
 brew "parallel"
-# General-purpose scripting language
-brew "php"
-# Tool to automatically fix PHP coding standards issues
-brew "php-cs-fixer"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Show ps output as a tree
@@ -134,6 +126,8 @@ brew "reattach-to-user-namespace"
 brew "ripgrep"
 # Utility that provides fast incremental file transfer
 brew "rsync"
+# Powerful, clean, object-oriented scripting language
+brew "ruby"
 # Database of common MIME types
 brew "shared-mime-info"
 # Static analysis and lint tool, for (ba)sh scripts
@@ -177,10 +171,9 @@ cask "transmission"
 cask "visual-studio-code"
 cask "vmware-horizon-client"
 cask "windscribe"
-cask "caskroom/versions/atom-beta"
-cask "caskroom/versions/google-chrome-canary"
+cask "homebrew/cask-versions/atom-beta"
+cask "homebrew/cask-versions/google-chrome-canary"
 mas "Amphetamine", id: 937984704
 mas "Notability", id: 736189492
 mas "Trello", id: 1278508951
 mas "Typeeto", id: 970502923
-mas "Xcode", id: 497799835
