@@ -30,7 +30,7 @@ while test $# -gt 0; do
     case "$1" in
         --packages)
             configs+=(
-                "$config_dir/packages.$(uname).yml"
+                "$config_dir/generated/packages.$(uname).yml"
             )
             shift
             ;;

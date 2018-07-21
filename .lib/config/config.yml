@@ -1,9 +1,14 @@
+# yamllint disable rule:key-duplicates
+
 - defaults:
     link:
-        create: true
-        relink: true
+      create: true
+      relink: true
 
-- clean: ['~', '~/.config', '~/.local/bin']
+- clean:
+    - '~'
+    - '~/.config'
+    - '~/.local/bin'
 
 - shell:
     - description: Synchronizing secure files
@@ -18,6 +23,7 @@
 - link:
     # Directories
     ~/.vim:
+    $XDG_DATA_HOME/npm/lib/node_modules/.hooks: config/npm/hooks
     $XDG_DATA_HOME/task/hooks: config/task/hooks
 
     # Files
@@ -29,4 +35,3 @@
     '~': shell
     ~/.config: config
     ~/.local/bin: bin
-

@@ -1,0 +1,14 @@
+#
+# THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY.
+#
+- npm:
+  - bash-language-server
+  - npm-check
+  - prettier
+  - quicktype
+  - release
+  - stylelint
+  - torus-cli
+  - tslint
+  - typescript
+  - vsce

@@ -13,7 +13,7 @@ if [ "$EUID" -eq 0 ]; then
     exit
 fi
 
-FILE=~/.dotfiles/.lib/config/packages.Linux.yml
+FILE=~/.dotfiles/.lib/config/generated/packages.Linux.yml
 
 [ ! -w "$FILE" ] && {
     echo "'packages.Linux.yml' file can't be located or is not writable"
@@ -39,7 +39,7 @@ parse_package_list() {
     ' |
     column --table -s '|' |
     sed -E '
-        s/^(.+)$/    \1/
+        s/^(.+)$/      \1/
     '
 }
 
@@ -55,11 +55,13 @@ parse_package_list() {
         xorg
     )
 
-    echo
+    echo '#'
+    echo '# THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY.'
+    echo '#'
     echo '- trizen:'
     echo '    # Package Groups'
     echo '    groups:'
-    printf -- '    - %s\n' "${groups[@]}"
+    printf -- '      - %s\n' "${groups[@]}"
 
     # List all packages that satisfy the following criteria:
     #   - Explicitly installed

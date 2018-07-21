@@ -27,6 +27,7 @@ export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 export PIPSI_HOME="$XDG_DATA_HOME"/pipsi
 export PYLINTHOME="$XDG_CACHE_HOME"/pylint
 export PYLINTRC="$XDG_CONFIG_HOME"/pylint/pylintrc
+export PYTHONUSERBASE=~/.local
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export STACK_ROOT="$XDG_DATA_HOME"/stack
 export TASKRC="$XDG_CONFIG_HOME"/task/taskrc

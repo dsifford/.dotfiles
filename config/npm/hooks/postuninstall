@@ -1,0 +1,14 @@
+#!/usr/bin/env python3.7
+"""Postuninstall hook for syncing global npm packages."""
+from _shared import get_toplevel_packages, write_pkg_file
+
+
+def main() -> None:
+    """Main entrypoint."""
+    uninstall_list = get_toplevel_packages()
+    if uninstall_list is not None:
+        write_pkg_file(uninstall_list)
+
+
+if __name__ == "__main__":
+    main()

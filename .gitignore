@@ -1,6 +1,7 @@
 **/.pyre/
 *.pyo
 *.spl
+.uuid
 .DS_store
 TESTER
 /.pyre_configuration
