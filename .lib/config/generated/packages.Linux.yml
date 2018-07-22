@@ -138,7 +138,6 @@
       - redshift-gtk-git        # Adjusts the color temperature of your screen according to your surroundings (development version)
       - shellcheck-git-static   # shellcheck-static, but using the latest-commit builds maintained by the author
       - shfmt                   # Format shell programs
-      - solaar                  # Device manager for Logitech's Unifying receiver peripherals
       - spotify                 # A proprietary music streaming service
       - stack-static            # The Haskell Tool Stack (linked statically)
       - trizen                  # Trizen AUR Package Manager: A lightweight wrapper for AUR.

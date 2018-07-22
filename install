@@ -22,6 +22,7 @@ dotbot_plugins="$dotfiles/.lib/plugins"
 config_dir="$dotfiles/.lib/config"
 configs=(
     "$config_dir/config.yml"
+    "$config_dir/generated/packages.npm.yml"
     "$config_dir/config.$(uname).yml"
 )
 

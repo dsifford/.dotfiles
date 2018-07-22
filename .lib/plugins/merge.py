@@ -15,13 +15,16 @@ from dotbot import Plugin
 
 
 class Merge(Plugin):
+    """Plugin implementation."""
 
     _directive = "merge"
 
-    def can_handle(self, directive):
+    def can_handle(self, directive) -> bool:
+        """Checks to see if current item is handleable."""
         return directive == self._directive
 
     def handle(self, _directive, data) -> bool:
+        """Handler implementation."""
         global_success = True
 
         for dest, source in data.items():
@@ -76,9 +79,7 @@ class Merge(Plugin):
 
             global_success &= success
 
-        if global_success:
-            self._log.info("All merges completed successfully")
-        else:
+        if not global_success:
             self._log.error("Some merges failed to complete successfully")
 
         return global_success
