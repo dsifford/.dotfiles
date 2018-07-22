@@ -30,8 +30,6 @@ brew "asciinema"
 brew "autoconf"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
-# Programmable completion for Bash 4.1+
-brew "bash-completion@2"
 # Collection of portable C++ source libraries
 brew "boost"
 # GNU File, Shell, and Text utilities
@@ -49,9 +47,11 @@ brew "libyaml"
 # Interpreted, interactive, object-oriented programming language
 brew "python@2"
 # Isolated development environments using Docker
-brew "docker-compose", link: false
+brew "docker-compose"
 # Command-line tool to interact with exercism.io
 brew "exercism"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
 # Collection of GNU find, xargs, and locate
 brew "findutils", args: ["with-default-names"]
 # Command-line fuzzy finder written in Go
@@ -68,12 +68,14 @@ brew "git"
 brew "git-extras"
 # GNU implementation of the famous stream editor
 brew "gnu-sed", args: ["with-default-names"]
+# GNU version of the tar archiving utility
+brew "gnu-tar", args: ["with-default-names"]
 # ASN.1 structure parser library
 brew "libtasn1"
 # Low-level cryptographic library
 brew "nettle"
 # GNU Transport Layer Security (TLS) Library
-brew "gnutls"
+brew "gnutls", link: false
 # GNU grep, egrep and fgrep
 brew "grep", args: ["with-default-names"]
 # Toolkit for creating graphical user interfaces
@@ -147,16 +149,19 @@ brew "wget"
 # JavaScript package manager
 brew "yarn"
 cask "alfred"
+cask "atom-beta"
 cask "bartender"
 cask "dash"
 cask "dropbox"
 cask "firefoxdeveloperedition"
 cask "flux"
+cask "google-chrome-canary"
 cask "haskell-platform"
 cask "iterm2"
 cask "karabiner-elements"
 cask "keybase"
 cask "libreoffice"
+cask "logitech-myharmony"
 cask "ngrok"
 cask "postman"
 cask "qlcolorcode"
@@ -171,8 +176,6 @@ cask "transmission"
 cask "visual-studio-code"
 cask "vmware-horizon-client"
 cask "windscribe"
-cask "homebrew/cask-versions/atom-beta"
-cask "homebrew/cask-versions/google-chrome-canary"
 mas "Amphetamine", id: 937984704
 mas "Notability", id: 736189492
 mas "Trello", id: 1278508951

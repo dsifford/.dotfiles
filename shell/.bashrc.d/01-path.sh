@@ -7,6 +7,7 @@ declare -a path=(
     /usr/local/opt/coreutils/libexec/gnubin
     /usr/local/{bin,sbin}
     /usr/local/go/bin
+	~/Library/Python/*/bin
 	/usr/local/Cellar/python*/*/Frameworks/**/bin
 )
 
