@@ -1,0 +1,3 @@
+- shell:
+  - description: Installing Homebrew Packages
+    command: brew bundle install --file=~/.dotfiles/.lib/config/generated/Brewfile

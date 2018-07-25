@@ -1,0 +1,13 @@
+#
+# THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY.
+#
+- pipsi:
+  - black
+  - isort
+  - poetry
+  - pylint
+  - pyre-check
+  - python-language-server
+  - vim-vint
+  - yamllint
+  - yq

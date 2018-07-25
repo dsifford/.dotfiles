@@ -1,6 +1,6 @@
 - shell:
-    - description: Saving Brewfile
-      command: brew bundle dump --describe --force --file=~/.dotfiles/.lib/config/generated/Brewfile
+  - description: Saving Brewfile
+    command: brew bundle dump --describe --force --file=~/.dotfiles/.lib/config/generated/Brewfile
 
 - link:
     # Directories
