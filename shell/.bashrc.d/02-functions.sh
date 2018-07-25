@@ -3,3 +3,4 @@
 for f in ~/.bashrc.d/functions.d/*; do
     [[ -f $f ]] && . "$f"
 done
+unset f

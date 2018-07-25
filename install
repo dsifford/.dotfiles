@@ -2,37 +2,33 @@
 # shellcheck disable=SC1090
 set -e
 
+shopt -s extglob nullglob
+
 [[ $USER == 'root' ]] && {
     echo "Don't run this as root."
     exit 1
 }
 
-command -v python3 >/dev/null || {
-    echo "Python 3 must be installed first."
+command -v python3 > /dev/null || {
+    echo "python3 must be installed first."
     exit 1
 }
 
-command -v dotbot >/dev/null || {
+command -v dotbot > /dev/null || {
     echo "dotbot must be installed first."
     exit 1
 }
 
-dotfiles="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-dotbot_plugins="$dotfiles/.lib/plugins"
-config_dir="$dotfiles/.lib/config"
-configs=(
-    "$config_dir/config.yml"
-    "$config_dir/generated/packages.npm.yml"
-    "$config_dir/config.$(uname).yml"
-)
+DOTFILES="${DOTFILES:?DOTFILES environment variable must be set to dotfiles directory}"
 
+config_dir="$DOTFILES"/.lib/config
+generated=("$config_dir"/generated/packages.*.yml)
 args=()
+
 while test $# -gt 0; do
     case "$1" in
         --packages)
-            configs+=(
-                "$config_dir/generated/packages.$(uname).yml"
-            )
+            generated+=("$config_dir"/generated/os.packages."$(uname)".yml)
             shift
             ;;
         *)
@@ -42,4 +38,19 @@ while test $# -gt 0; do
     esac
 done
 
-dotbot -d "$dotfiles" -c <(cat "${configs[@]}") --plugin-dir "$dotbot_plugins" "${args[@]}"
+dotbot \
+    --base-directory "$DOTFILES" \
+    --plugin-dir "$DOTFILES"/.lib/plugins \
+    --config-file <(
+        sed --posix -e '/^# %{[A-Z_]*}%.*$/{
+            /GENERATED/{
+                '"$(for f in "${generated[@]}"; do echo "r $f"; done)"'
+                d
+            }
+            /OS_SPECIFIC/{
+                r '"$config_dir/config.$(uname).yml"'
+                d
+            }
+        }' "$config_dir"/config.yml
+    ) \
+    "${args[@]}"

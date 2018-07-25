@@ -38,21 +38,15 @@ class Npm(Plugin):
             self._log.warning("Global npm modules not synced successfully")
         return success
 
-    @staticmethod
-    def _get_installed_modules() -> FrozenSet[str]:
-        output = json.loads(
-            run(
-                ["npm", "ls", "-g", "--depth", "0", "--json"],
-                check=True,
-                stdout=PIPE,
-                stderr=DEVNULL,
-            ).stdout
-        )
+    def _install(self, mods: List[str]) -> bool:
+        self._log.lowinfo(f"Installing missing npm modules: {mods}")
         try:
-            modules = output["dependencies"].keys()
-            return frozenset(modules)
-        except KeyError:
-            return frozenset([])
+            run(["npm", "-g", "i", *mods], check=True, stdout=PIPE, stderr=PIPE)
+            return True
+        except CalledProcessError as err:
+            self._log.error("An error occurred while attempting to install modules")
+            print(err.output)
+            return False
 
     def _uninstall(self, mods: List[str]) -> bool:
         self._log.lowinfo(f"Uninstalling extraneous npm modules: {mods}")
@@ -64,12 +58,17 @@ class Npm(Plugin):
             print(err.output)
             return False
 
-    def _install(self, mods: List[str]) -> bool:
-        self._log.lowinfo(f"Installing missing npm modules: {mods}")
+    @staticmethod
+    def _get_installed_modules() -> FrozenSet[str]:
+        output = json.loads(
+            run(
+                ["npm", "ls", "-g", "--depth", "0", "--json"],
+                stdout=PIPE,
+                stderr=DEVNULL,
+            ).stdout
+        )
         try:
-            run(["npm", "-g", "i", *mods], check=True, stdout=PIPE, stderr=PIPE)
-            return True
-        except CalledProcessError as err:
-            self._log.error(f"An error occurred while attempting to install modules")
-            print(err.output)
-            return False
+            modules = output["dependencies"].keys()
+            return frozenset(modules)
+        except KeyError:
+            return frozenset([])

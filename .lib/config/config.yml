@@ -6,19 +6,22 @@
       relink: true
 
 - clean:
-    - '~'
-    - '~/.config'
-    - '~/.local/bin'
+  - '~'
+  - '~/.config'
+  - '~/.local/bin'
 
-- shell:
-    - description: Synchronizing secure files
-      command: ~/.dotfiles/.lib/shell/lpass
-    - description: Updating bash completions
-      command: ~/.dotfiles/.lib/shell/update-completions
-      stdout: true
-    - description: Updating pipsi packages
-      command: ~/.dotfiles/.lib/shell/update-pipsi-packages
-      stdout: true
+# %{GENERATED}%
+
+- keybase:
+    $XDG_DATA_HOME/task/freecinc.ca.pem: /keybase/private/dsifford/taskwarrior/freecinc.ca.pem
+    $XDG_DATA_HOME/task/freecinc.cert.pem: /keybase/private/dsifford/taskwarrior/freecinc.cert.pem
+    $XDG_DATA_HOME/task/freecinc.key.pem: /keybase/private/dsifford/taskwarrior/freecinc.key.pem
+
+- merge:
+    '~': languages
+    '~': shell
+    $XDG_CONFIG_HOME: config
+    ~/.local/bin: bin
 
 - link:
     # Directories
@@ -30,8 +33,12 @@
     ~/.vimrc: vim/.vimrc
     $XDG_CONFIG_HOME/redshift.conf: config/redshift/redshift.conf
 
-- merge:
-    '~': languages
-    '~': shell
-    ~/.config: config
-    ~/.local/bin: bin
+# %{OS_SPECIFIC}%
+
+- shell:
+  - description: Updating bash completions
+    command: ~/.dotfiles/.lib/shell/update-completions
+    stdout: true
+  - description: Updating pipsi packages
+    command: ~/.dotfiles/.lib/shell/update-pipsi-packages
+    stdout: true
