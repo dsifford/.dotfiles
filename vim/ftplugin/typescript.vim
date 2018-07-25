@@ -8,7 +8,3 @@ let b:ale_linters = [
     \ 'tsserver',
     \ ]
 
-nnoremap <buffer> <silent> K :ALEHover<CR>
-nnoremap <buffer> <silent> gd :ALEGoToDefinition<CR>
-nnoremap <buffer> <silent> gr :ALEFindReferences<CR>
-

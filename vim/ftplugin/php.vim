@@ -9,7 +9,6 @@ let b:ale_fixers = [
 let b:ale_linters = [
     \ 'phpcs',
     \ 'php',
-    \ 'langserver',
     \ ]
 
 let b:php_folding   = 1 " Fold classes and functions

@@ -3,9 +3,10 @@ let b:ale_fixers = [
     \ 'isort',
     \ ]
 
+" FIXME: pyre is on the fritz
 let b:ale_linters = [
-    \ 'pyre',
     \ 'pylint',
+    \ 'pyls',
     \ ]
 
 let b:ale_python_isort_options = '--multi-line=3 --trailing-comma --force-grid-wrap=0 --combine-as --line-width=88'

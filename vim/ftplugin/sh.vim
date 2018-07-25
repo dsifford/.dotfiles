@@ -4,7 +4,6 @@ let b:ale_fixers = [
 
 let b:ale_linters = [
     \ 'shellcheck',
-    \ 'language_server',
     \ ]
 
 let b:ale_sh_shfmt_options = '-i 4 -ci -bn -sr'

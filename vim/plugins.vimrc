@@ -27,8 +27,6 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'w0rp/ale'
 
 if has('nvim')
-    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
-        Plug 'roxma/LanguageServer-php-neovim',  { 'do': 'composer install && composer run-script parse-stubs' }
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
         Plug 'Shougo/neoinclude.vim'
 endif

@@ -6,25 +6,25 @@ source ~/.vim/plugins.vimrc
 " Options: {{{1
 colorscheme dracula
 
-set autowrite                 " Automatically save before commands like :next and :make
-set clipboard=unnamedplus     " Use system clipboard
-set hidden                    " Use hidden buffers liberally
-set history=200               " Truncate history at 200 lines
-set ignorecase                " Required for proper smartcase functionality
-set lazyredraw                " Improves perf under some conditions
-set listchars=tab:▸\ ,eol:¬   " Symbols for whitespace when 'set list' enabled
-set nowrap                    " Disable line wrapping
-set noshowmode                " Dont show mode in the command line -- using Airline for that
-set number                    " Show line numbers
-set pastetoggle=<F2>          " Toggle paste mode with F2
-set shiftround                " Round indents to nearest indent size when using < or >
-set smartcase                 " Case insensitive unless typing with caps
-set smarttab                  " sw at the start of the line, sts everywhere else
-set splitbelow                " Open horizontal splits below current buffer
-set splitright                " Open vertical splits to the right of current buffer
-set termguicolors             " Force GUI colors in terminals
-set virtualedit=block         " Allow cursor to be placed in virtual positions when in visual block mode
-set winaltkeys=no             " Allows all ALT combinations to be mapped
+set autowrite                       " Automatically save before commands like :next and :make
+set clipboard=unnamedplus           " Use system clipboard
+set hidden                          " Use hidden buffers liberally
+set history=200                     " Truncate history at 200 lines
+set ignorecase                      " Required for proper smartcase functionality
+set lazyredraw                      " Improves perf under some conditions
+set listchars=tab:▸\ ,eol:¬,space:· " Symbols for whitespace when 'set list' enabled
+set nowrap                          " Disable line wrapping
+set noshowmode                      " Dont show mode in the command line -- using Airline for that
+set number                          " Show line numbers
+set pastetoggle=<F2>                " Toggle paste mode with F2
+set shiftround                      " Round indents to nearest indent size when using < or >
+set smartcase                       " Case insensitive unless typing with caps
+set smarttab                        " sw at the start of the line, sts everywhere else
+set splitbelow                      " Open horizontal splits below current buffer
+set splitright                      " Open vertical splits to the right of current buffer
+set termguicolors                   " Force GUI colors in terminals
+set virtualedit=block               " Allow cursor to be placed in virtual positions when in visual block mode
+set winaltkeys=no                   " Allows all ALT combinations to be mapped
 
 " Tabs = 4 spaces by default
 set expandtab
@@ -69,6 +69,15 @@ let g:airline#extensions#ale#enabled = 1
 nmap          <Leader>f <Plug>(ale_fix)
 nmap <silent> <C-k>     <Plug>(ale_previous_wrap)
 nmap <silent> <C-j>     <Plug>(ale_next_wrap)
+
+nmap <silent> K         <Plug>(ale_hover)
+nmap <silent> gd        <Plug>(ale_go_to_definition)
+nmap <silent> gr        <Plug>(ale_find_references)
+
+" TODO: Waiting for feature support
+" nnoremap <silent> gs        :call LanguageClient_textDocument_documentSymbol()<CR>
+" nnoremap <silent> gS        :call LanguageClient_workspace_symbol()<CR>
+" nnoremap <silent> <F2>      :call LanguageClient_textDocument_rename()<CR>
 
 "}}}2
 " Auto Pairs: {{{2
@@ -149,24 +158,6 @@ augroup dsifford_fzf
     autocmd  FileType fzf set laststatus=0
           \| autocmd BufLeave <buffer> set laststatus=2
 augroup END
-
-"}}}2
-" LanguageClient: {{{2
-
-let g:LanguageClient_diagnosticsSignsMax = 25
-
-let g:LanguageClient_serverCommands = {
-            \ 'python': ['pyls'],
-            \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-            \ }
-
-nnoremap          <A-Space> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K         :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd        :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> gs        :call LanguageClient_textDocument_documentSymbol()<CR>
-nnoremap <silent> gS        :call LanguageClient_workspace_symbol()<CR>
-nnoremap <silent> gr        :call LanguageClient_textDocument_references()<CR>
-nnoremap <silent> <F2>      :call LanguageClient_textDocument_rename()<CR>
 
 "}}}2
 " NERDCommenter: {{{2
