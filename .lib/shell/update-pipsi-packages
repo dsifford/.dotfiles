@@ -1,26 +1,77 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC1090,SC2155
 
-command -v pipsi >/dev/null || {
-    echo 'pipsi is not installed. Skipping...'
-    exit 1
-}
+for cmd in pipsi python-latest; do
+    command -v "$cmd" > /dev/null || {
+        echo "ERROR: $cmd executable not found in path. Aborting..."
+        exit 1
+    }
+done
 
 shopt -s nullglob
+declare -r PYTHON_LATEST="$(python-latest)"
 
+main() {
+    declare -a packages=()
+    declare pkg_dir pkg_name py_version
+
+    for pkg_dir in "$PIPSI_HOME"/*; do
+        pkg_name="$(basename "$pkg_dir")"
+        py_version="$(basename "$pkg_dir"/lib/python*)"
+
+        if [[ $py_version != "$PYTHON_LATEST" ]]; then
+            reinstall_package "$pkg_name" &
+        else
+            update_package "$pkg_dir" &
+        fi
+
+        packages+=("$(basename "$pkg_dir")")
+    done
+
+    wait
+
+    {
+        echo '#'
+        echo '# THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY.'
+        echo '#'
+        echo '- pipsi:'
+
+        for package in "${packages[@]}"; do
+            echo "  - $package"
+        done
+    } > ~/.dotfiles/.lib/config/generated/packages.pipsi.yml
+}
+
+#
+# Updates both a given pipsi package and the pip version inside the package's
+# virtualenv if needed, given a package's absolute path.
+#
+# Usage: update_package <path>
+#
 update_package() {
-    package_dir="$1"
-    pipsi upgrade "$(basename "$package_dir")" | sed -n \
+    declare pkg_dir="$1"
+    declare pkg_name="$(basename "$1")"
+
+    pipsi upgrade "$pkg_name" | sed -n \
         -e '/^\(Installing\|Successfully installed\).*/p' \
         -e 's/^\(Requirement already up-to-date: .*\) in [^(]* \((.*)\)/\1 \2/p'
-    # shellcheck source=/dev/null
-    . "$package_dir"/bin/activate
+
+    . "$pkg_dir"/bin/activate
+
     pip install --upgrade pip | sed -n \
         -e '/^\(Installing\|Successfully installed\).*/p'
+
     deactivate
 }
 
-for package_dir in "$PIPSI_HOME"/*; do
-    update_package "$package_dir" &
-done
+#
+# Reinstalls a given package on the latest version of python.
+#
+# Usage: reinstall_package <pkg_name>
+#
+reinstall_package() {
+    pipsi uninstall --yes "$1"
+    pipsi install --python "$PYTHON_LATEST" "$1"
+}
 
-wait
+main
