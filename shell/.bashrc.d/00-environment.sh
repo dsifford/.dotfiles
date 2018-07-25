@@ -6,6 +6,8 @@ export EDITOR=nvim
 export LESSHISTFILE='-'
 export PAGER=less
 
+export DOTFILES=~/.dotfiles
+
 # XDG Base Directory Specification
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
@@ -22,6 +24,7 @@ export GOPATH="$XDG_DATA_HOME"/go
 export HISTFILE="$XDG_DATA_HOME"/bash/history
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 export MACHINE_STORAGE_PATH="$XDG_DATA_HOME"/docker-machine
+export MANIFOLD_DIR=~/.local/bin
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 export PIPSI_HOME="$XDG_DATA_HOME"/pipsi
