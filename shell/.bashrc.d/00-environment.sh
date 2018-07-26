@@ -58,7 +58,7 @@ fi
 
 if [[ $(uname) == Darwin ]]; then
     unset MANPATH
-    MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$(manpath)"
+    MANPATH="/usr/local/opt/coreutils/libexec/gnuman:/usr/local/opt/gnu-getopt/share/man:$(manpath)"
     export XDG_RUNTIME_DIR="$TMPDIR"
     export MANPATH
 else

@@ -3,8 +3,9 @@
 declare newpath
 declare -a path=(
     ~/.local/bin
-    "$XDG_DATA_HOME"/{cargo,go,npm}/bin
+    /usr/local/opt/gnu-getopt/bin
     /usr/local/opt/coreutils/libexec/gnubin
+    "$XDG_DATA_HOME"/{cargo,go,npm}/bin
     /usr/local/{bin,sbin}
     /usr/local/go/bin
 	~/Library/Python/*/bin
