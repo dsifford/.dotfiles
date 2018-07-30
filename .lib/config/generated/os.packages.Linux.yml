@@ -127,6 +127,7 @@
     - google-chrome-dev       # The popular and trusted web browser by Google (Dev Channel)
     - gscreenshot             # A simple screenshot tool supporting multiple backends
     - keybase-bin             # the Keybase Go client, filesystem, and GUI
+    - lab                     # A hub-like tool for GitLab (tagged release)
     - ncurses5-compat-libs    # System V Release 4.0 curses emulation library, ABI 5
     - neovim-git              # Fork of Vim aiming to improve user experience, plugins, and GUIs.
     - ngrok                   # A tunneling, reverse proxy for developing and understanding networked, HTTP services

@@ -46,4 +46,4 @@
         && command -v _yarn \
         && complete -F _yarn y
 
-} >/dev/null
+} > /dev/null

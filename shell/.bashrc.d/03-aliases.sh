@@ -35,11 +35,11 @@ alias vimrc='vim ~/.dotfiles/vim/.vimrc'
 ## Always use neovim
 alias vim='nvim'
 
-command -v nvidia-settings >/dev/null \
+command -v nvidia-settings > /dev/null \
     && alias nvidia-settings='command nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
 
 # Coreutils stuff
-if ls --version &>/dev/null; then
+if ls --version &> /dev/null; then
     alias ls='ls -hF1 --color=tty'
 else
     alias ls='ls -FHG11'
