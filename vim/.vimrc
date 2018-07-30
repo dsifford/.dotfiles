@@ -52,7 +52,12 @@ let g:airline#extensions#tabline#show_tab_type = 0
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-" :~:.
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {
+        \ 'readonly': '⛔',
+        \}
+endif
 
 "}}}2
 " ALE: {{{2
@@ -156,7 +161,7 @@ command! GFiles call fzf#run(fzf#wrap({ 'source': 'GFiles' }))
 augroup dsifford_fzf
     autocmd!
     autocmd  FileType fzf set laststatus=0
-          \| autocmd BufLeave <buffer> set laststatus=2
+                \| autocmd BufLeave <buffer> set laststatus=2
 augroup END
 
 "}}}2

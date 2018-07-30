@@ -21,7 +21,7 @@ class Pipsi(Plugin):
         """Handler implementation."""
         success = True
         truth = frozenset(data)
-        installed = Pipsi._get_installed_packages()
+        installed = Pipsi.__get_installed_packages()
 
         to_uninstall = list(installed.difference(truth))
         to_install = list(truth.difference(installed))
@@ -42,8 +42,22 @@ class Pipsi(Plugin):
         """Installs pipsi packages."""
         self._log.lowinfo(f"Installing missing pipsi packages: {packages}")
         try:
+            python_latest = (
+                run(["python-latest"], check=True, stdout=PIPE, stderr=PIPE)
+                .stdout.decode("utf-8")
+                .strip()
+            )
+        except CalledProcessError as err:
+            self._log.error("python-latest command not found in PATH")
+            return False
+        try:
             for pkg in packages:
-                run(["pipsi", "install", pkg], check=True, stdout=PIPE, stderr=PIPE)
+                run(
+                    ["pipsi", "install", "--python", python_latest, pkg],
+                    check=True,
+                    stdout=PIPE,
+                    stderr=PIPE,
+                )
             return True
         except CalledProcessError as err:
             self._log.error("An error occurred while attempting to install packages")
@@ -68,7 +82,7 @@ class Pipsi(Plugin):
             return False
 
     @staticmethod
-    def _get_installed_packages() -> FrozenSet[str]:
+    def __get_installed_packages() -> FrozenSet[str]:
         """Fetches and returns a frozenset of installed packages."""
         output = run(["pipsi", "list"], stdout=PIPE, stderr=DEVNULL).stdout.decode(
             "utf-8"

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
+#
 # Small helper command that is used in fzf.vim to show all git files with
 # specific constraints described below.
+#
 set -e
 
 # cd to git root or exit if not in a git repo

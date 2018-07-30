@@ -31,7 +31,6 @@ alias reload='source ~/.bashrc'
 alias svn='command svn --config-dir "$XDG_CONFIG_HOME"/subversion'
 alias tmux='command tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
 alias vimrc='vim ~/.dotfiles/vim/.vimrc'
-alias wget='command wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 
 ## Always use neovim
 alias vim='nvim'

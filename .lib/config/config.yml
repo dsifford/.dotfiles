@@ -1,31 +1,31 @@
-# yamllint disable rule:key-duplicates
-
 - defaults:
     link:
       create: true
       relink: true
 
 - clean:
-  - '~'
-  - '~/.config'
-  - '~/.local/bin'
+    - "~"
+    - $XDG_CONFIG_HOME
+    - ~/.local/bin
 
 # %{GENERATED}%
 
 - keybase:
-    $XDG_DATA_HOME/task/freecinc.ca.pem: /keybase/private/dsifford/taskwarrior/freecinc.ca.pem
-    $XDG_DATA_HOME/task/freecinc.cert.pem: /keybase/private/dsifford/taskwarrior/freecinc.cert.pem
-    $XDG_DATA_HOME/task/freecinc.key.pem: /keybase/private/dsifford/taskwarrior/freecinc.key.pem
+    $XDG_DATA_HOME/task/freecinc.ca.pem:
+      /keybase/private/dsifford/taskwarrior/freecinc.ca.pem
+    $XDG_DATA_HOME/task/freecinc.cert.pem:
+      /keybase/private/dsifford/taskwarrior/freecinc.cert.pem
+    $XDG_DATA_HOME/task/freecinc.key.pem:
+      /keybase/private/dsifford/taskwarrior/freecinc.key.pem
 
 - merge:
-    '~': languages
-    '~': shell
-    $XDG_CONFIG_HOME: config
+    "~": shell
     ~/.local/bin: bin
+    $XDG_CONFIG_HOME: config
 
 - link:
     # Directories
-    ~/.vim:
+    ~/.vim: vim
     $XDG_DATA_HOME/npm/lib/node_modules/.hooks: config/npm/hooks
     $XDG_DATA_HOME/task/hooks: config/task/hooks
 
@@ -36,9 +36,9 @@
 # %{OS_SPECIFIC}%
 
 - shell:
-  - description: Updating bash completions
-    command: ~/.dotfiles/.lib/shell/update-completions
-    stdout: true
-  - description: Updating pipsi packages
-    command: ~/.dotfiles/.lib/shell/update-pipsi-packages
-    stdout: true
+    - description: Updating bash completions
+      command: ~/.dotfiles/.lib/shell/update-completions
+      stdout: true
+    - description: Updating pipsi packages
+      command: ~/.dotfiles/.lib/shell/update-pipsi-packages
+      stdout: true

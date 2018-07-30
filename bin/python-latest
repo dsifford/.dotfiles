@@ -1,39 +1,52 @@
 #!/usr/bin/env bash
-#
-# Utility function to figure out and return the executable name of the latest
-# version of python that is available in PATH.
-#
-# Usage: python-latest [-p | -v]
-#
-# Options:
-#   -p  Return the full path.
-#   -v  Return the version number only.
-#
+USAGE='
+Utility function to figure out and return the executable name of the latest
+version of python that is available in PATH.
+
+Usage:
+    python-latest [-p | -v]
+    python-latest -h | --help
+
+-p, --path    Print the full path.
+-v, --version Print only the version number.
+'
 
 shopt -s nullglob
+
+if ! OPTS=$(getopt -o 'pvh' -l 'path,version,help' -n 'python-latest' -- "$@"); then
+    exit 1
+fi
+eval set -- "$OPTS"
+unset OPTS
 
 declare -A paths=()
 declare -i print_path=0
 declare -i print_version=0
-declare key opt p path
+declare key p path
 
-while getopts ':pv' opt; do
-    case "$opt" in
-        p)
-            print_version=0
+while true; do
+    case "$1" in
+        -p | --path)
             print_path=1
+            shift
             ;;
-        v)
+        -v | --version)
             print_version=1
-            print_path=0
+            shift
+            ;;
+        -h | --help)
+            echo "$USAGE"
+            exit
+            ;;
+        --)
+            shift
+            break
             ;;
         *)
-            continue
+            exit 1
             ;;
     esac
-
 done
-shift $((OPTIND - 1))
 
 while read -r -d: path; do
     for p in "$path"/python[0-9].[0-9]; do

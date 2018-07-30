@@ -110,7 +110,6 @@
     - xorg-xinit                 # X.Org initialisation program
     - xterm                      # X Terminal Emulator
     - yarn                       # Fast, reliable, and secure dependency management
-    - youtube-dl                 # A small command-line program to download videos from YouTube.com and a few more sites
     - zathura                    # Minimalistic document viewer
     - zathura-pdf-poppler        # Adds pdf support to zathura by using the poppler engine
     - zip                        # Compressor/archiver for creating and modifying zipfiles

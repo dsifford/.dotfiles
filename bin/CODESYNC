@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 #
-# Small script used for syncing VSCode extensions between machines
+# Small script used for syncing VSCode extensions between machines.
+#
+# Usage: CODESYNC (push|pull)
 #
 
 declare -A installed

@@ -1,61 +1,64 @@
 #!/usr/bin/env bash
+USAGE='
+Extract a subset of pages from <input_pdf> into a new <output_pdf>.
 
-if ! command -v pdfseparate >/dev/null || ! command -v pdfunite >/dev/null; then
+Usage:
+    pdfextract -s NUMBER -e NUMBER <input_pdf> <output_pdf>
+    pdfextract -h | --help
+
+-s NUMBER --start-page=NUMBER  The page number to start extracting.
+-e NUMBER --end-page=NUMBER    The page number to stop extracting.
+'
+
+if ! command -v pdfseparate > /dev/null || ! command -v pdfunite > /dev/null; then
     echo 'Must have "pdfseparate" and "pdfunite" available in path'
-    exit 1;
+    exit 1
 fi
 
-declare -i start
-declare -i end
-declare input_file
-declare output_file
-declare tempdirname
-declare -a fileslist
+if ! OPTS=$(getopt -o 's:e:h' -l 'start-page:,end-page:,help' -n 'pdfextract' -- "$@"); then
+    exit 1
+fi
+eval set -- "$OPTS"
+unset OPTS
 
-while getopts ":s:e:h" opt; do
-    case "$opt" in
-        s)
-            start="$OPTARG"
+declare -i start_page
+declare -i end_page
+declare input_pdf
+declare output_pdf
+
+while true; do
+    case "$1" in
+        -s | --start-page)
+            start_page="$2"
+            shift 2
             ;;
-        e)
-            end="$OPTARG"
+        -e | --end-page)
+            end_page="$2"
+            shift 2
             ;;
-        h)
-            echo "usage: pdfextract [-s start-page] [-e end-page] input-pdf output-pdf"
-            exit 0
+        -h | --help)
+            echo "$USAGE"
+            exit
             ;;
-        \?)
-            echo "invalid option $OPTARG"
-            exit 1
+        --)
+            shift
+            break
             ;;
-        :)
-            echo "Option $OPTARG requires an argument"
+        *)
             exit 1
             ;;
     esac
 done
-shift $((OPTIND - 1))
 
-if [[ $# -ne 2 ]]; then
-    echo "Must specify input and output pdf files"
-    exit 1
-fi
+input_pdf=$(realpath "$1") || exit 1
+output_pdf=$(realpath "$2") || exit 1
 
-input_file="$(realpath "$1")"
-output_file="$(realpath "$2")"
+tmpdir=$(mktemp -td pdfextract.XXXXX)
 
-if [[ ! -f $input_file ]]; then
-    echo "file $input_file does not exist"
-    exit 1
-fi
+cd "$tmpdir" || exit 1
 
-tempdirname="$(mktemp -d)"
-
-cd "$tempdirname" || exit 1
-
-pdfseparate -f "$start" -l "$end" "$input_file" '%04d.pdf'
+pdfseparate -f "$start_page" -l "$end_page" "$input_pdf" '%04d.pdf'
 mapfile -t fileslist < <(find . -type f -name '*.pdf' | sort)
-pdfunite "${fileslist[@]}" "$output_file"
+pdfunite "${fileslist[@]}" "$output_pdf"
 
-rm -r "$tempdirname"
-
+rm -r "$tmpdir"

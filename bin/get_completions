@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #
-# Print a list of bash completions for a given command line
+# Print a list of bash completions for a given command line.
 #
-# Usage: get_completions command [args...]
+# Usage: get_completions <command> [args...]
 #
 
 declare COMP_LINE="$*"

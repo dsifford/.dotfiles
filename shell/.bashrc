@@ -1,14 +1,15 @@
-# shellcheck shell=bash disable=SC1090
+# shellcheck shell=bash
 
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
 
-# Bash options
-shopt -s cdspell      # correct spelling mistakes when using cd
-shopt -s checkwinsize # check the window size after each command and, if necessary, update the values of LINES and COLUMNS
-shopt -s dirspell     # correct spelling mistakes in directories
-shopt -s globstar     # enable recursive glob matching
-shopt -s nullglob     # expand non-matching globs to a null string
+# Bash options (see: https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html )
+shopt -s cdspell         # correct spelling mistakes when using cd
+shopt -s checkwinsize    # check the window size after each command and, if necessary, update the values of LINES and COLUMNS
+shopt -s dirspell        # correct spelling mistakes in directories
+shopt -s globasciiranges # range expressions used in pattern matching behave as if in the traditional C locale when performing comparisons
+shopt -s globstar        # enable recursive glob matching
+shopt -s nullglob        # expand non-matching globs to a null string
 
 # Vendor sources
 sources=(
@@ -18,6 +19,7 @@ sources=(
 )
 
 for f in ~/.bashrc.d/* "${sources[@]}"; do
+    # shellcheck source=/dev/null
     [[ -f $f ]] && . "$f"
 done
 unset f sources

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2230
+
+wget=$(which --skip-tilde wget)
+
+mkdir -p "$XDG_CACHE_HOME"/wget
+
+$wget --hsts-file="$XDG_CACHE_HOME"/wget/wget-hsts "$@"

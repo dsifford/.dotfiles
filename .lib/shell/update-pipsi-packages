@@ -29,17 +29,6 @@ main() {
     done
 
     wait
-
-    {
-        echo '#'
-        echo '# THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY.'
-        echo '#'
-        echo '- pipsi:'
-
-        for package in "${packages[@]}"; do
-            echo "  - $package"
-        done
-    } > ~/.dotfiles/.lib/config/generated/packages.pipsi.yml
 }
 
 #
