@@ -42,9 +42,9 @@ if [[ "$current_output" =~ i3 ]]; then
     fi
 else
     if ((is_fullscreen_mode)); then
-        i3-msg '[instance="'$instance'"] mark --add '$mark', scratchpad show'
+        i3-msg 'focus output primary; [instance="'$instance'"] mark --add '$mark', scratchpad show'
     else
-        i3-msg '[instance="'$instance'"] scratchpad show'
+        i3-msg 'focus output primary; [instance="'$instance'"] scratchpad show'
     fi
 fi
 

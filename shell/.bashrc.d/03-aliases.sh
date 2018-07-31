@@ -40,7 +40,7 @@ command -v nvidia-settings > /dev/null \
 
 # Coreutils stuff
 if ls --version &> /dev/null; then
-    alias ls='ls -hF1 --color=tty'
+    alias ls='ls -hF1 --group-directories-first --color=tty'
 else
     alias ls='ls -FHG11'
 fi

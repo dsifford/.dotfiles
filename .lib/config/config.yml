@@ -4,9 +4,9 @@
       relink: true
 
 - clean:
-    - "~"
+    - $HOME
+    - $HOME/.local/bin
     - $XDG_CONFIG_HOME
-    - ~/.local/bin
 
 # %{GENERATED}%
 
@@ -19,18 +19,18 @@
       /keybase/private/dsifford/taskwarrior/freecinc.key.pem
 
 - merge:
-    "~": shell
-    ~/.local/bin: bin
+    $HOME: shell
+    $HOME/.local/bin: bin
     $XDG_CONFIG_HOME: config
 
 - link:
     # Directories
-    ~/.vim: vim
+    $HOME/.vim: vim
     $XDG_DATA_HOME/npm/lib/node_modules/.hooks: config/npm/hooks
     $XDG_DATA_HOME/task/hooks: config/task/hooks
 
     # Files
-    ~/.vimrc: vim/.vimrc
+    $HOME/.vimrc: vim/.vimrc
     $XDG_CONFIG_HOME/redshift.conf: config/redshift/redshift.conf
 
 # %{OS_SPECIFIC}%
