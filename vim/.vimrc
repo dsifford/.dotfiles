@@ -156,7 +156,7 @@ nnoremap <C-b> :Buffers<CR>
 " Grep word under cursor
 nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
 
-command! GFiles call fzf#run(fzf#wrap({ 'source': 'GFiles' }))
+command! GFiles call fzf#run(fzf#wrap({ 'source': 'GFiles', 'options': '--no-sort' }))
 
 augroup dsifford_fzf
     autocmd!
@@ -182,9 +182,12 @@ imap <silent> <C-_> <Esc><C-_>
 "}}}2
 " Netrw: {{{2
 
-let g:netrw_home=stdpath('cache')
+let g:netrw_alto = 0
 let g:netrw_banner = 0
+let g:netrw_home = stdpath('cache')
 let g:netrw_list_hide = netrw_gitignore#Hide()
+let g:netrw_liststyle= 3
+let g:netrw_preview = 1
 
 " Toggle Netrw window
 noremap <silent> <expr> <C-\> &ft ==# 'netrw' ? ':Rex<CR>' : ':Explore!<CR>'

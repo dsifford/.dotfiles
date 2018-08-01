@@ -30,8 +30,8 @@
     $XDG_DATA_HOME/task/hooks: config/task/hooks
 
     # Files
+    $HOME/.ssh/config: config/ssh/config
     $HOME/.vimrc: vim/.vimrc
-    $XDG_CONFIG_HOME/redshift.conf: config/redshift/redshift.conf
 
 # %{OS_SPECIFIC}%
 

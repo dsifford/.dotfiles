@@ -23,7 +23,7 @@ Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': './install --bin' } | Plug 'junegunn/fzf.vim'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
 Plug 'w0rp/ale'
 
 if has('nvim')
@@ -35,6 +35,7 @@ endif
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'
+Plug 'tpope/vim-vinegar'
 
 " Look and feel
 Plug 'airblade/vim-gitgutter'

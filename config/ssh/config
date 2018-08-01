@@ -1,0 +1,17 @@
+Host github.com
+    HostName github.com
+    Port 22
+    User git
+    IdentityFile ~/.ssh/dsifford_rsa
+    TCPKeepAlive yes
+    IdentitiesOnly yes
+
+Host gitlab.com
+    HostName gitlab.com
+    Port 22
+    User git
+    IdentityFile ~/.ssh/dsifford_rsa
+    TCPKeepAlive yes
+    IdentitiesOnly yes
+
+# vim: ft=sshconfig

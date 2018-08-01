@@ -8,3 +8,6 @@ let b:ale_linters = [
     \ 'tsserver',
     \ ]
 
+if expand('%:t:r') =~# '[-.]test$'
+    UltiSnipsAddFiletypes javascript-jest
+endif
