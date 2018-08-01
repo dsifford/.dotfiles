@@ -134,7 +134,6 @@
     - neovim-git              # Fork of Vim aiming to improve user experience, plugins, and GUIs.
     - ngrok                   # A tunneling, reverse proxy for developing and understanding networked, HTTP services
     - pandoc-bin              # Pandoc - executable only, without 750MB Haskell depends/makedepends
-    - pipsi                   # Wraps pip and virtualenv to install scripts
     - plex-media-server       # Plex Media Server
     - postman-bin             # Build, test, and document your APIs faster
     - ranger-git              # A simple, vim-like file manager.
