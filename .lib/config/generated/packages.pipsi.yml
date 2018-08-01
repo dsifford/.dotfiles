@@ -4,7 +4,6 @@
 - pipsi:
   - black
   - isort
-  - pipsi
   - poetry
   - pylint
   - pyre-check
