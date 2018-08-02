@@ -6,33 +6,44 @@ source ~/.vim/plugins.vimrc
 " Options: {{{1
 colorscheme dracula
 
-set autowrite                       " Automatically save before commands like :next and :make
-set clipboard=unnamedplus           " Use system clipboard
-set hidden                          " Use hidden buffers liberally
-set history=200                     " Truncate history at 200 lines
-set ignorecase                      " Required for proper smartcase functionality
-set lazyredraw                      " Improves perf under some conditions
-set listchars=tab:▸\ ,eol:¬,space:· " Symbols for whitespace when 'set list' enabled
-set nowrap                          " Disable line wrapping
-set noshowmode                      " Dont show mode in the command line -- using Airline for that
-set number                          " Show line numbers
-set pastetoggle=<F2>                " Toggle paste mode with F2
-set shiftround                      " Round indents to nearest indent size when using < or >
-set smartcase                       " Case insensitive unless typing with caps
-set smarttab                        " sw at the start of the line, sts everywhere else
-set splitbelow                      " Open horizontal splits below current buffer
-set splitright                      " Open vertical splits to the right of current buffer
-set termguicolors                   " Force GUI colors in terminals
-set virtualedit=block               " Allow cursor to be placed in virtual positions when in visual block mode
-set winaltkeys=no                   " Allows all ALT combinations to be mapped
+set autowrite             " Automatically save before commands like :next and :make
+set clipboard=unnamedplus " Use system clipboard
+set hidden                " Use hidden buffers liberally
+set history=200           " Truncate history at 200 lines
+set ignorecase            " Required for proper smartcase functionality
+set lazyredraw            " Improves perf under some conditions
+set nowrap                " Disable line wrapping
+set noshowmode            " Dont show mode in the command line -- using Airline for that
+set number                " Show line numbers
+set pastetoggle=<F2>      " Toggle paste mode with F2
+set shiftround            " Round indents to nearest indent size when using < or >
+set smartcase             " Case insensitive unless typing with caps
+set smarttab              " sw at the start of the line, sts everywhere else
+set splitbelow            " Open horizontal splits below current buffer
+set splitright            " Open vertical splits to the right of current buffer
+set termguicolors         " Force GUI colors in terminals
+set virtualedit=block     " Allow cursor to be placed in virtual positions when in visual block mode
+set winaltkeys=no         " Allows all ALT combinations to be mapped
+
+set completeopt =menu     " Use a popup menu to show the possible completions
+set completeopt+=menuone  " Use the popup menu also when there is only one match
+set completeopt+=preview  " Show extra information about the currently selected completion in the preview window
+set completeopt+=noinsert " Do not insert any text for a match until the user selects a match from the menu
+set completeopt+=noselect " Do not select a match in the menu, force the user to select one from the menu
+
+set listchars =tab:▸\ ,
+set listchars+=eol:¬
+set listchars+=space:·
+
+set wildignore =tags
+set wildignore+=*.o
+set wildignore+=*.py?
 
 " Tabs = 4 spaces by default
 set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-
-set wildignore+=tags,*.o,*.py?
 
 let g:mapleader = ' '
 let g:maplocalleader = '\\'

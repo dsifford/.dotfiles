@@ -36,6 +36,9 @@
         && command -v _task \
         && complete -o nospace -F _task t
 
+    command -v terraform \
+        && complete -C "$(command -v terraform)" terraform
+
     command -v trizen \
         && __load_completion trizen \
         && command -v _trizen \
