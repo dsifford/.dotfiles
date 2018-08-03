@@ -104,6 +104,7 @@
     - tree                       # A directory listing program displaying a depth indented list of files
     - udiskie                    # Removable disk automounter using udisks
     - uncrustify                 # A source code beautifier
+    - unrar                      # The RAR uncompression program
     - unzip                      # For extracting and viewing files in .zip archives
     - vlc                        # Multi-platform MPEG, VCD/DVD, and DivX player
     - w3m                        # Text-based Web browser as well as pager
