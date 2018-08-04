@@ -73,6 +73,7 @@
     - otf-fira-code              # Monospaced font with programming ligatures
     - otf-font-awesome           # Iconic font designed for Bootstrap
     - p7zip                      # Command-line file archiver with high compression ratio
+    - pacman-contrib             # Contributed scripts and tools for pacman systems
     - parallel                   # A shell tool for executing jobs in parallel
     - pavucontrol                # PulseAudio Volume Control
     - pkgfile                    # a pacman .files metadata explorer
@@ -128,9 +129,11 @@
     - doctl-bin               # A command line tool for DigitalOcean services
     - dropbox                 # A free service that lets you bring your photos, docs, and videos anywhere and share them easily.
     - exercism-cli            # Command line client for exercism.io
+    - gimagereader            # A graphical frontend to tesseract-ocr
     - git-extras              # GIT utilities -- repo summary, commit counting, repl, changelog population and more
     - google-chrome-dev       # The popular and trusted web browser by Google (Dev Channel)
     - gscreenshot             # A simple screenshot tool supporting multiple backends
+    - gtkspellmm              # C++ binding for the gtkspell library
     - keybase-bin             # the Keybase Go client, filesystem, and GUI
     - lab                     # A hub-like tool for GitLab (tagged release)
     - ncurses5-compat-libs    # System V Release 4.0 curses emulation library, ABI 5
