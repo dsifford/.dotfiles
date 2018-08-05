@@ -1,8 +1,18 @@
 # shellcheck shell=bash disable=SC1090
-
 # Redirect all stdout to /dev/null
 {
-    command -v __load_completion || return
+    # source completion loader or exit if not available
+    if ! command -v __load_completion; then
+        while true; do
+            for f in /usr/{local/,}share/bash-completion/bash_completion; do
+                if [ -f "$f" ]; then
+                    . "$f"
+                    break 2
+                fi
+            done
+            return
+        done
+    fi
 
     # Add completion aliases where needed
     command -v docker \
