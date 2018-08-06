@@ -1,5 +1,5 @@
 [alias]
-    ai = "!git -c color.status=always status --short | sed -n '/^\\x1B\\[32/!p' | fzf-tmux --ansi -m | awk '{ print $2 }' | xargs --no-run-if-empty git add"
+    ai = "!git -c color.status=always status --short | sed -n '/^\\x1B\\[32m[A-Z]\\x1B\\[m  /!p' | fzf-tmux --ansi -m | awk '{ print $2 }' | xargs --no-run-if-empty git add"
     br = branch -a
     lg = log --oneline --decorate --all --graph
     submodule-update = submodule update --remote --merge

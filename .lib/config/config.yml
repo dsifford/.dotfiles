@@ -30,7 +30,7 @@
     $XDG_DATA_HOME/task/hooks: config/task/hooks
 
     # Files
-    $HOME/.ssh/config: config/ssh/config
+    $HOME/.ssh/config: config/openssh/config
     $HOME/.vimrc: vim/.vimrc
 
 # %{OS_SPECIFIC}%

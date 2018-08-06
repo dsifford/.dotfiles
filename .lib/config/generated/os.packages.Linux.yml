@@ -107,7 +107,6 @@
     - uncrustify                 # A source code beautifier
     - unrar                      # The RAR uncompression program
     - unzip                      # For extracting and viewing files in .zip archives
-    - vlc                        # Multi-platform MPEG, VCD/DVD, and DivX player
     - w3m                        # Text-based Web browser as well as pager
     - wget                       # Network utility to retrieve files from the Web
     - xclip                      # Command line interface to the X11 clipboard

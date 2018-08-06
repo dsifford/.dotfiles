@@ -13,7 +13,6 @@ alias y='yarn'
 
 # Git
 alias git='hub'
-alias gb='git branch -a'
 alias gs='git status'
 alias gc='git checkout'
 alias gf='git fetch --all --prune'
