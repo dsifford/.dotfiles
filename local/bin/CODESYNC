@@ -5,13 +5,14 @@
 # Usage: CODESYNC (push|pull)
 #
 
+declare extensions_file="$DOTFILES"/config/vscode/extensions.txt
 declare -A installed
 declare -A saved
 
 # Update extension list if "push" arg given
 case "$1" in
     push)
-        code --list-extensions | sort > ~/.dotfiles/vscode/extensions.txt
+        code --list-extensions | sort > "$extensions_file"
         echo Updated extensions.txt.
         ;;
 esac
@@ -24,7 +25,7 @@ done
 # Get the saved extension list
 while read -r i; do
     saved["$i"]="$i"
-done < ~/.dotfiles/vscode/extensions.txt
+done < "$extensions_file"
 
 # If an installed extension is not found in the extension list, remove it.
 for i in "${installed[@]}"; do

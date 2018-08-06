@@ -13,12 +13,14 @@ shopt -s nullglob        # expand non-matching globs to a null string
 
 # Vendor sources
 sources=(
+    ~/.local/lib/bashrc.d/*.sh
+    ~/.local/lib/bashrc.d/*/*.sh
     /usr/local/share/bash-completion/bash_completion
     /usr/local/opt/fzf/shell/*.bash
     /usr/share/fzf/*.bash
 )
 
-for f in ~/.bashrc.d/* "${sources[@]}"; do
+for f in "${sources[@]}"; do
     # shellcheck source=/dev/null
     [[ -f $f ]] && . "$f"
 done

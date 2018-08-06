@@ -19,7 +19,7 @@ command -v dotbot > /dev/null || {
     exit 1
 }
 
-DOTFILES="${DOTFILES:?DOTFILES environment variable must be set to dotfiles directory}"
+DOTFILES="${DOTFILES:-~/.dotfiles}"
 
 config_dir="$DOTFILES"/.lib/config
 generated=("$config_dir"/generated/packages.*.yml)

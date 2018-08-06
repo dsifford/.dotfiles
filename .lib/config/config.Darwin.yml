@@ -4,4 +4,4 @@
 
 - link:
     # Directories
-    "~/Library/Application Support/Code/User": vscode
+    "~/Library/Application Support/Code/User": config/vscode

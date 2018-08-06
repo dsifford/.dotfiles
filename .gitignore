@@ -9,4 +9,4 @@ __pycache__
 config/ranger/plugins/__init__.py
 config/tmux/plugins
 vim/_plugins
-vscode/workspaceStorage
+config/vscode/workspaceStorage

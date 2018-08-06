@@ -5,8 +5,9 @@
 
 - clean:
     - $HOME
-    - $HOME/.local/bin
     - $XDG_CONFIG_HOME
+    - ~/.local/lib
+    - ~/.local/bin
 
 # %{GENERATED}%
 
@@ -19,19 +20,28 @@
       /keybase/private/dsifford/taskwarrior/freecinc.key.pem
 
 - merge:
-    $HOME: shell
-    $HOME/.local/bin: bin
     $XDG_CONFIG_HOME: config
+    ~/.local/lib: local/lib
+    ~/.local/bin: local/bin
+
+- merge:
+    ~/.local/bin: local/lib/bin-patched.d
+
+- merge:
+    ~/.local/bin: local/lib/bin-dockerized.d
 
 - link:
-    # Directories
-    $HOME/.vim: vim
+    # Core
+    ~/.bashrc:
+    ~/.bash_logout:
+    ~/.bash_profile:
+    ~/.vim:
+
+    # Misc
+    ~/.ssh/config: config/openssh/config
+    ~/.vimrc: vim/.vimrc
     $XDG_DATA_HOME/npm/lib/node_modules/.hooks: config/npm/hooks
     $XDG_DATA_HOME/task/hooks: config/task/hooks
-
-    # Files
-    $HOME/.ssh/config: config/openssh/config
-    $HOME/.vimrc: vim/.vimrc
 
 # %{OS_SPECIFIC}%
 
