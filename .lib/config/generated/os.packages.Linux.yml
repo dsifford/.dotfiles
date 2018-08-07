@@ -138,9 +138,9 @@
     - ncurses5-compat-libs    # System V Release 4.0 curses emulation library, ABI 5
     - ngrok                   # A tunneling, reverse proxy for developing and understanding networked, HTTP services
     - pandoc-bin              # Pandoc - executable only, without 750MB Haskell depends/makedepends
-    - pipsi                   # Wraps pip and virtualenv to install scripts
     - plex-media-server       # Plex Media Server
     - postman-bin             # Build, test, and document your APIs faster
+    - python-pipsi            # Wraps pip and virtualenv to install scripts
     - shellcheck-static       # shellcheck, without the 130MB haskell dependencies
     - shfmt                   # Format shell programs
     - spotify                 # A proprietary music streaming service
