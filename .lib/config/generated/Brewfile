@@ -74,6 +74,8 @@ brew "gnu-getopt"
 brew "gnu-sed", args: ["with-default-names"]
 # GNU version of the tar archiving utility
 brew "gnu-tar", args: ["with-default-names"]
+# GNU implementation of which utility
+brew "gnu-which"
 # ASN.1 structure parser library
 brew "libtasn1"
 # Low-level cryptographic library
