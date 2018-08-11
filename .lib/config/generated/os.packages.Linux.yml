@@ -131,6 +131,7 @@
     - gimagereader            # A graphical frontend to tesseract-ocr
     - git-extras              # GIT utilities -- repo summary, commit counting, repl, changelog population and more
     - google-chrome-dev       # The popular and trusted web browser by Google (Dev Channel)
+    - google-cloud-sdk        # Tools and libraries SDK for managing resources on the Google Cloud Platform (gcloud), plus Python/PHP appengine SDK components
     - gscreenshot             # A simple screenshot tool supporting multiple backends
     - gtkspellmm              # C++ binding for the gtkspell library
     - keybase-bin             # the Keybase Go client, filesystem, and GUI
