@@ -42,12 +42,23 @@ export npm_config_devdir="$XDG_CACHE_HOME"/node-gyp
 # fzf
 if command -v fzf >/dev/null; then
     # use ripgrep instead for better speed and ignored file support
-    export FZF_DEFAULT_COMMAND='rg --files . | sort'
-    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-    export FZF_DEFAULT_OPTS='--height 40% --reverse'
-    [ -n "$TMUX" ] && {
-        export FZF_TMUX=1
-    }
+	export FZF_DEFAULT_OPTS='
+		--height 40%
+		--reverse
+		--color fg:#F8F8F2
+		--color fg+:#F8F8F2
+		--color bg:-1
+		--color bg+:-1
+		--color hl:#50FA7B
+		--color hl+:#FFB86C
+		--color info:#BD93F9
+		--color prompt:#50FA7B
+		--color pointer:#FF79C6
+		--color marker:#FF5555
+		--color spinner:#8BE9FD
+		--color header:#8BE9FD
+	'
+	export FZF_TMUX=$( [[ -n $TMUX ]] && echo 1 || echo 0 )
 fi
 
 # rustc
