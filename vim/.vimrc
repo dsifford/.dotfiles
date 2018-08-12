@@ -161,13 +161,15 @@ command! -bang -complete=customlist,s:CompleteRg -nargs=* Rg
             \           : fzf#vim#with_preview('right:50%:hidden', '?'),
             \   <bang>0)
 
-nnoremap <A-p> :Files<CR>
+command! GFiles call fzf#run(fzf#wrap({ 'source': 'GFiles', 'options': '-m --no-sort' }))
+
+" nnoremap <A-p> :Files<CR>
 nnoremap <C-p> :GFiles<CR>
 nnoremap <C-b> :Buffers<CR>
 " Grep word under cursor
 nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
+nnoremap <silent> <A-p> <Cmd>call fzf#run(fzf#wrap({ 'source': 'cd ' . expand('%:p:h') . ' && fd -t f .' }))<CR>
 
-command! GFiles call fzf#run(fzf#wrap({ 'source': 'GFiles', 'options': '--no-sort' }))
 
 augroup dsifford_fzf
     autocmd!
@@ -179,6 +181,7 @@ augroup END
 " NERDCommenter: {{{2
 
 let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
 
 let g:NERDCustomDelimiters = {
             \ 'typescript': { 'left': '//', 'leftAlt': '/**', 'rightAlt': '*/' },

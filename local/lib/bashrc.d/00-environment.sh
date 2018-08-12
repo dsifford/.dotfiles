@@ -45,6 +45,8 @@ if command -v fzf >/dev/null; then
 	export FZF_DEFAULT_OPTS='
 		--height 40%
 		--reverse
+		--bind=ctrl-i:toggle
+		--bind=ctrl-d:backward-kill-word
 		--color fg:#F8F8F2
 		--color fg+:#F8F8F2
 		--color bg:-1
