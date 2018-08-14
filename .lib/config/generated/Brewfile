@@ -126,8 +126,6 @@ brew "pstree"
 brew "py2cairo"
 # GNOME Python bindings (based on GObject Introspection)
 brew "pygobject3"
-# File browser
-brew "ranger"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Utility that provides fast incremental file transfer
