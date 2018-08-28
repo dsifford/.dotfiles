@@ -3,17 +3,15 @@
 # Stub out "hub" when its commands conflict with better "git-extras" commands
 #
 
-if command -v hub > /dev/null; then
+command -v hub > /dev/null || return
 
-    hub() {
-        case "$1" in
-            alias)
-                command git "$@"
-                ;;
-            *)
-                command hub "$@"
-                ;;
-        esac
-    }
-
-fi
+hub() {
+	case "$1" in
+		alias)
+			command git "$@"
+			;;
+		*)
+			command hub "$@"
+			;;
+	esac
+}

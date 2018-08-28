@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead .pyre_configuration set filetype=json
+autocmd BufNewFile,BufRead .pyre_configuration,.babelrc set filetype=json

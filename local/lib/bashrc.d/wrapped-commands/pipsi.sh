@@ -4,46 +4,44 @@
 # version of python available in the PATH
 #
 
-if command -v pipsi > /dev/null; then
+command -v pipsi > /dev/null || return
 
-    pipsi() (
-        set -e
-        shopt -s nullglob failglob
+pipsi() (
+	set -e
+	shopt -s nullglob failglob
 
-        command -v python-latest > /dev/null || {
-            echo 'python-latest not found in PATH'
-            exit 1
-        }
+	command -v python-latest > /dev/null || {
+		echo 'python-latest not found in PATH'
+		exit 1
+	}
 
-        declare PIPSI_HOME="${PIPSI_HOME?:PIPSI_HOME env var not set}"
-        declare DOTFILES="${DOTFILES?:DOTFILES env var not set}"
-        declare package
+	declare PIPSI_HOME="${PIPSI_HOME?:PIPSI_HOME env var not set}"
+	declare DOTFILES="${DOTFILES?:DOTFILES env var not set}"
+	declare package
 
-        case "$1" in
-            install)
-                shift
-                command pipsi install --python "$(python-latest)" "$@"
-                ;;
-            uninstall)
-                command pipsi "$@"
-                shift
-                ;;
-            *)
-                command pipsi "$@"
-                return
-                ;;
-        esac
+	case "$1" in
+		install)
+			shift
+			command pipsi install --python "$(python-latest)" "$@"
+			;;
+		uninstall)
+			command pipsi "$@"
+			shift
+			;;
+		*)
+			command pipsi "$@"
+			return
+			;;
+	esac
 
-        {
-            echo '#'
-            echo '# THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY.'
-            echo '#'
-            echo '- pipsi:'
+	{
+		echo '#'
+		echo '# THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY.'
+		echo '#'
+		echo '- pipsi:'
 
-            for package in "$PIPSI_HOME"/*; do
-                echo "  - $(basename "$package")"
-            done
-        } > "$DOTFILES"/.lib/config/generated/packages.pipsi.yml
-    )
-
-fi
+		for package in "$PIPSI_HOME"/*; do
+			echo "  - $(basename "$package")"
+		done
+	} > "$DOTFILES"/.lib/config/generated/packages.pipsi.yml
+)

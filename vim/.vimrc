@@ -108,19 +108,6 @@ let g:colorizer_auto_filetype='css,scss'
 let g:colorizer_colornames = 0
 
 "}}}2
-" Deoplete: {{{2
-
-call deoplete#custom#option({
-            \ 'smart_case': v:true,
-            \ })
-let g:deoplete#enable_at_startup = 1
-
-call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
-
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-
-"}}}2
 " EasyAlign: {{{2
 
 nmap ga <Plug>(EasyAlign)
@@ -168,7 +155,7 @@ nnoremap <C-p> :GFiles<CR>
 nnoremap <C-b> :Buffers<CR>
 " Grep word under cursor
 nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
-nnoremap <silent> <A-p> <Cmd>call fzf#run(fzf#wrap({ 'source': 'cd ' . expand('%:p:h') . ' && fd -t f .' }))<CR>
+nnoremap <silent> <A-p> <Cmd>call fzf#run(fzf#wrap({ 'source': 'fd -t f . ' . expand('%:h') }))<CR>
 
 
 augroup dsifford_fzf
@@ -200,11 +187,10 @@ let g:netrw_alto = 0
 let g:netrw_banner = 0
 let g:netrw_home = stdpath('cache')
 let g:netrw_list_hide = netrw_gitignore#Hide()
-let g:netrw_liststyle= 3
 let g:netrw_preview = 1
 
 " Toggle Netrw window
-noremap <silent> <expr> <C-\> &ft ==# 'netrw' ? ':Rex<CR>' : ':Explore!<CR>'
+noremap <silent> <expr> <C-\> &ft ==# 'netrw' ? ':q<CR>' : ':Vexplore!<CR>'
 
 "}}}2
 " Polyglot: {{{2
@@ -285,8 +271,12 @@ nnoremap <F12> :Vimrc<CR>
 augroup dsifford_misc
     autocmd!
 
-    " Toggle quickfix with <Esc>
-    autocmd FileType qf nnoremap <buffer><silent> <Esc> :quit<CR>
+    " Toggle quickfix and preview window with <Esc>
+    autocmd BufEnter * if &ft ==# 'qf' || &previewwindow | nnoremap <buffer><silent> <Esc> :quit<CR> | endif
+    " autocmd FileType qf nnoremap <buffer><silent> <Esc> :quit<CR>
+
+    " Turn on cursorline for preview window
+    autocmd BufEnter * if &previewwindow | setlocal cursorline | endif
 
     " Flush the screen's buffer on exit
     autocmd VimLeave * :!clear
@@ -297,7 +287,7 @@ augroup dsifford_misc
     " FIXME: Pending the fix to php syntax
     " Fixes issues with PHP and other languages changing global foldmethod
     autocmd BufLeave * set foldmethod=manual
-    autocmd BufEnter *.php setl foldmethod=syntax
+    autocmd BufEnter *.php setlocal foldmethod=syntax
 augroup END
 
 augroup dsifford_diff_cursorline

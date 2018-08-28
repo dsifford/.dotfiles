@@ -26,11 +26,6 @@ Plug 'junegunn/fzf', { 'do': './install --bin' } | Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'w0rp/ale'
 
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-        Plug 'Shougo/neoinclude.vim'
-endif
-
 " General Enhancements
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'

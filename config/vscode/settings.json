@@ -178,8 +178,9 @@
     "window.zoomLevel": 0,
     "workbench.colorCustomizations": {
         "editorBracketMatch.background": "#FF79C680",
-        "editorBracketMatch.border": "#ff00ff"
+        "editorBracketMatch.border": "#ff00ff",
     },
     "workbench.colorTheme": "Dracula",
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "breadcrumbs.enabled": true
 }

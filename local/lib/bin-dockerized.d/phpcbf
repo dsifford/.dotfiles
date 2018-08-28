@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-docker run -i --rm -v "$(pwd)":/app --entrypoint="php" dsifford/phpcs /root/phpcbf.phar --basepath=. "$@"

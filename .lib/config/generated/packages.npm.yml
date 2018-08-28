@@ -2,6 +2,7 @@
 # THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY.
 #
 - npm:
+  - ndb
   - npm-check
   - prettier
   - quicktype

@@ -13,7 +13,7 @@ terminal-test() {
 			'\n\tBlink:|\e[5mThis text is blinking.\e[0m' \
 			'\n\tReverse:|\e[7mThis text is inverted.\e[0m' \
 			'\n\tStrikethrough:|\e[9mThis text is strikethrough.\e[0m' \
-			| column --table -s\|
+			| column -t -s\|
 
 	echo
 	echo 'Truecolor Support Test (should be a smooth color transition)'

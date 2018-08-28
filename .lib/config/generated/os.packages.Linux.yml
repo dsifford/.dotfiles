@@ -19,6 +19,7 @@
     - atool                      # A script for managing file archives of various types
     - aws-cli                    # Universal Command Line Interface for Amazon Web Services
     - bash-completion            # Programmable completion for the bash shell
+    - bat                        # cat clone with Git integration and syntax highlighting support
     - bind-tools                 # The ISC DNS tools
     - blueman                    # GTK+ Bluetooth Manager
     - bluez-firmware             # Firmwares for Broadcom BCM203x and STLC2300 Bluetooth chips
@@ -100,6 +101,7 @@
     - termite                    # A simple VTE-based terminal
     - terraform                  # Tool for building, changing, and versioning infrastructure safely and efficiently
     - time                       # Utility for monitoring a program's use of system resources
+    - tldr                       # Command line client for tldr, a collection of simplified and community-driven man pages.
     - tmux                       # A terminal multiplexer
     - transmission-cli           # Fast, easy, and free BitTorrent client (CLI tools, daemon and web client)
     - tree                       # A directory listing program displaying a depth indented list of files
@@ -131,7 +133,7 @@
     - gimagereader            # A graphical frontend to tesseract-ocr
     - git-extras              # GIT utilities -- repo summary, commit counting, repl, changelog population and more
     - google-chrome-dev       # The popular and trusted web browser by Google (Dev Channel)
-    - google-cloud-sdk        # Tools and libraries SDK for managing resources on the Google Cloud Platform (gcloud), plus Python/PHP appengine SDK components
+    - google-cloud-sdk        # A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq.
     - gscreenshot             # A simple screenshot tool supporting multiple backends
     - gtkspellmm              # C++ binding for the gtkspell library
     - keybase-bin             # the Keybase Go client, filesystem, and GUI
@@ -139,6 +141,7 @@
     - ncurses5-compat-libs    # System V Release 4.0 curses emulation library, ABI 5
     - ngrok                   # A tunneling, reverse proxy for developing and understanding networked, HTTP services
     - pandoc-bin              # Pandoc - executable only, without 750MB Haskell depends/makedepends
+    - php-codesniffer         # PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files to detect and fix violations of a defined set of coding standards.
     - plex-media-server       # Plex Media Server
     - postman-bin             # Build, test, and document your APIs faster
     - python-pipsi            # Wraps pip and virtualenv to install scripts
