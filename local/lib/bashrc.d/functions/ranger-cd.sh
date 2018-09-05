@@ -13,6 +13,8 @@ if command -v ranger > /dev/null; then
     }
 
     # <C-o> launches ranger-cd
-    bind '"\C-o":"ranger-cd\n"'
+    bind -x '"\C-o": "ranger-cd"'
+    # FIXME: temp fix for osx since above doesn't work for whatever reason
+    bind -x '"\C-p": "ranger-cd"'
 
 fi
