@@ -11,11 +11,10 @@ find "${XDG_CACHE_HOME:-$HOME/.cache}" -type d -empty -delete
 
 # Clear out history files from session
 __misc_history_files=(
-    ~/.bash_history
-    ~/.python_history
+	~/.bash_history
+	~/.python_history
 )
 for __file in "${__misc_history_files[@]}"; do
-    rm -f "$__file"
+	rm -f "$__file"
 done
 unset __file __misc_history_files
-

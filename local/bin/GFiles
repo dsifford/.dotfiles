@@ -9,15 +9,15 @@ set -e
 root_dir="$(git rev-parse --show-toplevel 2>/dev/null)"
 
 comm -23 \
-    <(
-        # All files versioned in git
-        #   INCLUDING untracked
-        #   EXCLUDING gitignored files
-        git ls-files -co --exclude-standard "$root_dir" | sort
-     ) \
-    <(
-        # EXCLUDE from the above output..
-        #   all tracked files that were deleted, whose deletion is currently
-        #   untracked.
-        git ls-files -d "$root_dir" | sort
-    )
+	<(
+		# All files versioned in git
+		#   INCLUDING untracked
+		#   EXCLUDING gitignored files
+		git ls-files -co --exclude-standard "$root_dir" | sort
+	 ) \
+	<(
+		# EXCLUDE from the above output..
+		#   all tracked files that were deleted, whose deletion is currently
+		#   untracked.
+		git ls-files -d "$root_dir" | sort
+	)

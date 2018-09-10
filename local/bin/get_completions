@@ -11,8 +11,6 @@ declare -a COMP_WORDS=("$@")
 declare -i COMP_CWORD=$((${#COMP_WORDS[@]} - 1))
 declare -a COMPREPLY
 
-declare completion
-
 # load bash-completion if necessary
 declare -F _completion_loader &>/dev/null || {
     declare src
@@ -26,9 +24,7 @@ declare -F _completion_loader &>/dev/null || {
 
 _completion_loader "$1"
 
-completion=$(complete -p "$1" 2>/dev/null | awk '{ print $(NF-1) }')
-
-"$completion"
+complete -p "$1" 2>/dev/null | awk '{ print $(NF-1) }'
 
 printf '%s\n' "${COMPREPLY[@]}" | LC_ALL=C sort -u
 
