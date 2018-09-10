@@ -1,12 +1,10 @@
 " Helper that unloads, reloads, and repaints syntax on demand
 function! vimrc#ReloadSyntax()
-    LanguageClientStop
     let l:current_file = expand('%:p')
     write
     Reload
     bdelete
     exec 'edit' l:current_file
-    silent! LanguageClientStart
 endfunction
 
 " Zoom / Restore active window

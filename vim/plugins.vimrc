@@ -22,13 +22,20 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/fzf', { 'do': './install --bin' } | Plug 'junegunn/fzf.vim'
-Plug 'SirVer/ultisnips'
 Plug 'w0rp/ale'
+
+Plug 'ncm2/ncm2'
+    Plug 'roxma/nvim-yarp'
+    Plug 'ncm2/ncm2-ultisnips'
+
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+    Plug 'junegunn/fzf.vim'
+
+Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
 
 " General Enhancements
 Plug 'editorconfig/editorconfig-vim'
-Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-vinegar'
 
@@ -41,18 +48,17 @@ Plug 'vim-airline/vim-airline'
 
 " Language / Syntax
 Plug 'davidhalter/jedi-vim'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'justinmk/vim-syntax-extra'
+Plug 'lervag/vimtex'
 Plug 'mattn/emmet-vim'
 Plug 'sheerun/vim-polyglot', { 'do': './build' }
-Plug 'HerringtonDarkholme/yats.vim'
 
 " Misc
 Plug 'tpope/vim-scriptease'
 Plug 'junegunn/vader.vim'
 
 " Still not sure I want to keep
-Plug 'Shougo/echodoc.vim'
-
 call plug#end()
 
 " vim: set fdm=marker:

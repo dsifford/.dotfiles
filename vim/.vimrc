@@ -17,6 +17,7 @@ set noshowmode            " Dont show mode in the command line -- using Airline 
 set number                " Show line numbers
 set pastetoggle=<F2>      " Toggle paste mode with F2
 set shiftround            " Round indents to nearest indent size when using < or >
+set shortmess+=c          " Don't give ins-completion-menu messages
 set smartcase             " Case insensitive unless typing with caps
 set smarttab              " sw at the start of the line, sts everywhere else
 set splitbelow            " Open horizontal splits below current buffer
@@ -25,9 +26,7 @@ set termguicolors         " Force GUI colors in terminals
 set virtualedit=block     " Allow cursor to be placed in virtual positions when in visual block mode
 set winaltkeys=no         " Allows all ALT combinations to be mapped
 
-set completeopt =menu     " Use a popup menu to show the possible completions
-set completeopt+=menuone  " Use the popup menu also when there is only one match
-set completeopt+=preview  " Show extra information about the currently selected completion in the preview window
+set completeopt =menuone  " Use the popup menu also when there is only one match
 set completeopt+=noinsert " Do not insert any text for a match until the user selects a match from the menu
 set completeopt+=noselect " Do not select a match in the menu, force the user to select one from the menu
 
@@ -46,7 +45,7 @@ set softtabstop=4
 set tabstop=4
 
 let g:mapleader = ' '
-let g:maplocalleader = '\\'
+let g:maplocalleader = '\'
 
 if has('nvim')
     set inccommand=split
@@ -165,6 +164,25 @@ augroup dsifford_fzf
 augroup END
 
 "}}}2
+" NCM2: {{{2
+
+" Cycle next and prev completions
+inoremap <expr> <Tab>   pumvisible() ? '<C-n>' : '<Tab>'
+inoremap <expr> <S-Tab> pumvisible() ? '<C-p>' : '<S-Tab>'
+
+" Select completion item with <CR>
+inoremap <silent> <expr> <CR> (
+        \ (pumvisible() && empty(v:completed_item)) ? '<C-y><CR>' :
+        \ (!empty(v:completed_item)                 ? ncm2_ultisnips#expand_or('', 'n') :
+        \ '<CR>' )
+    \)
+
+augroup dsifford_ncm2
+    autocmd!
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+augroup END
+
+" }}}2
 " NERDCommenter: {{{2
 
 let g:NERDSpaceDelims = 1
@@ -196,6 +214,7 @@ noremap <silent> <expr> <C-\> &ft ==# 'netrw' ? ':q<CR>' : ':Vexplore!<CR>'
 " Polyglot: {{{2
 
 let g:polyglot_disabled = [
+            \ 'latex',
             \ 'php',
             \ 'scss',
             \ 'typescript',
@@ -209,17 +228,50 @@ let g:polyglot_disabled = [
 nmap <silent> <Leader>s <Plug>ScripteaseSynnames
 
 "}}}2
-" SuperTab: {{{2
-
-" <Tab> begins at top of list
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-"}}}2
 " UltiSnips: {{{2
 
+" FIXME: This still needs tweaking
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
+let g:UltiSnipsExpandTrigger		= '<Plug>(ultisnips_expand)'
+let g:UltiSnipsJumpForwardTrigger	= '<Tab>'
+let g:UltiSnipsJumpBackwardTrigger	= '<S-Tab>'
+let g:UltiSnipsRemoveSelectModeMappings = 0
+
+imap <expr> <c-u> ncm2_ultisnips#expand_or('<Tab>')
+smap <c-u> <Plug>(ultisnips_expand)
 
 "}}}2
+" Vimtex: {{{2
+
+let g:vimtex_compiler_latexmk = {
+    \ 'backend' : 'nvim',
+    \ 'background' : 1,
+    \ 'build_dir' : 'build',
+    \ 'callback' : 1,
+    \ 'continuous' : 1,
+    \ 'executable' : 'latexmk',
+    \ 'options' : [
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
+
+augroup dsifford_vimtex
+    autocmd!
+    autocmd Filetype tex call ncm2#register_source({
+            \ 'name': 'vimtex',
+            \ 'priority': 8,
+            \ 'scope': ['tex'],
+            \ 'mark': 'tex',
+            \ 'word_pattern': '\w+',
+            \ 'complete_pattern': g:vimtex#re#ncm2,
+            \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
+            \ })
+augroup END
+
+" }}}2
 " Vim Tmux Navigator: {{{2
 
 " Disables built-in mappings
@@ -245,15 +297,15 @@ command! ZoomToggle   call vimrc#ZoomToggle()
 " Mappings: {{{1
 
 nnoremap Y  y$
-nnoremap <silent> <Leader>l :set relativenumber!<CR>
-nnoremap <silent> <Leader><Leader>l :set list!<CR>
+nnoremap <silent> <Leader>l :set list!<CR>
+nnoremap <silent> <Leader><Leader>l :set relativenumber!<CR>
 
 " Make j and k move through soft line breaks
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " Toggle fold
-nnoremap <silent>         <CR> :pc <Bar> :exe ':silent! normal za\r'<CR>
+nnoremap <silent>         <CR> :pc <Bar> :if &foldenable <Bar> :exe ':silent! normal za\r' <Bar> :endif<CR>
 " Toggle window fullscreen
 nnoremap <silent> <Leader><CR> :ZoomToggle<CR>
 
@@ -273,7 +325,6 @@ augroup dsifford_misc
 
     " Toggle quickfix and preview window with <Esc>
     autocmd BufEnter * if &ft ==# 'qf' || &previewwindow | nnoremap <buffer><silent> <Esc> :quit<CR> | endif
-    " autocmd FileType qf nnoremap <buffer><silent> <Esc> :quit<CR>
 
     " Turn on cursorline for preview window
     autocmd BufEnter * if &previewwindow | setlocal cursorline | endif
@@ -290,6 +341,7 @@ augroup dsifford_misc
     autocmd BufEnter *.php setlocal foldmethod=syntax
 augroup END
 
+" FIXME: This is possible using an nvim syntax group extension
 augroup dsifford_diff_cursorline
     autocmd!
 
