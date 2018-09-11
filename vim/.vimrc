@@ -271,6 +271,10 @@ augroup dsifford_vimtex
             \ })
 augroup END
 
+if executable('zathura')
+    let g:vimtex_view_general_viewer = 'zathura'
+endif
+
 " }}}2
 " Vim Tmux Navigator: {{{2
 

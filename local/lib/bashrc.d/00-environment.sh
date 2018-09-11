@@ -72,8 +72,11 @@ fi
 if [[ $(uname) == Darwin ]]; then
 	unset MANPATH
 	MANPATH="/usr/local/opt/coreutils/libexec/gnuman:/usr/local/opt/gnu-getopt/share/man:$(manpath)"
-	export XDG_RUNTIME_DIR="$TMPDIR"
 	export MANPATH
+	export XDG_RUNTIME_DIR="$TMPDIR"
+    export CPPFLAGS="-I/usr/local/opt/openssl/include"
+    export LDFLAGS="-L/usr/local/opt/openssl/lib"
+    export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 else
 	# Fix tiny QT windows on 4k monitor
 	export QT_AUTO_SCREEN_SCALE_FACTOR=2

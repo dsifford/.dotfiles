@@ -3,6 +3,7 @@
 declare newpath
 declare -a path=(
 	~/.local/bin
+    /usr/local/opt/openssl/bin
 	/usr/local/opt/gnu-getopt/bin
 	/usr/local/opt/coreutils/libexec/gnubin
 	"$XDG_DATA_HOME"/{cargo,go,npm}/bin

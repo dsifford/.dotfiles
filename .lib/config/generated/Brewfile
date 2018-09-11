@@ -26,12 +26,16 @@ brew "apr-util"
 brew "python", link: false
 # Record and share terminal sessions
 brew "asciinema"
+# Archival front-end
+brew "atool"
 # Automatic configure script builder
 brew "autoconf"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Programmable completion for Bash 4.1+
 brew "bash-completion@2"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
 # Collection of portable C++ source libraries
 brew "boost"
 # GNU File, Shell, and Text utilities
@@ -42,14 +46,14 @@ brew "ctop"
 brew "diff-so-fancy"
 # Pack, ship and run any application as a lightweight container
 brew "docker", link: false
-# Create Docker hosts locally and on cloud providers
-brew "docker-machine", restart_service: true, link: false
 # YAML Parser
 brew "libyaml"
 # Interpreted, interactive, object-oriented programming language
 brew "python@2"
 # Isolated development environments using Docker
 brew "docker-compose"
+# Create Docker hosts locally and on cloud providers
+brew "docker-machine", restart_service: true, link: false
 # Command-line tool to interact with exercism.io
 brew "exercism"
 # Simple, fast and user-friendly alternative to find
@@ -140,6 +144,8 @@ brew "shellcheck"
 brew "subversion"
 # Feature-rich console based todo list manager
 brew "task"
+# Simplified and community-driven man pages
+brew "tldr"
 # Terminal multiplexer
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
@@ -161,6 +167,7 @@ cask "google-chrome-canary"
 cask "haskell-platform"
 cask "iterm2"
 cask "karabiner-elements"
+cask "key-codes"
 cask "keybase"
 cask "libreoffice"
 cask "logitech-myharmony"
