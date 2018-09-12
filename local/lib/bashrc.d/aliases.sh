@@ -15,7 +15,6 @@ alias y='yarn'
 alias git='hub'
 alias gs='git status'
 alias gc='git checkout'
-alias gf='git fetch --all --prune'
 
 # Misc
 alias bashrc='vim ~/.bashrc'

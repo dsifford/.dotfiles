@@ -19,7 +19,7 @@
     - atool                      # A script for managing file archives of various types
     - aws-cli                    # Universal Command Line Interface for Amazon Web Services
     - bash-completion            # Programmable completion for the bash shell
-    - bat                        # cat clone with Git integration and syntax highlighting support
+    - bat                        # Cat clone with Git integration and syntax highlighting support
     - bind-tools                 # The ISC DNS tools
     - blueman                    # GTK+ Bluetooth Manager
     - bluez-firmware             # Firmwares for Broadcom BCM203x and STLC2300 Bluetooth chips
@@ -124,7 +124,7 @@
     # AUR Packages
     aur:
     - albert                  # A sophisticated standalone keyboard launcher.
-    - atom-editor-bin         # Atom is a hackable text editor for the 21st century built on Electron - Precompiled binary from official repository
+    - atom-editor-bin         # Hackable text editor built on Electron (official precompiled binary)
     - autokey-py3             # Python 3 port of AutoKey, a desktop automation utility for Linux and X11 with new features.
     - ctop                    # Top-like interface for container metrics
     - doctl-bin               # A command line tool for DigitalOcean services
