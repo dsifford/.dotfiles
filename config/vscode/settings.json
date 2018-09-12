@@ -182,5 +182,6 @@
     },
     "workbench.colorTheme": "Dracula",
     "workbench.startupEditor": "none",
-    "breadcrumbs.enabled": true
+    "breadcrumbs.enabled": true,
+    "telemetry.enableTelemetry": false
 }
