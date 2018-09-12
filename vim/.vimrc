@@ -23,6 +23,7 @@ set smarttab              " sw at the start of the line, sts everywhere else
 set splitbelow            " Open horizontal splits below current buffer
 set splitright            " Open vertical splits to the right of current buffer
 set termguicolors         " Force GUI colors in terminals
+set timeoutlen=500        " Time in milliseconds to wait for a mapped sequence to complete.
 set virtualedit=block     " Allow cursor to be placed in virtual positions when in visual block mode
 set winaltkeys=no         " Allows all ALT combinations to be mapped
 
@@ -45,7 +46,7 @@ set softtabstop=4
 set tabstop=4
 
 let g:mapleader = ' '
-let g:maplocalleader = '\'
+let g:maplocalleader = ','
 
 if has('nvim')
     set inccommand=split
@@ -288,6 +289,12 @@ nnoremap <silent> <A-l> :TmuxNavigateRight<CR>
 nnoremap <silent> <A-\> :TmuxNavigatePrevious<CR>
 
 "}}}2
+" Vim Which Key: {{{2
+
+nnoremap <silent> <Leader>      :<C-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <LocalLeader> :<C-u>WhichKey  ','<CR>
+
+" }}}2
 "}}}1
 " Commands: {{{1
 

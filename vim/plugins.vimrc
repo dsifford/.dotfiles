@@ -59,6 +59,8 @@ Plug 'tpope/vim-scriptease'
 Plug 'junegunn/vader.vim'
 
 " Still not sure I want to keep
+Plug 'liuchengxu/vim-which-key'
+
 call plug#end()
 
 " vim: set fdm=marker:
