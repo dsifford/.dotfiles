@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+USAGE='
+Retrieve ssh public keys for a given user from the github api.
+
+Usage:
+	public_keys <username>
+	public_keys -h | --help
+'
+
+if ! OPTS=$(getopt -o 'h' -l 'help' -n 'public_keys' -- "$@"); then
+	exit 1
+fi
+eval set -- "$OPTS"
+unset OPTS
+
+while true; do
+	case "$1" in
+		-h | --help)
+			echo "$USAGE"
+			exit
+			;;
+		--)
+			shift
+			break
+			;;
+		*)
+			exit 1
+			;;
+	esac
+done
+
+[[ -z $1 ]] && {
+	echo You must provide a github username as the first and only argument.
+	exit 1
+}
+
+mapfile -t keys < <(
+	curl -s "https://api.github.com/users/$1/keys" | jq --raw-output 'map(.key) | .[]' 2>/dev/null
+)
+
+for i in "${!keys[@]}"; do
+	echo "====== Public Key $((i+1)) ======"
+	echo "${keys[$i]}"
+	echo
+	echo "== Key Hashes =="
+	ssh-keygen -l -E md5 -f /dev/stdin <<< "${keys[$i]}"
+	ssh-keygen -l -E sha256 -f /dev/stdin <<< "${keys[$i]}"
+	echo
+done
+

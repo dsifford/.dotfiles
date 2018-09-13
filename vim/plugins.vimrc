@@ -60,6 +60,7 @@ Plug 'junegunn/vader.vim'
 
 " Still not sure I want to keep
 Plug 'liuchengxu/vim-which-key'
+Plug 'tweekmonster/startuptime.vim'
 
 call plug#end()
 
