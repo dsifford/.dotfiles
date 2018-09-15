@@ -5,11 +5,12 @@
 # Usage: get_completions <command> [args...]
 #
 
-declare COMP_LINE="$*"
-declare -i COMP_POINT="${#COMP_LINE}"
+declare COMP_LINE=$*
+declare -i COMP_POINT=${#COMP_LINE}
 declare -a COMP_WORDS=("$@")
 declare -i COMP_CWORD=$((${#COMP_WORDS[@]} - 1))
 declare -a COMPREPLY
+declare completion
 
 # load bash-completion if necessary
 declare -F _completion_loader &>/dev/null || {
@@ -24,7 +25,9 @@ declare -F _completion_loader &>/dev/null || {
 
 _completion_loader "$1"
 
-complete -p "$1" 2>/dev/null | awk '{ print $(NF-1) }'
+completion=$(complete -p "$1" 2>/dev/null | awk '{ print $(NF-1) }')
+
+"$completion"
 
 printf '%s\n' "${COMPREPLY[@]}" | LC_ALL=C sort -u
 

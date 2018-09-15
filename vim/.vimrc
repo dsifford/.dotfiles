@@ -237,6 +237,7 @@ let g:UltiSnipsExpandTrigger		= '<Plug>(ultisnips_expand)'
 let g:UltiSnipsJumpForwardTrigger	= '<Tab>'
 let g:UltiSnipsJumpBackwardTrigger	= '<S-Tab>'
 let g:UltiSnipsRemoveSelectModeMappings = 0
+let g:UltiSnipsEnableSnipMate = 0
 
 imap <expr> <c-u> ncm2_ultisnips#expand_or('<Tab>')
 smap <c-u> <Plug>(ultisnips_expand)

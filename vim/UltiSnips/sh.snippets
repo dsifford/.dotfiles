@@ -1,0 +1,21 @@
+snippet opt "getopt (GNU)"
+if ! OPTS=$(getopt -o '${1:short options}' -l '${2:long options}' -n '${3:program name}' -- "$@"); then
+	exit 1
+fi
+eval set -- "$OPTS"
+
+while true; do
+	case "\$1" in
+		$4
+		--)
+			shift
+			break
+			;;
+		*)
+			exit 1
+		;;
+	esac
+done
+$0
+endsnippet
+

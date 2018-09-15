@@ -19,7 +19,7 @@
     - atool                      # A script for managing file archives of various types
     - aws-cli                    # Universal Command Line Interface for Amazon Web Services
     - bash-completion            # Programmable completion for the bash shell
-    - bat                        # Cat clone with Git integration and syntax highlighting support
+    - bat                        # Cat clone with syntax highlighting and git integration
     - bind-tools                 # The ISC DNS tools
     - blueman                    # GTK+ Bluetooth Manager
     - bluez-firmware             # Firmwares for Broadcom BCM203x and STLC2300 Bluetooth chips
@@ -133,7 +133,6 @@
     - gimagereader            # A graphical frontend to tesseract-ocr
     - git-extras              # GIT utilities -- repo summary, commit counting, repl, changelog population and more
     - google-chrome-beta      # The popular and trusted web browser by Google (Beta Channel)
-    - google-chrome-dev       # The popular and trusted web browser by Google (Dev Channel)
     - google-cloud-sdk        # A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq.
     - gscreenshot             # A simple screenshot tool supporting multiple backends
     - gtkspellmm              # C++ binding for the gtkspell library
