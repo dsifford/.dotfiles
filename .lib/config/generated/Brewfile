@@ -6,16 +6,7 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "manifoldco/brew"
-# GNU internationalization (i18n) and localization (l10n) library
-brew "gettext"
-# Portable Foreign Function Interface library
-brew "libffi"
-# Low-level library for pixel manipulation
-brew "pixman"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c"
-# Icons for the GNOME project
-brew "adwaita-icon-theme"
+tap "zaquestion/tap"
 # Apache Portable Runtime library
 brew "apr"
 # SSL/TLS cryptography library
@@ -26,6 +17,10 @@ brew "apr-util"
 brew "python", link: false
 # Record and share terminal sessions
 brew "asciinema"
+# GNU internationalization (i18n) and localization (l10n) library
+brew "gettext"
+# Portable Foreign Function Interface library
+brew "libffi"
 # Archival front-end
 brew "atool"
 # Automatic configure script builder
@@ -36,8 +31,8 @@ brew "bash"
 brew "bash-completion@2"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Collection of portable C++ source libraries
-brew "boost"
+# Low-level library for pixel manipulation
+brew "pixman"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Top-like interface for container metrics
@@ -88,10 +83,10 @@ brew "nettle"
 brew "gnutls", link: false
 # GNU grep, egrep and fgrep
 brew "grep", args: ["with-default-names"]
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c"
 # Toolkit for creating graphical user interfaces
 brew "gtk+3"
-# Text view with syntax, undo/redo, and text marks
-brew "gtksourceview3"
 # The Haskell Tool Stack
 brew "haskell-stack", link: false
 # Convert source code to formatted text with syntax highlighting
@@ -106,12 +101,12 @@ brew "jq"
 brew "lastpass-cli"
 # Asynchronous event library
 brew "libevent"
-# GNOME XML library
-brew "libxml2"
 # Utility for directing compilation
 brew "make", args: ["with-default-names"]
 # Mac App Store command-line interface
 brew "mas"
+# Fast and user friendly build system
+brew "meson", args: ["HEAD"]
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Utility for managing network connections
@@ -126,18 +121,10 @@ brew "parallel"
 brew "poppler"
 # Show ps output as a tree
 brew "pstree"
-# Python 2 bindings for the Cairo graphics library
-brew "py2cairo"
-# GNOME Python bindings (based on GObject Introspection)
-brew "pygobject3"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Utility that provides fast incremental file transfer
 brew "rsync"
-# Powerful, clean, object-oriented scripting language
-brew "ruby"
-# Database of common MIME types
-brew "shared-mime-info"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Version control system designed to be a better CVS
@@ -156,6 +143,8 @@ brew "uncrustify"
 brew "wget"
 # JavaScript package manager
 brew "yarn"
+# Lab wraps Git or Hub, making it simple to clone, fork, and interact with repositories on GitLab
+brew "zaquestion/tap/lab"
 cask "alfred"
 cask "atom-beta"
 cask "bartender"
@@ -171,6 +160,7 @@ cask "key-codes"
 cask "keybase"
 cask "libreoffice"
 cask "logitech-myharmony"
+cask "mactex-no-gui"
 cask "ngrok"
 cask "postman"
 cask "qlcolorcode"
@@ -179,6 +169,7 @@ cask "quicklook-csv"
 cask "quicklook-json"
 cask "sketch"
 cask "sketchpacks"
+cask "skim"
 cask "slack"
 cask "spotify"
 cask "transmission"
@@ -186,6 +177,7 @@ cask "visual-studio-code"
 cask "vmware-horizon-client"
 cask "windscribe"
 mas "Amphetamine", id: 937984704
+mas "Magnet", id: 441258766
 mas "Notability", id: 736189492
 mas "Trello", id: 1278508951
 mas "Typeeto", id: 970502923
