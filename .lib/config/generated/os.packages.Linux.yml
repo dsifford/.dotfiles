@@ -24,6 +24,7 @@
     - blueman                    # GTK+ Bluetooth Manager
     - bluez-firmware             # Firmwares for Broadcom BCM203x and STLC2300 Bluetooth chips
     - bluez-utils                # Development and debugging utilities for the bluetooth protocol stack
+    - cmake                      # A cross-platform open-source make system
     - diff-so-fancy              # Good-looking diffs with diff-highlight and more
     - docker                     # Pack, ship and run any application as a lightweight container
     - docker-compose             # Fast, isolated development environments using Docker
@@ -87,6 +88,7 @@
     - python2-pip                # The PyPA recommended tool for installing Python packages
     - python-jedi                # Awesome autocompletion for python
     - python-pip                 # The PyPA recommended tool for installing Python packages
+    - qt5-tools                  # A cross-platform application and UI framework (Development Tools, QtHelp)
     - ranger                     # A simple, vim-like file manager
     - redshift                   # Adjusts the color temperature of your screen according to your surroundings.
     - reflector                  # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
