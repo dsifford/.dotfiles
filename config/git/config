@@ -3,6 +3,7 @@
     br = branch -a
     f  = fetch --all
     lg = log --oneline --decorate --all --graph
+    s  = status
     submodule-update = submodule update --remote --merge
 
 [core]

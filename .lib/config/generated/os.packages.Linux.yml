@@ -125,7 +125,7 @@
 
     # AUR Packages
     aur:
-    - albert                  # A sophisticated standalone keyboard launcher.
+    - albert-lite             # A sophisticated standalone keyboard launcher. Without QML and VirtualBox dependencies
     - atom-editor-bin         # Hackable text editor built on Electron (official precompiled binary)
     - autokey-py3             # Python 3 port of AutoKey, a desktop automation utility for Linux and X11 with new features.
     - ctop                    # Top-like interface for container metrics

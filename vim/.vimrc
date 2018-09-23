@@ -232,12 +232,13 @@ nmap <silent> <Leader>s <Plug>ScripteaseSynnames
 " UltiSnips: {{{2
 
 " FIXME: This still needs tweaking
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
-let g:UltiSnipsExpandTrigger		= '<Plug>(ultisnips_expand)'
-let g:UltiSnipsJumpForwardTrigger	= '<Tab>'
-let g:UltiSnipsJumpBackwardTrigger	= '<S-Tab>'
+let g:UltiSnipsEditSplit                = 'tabdo'
+let g:UltiSnipsEnableSnipMate           = 0
+let g:UltiSnipsExpandTrigger            = '<Plug>(ultisnips_expand)'
+let g:UltiSnipsJumpBackwardTrigger      = '<S-Tab>'
+let g:UltiSnipsJumpForwardTrigger       = '<Tab>'
 let g:UltiSnipsRemoveSelectModeMappings = 0
-let g:UltiSnipsEnableSnipMate = 0
+let g:UltiSnipsSnippetDirectories       = [ $HOME.'/.vim/UltiSnips' ]
 
 imap <expr> <c-u> ncm2_ultisnips#expand_or('<Tab>')
 smap <c-u> <Plug>(ultisnips_expand)

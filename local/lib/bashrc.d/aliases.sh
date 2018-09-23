@@ -49,4 +49,5 @@ if [[ $(uname) != 'Darwin' ]]; then
 	alias pacman-update='sudo reflector --verbose --country "United States" -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
 	alias p='trizen'
 	alias psyu='trizen -Syu'
+	alias psyun='trizen -Syu --noconfirm'
 fi
