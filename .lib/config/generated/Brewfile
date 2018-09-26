@@ -121,6 +121,8 @@ brew "parallel"
 brew "poppler"
 # Show ps output as a tree
 brew "pstree"
+# Cross-platform application and UI framework
+brew "qt"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Utility that provides fast incremental file transfer
