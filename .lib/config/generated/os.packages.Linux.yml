@@ -117,7 +117,6 @@
     - xdotool                    # Command-line X11 automation tool
     - xorg-xinit                 # X.Org initialisation program
     - xterm                      # X Terminal Emulator
-    - yarn                       # Fast, reliable, and secure dependency management
     - zathura                    # Minimalistic document viewer
     - zathura-pdf-poppler        # Adds pdf support to zathura by using the poppler engine
     - zeal                       # An offline API documentation browser
@@ -157,3 +156,4 @@
     - unetbootin              # Create bootable Live USB drives
     - visual-studio-code-bin  # Visual Studio Code: Editor for building and debugging modern web and cloud applications (official binary version)
     - windscribe-cli          # Port of Windscribe's command line interface
+    - yarn-nightly            # Fast, reliable, and secure dependency management
