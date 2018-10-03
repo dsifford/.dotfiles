@@ -105,8 +105,6 @@ brew "libevent"
 brew "make", args: ["with-default-names"]
 # Mac App Store command-line interface
 brew "mas"
-# Fast and user friendly build system
-brew "meson", args: ["HEAD"]
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Utility for managing network connections
