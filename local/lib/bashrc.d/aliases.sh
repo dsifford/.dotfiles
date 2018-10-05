@@ -14,7 +14,7 @@ alias y='yarn'
 # Git
 alias git='hub'
 alias gs='git status'
-alias gc='git checkout'
+alias gf='git f'
 
 # Misc
 alias bashrc='vim ~/.bashrc'
