@@ -279,6 +279,8 @@ if executable('skimpdf')
     let g:vimtex_view_method = 'skim'
 endif
 
+let g:vimtex_compiler_progname = 'nvr'
+
 " }}}2
 " Vim Tmux Navigator: {{{2
 

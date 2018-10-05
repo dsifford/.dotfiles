@@ -40,177 +40,177 @@ declare -l FILE_EXTENSION_LOWER="$FILE_EXTENSION"
 # Settings
 declare -i HIGHLIGHT_SIZE_MAX=262143 # 256KiB
 declare -i HIGHLIGHT_TABWIDTH=4
-declare HIGHLIGHT_FORMAT=xterm256
+declare HIGHLIGHT_FORMAT=ansi
 declare HIGHLIGHT_STYLE='pablo'
 
 MIMETYPE="$(file --dereference --brief --mime-type -- "$FILE_PATH")"
 
 main() {
-    if [[ "$PV_IMAGE_ENABLED" == 'True' ]]; then
-        handle_image "$MIMETYPE"
-    fi
-    handle_extension
-    handle_mime "$MIMETYPE"
-    handle_fallback
+	if [[ "$PV_IMAGE_ENABLED" == 'True' ]]; then
+		handle_image "$MIMETYPE"
+	fi
+	handle_extension
+	handle_mime "$MIMETYPE"
+	handle_fallback
 }
 
 handle_extension() {
-    case "$FILE_EXTENSION_LOWER" in
-        # Archive
-        a | ace | alz | arc | arj | bz | bz2 | cab | cpio | deb | gz | jar | lha | lz | lzh | lzma | lzo | rpm | rz | t7z | tar | tbz | tbz2 | tgz | tlz | txz | tZ | tzo | war | xpi | xz | Z | zip)
-            atool --list -- "$FILE_PATH" && exit 5
-            bsdtar --list --file "$FILE_PATH" && exit 5
-            exit 1
-            ;;
-        rar)
-            # Avoid password prompt by providing empty password
-            unrar lt -p- -- "$FILE_PATH" && exit 5
-            exit 1
-            ;;
-        7z)
-            # Avoid password prompt by providing empty password
-            7z l -p -- "$FILE_PATH" && exit 5
-            exit 1
-            ;;
+	case "$FILE_EXTENSION_LOWER" in
+		# Archive
+		a | ace | alz | arc | arj | bz | bz2 | cab | cpio | deb | gz | jar | lha | lz | lzh | lzma | lzo | rpm | rz | t7z | tar | tbz | tbz2 | tgz | tlz | txz | tZ | tzo | war | xpi | xz | Z | zip)
+			atool --list -- "$FILE_PATH" && exit 5
+			bsdtar --list --file "$FILE_PATH" && exit 5
+			exit 1
+			;;
+		rar)
+			# Avoid password prompt by providing empty password
+			unrar lt -p- -- "$FILE_PATH" && exit 5
+			exit 1
+			;;
+		7z)
+			# Avoid password prompt by providing empty password
+			7z l -p -- "$FILE_PATH" && exit 5
+			exit 1
+			;;
 
-        # PDF
-        pdf)
-            # Preview as text conversion
-            pdftotext -l 10 -nopgbrk -q -- "$FILE_PATH" - && exit 5
-            exiftool "$FILE_PATH" && exit 5
-            exit 1
-            ;;
+		# PDF
+		pdf)
+			# Preview as text conversion
+			pdftotext -l 10 -nopgbrk -q -- "$FILE_PATH" - && exit 5
+			exiftool "$FILE_PATH" && exit 5
+			exit 1
+			;;
 
-        # BitTorrent
-        torrent)
-            transmission-show -- "$FILE_PATH" && exit 5
-            exit 1
-            ;;
+		# BitTorrent
+		torrent)
+			transmission-show -- "$FILE_PATH" && exit 5
+			exit 1
+			;;
 
-        # OpenDocument
-        odt | ods | odp | sxw)
-            # Preview as text conversion
-            odt2txt "$FILE_PATH" && exit 5
-            exit 1
-            ;;
+		# OpenDocument
+		odt | ods | odp | sxw)
+			# Preview as text conversion
+			odt2txt "$FILE_PATH" && exit 5
+			exit 1
+			;;
 
-        # Microsoft Word
-        docx)
-            # Convert to markdown and preview
-            highlight \
-                --replace-tabs="$HIGHLIGHT_TABWIDTH" \
-                --out-format="$HIGHLIGHT_FORMAT" \
-                --style="$HIGHLIGHT_STYLE" \
-                --syntax=md \
-                --force < <(pandoc -t gfm "$FILE_PATH") && exit 5
-            exit 1
-            ;;
+		# Microsoft Word
+		docx)
+			# Convert to markdown and preview
+			highlight \
+				--replace-tabs="$HIGHLIGHT_TABWIDTH" \
+				--out-format="$HIGHLIGHT_FORMAT" \
+				--style="$HIGHLIGHT_STYLE" \
+				--syntax=md \
+				--force < <(pandoc -t gfm "$FILE_PATH") && exit 5
+			exit 1
+			;;
 
-        # HTML
-        htm | html | xhtml)
-            # Preview as text conversion
-            w3m -dump "$FILE_PATH" && exit 5
-            lynx -dump -- "$FILE_PATH" && exit 5
-            elinks -dump "$FILE_PATH" && exit 5
-            ;; # Continue with next handler on failure
-        tsx)
-            if [[ "$(stat --printf='%s' -- "$FILE_PATH")" -gt "$HIGHLIGHT_SIZE_MAX" ]]; then
-                exit 2
-            fi
-            highlight \
-                --force \
-                --replace-tabs="$HIGHLIGHT_TABWIDTH" \
-                --out-format="$HIGHLIGHT_FORMAT" \
-                --style="$HIGHLIGHT_STYLE" \
+		# HTML
+		htm | html | xhtml)
+			# Preview as text conversion
+			w3m -dump "$FILE_PATH" && exit 5
+			lynx -dump -- "$FILE_PATH" && exit 5
+			elinks -dump "$FILE_PATH" && exit 5
+			;; # Continue with next handler on failure
+		tsx)
+			if [[ "$(stat --printf='%s' -- "$FILE_PATH")" -gt "$HIGHLIGHT_SIZE_MAX" ]]; then
+				exit 2
+			fi
+			highlight \
+				--force \
+				--replace-tabs="$HIGHLIGHT_TABWIDTH" \
+				--out-format="$HIGHLIGHT_FORMAT" \
+				--style="$HIGHLIGHT_STYLE" \
 				--syntax=ts \
-                -- "$FILE_PATH" && exit 5
-            exit 2
-            ;;
-    esac
+				-- "$FILE_PATH" && exit 5
+			exit 2
+			;;
+	esac
 }
 
 handle_image() {
-    local mimetype="$1"
-    case "$mimetype" in
-        # SVG
-        image/svg+xml)
-            convert "$FILE_PATH" "$IMAGE_CACHE_PATH" && exit 6
-            exit 1
-            ;;
+	local mimetype="$1"
+	case "$mimetype" in
+		# SVG
+		image/svg+xml)
+			convert "$FILE_PATH" "$IMAGE_CACHE_PATH" && exit 6
+			exit 1
+			;;
 
-        # Image
-        image/*)
-            local orientation
-            orientation="$(identify -format '%[EXIF:Orientation]\n' -- "$FILE_PATH")"
-            # If orientation data is present and the image actually
-            # needs rotating ("1" means no rotation)...
-            if [[ -n "$orientation" && "$orientation" != 1 ]]; then
-                # ...auto-rotate the image according to the EXIF data.
-                convert -- "$FILE_PATH" -auto-orient "$IMAGE_CACHE_PATH" && exit 6
-            fi
+		# Image
+		image/*)
+			local orientation
+			orientation="$(identify -format '%[EXIF:Orientation]\n' -- "$FILE_PATH")"
+			# If orientation data is present and the image actually
+			# needs rotating ("1" means no rotation)...
+			if [[ -n "$orientation" && "$orientation" != 1 ]]; then
+				# ...auto-rotate the image according to the EXIF data.
+				convert -- "$FILE_PATH" -auto-orient "$IMAGE_CACHE_PATH" && exit 6
+			fi
 
-            # `w3mimgdisplay` will be called for all images (unless overriden as above),
-            # but might fail for unsupported types.
-            exit 7
-            ;;
+			# `w3mimgdisplay` will be called for all images (unless overriden as above),
+			# but might fail for unsupported types.
+			exit 7
+			;;
 
-        # Video
-        video/*)
-            # Thumbnail
-            ffmpegthumbnailer -i "$FILE_PATH" -o "$IMAGE_CACHE_PATH" -s 0 && exit 6
-            exit 1
-            ;;
+		# Video
+		video/*)
+			# Thumbnail
+			ffmpegthumbnailer -i "$FILE_PATH" -o "$IMAGE_CACHE_PATH" -s 0 && exit 6
+			exit 1
+			;;
 
-        # PDF
-        application/pdf)
-            pdftoppm -f 1 -l 1 \
-                -scale-to-x 1920 \
-                -scale-to-y -1 \
-                -singlefile \
-                -jpeg -tiffcompression jpeg \
-                -- "$FILE_PATH" "${IMAGE_CACHE_PATH%.*}" \
-                && exit 6
-            exit 1
-            ;;
-    esac
+		# PDF
+		application/pdf)
+			pdftoppm -f 1 -l 1 \
+				-scale-to-x 1920 \
+				-scale-to-y -1 \
+				-singlefile \
+				-jpeg -tiffcompression jpeg \
+				-- "$FILE_PATH" "${IMAGE_CACHE_PATH%.*}" \
+				&& exit 6
+			exit 1
+			;;
+	esac
 }
 
 handle_mime() {
-    local mimetype="$1"
-    case "$mimetype" in
-        # Text
-        text/* | */xml)
-            if [[ "$(stat --printf='%s' -- "$FILE_PATH")" -gt "$HIGHLIGHT_SIZE_MAX" ]]; then
-                exit 2
-            fi
-            highlight \
-                --force \
-                --replace-tabs="$HIGHLIGHT_TABWIDTH" \
-                --out-format="$HIGHLIGHT_FORMAT" \
-                --style="$HIGHLIGHT_STYLE" \
-                -- "$FILE_PATH" && exit 5
-            exit 2
-            ;;
+	local mimetype="$1"
+	case "$mimetype" in
+		# Text
+		text/* | */xml)
+			if [[ "$(stat --printf='%s' -- "$FILE_PATH")" -gt "$HIGHLIGHT_SIZE_MAX" ]]; then
+				exit 2
+			fi
+			highlight \
+				--force \
+				--replace-tabs="$HIGHLIGHT_TABWIDTH" \
+				--out-format="$HIGHLIGHT_FORMAT" \
+				--style="$HIGHLIGHT_STYLE" \
+				-- "$FILE_PATH" && exit 5
+			exit 2
+			;;
 
-        # Image
-        image/*)
-            # Preview as text conversion
-            exiftool "$FILE_PATH" && exit 5
-            exit 1
-            ;;
+		# Image
+		image/*)
+			# Preview as text conversion
+			exiftool "$FILE_PATH" && exit 5
+			exit 1
+			;;
 
-        # Video and audio
-        video/* | audio/*)
-            mediainfo "$FILE_PATH" && exit 5
-            exiftool "$FILE_PATH" && exit 5
-            exit 1
-            ;;
-    esac
+		# Video and audio
+		video/* | audio/*)
+			mediainfo "$FILE_PATH" && exit 5
+			exiftool "$FILE_PATH" && exit 5
+			exit 1
+			;;
+	esac
 }
 
 handle_fallback() {
-    echo '----- File Type Classification -----' && file --dereference --brief -- "$FILE_PATH" && exit 5
-    exit 1
+	echo '----- File Type Classification -----' && file --dereference --brief -- "$FILE_PATH" && exit 5
+	exit 1
 }
 
 main
