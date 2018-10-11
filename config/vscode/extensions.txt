@@ -20,15 +20,16 @@ justusadam.language-haskell
 kisstkondoros.vscode-codemetrics
 kumar-harsh.graphql-for-vscode
 LaurentTreguier.uncrustify
+mauve.terraform
 ms-python.python
 ms-vscode.cpptools
 persoderlind.vscode-phpcbf
 PeterJausovec.vscode-docker
+quicktype.quicktype
 richie5um2.vscode-sort-json
 rust-lang.rust
 shinnn.stylelint
 sidneys1.gitconfig
-SirTobi.pegjs-language
 sysoev.language-stylus
 timonwong.shellcheck
 Tyriar.sort-lines
