@@ -122,9 +122,15 @@ imap <C-e><C-e> <Plug>(emmet-expand-abbr)
 imap <C-e><C-]> <Plug>(emmet-move-next)
 imap <C-e><C-[> <Plug>(emmet-move-prev)
 
+let g:user_emmet_settings = {
+\  'markdown' : {
+\      'extends' : 'html',
+\  },
+\}
+
 augroup emmet_vim
     autocmd!
-    autocmd FileType html,xml,css,scss,sass,typescriptreact EmmetInstall
+    autocmd FileType html,xml,markdown,css,scss,sass,tsx EmmetInstall
 augroup END
 
 "}}}2

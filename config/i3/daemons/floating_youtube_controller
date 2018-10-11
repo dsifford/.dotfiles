@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-from enum import Enum
+from enum import Enum, auto
 
 import i3ipc
-
 from Xlib import display
 
 FLOATING_NAME = "FLOATING_PLAYER_WINDOW"
 FLOATING_MARK = "FLOATING_ACTIVE"
+CROSS_MARK = "CROSS"
 
 
 class Padding(Enum):
@@ -14,6 +14,13 @@ class Padding(Enum):
     RIGHT = 20
     BOTTOM = 20
     LEFT = 20
+
+
+class Position(Enum):
+    TOP = auto()
+    RIGHT = auto()
+    BOTTOM = auto()
+    LEFT = auto()
 
 
 def has_floating_fullscreen_window(self, workspace) -> bool:
@@ -44,20 +51,26 @@ def get_floating_window(self):
     return next(iter(self.get_tree().find_named(FLOATING_NAME)), None)
 
 
-def get_x_position(output_rect, rect) -> int:
+def get_x_position(output_rect, rect, explicit=None, cross=False) -> int:
+    left_value = output_rect.x + Padding.LEFT.value
+    right_value = (output_rect.x + output_rect.width) - (
+        rect.width + Padding.RIGHT.value
+    )
     on_left = output_rect.x + (output_rect.width / 2) > rect.x + (rect.width / 2)
+    if explicit is Position.LEFT:
+        return left_value
+    if explicit is Position.RIGHT:
+        return right_value
     if on_left:
-        return output_rect.x + Padding.LEFT.value
-    else:
-        return (output_rect.x + output_rect.width) - (rect.width + Padding.RIGHT.value)
+        return left_value if not cross else right_value
+    return right_value if not cross else left_value
 
 
-def get_y_position(output_rect, rect) -> int:
+def get_y_position(output_rect, rect, explicit=None) -> int:
     on_top = rect.y + (rect.height / 2) > output_rect.y + (output_rect.height / 2)
-    if on_top:
+    if on_top and explicit is not Position.BOTTOM or explicit is Position.TOP:
         return output_rect.y + Padding.TOP.value
-    else:
-        return output_rect.y + output_rect.height - rect.height - Padding.BOTTOM.value
+    return output_rect.y + output_rect.height - rect.height - Padding.BOTTOM.value
 
 
 def mouse_is_hovered(rect) -> bool:
@@ -68,7 +81,9 @@ def mouse_is_hovered(rect) -> bool:
     )
 
 
-def translate_window(self, container) -> None:
+def translate_window(
+    self, container, explicit_x=None, explicit_y=None, cross=False
+) -> None:
     current_workspace = self.get_tree().find_focused().workspace().name
     rect = container.props.rect
     output = next(
@@ -78,8 +93,8 @@ def translate_window(self, container) -> None:
     container.command(
         (
             "move position"
-            f" {get_x_position(output.rect, rect)}"
-            f" {get_y_position(output.rect, rect)};"
+            f" {get_x_position(output.rect, rect, explicit_x, cross)}"
+            f" {get_y_position(output.rect, rect, explicit_y)};"
             " focus tiling"
         )
     )
@@ -109,7 +124,9 @@ def on_window_focus(self, e) -> None:
         or not mouse_is_hovered(e.container.props.rect)
     ):
         return
-    translate_window(self, yt_window)
+    yt_window.command(f"mark --add --toggle {CROSS_MARK}")
+    cross = CROSS_MARK in yt_window.marks
+    translate_window(self, yt_window, cross=cross)
 
 
 def on_workspace_focus(self, e) -> None:
@@ -121,9 +138,9 @@ def on_workspace_focus(self, e) -> None:
         or yt_window.workspace().id == e.current.id
     ):
         return
-    yt_window.command("unmark")
-    translate_window(self, get_floating_window(self))
-    yt_window.command(f"mark {FLOATING_MARK}")
+    yt_window.command(f"unmark {FLOATING_MARK}")
+    translate_window(self, get_floating_window(self), explicit_y=Position.BOTTOM)
+    yt_window.command(f"mark --add {FLOATING_MARK}")
 
 
 i3 = i3ipc.Connection()
