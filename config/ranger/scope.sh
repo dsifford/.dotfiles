@@ -46,10 +46,10 @@ declare HIGHLIGHT_STYLE='pablo'
 MIMETYPE="$(file --dereference --brief --mime-type -- "$FILE_PATH")"
 
 main() {
+	handle_extension
 	if [[ "$PV_IMAGE_ENABLED" == 'True' ]]; then
 		handle_image "$MIMETYPE"
 	fi
-	handle_extension
 	handle_mime "$MIMETYPE"
 	handle_fallback
 }
@@ -81,6 +81,16 @@ handle_extension() {
 			exit 1
 			;;
 
+		# SVG
+		svg)
+			prettier --parser babylon "$FILE_PATH" \
+				| highlight \
+					--force \
+					--out-format="$HIGHLIGHT_FORMAT" \
+					--style="$HIGHLIGHT_STYLE" \
+					--syntax=xml && exit 5
+			exit 1
+			;;
 		# BitTorrent
 		torrent)
 			transmission-show -- "$FILE_PATH" && exit 5
@@ -132,12 +142,6 @@ handle_extension() {
 handle_image() {
 	local mimetype="$1"
 	case "$mimetype" in
-		# SVG
-		image/svg+xml)
-			convert "$FILE_PATH" "$IMAGE_CACHE_PATH" && exit 6
-			exit 1
-			;;
-
 		# Image
 		image/*)
 			local orientation

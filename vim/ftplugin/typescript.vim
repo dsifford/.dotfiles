@@ -1,3 +1,5 @@
+setlocal foldmethod=syntax
+
 let b:ale_fixers = [
     \ 'prettier',
     \ 'tslint',
@@ -11,3 +13,4 @@ let b:ale_linters = [
 if expand('%:t:r') =~# '[-.]test$'
     UltiSnipsAddFiletypes javascript-jest
 endif
+

@@ -1,5 +1,4 @@
 setlocal commentstring=//\ %s
-setlocal nofoldenable
 setlocal foldmethod=syntax
 
 let b:ale_fixers = [
@@ -11,5 +10,5 @@ let b:ale_linters = [
     \ 'php',
     \ ]
 
-let b:php_folding   = 1 " Fold classes and functions
+let g:php_folding   = 1 " Fold classes and functions
 let b:php_baselib   = 1 " Highlight baselib functions

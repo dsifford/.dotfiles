@@ -8,6 +8,7 @@ colorscheme dracula
 
 set autowrite             " Automatically save before commands like :next and :make
 set clipboard=unnamedplus " Use system clipboard
+set foldlevelstart=99     " Default to no folds closed on new buffers
 set hidden                " Use hidden buffers liberally
 set history=200           " Truncate history at 200 lines
 set ignorecase            " Required for proper smartcase functionality
@@ -47,6 +48,8 @@ set tabstop=4
 
 let g:mapleader = ' '
 let g:maplocalleader = ','
+
+let g:tex_flavor = 'latex' " Never use plaintex flavor
 
 if has('nvim')
     set inccommand=split
