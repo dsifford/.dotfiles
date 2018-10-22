@@ -43,8 +43,6 @@ brew "diff-so-fancy"
 brew "docker", link: false
 # YAML Parser
 brew "libyaml"
-# Interpreted, interactive, object-oriented programming language
-brew "python@2"
 # Isolated development environments using Docker
 brew "docker-compose"
 # Create Docker hosts locally and on cloud providers
@@ -85,6 +83,8 @@ brew "gnutls", link: false
 brew "grep", args: ["with-default-names"]
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c"
+# Interpreted, interactive, object-oriented programming language
+brew "python@2"
 # Toolkit for creating graphical user interfaces
 brew "gtk+3"
 # The Haskell Tool Stack
