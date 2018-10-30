@@ -2,6 +2,7 @@
 # THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY.
 #
 - npm:
+  - '@google-cloud/functions-emulator'
   - ndb
   - npm-check
   - prettier

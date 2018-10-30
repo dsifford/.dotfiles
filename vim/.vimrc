@@ -4,10 +4,10 @@ filetype plugin indent on
 source ~/.vim/plugins.vimrc
 
 " Options: {{{1
-colorscheme dracula
 
 set autowrite             " Automatically save before commands like :next and :make
 set clipboard=unnamedplus " Use system clipboard
+set cursorline            " Highlight the cursor line
 set foldlevelstart=99     " Default to no folds closed on new buffers
 set hidden                " Use hidden buffers liberally
 set history=200           " Truncate history at 200 lines
@@ -28,9 +28,11 @@ set timeoutlen=500        " Time in milliseconds to wait for a mapped sequence t
 set virtualedit=block     " Allow cursor to be placed in virtual positions when in visual block mode
 set winaltkeys=no         " Allows all ALT combinations to be mapped
 
-set completeopt =menuone  " Use the popup menu also when there is only one match
+set completeopt =menu     " Use a popup menu to show the possible completions
+set completeopt+=menuone  " Use the popup menu also when there is only one match
 set completeopt+=noinsert " Do not insert any text for a match until the user selects a match from the menu
 set completeopt+=noselect " Do not select a match in the menu, force the user to select one from the menu
+set completeopt+=preview  " Show extra information about the completion in the preview window
 
 set listchars =tab:▸\ ,
 set listchars+=eol:¬
@@ -46,14 +48,22 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
-let g:mapleader = ' '
+" Custom foldtext (TODO: Improve this)
+set foldtext=vimrc#foldtext()
+
+let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
 
-let g:tex_flavor = 'latex' " Never use plaintex flavor
+let g:dracula_cursorline = 0 " Disable cursorline background highlight
+let g:tex_flavor = 'latex'   " Never use plaintex flavor
+let g:which_key_map = {}     " Mapping dictionary for vim-which-key
 
 if has('nvim')
     set inccommand=split
 endif
+
+colorscheme dracula
+
 "}}}1
 " Plugin Settings: {{{1
 " Airline: {{{2
@@ -79,19 +89,22 @@ endif
 let g:ale_completion_enabled = 1
 let g:ale_linters_explicit = 1
 
+let g:ale_sign_error   = '⮿'
+let g:ale_sign_warning = '⚠'
+let g:ale_sign_info    = '🛈'
+
 let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
 
-let g:ale_javascript_prettier_options = '--config-precedence prefer-file --single-quote --trailing-comma es5 --tab-width 4 --prose-wrap always'
+let g:ale_javascript_prettier_options = '--config-precedence=prefer-file --prose-wrap=always --single-quote --tab-width=4 --trailing-comma=es5'
 
-let g:airline#extensions#ale#enabled = 1
+nnoremap <silent> <Leader>f :ALEFix<CR>
 
-nmap          <Leader>f <Plug>(ale_fix)
-nmap <silent> <C-k>     <Plug>(ale_previous_wrap)
-nmap <silent> <C-j>     <Plug>(ale_next_wrap)
+nnoremap <silent> <C-k> :ALEPreviousWrap<CR>
+nnoremap <silent> <C-j> :ALENextWrap<CR>
 
-nmap <silent> K         <Plug>(ale_hover)
-nmap <silent> gd        <Plug>(ale_go_to_definition)
-nmap <silent> gr        <Plug>(ale_find_references)
+nnoremap <silent> gd :ALEGoToDefinition<CR>
+nnoremap <silent> gD :ALEGoToDefinitionInTab<CR>
+nnoremap <silent> gr :ALEFindReferences<CR>
 
 " TODO: Waiting for feature support
 " nnoremap <silent> gs        :call LanguageClient_textDocument_documentSymbol()<CR>
@@ -157,14 +170,27 @@ command! -bang -complete=customlist,s:CompleteRg -nargs=* Rg
             \           : fzf#vim#with_preview('right:50%:hidden', '?'),
             \   <bang>0)
 
+
+" TODO: add bat previewer...
+" @see: https://github.com/sharkdp/bat/issues/175
+"
+" command! -bang -complete=customlist,s:CompleteRg -nargs=* Rg
+"             \ call fzf#vim#grep(
+"             \   'rg --column --line-number --no-heading --color=always --smart-case ' . <q-args> . ' ' . system('git rev-parse --show-toplevel 2>/dev/null || pwd'), 1,
+"             \   <bang>0 ? 'options': [ '--preview', 'bat -p --color always {}']
+"             \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+"             \   <bang>0)
+
+
 command! GFiles call fzf#run(fzf#wrap({ 'source': 'GFiles', 'options': '-m --no-sort' }))
 
-" nnoremap <A-p> :Files<CR>
 nnoremap <C-p> :GFiles<CR>
 nnoremap <C-b> :Buffers<CR>
-" Grep word under cursor
+
+nnoremap <silent> <A-p> :call fzf#run(fzf#wrap({ 'source': 'fd -t f . ' . expand('%:h') }))<CR>
+
+let g:which_key_map.r = 'Grep word under cursor'
 nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
-nnoremap <silent> <A-p> <Cmd>call fzf#run(fzf#wrap({ 'source': 'fd -t f . ' . expand('%:h') }))<CR>
 
 
 augroup dsifford_fzf
@@ -224,6 +250,7 @@ noremap <silent> <expr> <C-\> &ft ==# 'netrw' ? ':q<CR>' : ':Vexplore!<CR>'
 " Polyglot: {{{2
 
 let g:polyglot_disabled = [
+            \ 'json',
             \ 'latex',
             \ 'php',
             \ 'scss',
@@ -249,8 +276,8 @@ let g:UltiSnipsJumpForwardTrigger       = '<Tab>'
 let g:UltiSnipsRemoveSelectModeMappings = 0
 let g:UltiSnipsSnippetDirectories       = [ $HOME.'/.vim/UltiSnips' ]
 
-imap <expr> <c-u> ncm2_ultisnips#expand_or('<Tab>')
-smap <c-u> <Plug>(ultisnips_expand)
+imap <expr> <C-u> ncm2_ultisnips#expand_or('<Tab>')
+smap        <C-u> <Plug>(ultisnips_expand)
 
 "}}}2
 " Vimtex: {{{2
@@ -305,16 +332,32 @@ nnoremap <silent> <A-\> :TmuxNavigatePrevious<CR>
 "}}}2
 " Vim Which Key: {{{2
 
-nnoremap <silent> <Leader>      :<C-u>WhichKey '<Space>'<CR>
-nnoremap <silent> <LocalLeader> :<C-u>WhichKey  ','<CR>
+call which_key#register('<Space>', 'g:which_key_map')
+
+nnoremap <silent> <Leader> :<C-u>silent! WhichKey '<Space>'<CR>
+vnoremap <silent> <Leader> :<C-u>silent! WhichKeyVisual '<Space>'<CR>
+
+nnoremap <silent> <LocalLeader> :<C-u>silent! WhichKey ','<CR>
+vnoremap <silent> <LocalLeader> :<C-u>silent! WhichKeyVisual ','<CR>
+
+let g:which_key_map.b = {
+      \ 'name' : '+buffer' ,
+      \ '1' : ['b1'        , 'buffer 1']        ,
+      \ '2' : ['b2'        , 'buffer 2']        ,
+      \ 'd' : ['bd'        , 'delete-buffer']   ,
+      \ 'f' : ['bfirst'    , 'first-buffer']    ,
+      \ 'h' : ['Startify'  , 'home-buffer']     ,
+      \ 'l' : ['blast'     , 'last-buffer']     ,
+      \ 'n' : ['bnext'     , 'next-buffer']     ,
+      \ 'p' : ['bprevious' , 'previous-buffer'] ,
+      \ '?' : ['Buffers'   , 'fzf-buffer']      ,
+      \ }
 
 " }}}2
 "}}}1
 " Commands: {{{1
 
 command! Reload source $MYVIMRC
-command! Vimrc  vsplit ~/.dotfiles/vim/.vimrc
-
 command! ReloadSyntax call vimrc#ReloadSyntax()
 command! ZoomToggle   call vimrc#ZoomToggle()
 
@@ -322,27 +365,41 @@ command! ZoomToggle   call vimrc#ZoomToggle()
 " Mappings: {{{1
 
 nnoremap Y  y$
-nnoremap <silent> <Leader>l :set list!<CR>
-nnoremap <silent> <Leader><Leader>l :set relativenumber!<CR>
 
 " Make j and k move through soft line breaks
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " Toggle fold
-nnoremap <silent>         <CR> :pc <Bar> :if &foldenable <Bar> :exe ':silent! normal za\r' <Bar> :endif<CR>
-" Toggle window fullscreen
-nnoremap <silent> <Leader><CR> :ZoomToggle<CR>
+nnoremap <silent> <CR> :pc <Bar> :if &foldenable <Bar> :exe ':silent! normal za\r' <Bar> :endif<CR>
 
-" Search project with ripgrep
-nnoremap <Leader>/ :Rg<Space>
-
+" Save and quit all
 nnoremap ZA :confirm wqall<CR>
 
 " Open vimrc with F12
-nnoremap <F12> :Vimrc<CR>
+noremap <silent> <F12> :call vimrc#toggleEditVimrc()<CR>
+
+" Select the next/prev matches while performing a search
+cnoremap <C-j> <C-g>
+cnoremap <C-k> <C-t>
 
 "}}}1
+" Leader Mappings: {{{1
+
+let g:which_key_map.l = { 'name': '+settings' }
+nnoremap <silent> <Leader>ll :set list!<CR>
+nnoremap <silent> <Leader><Leader>ln :set relativenumber!<CR>
+
+let g:which_key_map.F = 'Toggle first-level folds in buffer'
+nnoremap <silent> <Leader>F <Cmd> if get(b:, 'foldstate', 1) <Bar> %foldc <Bar> else <Bar> %foldo <Bar> endif <Bar> let b:foldstate=!get(b:, 'foldstate', 1)<CR>
+
+let g:which_key_map['<Enter>'] = 'Toggle buffer fullscreen'
+nnoremap <silent> <Leader><Enter> :ZoomToggle<CR>
+
+let g:which_key_map['/'] = 'Search project with ripgrep'
+nnoremap <Leader>/ :Rg<Space>
+
+" }}}1
 " Autocommands: {{{1
 
 augroup dsifford_misc
@@ -364,6 +421,10 @@ augroup dsifford_misc
     " Fixes issues with PHP and other languages changing global foldmethod
     autocmd BufLeave * set foldmethod=manual
     autocmd BufEnter *.php setlocal foldmethod=syntax
+
+    " Sets the foldlevel from 99 (set above) to the number of the highest fold
+    " in the buffer
+    autocmd BufRead * :normal zr
 augroup END
 
 " FIXME: This is possible using an nvim syntax group extension

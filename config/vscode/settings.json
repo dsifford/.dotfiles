@@ -102,7 +102,6 @@
             "text": "HACK:"
         }
     ],
-    "typescript.autoImportSuggestions.enabled": false,
     "typescript.tsdk":
         "/home/dsifford/.local/share/npm/lib/node_modules/typescript/lib",
     "uncrustify.configPath": "/home/dsifford/.uncrustify.cfg",
@@ -116,6 +115,15 @@
     "vim.foldfix": true,
     "vim.leader": "<space>",
     "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "after": [],
+            "before": ["K"],
+            "commands": [
+                {
+                    "command": "editor.action.showHover"
+                }
+            ]
+        },
         {
             "after": [],
             "before": ["g", "r"],

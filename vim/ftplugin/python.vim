@@ -1,3 +1,5 @@
+setlocal keywordprg=:ALEHover
+
 let b:ale_fixers = [
     \ 'black',
     \ 'isort',
