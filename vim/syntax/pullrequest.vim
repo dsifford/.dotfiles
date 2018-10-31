@@ -16,8 +16,8 @@ syn match pullreqBlank    contained "^.*"        contains=@Spell
 syn match pullreqOverflow contained ".*"         contains=@Spell
 syn match pullreqSummary  contained "^.\{0,50\}" contains=@Spell nextgroup=pullreqOverflow
 
-syn region pullreqMessage   keepend start="^." end="^\ze# [-]* >8" end="^\ze# Requesting a pull to \S*:\S*" contains=@Markdown,@Spell nextgroup=pullreqMetadata
-syn region pullreqMetadata          start="^# [-]* >8 [-]*$" start="^# Requesting a pull to \S*:\S*" end="\%$"
+syn region pullreqMessage   keepend start="^." end="^\ze# [-]* >8" contains=@Markdown,@Spell nextgroup=pullreqMetadata
+syn region pullreqMetadata          start="^# [-]* >8 [-]*$" end="\%$"
 syn match  pullreqFirstLine skipnl  "\%^[^#].*"  contains=pullreqSummary nextgroup=pullreqBlank
 
 hi def link pullreqBlank    Error
