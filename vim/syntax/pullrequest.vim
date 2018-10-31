@@ -1,5 +1,5 @@
 " Vim syntax file
-" Language: GitHub Pull Request
+" Language: Hub Pull Request
 " Maintainer: Derek Sifford <dereksifford@gmail.com>
 " Filenames: *.git/PULLREQ_EDITMSG
 " Latest Revision: 2018 Oct 30
@@ -8,15 +8,20 @@ if exists('b:current_syntax')
     finish
 endif
 
-syn match pullrequestFirstLine "\%^[^#].*"  nextgroup=pullrequestBlank skipnl
-syn match pullrequestSummary   "^.\{0,50\}" contained                  containedin=pullrequestFirstLine nextgroup=pullrequestOverflow contains=@Spell
-syn match pullrequestOverflow  ".*"         contained                  contains=@Spell
-syn match pullrequestBlank     "^[^#].*"    contained                  contains=@Spell
+syn case match
 
-syn region pullrequestMetadata start="^# [-]* >8 [-]*$" end="\%$"
+syn include @Markdown syntax/markdown.vim
 
-hi def link pullrequestSummary Keyword
-hi def link pullrequestBlank  Error
-hi def link pullrequestMetadata Comment
+syn match pullreqBlank    contained "^.*"        contains=@Spell
+syn match pullreqOverflow contained ".*"         contains=@Spell
+syn match pullreqSummary  contained "^.\{0,50\}" contains=@Spell nextgroup=pullreqOverflow
 
-let b:current_syntax = 'gitpullrequest'
+syn region pullreqMessage   keepend start="^." end="^\ze# [-]* >8" end="^\ze# Requesting a pull to \S*:\S*" contains=@Markdown,@Spell nextgroup=pullreqMetadata
+syn region pullreqMetadata          start="^# [-]* >8 [-]*$" start="^# Requesting a pull to \S*:\S*" end="\%$"
+syn match  pullreqFirstLine skipnl  "\%^[^#].*"  contains=pullreqSummary nextgroup=pullreqBlank
+
+hi def link pullreqBlank    Error
+hi def link pullreqMetadata Comment
+hi def link pullreqSummary  Keyword
+
+let b:current_syntax = 'pullrequest'
