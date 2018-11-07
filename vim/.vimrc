@@ -106,6 +106,21 @@ nnoremap <silent> gd :ALEGoToDefinition<CR>
 nnoremap <silent> gD :ALEGoToDefinitionInTab<CR>
 nnoremap <silent> gr :ALEFindReferences<CR>
 
+augroup dsifford
+    " Set keywordprg for language server filetypes
+    let s:ft_keywordprg_ale_hover = [
+        \ 'javascript',
+        \ 'python',
+        \ 'rust',
+        \ 'typescript',
+        \ 'typescript.tsx',
+        \ ]
+    autocmd BufNewFile,BufRead *
+                \ if index(s:ft_keywordprg_ale_hover, &ft) >= 0                                                   |
+                \     setlocal keywordprg=:call\ ale#hover#Show(bufnr(''),\ getcurpos()[1],\ getcurpos()[2],\ {}) |
+                \ endif
+augroup END
+
 " TODO: Waiting for feature support
 " nnoremap <silent> gs        :call LanguageClient_textDocument_documentSymbol()<CR>
 " nnoremap <silent> gS        :call LanguageClient_workspace_symbol()<CR>
