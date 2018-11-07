@@ -362,14 +362,6 @@ command! ReloadSyntax call vimrc#ReloadSyntax()
 " Yank from cursor position to end of line
 nnoremap Y  y$
 
-" Make next and last search result appear in the middle of the screen
-nnoremap  n  nzz
-nnoremap  N  Nzz
-nnoremap  *  *zz
-nnoremap  #  #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
-
 " Make j and k move through soft line breaks
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
