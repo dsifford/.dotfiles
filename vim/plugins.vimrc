@@ -22,6 +22,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
+Plug 'liuchengxu/vim-which-key'
 Plug 'w0rp/ale'
 
 Plug 'ncm2/ncm2'
@@ -59,7 +60,6 @@ Plug 'tpope/vim-scriptease'
 Plug 'junegunn/vader.vim'
 
 " Still not sure I want to keep
-Plug 'liuchengxu/vim-which-key'
 Plug 'tweekmonster/startuptime.vim'
 
 call plug#end()

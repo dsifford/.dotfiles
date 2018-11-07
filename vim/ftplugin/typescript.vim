@@ -1,5 +1,4 @@
 setlocal foldmethod=syntax
-setlocal keywordprg=:ALEHover
 
 let b:ale_fixers = [
     \ 'prettier',

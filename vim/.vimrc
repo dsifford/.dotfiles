@@ -144,8 +144,7 @@ let g:user_emmet_settings = {
 \  },
 \}
 
-augroup emmet_vim
-    autocmd!
+augroup dsifford
     autocmd FileType html,xml,markdown,css,scss,sass,tsx EmmetInstall
 augroup END
 
@@ -182,7 +181,7 @@ command! -bang -complete=customlist,s:CompleteRg -nargs=* Rg
 "             \   <bang>0)
 
 
-command! GFiles call fzf#run(fzf#wrap({ 'source': 'GFiles', 'options': '-m --no-sort' }))
+command! GFiles call fzf#run(fzf#wrap({ 'source': 'GFiles', 'options': '-m' }))
 
 nnoremap <C-p> :GFiles<CR>
 nnoremap <C-b> :Buffers<CR>
@@ -193,8 +192,7 @@ let g:which_key_map.r = 'Grep word under cursor'
 nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
 
 
-augroup dsifford_fzf
-    autocmd!
+augroup dsifford
     autocmd  FileType fzf set laststatus=0
                 \| autocmd BufLeave <buffer> set laststatus=2
 augroup END
@@ -213,8 +211,7 @@ inoremap <silent> <expr> <CR> (
         \ '<CR>' )
     \)
 
-augroup dsifford_ncm2
-    autocmd!
+augroup dsifford
     autocmd BufEnter * call ncm2#enable_for_buffer()
 augroup END
 
@@ -297,8 +294,7 @@ let g:vimtex_compiler_latexmk = {
     \ ],
     \}
 
-augroup dsifford_vimtex
-    autocmd!
+augroup dsifford
     autocmd Filetype tex call ncm2#register_source({
             \ 'name': 'vimtex',
             \ 'priority': 8,
@@ -359,12 +355,20 @@ let g:which_key_map.b = {
 
 command! Reload source $MYVIMRC
 command! ReloadSyntax call vimrc#ReloadSyntax()
-command! ZoomToggle   call vimrc#ZoomToggle()
 
 "}}}1
 " Mappings: {{{1
 
+" Yank from cursor position to end of line
 nnoremap Y  y$
+
+" Make next and last search result appear in the middle of the screen
+nnoremap  n  nzz
+nnoremap  N  Nzz
+nnoremap  *  *zz
+nnoremap  #  #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
 
 " Make j and k move through soft line breaks
 nnoremap <expr> j v:count ? 'j' : 'gj'
@@ -383,6 +387,8 @@ noremap <silent> <F12> :call vimrc#toggleEditVimrc()<CR>
 cnoremap <C-j> <C-g>
 cnoremap <C-k> <C-t>
 
+"
+
 "}}}1
 " Leader Mappings: {{{1
 
@@ -394,7 +400,7 @@ let g:which_key_map.F = 'Toggle first-level folds in buffer'
 nnoremap <silent> <Leader>F <Cmd> if get(b:, 'foldstate', 1) <Bar> %foldc <Bar> else <Bar> %foldo <Bar> endif <Bar> let b:foldstate=!get(b:, 'foldstate', 1)<CR>
 
 let g:which_key_map['<Enter>'] = 'Toggle buffer fullscreen'
-nnoremap <silent> <Leader><Enter> :ZoomToggle<CR>
+nnoremap <silent> <Leader><Enter> :call vimrc#ZoomToggle()<CR>
 
 let g:which_key_map['/'] = 'Search project with ripgrep'
 nnoremap <Leader>/ :Rg<Space>
@@ -402,9 +408,7 @@ nnoremap <Leader>/ :Rg<Space>
 " }}}1
 " Autocommands: {{{1
 
-augroup dsifford_misc
-    autocmd!
-
+augroup dsifford
     " Toggle quickfix and preview window with <Esc>
     autocmd BufEnter * if &ft ==# 'qf' || &previewwindow | nnoremap <buffer><silent> <Esc> :quit<CR> | endif
 
@@ -425,14 +429,10 @@ augroup dsifford_misc
     " Sets the foldlevel from 99 (set above) to the number of the highest fold
     " in the buffer
     autocmd BufRead * :normal zr
-augroup END
 
-" FIXME: This is possible using an nvim syntax group extension
-augroup dsifford_diff_cursorline
-    autocmd!
-
-    autocmd FilterWritePost * if &diff | set cursorline | endif
-    autocmd BufEnter * if &diff | set cursorline | endif
+    " Set CursorLine to be underlined while in a diff
+    autocmd FilterWritePost * if &diff | hi CursorLine gui=underline | endif
+    autocmd BufEnter * if &diff | hi CursorLine gui=underline | endif
 augroup END
 
 "}}}1
