@@ -1,8 +1,8 @@
 [alias]
     ai = "!git -c color.status=always status --short | sed -n '/^\\x1B\\[32m[A-Z]\\x1B\\[m  /!p' | fzf-tmux --ansi -m | awk '{ print $2 }' | xargs --no-run-if-empty git add"
-    br = branch -a
     f  = fetch --all
     lg = log --oneline --decorate --all --graph
+    peek = ! git log --color --format=compact | fzf-tmux --ansi --preview='git show --color {1}'
     s  = status
     submodule-update = submodule update --remote --merge
 
@@ -36,6 +36,9 @@
 
 [mergetool "nvimdiff"]
     cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
+[pretty]
+    compact = format:%C(auto)%h %ar %C(auto)%d %s
 
 [pull]
     rebase = true
