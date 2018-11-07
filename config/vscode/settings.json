@@ -1,12 +1,6 @@
 {
     "C_Cpp.intelliSenseEngine": "Default",
-    "codemetrics.basics.ComplexityTemplate": "Complexity is {0}",
-    "codemetrics.basics.DecorationModeEnabled": false,
-    "codemetrics.basics.DiagnosticsEnabled": false,
-    "codemetrics.basics.OverviewRulerModeEnabled": false,
-    "codemetrics.nodeconfiguration.CaseClause": 0,
-    "codemetrics.nodeconfiguration.ContinueStatement": 0,
-    "codemetrics.nodeconfiguration.ReturnStatement": 0,
+    "breadcrumbs.enabled": true,
     "css.validate": false,
     "docker.showExplorer": false,
     "editor.acceptSuggestionOnEnter": "smart",
@@ -21,7 +15,11 @@
         "strings": true
     },
     "editor.renderWhitespace": "none",
-    "editor.rulers": [80, 120],
+    "editor.rulers": [
+        80,
+        100,
+        120
+    ],
     "editor.snippetSuggestions": "top",
     "editor.wordWrap": "off",
     "emmet.includeLanguages": {
@@ -55,17 +53,23 @@
         "suppressUpdateNotice": true,
         "suppressWelcomeNotice": true
     },
-    "gitlens.blame.highlight.locations": ["line", "overview", "gutter"],
+    "gitlens.blame.highlight.locations": [
+        "line",
+        "overview",
+        "gutter"
+    ],
     "gitlens.codeLens.recentChange.command": "gitlens.diffWithPrevious",
-    "gitlens.codeLens.scopes": ["document", "containers", "blocks"],
+    "gitlens.codeLens.scopes": [
+        "document",
+        "containers",
+        "blocks"
+    ],
     "gitlens.gitExplorer.files.layout": "list",
     "gitlens.historyExplorer.enabled": true,
     "gitlens.hovers.currentLine.over": "line",
     "gitlens.keymap": "none",
     "keyboard.dispatch": "keyCode",
-    "macros": {
-        "openFile": ["list.select", "workbench.action.toggleSidebarVisibility"]
-    },
+    "phpcbf.standard": "dsifford",
     "prettier.proseWrap": "always",
     "prettier.singleQuote": true,
     "prettier.tabWidth": 4,
@@ -74,11 +78,15 @@
     "python.jediEnabled": false,
     "python.linting.pylintPath": "/home/dsifford/.local/bin/pylint",
     "python.pythonPath": "python3.7",
-    "python.sortImports.args": ["-ac"],
+    "python.sortImports.args": [
+        "-ac"
+    ],
     "scss.validate": false,
-    "shellcheck.customArgs": ["-x"],
-    "shellformat.flag": "-ci -bn",
+    "shellcheck.customArgs": [
+        "-x"
+    ],
     "stylelint.enable": true,
+    "telemetry.enableTelemetry": false,
     "todohighlight.isEnable": true,
     "todohighlight.keywords": [
         {
@@ -102,8 +110,7 @@
             "text": "HACK:"
         }
     ],
-    "typescript.tsdk":
-        "/home/dsifford/.local/share/npm/lib/node_modules/typescript/lib",
+    "typescript.tsdk": "/home/dsifford/.local/share/npm/lib/node_modules/typescript/lib",
     "uncrustify.configPath": "/home/dsifford/.uncrustify.cfg",
     "vim.easymotion": true,
     "vim.easymotionMarkerBackgroundColor": "#ff5555",
@@ -117,7 +124,9 @@
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "after": [],
-            "before": ["K"],
+            "before": [
+                "K"
+            ],
             "commands": [
                 {
                     "command": "editor.action.showHover"
@@ -126,7 +135,10 @@
         },
         {
             "after": [],
-            "before": ["g", "r"],
+            "before": [
+                "g",
+                "r"
+            ],
             "commands": [
                 {
                     "command": "editor.action.referenceSearch.trigger"
@@ -135,7 +147,10 @@
         },
         {
             "after": [],
-            "before": ["<leader>", "f"],
+            "before": [
+                "<leader>",
+                "f"
+            ],
             "commands": [
                 {
                     "command": "editor.action.formatDocument"
@@ -144,7 +159,11 @@
         },
         {
             "after": [],
-            "before": ["<leader>", "b", "l"],
+            "before": [
+                "<leader>",
+                "b",
+                "l"
+            ],
             "commands": [
                 {
                     "command": "gitlens.toggleLineBlame"
@@ -153,7 +172,11 @@
         },
         {
             "after": [],
-            "before": ["<leader>", "b", "f"],
+            "before": [
+                "<leader>",
+                "b",
+                "f"
+            ],
             "commands": [
                 {
                     "command": "gitlens.toggleFileBlame"
@@ -162,7 +185,10 @@
         },
         {
             "after": [],
-            "before": ["]", "c"],
+            "before": [
+                "]",
+                "c"
+            ],
             "commands": [
                 {
                     "command": "workbench.action.editor.nextChange"
@@ -171,7 +197,10 @@
         },
         {
             "after": [],
-            "before": ["[", "c"],
+            "before": [
+                "[",
+                "c"
+            ],
             "commands": [
                 {
                     "command": "workbench.action.editor.previousChange"
@@ -186,10 +215,8 @@
     "window.zoomLevel": 0,
     "workbench.colorCustomizations": {
         "editorBracketMatch.background": "#FF79C680",
-        "editorBracketMatch.border": "#ff00ff",
+        "editorBracketMatch.border": "#ff00ff"
     },
     "workbench.colorTheme": "Dracula",
-    "workbench.startupEditor": "none",
-    "breadcrumbs.enabled": true,
-    "telemetry.enableTelemetry": false
+    "workbench.startupEditor": "none"
 }

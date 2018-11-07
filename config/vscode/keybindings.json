@@ -85,11 +85,6 @@
         "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
     },
     {
-        "key": "ctrl+enter",
-        "command": "macros.openFile",
-        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder"
-    },
-    {
         "key": "ctrl+\\",
         "command": "workbench.action.focusSideBar",
         "when": "editorTextFocus && sidebarVisible"
