@@ -5,6 +5,7 @@ unset NPM_CONFIG_PREFIX
 export EDITOR=nvim
 export LESSHISTFILE='-'
 export PAGER=less
+export LC_ALL=C
 
 export DOTFILES=~/.dotfiles
 
@@ -46,7 +47,10 @@ if command -v fzf >/dev/null; then
 		--height 40%
 		--reverse
 		--bind=ctrl-i:toggle
-		--bind=ctrl-d:backward-kill-word
+		--bind=ctrl-alt-j:preview-down
+		--bind=ctrl-alt-k:preview-up
+		--bind=ctrl-d:preview-page-down
+		--bind=ctrl-u:preview-page-up
 		--color fg:#F8F8F2
 		--color fg+:#F8F8F2
 		--color bg:-1
