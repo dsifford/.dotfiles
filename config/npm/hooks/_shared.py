@@ -37,7 +37,18 @@ def get_global_packages() -> List[str]:
                         prefix.stdout.decode("utf-8").strip(),
                         "lib",
                         "node_modules",
-                        "*",
+                        "[a-zA-Z]*",
+                    )
+                )
+            ]
+            + [
+                f"{path.basename(path.dirname(x))}/{path.basename(x)}"
+                for x in glob(
+                    path.join(
+                        prefix.stdout.decode("utf-8").strip(),
+                        "lib",
+                        "node_modules",
+                        "@*/*",
                     )
                 )
             ]
