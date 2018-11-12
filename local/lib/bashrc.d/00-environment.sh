@@ -2,7 +2,7 @@
 unset PREFIX
 unset NPM_CONFIG_PREFIX
 
-export EDITOR=nvim
+export EDITOR=vim
 export LESSHISTFILE='-'
 export PAGER=less
 export LC_ALL=C
@@ -41,12 +41,11 @@ export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 export npm_config_devdir="$XDG_CACHE_HOME"/node-gyp
 
 # fzf
-if command -v fzf >/dev/null; then
+if command -v fzf > /dev/null; then
 	# use ripgrep instead for better speed and ignored file support
 	export FZF_DEFAULT_OPTS='
 		--height 40%
 		--reverse
-		--bind=ctrl-i:toggle
 		--bind=ctrl-alt-j:preview-down
 		--bind=ctrl-alt-k:preview-up
 		--bind=ctrl-d:preview-page-down
@@ -64,11 +63,16 @@ if command -v fzf >/dev/null; then
 		--color spinner:#8BE9FD
 		--color header:#8BE9FD
 	'
-	export FZF_TMUX=$( [[ -n $TMUX ]] && echo 1 || echo 0 )
+	export FZF_TMUX=$([[ -n $TMUX ]] && echo 1 || echo 0)
+fi
+
+if command -v nvim > /dev/null; then
+	export EDITOR=nvim
+	export MANPAGER='nvim -c "set ft=man" -'
 fi
 
 # rustc
-if command -v rustc >/dev/null; then
+if command -v rustc > /dev/null; then
 	RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 	export RUST_SRC_PATH
 fi
@@ -78,9 +82,9 @@ if [[ $(uname) == Darwin ]]; then
 	MANPATH="/usr/local/opt/coreutils/libexec/gnuman:/usr/local/opt/gnu-getopt/share/man:$(manpath)"
 	export MANPATH
 	export XDG_RUNTIME_DIR="$TMPDIR"
-    export CPPFLAGS="-I/usr/local/opt/openssl/include"
-    export LDFLAGS="-L/usr/local/opt/openssl/lib"
-    export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
+	export CPPFLAGS="-I/usr/local/opt/openssl/include"
+	export LDFLAGS="-L/usr/local/opt/openssl/lib"
+	export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 else
 	# Fix tiny QT windows on 4k monitor
 	export QT_AUTO_SCREEN_SCALE_FACTOR=2

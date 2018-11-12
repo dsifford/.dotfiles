@@ -57,8 +57,8 @@
     - libreoffice-fresh          # LibreOffice branch which contains new features and program enhancements
     - mpv                        # a free, open source, and cross-platform media player
     - neovim                     # Fork of Vim aiming to improve user experience, plugins, and GUIs
-    - networkmanager             # Network connection manager and user applications
     - network-manager-applet     # Applet for managing network connections
+    - networkmanager             # Network connection manager and user applications
     - nmap                       # Utility for network discovery and security auditing
     - nodejs                     # Evented I/O for V8 javascript
     - noto-fonts                 # Google Noto TTF fonts
@@ -84,10 +84,10 @@
     - pulseaudio-alsa            # ALSA Configuration for PulseAudio
     - pulseaudio-bluetooth       # Bluetooth support for PulseAudio
     - python                     # Next generation of the python high-level scripting language
-    - python2                    # A high-level scripting language
-    - python2-pip                # The PyPA recommended tool for installing Python packages
     - python-jedi                # Awesome autocompletion for python
     - python-pip                 # The PyPA recommended tool for installing Python packages
+    - python2                    # A high-level scripting language
+    - python2-pip                # The PyPA recommended tool for installing Python packages
     - qt5-tools                  # A cross-platform application and UI framework (Development Tools, QtHelp)
     - ranger                     # A simple, vim-like file manager
     - redshift                   # Adjusts the color temperature of your screen according to your surroundings.
@@ -154,6 +154,6 @@
     - ttf-monaco              # A monospaced sans-serif typeface by Apple Inc.
     - ttf-ms-fonts            # Core TTF Fonts from Microsoft
     - unetbootin              # Create bootable Live USB drives
-    - visual-studio-code-bin  # Visual Studio Code: Editor for building and debugging modern web and cloud applications (official binary version)
+    - visual-studio-code-bin  # Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (official binary version)
     - windscribe-cli          # Port of Windscribe's command line interface
     - yarn-nightly            # Fast, reliable, and secure dependency management

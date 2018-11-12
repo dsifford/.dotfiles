@@ -17,11 +17,12 @@ call plug#begin('~/.vim/_plugins')
 Plug 'tpope/vim-sensible'
 
 " Essential
-Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
+Plug 'justinmk/vim-sneak'
+Plug 'tomtom/tcomment_vim'
 Plug 'liuchengxu/vim-which-key'
 Plug 'w0rp/ale'
 

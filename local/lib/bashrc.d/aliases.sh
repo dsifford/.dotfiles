@@ -29,7 +29,7 @@ alias tmux='command tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
 alias vimrc='vim ~/.dotfiles/vim/.vimrc'
 
 ## Always use neovim
-alias vim='nvim'
+command -v nvim > /dev/null && alias vim='nvim'
 
 command -v nvidia-settings > /dev/null \
 	&& alias nvidia-settings='command nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'

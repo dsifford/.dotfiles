@@ -91,6 +91,14 @@ handle_extension() {
 					--syntax=xml && exit 5
 			exit 1
 			;;
+		json)
+			prettier --parser json-stringify "$FILE_PATH" \
+				| highlight \
+					--force \
+					--out-format="$HIGHLIGHT_FORMAT" \
+					--style="$HIGHLIGHT_STYLE" \
+					--syntax=json && exit 5
+			;;
 		# BitTorrent
 		torrent)
 			transmission-show -- "$FILE_PATH" && exit 5

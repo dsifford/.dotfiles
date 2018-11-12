@@ -89,15 +89,16 @@ endif
 let g:ale_completion_enabled = 1
 let g:ale_linters_explicit = 1
 
-let g:ale_sign_error   = '⮿'
-let g:ale_sign_warning = '⚠'
-let g:ale_sign_info    = '🛈'
+let g:ale_sign_error   = has('mac') ? 'x' : '⮿'
+let g:ale_sign_warning = has('mac') ? '!' : '⚠'
+let g:ale_sign_info    = has('mac') ? '?' : '🛈'
 
 let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
 
 let g:ale_javascript_prettier_options = '--config-precedence=prefer-file --prose-wrap=always --single-quote --tab-width=4 --trailing-comma=es5'
 
 nnoremap <silent> <Leader>f :ALEFix<CR>
+nnoremap <silent> <Leader>k :ALEDetail<CR>
 
 nnoremap <silent> <C-k> :ALEPreviousWrap<CR>
 nnoremap <silent> <C-j> :ALENextWrap<CR>
@@ -184,18 +185,6 @@ command! -bang -complete=customlist,s:CompleteRg -nargs=* Rg
             \           : fzf#vim#with_preview('right:50%:hidden', '?'),
             \   <bang>0)
 
-
-" TODO: add bat previewer...
-" @see: https://github.com/sharkdp/bat/issues/175
-"
-" command! -bang -complete=customlist,s:CompleteRg -nargs=* Rg
-"             \ call fzf#vim#grep(
-"             \   'rg --column --line-number --no-heading --color=always --smart-case ' . <q-args> . ' ' . system('git rev-parse --show-toplevel 2>/dev/null || pwd'), 1,
-"             \   <bang>0 ? 'options': [ '--preview', 'bat -p --color always {}']
-"             \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-"             \   <bang>0)
-
-
 command! GFiles call fzf#run(fzf#wrap({ 'source': 'GFiles', 'options': '-m' }))
 
 nnoremap <C-p> :GFiles<CR>
@@ -231,32 +220,20 @@ augroup dsifford
 augroup END
 
 " }}}2
-" NERDCommenter: {{{2
-
-let g:NERDSpaceDelims = 1
-let g:NERDDefaultAlign = 'left'
-
-let g:NERDCustomDelimiters = {
-            \ 'typescript': { 'left': '//', 'leftAlt': '/**', 'rightAlt': '*/' },
-            \ 'typescriptreact': { 'left': '//', 'leftAlt': '/**', 'rightAlt': '*/' },
-            \}
-
-" Toggle comment with Ctrl+/
-nmap <silent> <C-_> <Plug>NERDCommenterToggle
-vmap <silent> <C-_> <Plug>NERDCommenterToggle
-imap <silent> <C-_> <Esc><C-_>
-
-"}}}2
 " Netrw: {{{2
 
 let g:netrw_alto = 0
 let g:netrw_banner = 0
 let g:netrw_home = stdpath('cache')
-let g:netrw_list_hide = netrw_gitignore#Hide()
 let g:netrw_preview = 1
 
 " Toggle Netrw window
-noremap <silent> <expr> <C-\> &ft ==# 'netrw' ? ':q<CR>' : ':Vexplore!<CR>'
+noremap <silent> <C-\> <Cmd>Lexplore!<CR>
+
+augroup dsifford
+    autocmd FileType netrw let g:netrw_list_hide = netrw_gitignore#Hide() . ',\.git,^\.\.\=\/'
+    autocmd FileType netrw noremap <buffer> <silent> <C-\> <Cmd>q<CR>
+augroup END
 
 "}}}2
 " Polyglot: {{{2
@@ -277,6 +254,23 @@ let g:polyglot_disabled = [
 nmap <silent> <Leader>s <Plug>ScripteaseSynnames
 
 "}}}2
+" Sneak: {{{2
+
+let g:sneak#label = 1
+let g:sneak#s_next = 1
+let g:sneak#use_ic_scs = 1
+
+" }}}2
+" TComment: {{{2
+
+let g:tcomment_mapleader2 = ''
+let g:tcomment#filetype#guess_php = 'php'
+
+for s:t in [ 'php', 'typescript', 'javascript' ]
+    call tcomment#type#Define( s:t . '_block', g:tcomment#block2_fmt_c)
+endfor
+
+" }}}2
 " UltiSnips: {{{2
 
 " FIXME: This still needs tweaking
@@ -427,11 +421,6 @@ augroup dsifford
 
     " Don't add comment when newline added with o or O for any filetype
     autocmd FileType * set formatoptions-=o | set formatoptions+=r
-
-    " FIXME: Pending the fix to php syntax
-    " Fixes issues with PHP and other languages changing global foldmethod
-    autocmd BufLeave * set foldmethod=manual
-    autocmd BufEnter *.php setlocal foldmethod=syntax
 
     " Sets the foldlevel from 99 (set above) to the number of the highest fold
     " in the buffer
