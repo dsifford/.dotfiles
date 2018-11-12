@@ -14,7 +14,7 @@ brew "openssl"
 # Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
 # Interpreted, interactive, object-oriented programming language
-brew "python", link: false
+brew "python"
 # Record and share terminal sessions
 brew "asciinema"
 # GNU internationalization (i18n) and localization (l10n) library
@@ -44,9 +44,13 @@ brew "docker", link: false
 # YAML Parser
 brew "libyaml"
 # Isolated development environments using Docker
-brew "docker-compose"
+brew "docker-compose", link: false
 # Create Docker hosts locally and on cloud providers
 brew "docker-machine", restart_service: true, link: false
+# Command-line tool for DigitalOcean
+brew "doctl"
+# Maintain consistent coding style between multiple editors
+brew "editorconfig"
 # Command-line tool to interact with exercism.io
 brew "exercism"
 # Simple, fast and user-friendly alternative to find
@@ -127,6 +131,8 @@ brew "ripgrep"
 brew "rsync"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# Autoformat shell script source code
+brew "shfmt"
 # Version control system designed to be a better CVS
 brew "subversion"
 # Feature-rich console based todo list manager
