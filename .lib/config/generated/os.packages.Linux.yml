@@ -95,6 +95,7 @@
     - ripgrep                    # A search tool that combines the usability of ag with the raw speed of grep
     - rsync                      # A file transfer program to keep remote files in sync
     - rustup                     # The Rust toolchain installer
+    - shfmt                      # Format shell programs
     - slop                       # Utility to query the user for a selection and print the region to stdout
     - solaar                     # Device manager for Logitech's Unifying receiver peripherals
     - subversion                 # A Modern Concurrent Version Control System
@@ -137,6 +138,7 @@
     - google-cloud-sdk        # A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq.
     - gscreenshot             # A simple screenshot tool supporting multiple backends
     - gtkspellmm              # C++ binding for the gtkspell library
+    - jid                     # JSON incremental digger (Go installer)
     - keybase-bin             # the Keybase Go client, filesystem, and GUI
     - lab                     # A hub-like tool for GitLab (tagged release)
     - ncurses5-compat-libs    # System V Release 4.0 curses emulation library, ABI 5
@@ -147,7 +149,6 @@
     - postman-bin             # Build, test, and document your APIs faster
     - python-pipsi            # Wraps pip and virtualenv to install scripts
     - shellcheck-static       # shellcheck, without the 130MB haskell dependencies
-    - shfmt                   # Format shell programs
     - spotify                 # A proprietary music streaming service
     - stack-static            # The Haskell Tool Stack (linked statically)
     - trizen                  # Trizen AUR Package Manager: A lightweight wrapper for AUR.

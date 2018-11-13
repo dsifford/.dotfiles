@@ -190,7 +190,7 @@ command! GFiles call fzf#run(fzf#wrap({ 'source': 'GFiles', 'options': '-m' }))
 nnoremap <C-p> :GFiles<CR>
 nnoremap <C-b> :Buffers<CR>
 
-nnoremap <silent> <A-p> :call fzf#run(fzf#wrap({ 'source': 'fd -t f . ' . expand('%:h') }))<CR>
+nnoremap <silent> <M-p> :call fzf#run(fzf#wrap({ 'source': 'fd -t f . ' . expand('%:h') }))<CR>
 
 let g:which_key_map.r = 'Grep word under cursor'
 nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
@@ -328,11 +328,11 @@ let g:vimtex_compiler_progname = 'nvr'
 " Disables built-in mappings
 let g:tmux_navigator_no_mappings = 1
 
-nnoremap <silent> <A-h> :TmuxNavigateLeft<CR>
-nnoremap <silent> <A-j> :TmuxNavigateDown<CR>
-nnoremap <silent> <A-k> :TmuxNavigateUp<CR>
-nnoremap <silent> <A-l> :TmuxNavigateRight<CR>
-nnoremap <silent> <A-\> :TmuxNavigatePrevious<CR>
+nnoremap <silent> <M-h> :TmuxNavigateLeft<CR>
+nnoremap <silent> <M-j> :TmuxNavigateDown<CR>
+nnoremap <silent> <M-k> :TmuxNavigateUp<CR>
+nnoremap <silent> <M-l> :TmuxNavigateRight<CR>
+nnoremap <silent> <M-\> :TmuxNavigatePrevious<CR>
 
 "}}}2
 " Vim Which Key: {{{2
@@ -387,6 +387,10 @@ noremap <silent> <F12> :call vimrc#toggleEditVimrc()<CR>
 " Select the next/prev matches while performing a search
 cnoremap <C-j> <C-g>
 cnoremap <C-k> <C-t>
+
+" Alt+ and Alt- increases and decreases foldlevel respectively
+nnoremap <M--> zr
+nnoremap <M-=> zm
 
 "
 
