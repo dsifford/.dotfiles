@@ -68,8 +68,6 @@ colorscheme dracula
 " Plugin Settings: {{{1
 " Airline: {{{2
 
-let g:airline#extensions#ale#enabled = 1
-
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tab_type = 0
@@ -86,8 +84,11 @@ endif
 "}}}2
 " ALE: {{{2
 
+let g:airline#extensions#ale#enabled = 1
+
 let g:ale_completion_enabled = 1
 let g:ale_linters_explicit = 1
+let g:ale_virtualtext_cursor = 1
 
 let g:ale_sign_error   = has('mac') ? 'x' : '⮿'
 let g:ale_sign_warning = has('mac') ? '!' : '⚠'
