@@ -56,7 +56,6 @@
     - lastpass-cli               # LastPass command line interface tool
     - libreoffice-fresh          # LibreOffice branch which contains new features and program enhancements
     - mpv                        # a free, open source, and cross-platform media player
-    - neovim                     # Fork of Vim aiming to improve user experience, plugins, and GUIs
     - network-manager-applet     # Applet for managing network connections
     - networkmanager             # Network connection manager and user applications
     - nmap                       # Utility for network discovery and security auditing
@@ -76,7 +75,6 @@
     - otf-font-awesome           # Iconic font designed for Bootstrap
     - p7zip                      # Command-line file archiver with high compression ratio
     - pacman-contrib             # Contributed scripts and tools for pacman systems
-    - parallel                   # A shell tool for executing jobs in parallel
     - pavucontrol                # PulseAudio Volume Control
     - pkgfile                    # a pacman .files metadata explorer
     - playerctl                  # mpris media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others.
@@ -85,8 +83,10 @@
     - pulseaudio-bluetooth       # Bluetooth support for PulseAudio
     - python                     # Next generation of the python high-level scripting language
     - python-jedi                # Awesome autocompletion for python
+    - python-neovim              # Python 3 client for neovim
     - python-pip                 # The PyPA recommended tool for installing Python packages
     - python2                    # A high-level scripting language
+    - python2-neovim             # Python 2 client for neovim
     - python2-pip                # The PyPA recommended tool for installing Python packages
     - qt5-tools                  # A cross-platform application and UI framework (Development Tools, QtHelp)
     - ranger                     # A simple, vim-like file manager
@@ -142,6 +142,7 @@
     - keybase-bin             # the Keybase Go client, filesystem, and GUI
     - lab                     # A hub-like tool for GitLab (tagged release)
     - ncurses5-compat-libs    # System V Release 4.0 curses emulation library, ABI 5
+    - neovim-git              # Fork of Vim aiming to improve user experience, plugins, and GUIs.
     - ngrok                   # A tunneling, reverse proxy for developing and understanding networked, HTTP services
     - pandoc-bin              # Pandoc - executable only, without 750MB Haskell depends/makedepends
     - php-codesniffer         # PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files to detect and fix violations of a defined set of coding standards.

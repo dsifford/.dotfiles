@@ -64,6 +64,8 @@ endif
 
 colorscheme dracula
 
+hi clear CursorLine  " disables line highlight, but keeps `CursorLineNr`
+
 "}}}1
 " Plugin Settings: {{{1
 " Airline: {{{2
@@ -402,8 +404,13 @@ let g:which_key_map.l = { 'name': '+settings' }
 nnoremap <silent> <Leader>ll :set list!<CR>
 nnoremap <silent> <Leader><Leader>ln :set relativenumber!<CR>
 
-let g:which_key_map.F = 'Toggle first-level folds in buffer'
-nnoremap <silent> <Leader>F <Cmd> if get(b:, 'foldstate', 1) <Bar> %foldc <Bar> else <Bar> %foldo <Bar> endif <Bar> let b:foldstate=!get(b:, 'foldstate', 1)<CR>
+let g:which_key_map.z = { 'name': '+folds' }
+
+let g:which_key_map.z.f = 'Toggle first-level folds in buffer'
+nnoremap <silent> <Leader>zf <Cmd>call vimrc#folds#ToggleFirstLevel()<CR>
+
+let g:which_key_map.z['/'] = 'Fold all lines beginning with word'
+nnoremap <silent> <Leader>z/ <Cmd>call vimrc#folds#FoldLinesMatching()<CR>
 
 let g:which_key_map['<Enter>'] = 'Toggle buffer fullscreen'
 nnoremap <silent> <Leader><Enter> :call vimrc#ZoomToggle()<CR>

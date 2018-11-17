@@ -17,11 +17,6 @@ command -v poetry >/dev/null \
 command -v rustup >/dev/null \
     && rustup completions bash >"$completions_dir"/rustup
 
-if ! command -v wget >/dev/null; then
-    echo '[WARN] wget is not installed. Skipping plugin update...'
-    exit 1
-fi
-
 declare -A completion_sources=(
     [cargo]='https://raw.githubusercontent.com/rust-lang/cargo/master/src/etc/cargo.bashcomp.sh'
     ['docker-compose']='https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose'
@@ -34,7 +29,7 @@ declare -A completion_sources=(
     [yarn]='https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash'
 )
 
-parallel --link \
-    wget --hsts-file="$XDG_CACHE_HOME/wget-hsts" -q -N -O "$completions_dir"/'{1}' '{2}' \
-    ::: "${!completion_sources[@]}" \
-    ::: "${completion_sources[@]}"
+for k in "${!completion_sources[@]}"; do
+	echo "$k" "${completion_sources[$k]}"
+	curl --progress-bar -z "$(date)" -o "$completions_dir"/"$k" "${completion_sources[$k]}"
+done

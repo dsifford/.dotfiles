@@ -2,7 +2,7 @@ func! vimrc#toggleEditVimrc() abort
     if expand('%:t') ==# '.vimrc'
         w | bd
     else
-        exec float2nr(round(&columns * 0.75)) . 'vsplit ~/.dotfiles/vim/.vimrc'
+        exec 'vert botright ' . float2nr(round(&columns * 0.75)) . 'vsplit ~/.dotfiles/vim/.vimrc'
     endif
 endfunc
 

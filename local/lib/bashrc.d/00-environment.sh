@@ -24,10 +24,10 @@ export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
 export GOPATH="$XDG_DATA_HOME"/go
 export HISTFILE="$XDG_DATA_HOME"/bash/history
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
+export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
 export MACHINE_STORAGE_PATH="$XDG_DATA_HOME"/docker-machine
 export MANIFOLD_DIR=~/.local/bin
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
-export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 export PIPSI_HOME="$XDG_DATA_HOME"/pipsi
 export PYLINTHOME="$XDG_CACHE_HOME"/pylint
 export PYLINTRC="$XDG_CONFIG_HOME"/pylint/pylintrc
@@ -38,6 +38,7 @@ export TASKRC="$XDG_CONFIG_HOME"/task/taskrc
 export UNCRUSTIFY_CONFIG="$XDG_CONFIG_HOME"/uncrustify/uncrustify.cfg
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
+export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME"/nvidia/GLCache
 export npm_config_devdir="$XDG_CACHE_HOME"/node-gyp
 
 # fzf

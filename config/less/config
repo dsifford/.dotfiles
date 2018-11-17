@@ -1,0 +1,5 @@
+#command
+^L  undo-hilite
+
+#env
+LESS = -iRS
