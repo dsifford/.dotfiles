@@ -46,7 +46,7 @@ brew "libyaml"
 # Isolated development environments using Docker
 brew "docker-compose", link: false
 # Create Docker hosts locally and on cloud providers
-brew "docker-machine", restart_service: true, link: false
+brew "docker-machine", restart_service: true
 # Command-line tool for DigitalOcean
 brew "doctl"
 # Maintain consistent coding style between multiple editors
@@ -117,8 +117,6 @@ brew "netcat"
 brew "node"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
-# Shell command parallelization utility
-brew "parallel"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Show ps output as a tree
