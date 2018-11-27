@@ -92,7 +92,7 @@ brew "python@2"
 # Toolkit for creating graphical user interfaces
 brew "gtk+3"
 # The Haskell Tool Stack
-brew "haskell-stack", link: false
+brew "haskell-stack"
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
 # Add GitHub support to git on the command-line
