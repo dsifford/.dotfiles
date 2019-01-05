@@ -1,4 +1,5 @@
 **/.pyre/
+**/.mypy_cache
 *.pyo
 *.spl
 .uuid

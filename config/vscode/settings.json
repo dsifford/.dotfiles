@@ -1,6 +1,6 @@
 {
-    "C_Cpp.intelliSenseEngine": "Default",
     "breadcrumbs.enabled": true,
+    "C_Cpp.intelliSenseEngine": "Default",
     "css.validate": false,
     "docker.showExplorer": false,
     "editor.acceptSuggestionOnEnter": "smart",
@@ -15,12 +15,9 @@
         "strings": true
     },
     "editor.renderWhitespace": "none",
-    "editor.rulers": [
-        80,
-        100,
-        120
-    ],
-    "editor.snippetSuggestions": "top",
+    "editor.rulers": [100, 120, 80],
+    "editor.suggest.localityBonus": true,
+    "editor.suggestOnTriggerCharacters": false,
     "editor.wordWrap": "off",
     "emmet.includeLanguages": {
         "php": "html",
@@ -37,8 +34,8 @@
         "**/.git": true,
         "**/.hg": true,
         "**/.svn": true,
-        "**/CVS": true,
         "**/__pycache__": true,
+        "**/CVS": true,
         "**/node_modules": true
     },
     "gitlens.advanced.messages": {
@@ -53,21 +50,15 @@
         "suppressUpdateNotice": true,
         "suppressWelcomeNotice": true
     },
-    "gitlens.blame.highlight.locations": [
-        "line",
-        "overview",
-        "gutter"
-    ],
+    "gitlens.blame.highlight.locations": ["gutter", "line", "overview"],
     "gitlens.codeLens.recentChange.command": "gitlens.diffWithPrevious",
-    "gitlens.codeLens.scopes": [
-        "document",
-        "containers",
-        "blocks"
-    ],
-    "gitlens.gitExplorer.files.layout": "list",
-    "gitlens.historyExplorer.enabled": true,
-    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.codeLens.scopes": ["blocks", "containers", "document"],
+    "gitlens.hovers.annotations.over": "annotation",
     "gitlens.keymap": "none",
+    "gitlens.views.fileHistory.enabled": true,
+    "gitlens.views.lineHistory.enabled": true,
+    "gitlens.views.repositories.files.layout": "list",
+    "javascript.suggest.autoImports": false,
     "keyboard.dispatch": "keyCode",
     "phpcbf.standard": "dsifford",
     "prettier.proseWrap": "always",
@@ -76,43 +67,39 @@
     "prettier.trailingComma": "es5",
     "python.formatting.provider": "black",
     "python.jediEnabled": false,
+    "python.linting.mypyEnabled": true,
     "python.linting.pylintPath": "/home/dsifford/.local/bin/pylint",
     "python.pythonPath": "python3.7",
-    "python.sortImports.args": [
-        "-ac"
-    ],
+    "python.sortImports.args": ["-ac"],
     "scss.validate": false,
-    "shellcheck.customArgs": [
-        "-x"
-    ],
+    "search.usePCRE2": true,
+    "shellcheck.customArgs": ["-x"],
     "stylelint.enable": true,
     "telemetry.enableTelemetry": false,
-    "todohighlight.isEnable": true,
-    "todohighlight.keywords": [
-        {
-            "backgroundColor": "#50fa7b",
-            "color": "black",
-            "text": "TODO:"
-        },
-        {
-            "backgroundColor": "#ff5555",
-            "color": "#f8f8f2",
-            "text": "FIXME:"
-        },
-        {
-            "backgroundColor": "#8be9fd",
-            "color": "black",
-            "text": "NOTE:"
-        },
-        {
-            "backgroundColor": "#ffb86c",
-            "color": "black",
-            "text": "HACK:"
+    "todo-tree.customHighlight": {
+        "FIXME": {
+            "background": "#ff5555",
+            "foreground": "#f8f8f2",
+            "icon": "alert",
+            "iconColour": "#ff5555"
         }
-    ],
+    },
+    "todo-tree.defaultHighlight": {
+        "background": "#8be9fd",
+        "foreground": "#282a36",
+        "icon": "check",
+        "iconColour": "#8be9fd",
+        "type": "tag"
+    },
+    "todo-tree.excludeGlobs": ["**/node_modules/**"],
+    "todo-tree.regex": "(($TAGS)|^\\s*- \\[ \\])",
+    "todo-tree.showBadges": false,
+    "todo-tree.statusBar": "tags",
+    "todo-tree.tags": ["FIXME:", "TODO:"],
+    "todo-tree.tagsOnly": true,
+    "typescript.suggest.autoImports": false,
     "typescript.tsdk": "/home/dsifford/.local/share/npm/lib/node_modules/typescript/lib",
     "uncrustify.configPath": "/home/dsifford/.uncrustify.cfg",
-    "vim.easymotion": true,
     "vim.easymotionMarkerBackgroundColor": "#ff5555",
     "vim.easymotionMarkerFontFamily": "Monaco",
     "vim.easymotionMarkerFontWeight": "bold",
@@ -154,6 +141,19 @@
             "commands": [
                 {
                     "command": "editor.action.formatDocument"
+                }
+            ]
+        },
+        {
+            "after": [],
+            "before": [
+                "<leader>",
+                "z",
+                "f"
+            ],
+            "commands": [
+                {
+                    "command": "editor.foldAllMarkerRegions"
                 }
             ]
         },
@@ -209,14 +209,19 @@
         }
     ],
     "vim.searchHighlightColor": "rgba(80, 250, 123, 0.6)",
+    "vim.sneak": true,
+    "vim.sneakUseIgnorecaseAndSmartcase": true,
     "vim.useSystemClipboard": true,
     "vim.visualstar": true,
     "window.menuBarVisibility": "toggle",
     "window.zoomLevel": 0,
+    "workbench.activityBar.visible": true,
     "workbench.colorCustomizations": {
         "editorBracketMatch.background": "#FF79C680",
         "editorBracketMatch.border": "#ff00ff"
     },
     "workbench.colorTheme": "Dracula",
-    "workbench.startupEditor": "none"
+    "workbench.sideBar.location": "left",
+    "workbench.startupEditor": "none",
+    "workbench.statusBar.visible": true
 }

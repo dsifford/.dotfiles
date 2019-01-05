@@ -1,15 +1,15 @@
 EditorConfig.EditorConfig
+Gruntfuggly.todo-tree
 LaurentTreguier.uncrustify
 PeterJausovec.vscode-docker
+VisualStudioExptTeam.vscodeintellicode
 alexdima.vscode-lcov
 bierner.emojisense
 bierner.markdown-emoji
-bierner.markdown-mermaid
 bierner.markdown-preview-github-styles
 bungcip.better-toml
 dracula-theme.theme-dracula
 eamodio.gitlens
-eg2.tslint
 esbenp.prettier-vscode
 fallenwood.vimL
 hoovercj.haskell-linter
@@ -19,6 +19,8 @@ kumar-harsh.graphql-for-vscode
 mauve.terraform
 ms-python.python
 ms-vscode.cpptools
+ms-vscode.vscode-typescript-tslint-plugin
+msjsdiag.debugger-for-chrome
 neuron.neuron-IPE
 persoderlind.vscode-phpcbf
 quicktype.quicktype
@@ -28,5 +30,4 @@ shinnn.stylelint
 sidneys1.gitconfig
 timonwong.shellcheck
 vscodevim.vim
-wayou.vscode-todo-highlight
 wix.vscode-import-cost

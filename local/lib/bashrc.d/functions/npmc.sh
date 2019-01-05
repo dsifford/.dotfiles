@@ -6,27 +6,30 @@
 if command -v fzf > /dev/null; then
 
 	npmc() {
-		declare pkg
-		declare -a prod dev
-		while read -r pkg; do
-			if [[ $pkg == -P* ]]; then
-				prod+=("$pkg")
+		declare line version
+		declare -a prod dev data
+		while read -r line; do
+			IFS=' ' read -r -a data <<< "$line"
+			version=$(
+				sort -Vr < <(printf '%s\n' "${data[1]}" "${data[2]}" "${data[3]}") | head -n 1
+			)
+			if [[ ${data[5]} == 'dependencies' ]]; then
+				prod+=("${data[0]}@$version")
 			else
-				dev+=("$pkg")
+				prod+=("${data[0]}@$version")
 			fi
 		done < <(npm --color=always outdated --long \
-			| fzf --ansi --header-lines 1 -m --nth 1 \
-			| awk '{ if ($6=="devDependencies") print "-D "$1"@"$4; else print "-P "$1"@"$4 }')
+			| fzf --ansi --header-lines 1 -m --nth 1)
 
 		printf '%s\n' "${prod[@]}" | xargs --verbose --no-run-if-empty npm install
-		printf '%s\n' "${dev[@]}" | xargs --verbose --no-run-if-empty npm install
+		printf '%s\n' "${dev[@]}" | xargs --verbose --no-run-if-empty npm install -D
 	}
 
 	npmcg() {
 		npm --color=always -g outdated \
 			| fzf --ansi --header-lines 1 -m --nth 1 \
 			| awk '{ print $1"@"$4 }' \
-			| xargs --verbose --no-run-if-empty -P 5 -I % \
+			| xargs --verbose --no-run-if-empty -I % \
 				npm -g install %
 	}
 

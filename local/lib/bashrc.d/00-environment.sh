@@ -47,6 +47,7 @@ if command -v fzf > /dev/null; then
 	export FZF_DEFAULT_OPTS='
 		--height 40%
 		--reverse
+		--bind=ctrl-a:toggle-all
 		--bind=ctrl-alt-j:preview-down
 		--bind=ctrl-alt-k:preview-up
 		--bind=ctrl-d:preview-page-down

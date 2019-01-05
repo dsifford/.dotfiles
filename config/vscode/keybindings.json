@@ -1,10 +1,15 @@
 [
-    {   
+    {
+        "key": "escape",
+        "command": "closeMarkersNavigation",
+        "when": "editorFocus && markersNavigationVisible"
+    },
+    {
         "key": "tab",
         "command": "selectNextSuggestion",
         "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
     },
-    {   
+    {
         "key": "shift+tab",
         "command": "selectPrevSuggestion",
         "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
@@ -14,7 +19,6 @@
         "command": "insertSnippet",
         "when": "editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode"
     },
-
 
     {
         "key": "ctrl+shift+d",
@@ -36,14 +40,9 @@
         "command": "editor.action.marker.prev",
         "when": "editorFocus && !editorReadonly"
     },
-    // 
+    //
     // File Explorer -----------------------------------------
-    // 
-    {
-        "key": "escape escape",
-        "command": "workbench.files.action.collapseExplorerFolders",
-        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
-    },
+    //
     {
         "key": "a",
         "command": "explorer.newFile",
@@ -105,8 +104,19 @@
         "when": "!editorTextFocus && sidebarVisible"
     },
     //
-    // 
-    // 
+    //
+    //
+
+    {
+        "key": "l",
+        "command": "list.expand",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "h",
+        "command": "list.collapse",
+        "when": "listFocus && !inputFocus"
+    },
     {
         "key": "j",
         "command": "list.focusNext",

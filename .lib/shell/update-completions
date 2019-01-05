@@ -6,16 +6,18 @@ completions_dir="${XDG_DATA_HOME:?XDG_DATA_HOME must be defined}/bash-completion
 mkdir -p "$completions_dir"
 
 # install generated completions
-command -v doctl >/dev/null \
-    && doctl completion bash >"$completions_dir"/doctl
-command -v npm >/dev/null \
-    && npm completion >"$completions_dir"/npm
-command -v pandoc >/dev/null \
-    && pandoc --bash-completion >"$completions_dir"/pandoc
-command -v poetry >/dev/null \
-    && poetry completions bash >"$completions_dir"/poetry
-command -v rustup >/dev/null \
-    && rustup completions bash >"$completions_dir"/rustup
+command -v doctl > /dev/null \
+    && doctl completion bash > "$completions_dir"/doctl
+command -v npm > /dev/null \
+    && npm completion > "$completions_dir"/npm
+command -v pandoc > /dev/null \
+    && pandoc --bash-completion > "$completions_dir"/pandoc
+command -v pip > /dev/null \
+    && pip completion --bash > "$completions_dir"/pip
+command -v poetry > /dev/null \
+    && poetry completions bash > "$completions_dir"/poetry
+command -v rustup > /dev/null \
+    && rustup completions bash > "$completions_dir"/rustup
 
 declare -A completion_sources=(
     [cargo]='https://raw.githubusercontent.com/rust-lang/cargo/master/src/etc/cargo.bashcomp.sh'
@@ -30,6 +32,6 @@ declare -A completion_sources=(
 )
 
 for k in "${!completion_sources[@]}"; do
-	echo "$k" "${completion_sources[$k]}"
-	curl --progress-bar -z "$(date)" -o "$completions_dir"/"$k" "${completion_sources[$k]}"
+    echo "$k" "${completion_sources[$k]}"
+    curl --progress-bar -z "$(date)" -o "$completions_dir"/"$k" "${completion_sources[$k]}"
 done

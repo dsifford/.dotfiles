@@ -25,10 +25,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'tomtom/tcomment_vim'
 Plug 'liuchengxu/vim-which-key'
 Plug 'w0rp/ale'
-
-Plug 'ncm2/ncm2'
-    Plug 'roxma/nvim-yarp'
-    Plug 'ncm2/ncm2-ultisnips'
+Plug 'lifepillar/vim-mucomplete'
 
 Plug 'junegunn/fzf', { 'do': './install --bin' }
     Plug 'junegunn/fzf.vim'

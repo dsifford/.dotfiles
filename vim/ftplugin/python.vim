@@ -3,8 +3,8 @@ let b:ale_fixers = [
     \ 'isort',
     \ ]
 
-" FIXME: pyre is on the fritz
 let b:ale_linters = [
+    \ 'mypy',
     \ 'pylint',
     \ 'pyls',
     \ ]

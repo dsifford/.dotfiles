@@ -75,7 +75,8 @@ let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tab_type = 0
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#tab_nr_type = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#formatter = 'indexfmt'
+let g:airline#extensions#tabline#show_tab_nr = 0
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {
@@ -123,6 +124,9 @@ augroup dsifford
                 \ if index(s:ft_keywordprg_ale_hover, &ft) >= 0                                                   |
                 \     setlocal keywordprg=:call\ ale#hover#Show(bufnr(''),\ getcurpos()[1],\ getcurpos()[2],\ {}) |
                 \ endif
+
+    " Disable for certain buffers
+    autocmd BufEnter */node_modules/* ALEDisableBuffer
 augroup END
 
 " TODO: Waiting for feature support
@@ -205,24 +209,15 @@ augroup dsifford
 augroup END
 
 "}}}2
-" NCM2: {{{2
+" MUcomplete: {{{2
 
-" Cycle next and prev completions
-inoremap <expr> <Tab>   pumvisible() ? '<C-n>' : '<Tab>'
-inoremap <expr> <S-Tab> pumvisible() ? '<C-p>' : '<S-Tab>'
+let g:mucomplete#chains = {}
+let g:mucomplete#chains.default = ['ulti', 'path', 'keyn']
 
-" Select completion item with <CR>
-inoremap <silent> <expr> <CR> (
-        \ (pumvisible() && empty(v:completed_item)) ? '<C-y><CR>' :
-        \ (!empty(v:completed_item)                 ? ncm2_ultisnips#expand_or('', 'n') :
-        \ '<CR>' )
-    \)
+" Expand Ultisnips with Enter key
+inoremap <silent> <expr> <CR> mucomplete#ultisnips#expand_snippet('<CR>')
 
-augroup dsifford
-    autocmd BufEnter * call ncm2#enable_for_buffer()
-augroup END
-
-" }}}2
+"}}}2
 " Netrw: {{{2
 
 let g:netrw_alto = 0
@@ -231,7 +226,7 @@ let g:netrw_home = stdpath('cache')
 let g:netrw_preview = 1
 
 " Toggle Netrw window
-noremap <silent> <C-\> <Cmd>Lexplore!<CR>
+noremap <silent> <C-\> <Cmd>vertical botright vsplit <Bar> normal -<CR>
 
 augroup dsifford
     autocmd FileType netrw let g:netrw_list_hide = netrw_gitignore#Hide() . ',\.git,^\.\.\=\/'
@@ -247,6 +242,7 @@ let g:polyglot_disabled = [
             \ 'php',
             \ 'scss',
             \ 'typescript',
+            \ 'markdown',
             \ 'yaml',
             \]
 
@@ -276,17 +272,11 @@ endfor
 " }}}2
 " UltiSnips: {{{2
 
-" FIXME: This still needs tweaking
-let g:UltiSnipsEditSplit                = 'tabdo'
-let g:UltiSnipsEnableSnipMate           = 0
-let g:UltiSnipsExpandTrigger            = '<Plug>(ultisnips_expand)'
-let g:UltiSnipsJumpBackwardTrigger      = '<S-Tab>'
-let g:UltiSnipsJumpForwardTrigger       = '<Tab>'
-let g:UltiSnipsRemoveSelectModeMappings = 0
-let g:UltiSnipsSnippetDirectories       = [ $HOME.'/.vim/UltiSnips' ]
-
-imap <expr> <C-u> ncm2_ultisnips#expand_or('<Tab>')
-smap        <C-u> <Plug>(ultisnips_expand)
+let g:UltiSnipsEditSplit           = 'tabdo'
+let g:UltiSnipsExpandTrigger       = '<M-j>'
+let g:UltiSnipsJumpForwardTrigger  = '<M-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<M-k>'
+let g:UltiSnipsSnippetDirectories  = [ $HOME.'/.vim/UltiSnips' ]
 
 "}}}2
 " Vimtex: {{{2
@@ -427,6 +417,10 @@ augroup dsifford
 
     " Turn on cursorline for preview window
     autocmd BufEnter * if &previewwindow | setlocal cursorline | endif
+
+    " Check to see if the current buffer has changes from another program. If
+    " so, reload the changes.
+    autocmd FocusGained,BufEnter * :checktime
 
     " Flush the screen's buffer on exit
     autocmd VimLeave * :!clear
