@@ -81,6 +81,7 @@ fi
 
 if [[ $(uname) == Darwin ]]; then
 	unset MANPATH
+	# FIXME: This is broken now after brew updated the locations of gnu manpages.
 	MANPATH="/usr/local/opt/coreutils/libexec/gnuman:/usr/local/opt/gnu-getopt/share/man:$(manpath)"
 	export MANPATH
 	export XDG_RUNTIME_DIR="$TMPDIR"

@@ -31,8 +31,6 @@ brew "bash"
 brew "bash-completion@2"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Low-level library for pixel manipulation
-brew "pixman"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Top-like interface for container metrics
@@ -40,7 +38,7 @@ brew "ctop"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Pack, ship and run any application as a lightweight container
-brew "docker", link: false
+brew "docker"
 # YAML Parser
 brew "libyaml"
 # Isolated development environments using Docker
@@ -72,9 +70,9 @@ brew "git-extras"
 # Command-line option parsing library
 brew "gnu-getopt"
 # GNU implementation of the famous stream editor
-brew "gnu-sed", args: ["with-default-names"]
+brew "gnu-sed"
 # GNU version of the tar archiving utility
-brew "gnu-tar", args: ["with-default-names"]
+brew "gnu-tar"
 # GNU implementation of which utility
 brew "gnu-which"
 # ASN.1 structure parser library
@@ -82,13 +80,11 @@ brew "libtasn1"
 # Low-level cryptographic library
 brew "nettle"
 # GNU Transport Layer Security (TLS) Library
-brew "gnutls", link: false
+brew "gnutls"
 # GNU grep, egrep and fgrep
-brew "grep", args: ["with-default-names"]
+brew "grep"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c"
-# Interpreted, interactive, object-oriented programming language
-brew "python@2"
 # Toolkit for creating graphical user interfaces
 brew "gtk+3"
 # The Haskell Tool Stack
@@ -121,8 +117,8 @@ brew "pandoc"
 brew "poppler"
 # Show ps output as a tree
 brew "pstree"
-# Cross-platform application and UI framework
-brew "qt"
+# Interpreted, interactive, object-oriented programming language
+brew "python@2"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Utility that provides fast incremental file transfer
