@@ -44,7 +44,7 @@ brew "docker", link: false
 # YAML Parser
 brew "libyaml"
 # Isolated development environments using Docker
-brew "docker-compose", link: false
+brew "docker-compose"
 # Create Docker hosts locally and on cloud providers
 brew "docker-machine", restart_service: true
 # Command-line tool for DigitalOcean
