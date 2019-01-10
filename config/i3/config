@@ -86,15 +86,15 @@ bindsym $<M-S>Tab move container to workspace $ws_spotify
 # }}}
 # Application Configs {{{
 
-# Albert {{{2
-
-bindsym $<M>space exec --no-startup-id albert toggle
-
-# }}}2
 # Floating YouTube player {{{2
 
 for_window [title="^FLOATING_PLAYER_WINDOW$"] sticky enable
 bindsym Pause [title="^FLOATING_PLAYER_WINDOW$"] mark --toggle FLOATING_ACTIVE
+
+# }}}2
+# Rofi {{{2
+
+bindsym $<M>space exec --no-startup-id rofi -show drun
 
 # }}}2
 # Terminal {{{2
@@ -317,4 +317,4 @@ exec --no-startup-id $i3_daemon_path/floating_youtube_controller
 
 # }}}
 
-# vim: fdm=marker ft=i3
+# vim: set fdm=marker ft=i3config:
