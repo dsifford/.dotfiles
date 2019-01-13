@@ -26,6 +26,7 @@
     - bluez-firmware             # Firmwares for Broadcom BCM203x and STLC2300 Bluetooth chips
     - bluez-utils                # Development and debugging utilities for the bluetooth protocol stack
     - cmake                      # A cross-platform open-source make system
+    - compton                    # X compositor that may fix tearing issues
     - diff-so-fancy              # Good-looking diffs with diff-highlight and more
     - docker                     # Pack, ship and run any application as a lightweight container
     - docker-compose             # Fast, isolated development environments using Docker

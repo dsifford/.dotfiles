@@ -2,6 +2,9 @@
 " C:
 Plug 'justinmk/vim-syntax-extra'
 
+" I3:
+Plug 'mboughaba/i3config.vim'
+
 " LaTeX:
 Plug 'lervag/vimtex'
 

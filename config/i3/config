@@ -305,6 +305,8 @@ exec_always --no-startup-id feh \
 exec --no-startup-id termite --name=FloatingTerminal -e 'tmux -2u -f /home/dsifford/.config/tmux/tmux.conf new -AD -s home'
 
 # apps
+exec_always --no-startup-id "killall compton; compton -b --config $XDG_CONFIG_HOME/compton/compton.conf"
+
 exec --no-startup-id albert
 exec --no-startup-id autokey-gtk
 exec --no-startup-id blueman-applet
