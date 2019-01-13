@@ -35,11 +35,9 @@
     ~/.bashrc:
     ~/.bash_logout:
     ~/.bash_profile:
-    ~/.vim:
 
     # Misc
     ~/.ssh/config: config/openssh/config
-    ~/.vimrc: vim/.vimrc
     $XDG_DATA_HOME/npm/lib/node_modules/.hooks: config/npm/hooks
     $XDG_DATA_HOME/task/hooks: config/task/hooks
 

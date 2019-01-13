@@ -11,6 +11,7 @@ set $<M>   Mod4+
 set $<M-S> Mod4+Shift+
 set $<C>   Control+
 set $<C-S> Control+Shift+
+set $<A>   Mod1+
 
 set $main_monitor     DP-2
 set $vertical_monitor DP-0
@@ -95,6 +96,7 @@ bindsym Pause [title="^FLOATING_PLAYER_WINDOW$"] mark --toggle FLOATING_ACTIVE
 # Rofi {{{2
 
 bindsym $<M>space exec --no-startup-id rofi -show drun
+bindsym $<A>Tab exec --no-startup-id rofi -show window
 
 # }}}2
 # Terminal {{{2

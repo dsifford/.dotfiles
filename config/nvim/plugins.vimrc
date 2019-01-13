@@ -1,18 +1,19 @@
 " Initialization: {{{
 
+let s:plug_file = stdpath('data') . '/site/autoload/plug.vim'
+
 " Download vim-plug if it doesn't already exist
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    augroup plugins_vimrc
-        autocmd!
+if ! filereadable(s:plug_file)
+    silent exec '!curl -fLo ' . shellescape(s:plug_file) .
+                \ ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    augroup dsifford
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     augroup END
 endif
 
 "}}}
 
-call plug#begin('~/.vim/_plugins')
+call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'tpope/vim-sensible'
 

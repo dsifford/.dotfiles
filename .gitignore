@@ -9,5 +9,5 @@ TESTER
 __pycache__
 config/ranger/plugins/__init__.py
 config/tmux/plugins
-vim/_plugins
+config/nvim/_plugins
 config/vscode/workspaceStorage

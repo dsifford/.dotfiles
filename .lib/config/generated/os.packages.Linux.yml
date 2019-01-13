@@ -48,6 +48,7 @@
     - go                         # Core compiler tools for the Go programming language
     - go-tools                   # Developer tools for the Go programming language
     - gparted                    # A Partition Magic clone, frontend to GNU Parted
+    - graphviz                   # Graph visualization software
     - highlight                  # Fast and flexible source code highlighter (CLI version)
     - htop                       # Interactive process viewer
     - hub                        # cli interface for Github

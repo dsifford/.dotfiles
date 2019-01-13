@@ -7,10 +7,10 @@ rofi.sidebar-mode: true
 rofi.plugin-path: ~/.config/rofi
 
 ! Keybindings
-rofi.kb-accept-entry: Return
+rofi.kb-accept-entry: Return,!Alt-Tab
 rofi.kb-remove-char-back: BackSpace
 rofi.kb-remove-to-eol:
-rofi.kb-row-down: Ctrl-j,Super-j
+rofi.kb-row-down: Ctrl-j,Super-j,Alt-Tab
 rofi.kb-row-up: Ctrl-k,Super-k
 rofi.kb-mode-next: Ctrl-l,Super-l
 rofi.kb-mode-previous: Ctrl-h,Super-h
