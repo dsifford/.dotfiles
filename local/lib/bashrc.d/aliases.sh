@@ -26,7 +26,7 @@ alias posix-utils='apropos -s 1p .'
 alias reload='source ~/.bashrc'
 alias svn='command svn --config-dir "$XDG_CONFIG_HOME"/subversion'
 alias tmux='command tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
-alias vimrc='vim ~/.dotfiles/vim/.vimrc'
+alias vimrc='vim "$XDG_CONFIG_HOME/nvim/init.vim"'
 
 ## Always use neovim
 command -v nvim > /dev/null && alias vim='nvim'
