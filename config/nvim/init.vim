@@ -246,19 +246,6 @@ augroup dsifford
 augroup END
 
 " }}}2
-" Polyglot: {{{2
-
-let g:polyglot_disabled = [
-            \ 'json',
-            \ 'latex',
-            \ 'php',
-            \ 'scss',
-            \ 'typescript',
-            \ 'markdown',
-            \ 'yaml',
-            \]
-
-" }}}2
 " Scriptease: {{{2
 
 " Show syntax groups under cursor

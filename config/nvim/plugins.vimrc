@@ -18,15 +18,14 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'tpope/vim-sensible'
 
 " Essential
+Plug 'justinmk/vim-sneak'
+Plug 'lifepillar/vim-mucomplete'
+Plug 'liuchengxu/vim-which-key'
+Plug 'mattn/emmet-vim'
+Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'jiangmiao/auto-pairs'
-Plug 'justinmk/vim-sneak'
-Plug 'tomtom/tcomment_vim'
-Plug 'liuchengxu/vim-which-key'
 Plug 'w0rp/ale'
-Plug 'lifepillar/vim-mucomplete'
 
 Plug 'junegunn/fzf', { 'do': './install --bin' }
     Plug 'junegunn/fzf.vim'
@@ -35,7 +34,9 @@ Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
 
 " General Enhancements
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-vinegar'
 
@@ -46,20 +47,14 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'machakann/vim-highlightedyank'
 Plug 'vim-airline/vim-airline'
 
-" Language / Syntax
-Plug 'davidhalter/jedi-vim'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'justinmk/vim-syntax-extra'
-Plug 'lervag/vimtex'
-Plug 'mattn/emmet-vim'
-Plug 'sheerun/vim-polyglot', { 'do': './build' }
-
 " Misc
 Plug 'tpope/vim-scriptease'
 Plug 'junegunn/vader.vim'
 
 " Still not sure I want to keep
 Plug 'tweekmonster/startuptime.vim'
+
+source $MYVIMHOME/plugins.langs.vimrc
 
 call plug#end()
 
