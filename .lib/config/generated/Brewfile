@@ -38,7 +38,7 @@ brew "ctop"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Pack, ship and run any application as a lightweight container
-brew "docker"
+brew "docker", link: false
 # YAML Parser
 brew "libyaml"
 # Isolated development environments using Docker
@@ -118,7 +118,7 @@ brew "poppler"
 # Show ps output as a tree
 brew "pstree"
 # Interpreted, interactive, object-oriented programming language
-brew "python@2"
+brew "python@2", link: false
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Utility that provides fast incremental file transfer
