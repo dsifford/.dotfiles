@@ -10,11 +10,5 @@ let b:ale_linters = [
     \ 'php',
     \ ]
 
-let g:php_folding   = 1 " Fold classes and functions
+let g:php_folding   = 2 " Fold classes and functions
 let g:php_baselib   = 1 " Highlight baselib functions
-let g:php_sql_query = 1 " Highlight SQL in strings
-
-hi! link Delimiter DraculaPink
-augroup dsifford_php
-    autocmd! BufLeave <buffer> hi! link Delimiter DraculaFg
-augroup END

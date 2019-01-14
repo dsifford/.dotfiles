@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2230
+set -e
 
-wget=$(which --skip-tilde wget)
+# skip binaries in $HOME
+wget=$(type -aP wget | sed -n '/\home/!p' | head -n1)
+
+if [[ -z $wget ]]; then
+    >&2 echo -bash: phpcpf: command not found
+    exit 127
+fi
 
 mkdir -p "$XDG_CACHE_HOME"/wget
 

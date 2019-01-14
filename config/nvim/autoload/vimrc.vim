@@ -1,5 +1,5 @@
 func! vimrc#toggleEditVimrc() abort
-    if expand('%:t') ==# '.vimrc'
+    if expand('%:t') ==# fnamemodify($MYVIMRC, ':t')
         w | bd
     else
         exec 'vert botright ' . float2nr(round(&columns * 0.75)) . 'vsplit $MYVIMRC'

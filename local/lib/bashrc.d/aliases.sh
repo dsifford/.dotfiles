@@ -46,6 +46,6 @@ if [[ $(uname) != 'Darwin' ]]; then
 	# sort them by download rate, and overwrite the file /etc/pacman.d/mirrorlist
 	alias pacman-update='sudo reflector --verbose --country "United States" -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
 	alias p='trizen'
-	alias psyu='trizen -Syu --devel'
-	alias psyun='trizen -Syu --noconfirm --devel'
+	alias psyu='trizen -Syu --devel --needed'
+	alias psyun='trizen -Syu --noconfirm --devel --needed'
 fi

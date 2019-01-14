@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# skip binaries in $HOME
+phpcbf=$(type -aP phpcbf | sed -n '/\home/!p' | head -n1)
+
+if [[ -z $phpcbf ]]; then
+    >&2 echo -bash: phpcpf: command not found
+    exit 127
+fi
+
+$phpcbf \
+    --runtime-set installed_paths "$XDG_DATA_HOME"/phpcs,"$XDG_DATA_HOME"/phpcs/wpcs \
+    --standard=dsifford \
+    "$@"

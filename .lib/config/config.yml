@@ -27,9 +27,6 @@
 - merge:
     ~/.local/bin: local/lib/bin-patched.d
 
-- merge:
-    ~/.local/bin: local/lib/bin-dockerized.d
-
 - link:
     # Core
     ~/.bashrc:
@@ -46,6 +43,9 @@
 - shell:
     - description: Updating bash completions
       command: ~/.dotfiles/.lib/shell/update-completions
+      stdout: true
+    - description: Updating phpcs rulesets
+      command: ~/.dotfiles/.lib/shell/update-phpcs
       stdout: true
     - description: Updating pipsi packages
       command: ~/.dotfiles/.lib/shell/update-pipsi-packages

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+#
+# Script to keep custom phpcs standard and dependencies up to date
+#
+set -e
+
+mkdir -p "$XDG_DATA_HOME"/phpcs
+cd "$XDG_DATA_HOME"/phpcs
+
+if [[ ! -d ./wpcs ]]; then
+	git clone https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git wpcs
+else
+	(
+		cd wpcs
+		git fetch --all
+		git pull
+	)
+fi
+
+mkdir -p dsifford
+cd dsifford
+
+cat <<- EOF > ruleset.xml
+	<?xml version="1.0"?>
+	<ruleset name="dsifford">
+	    <description>Custom WordPress ruleset excluding obnoxious, not helpful whatsoever, errors.</description>
+
+	    <rule ref="wpcs/WordPress">
+	        <!--
+	            Exclude rules here.
+	            Example:
+	                <exclude name="WordPress.VIP.SuperGlobalInputUsage" />
+	        -->
+	    </rule>
+	</ruleset>
+EOF

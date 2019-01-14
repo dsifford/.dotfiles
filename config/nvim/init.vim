@@ -384,6 +384,13 @@ cnoremap <C-k> <C-t>
 nnoremap <M--> zr
 nnoremap <M-=> zm
 
+" FIXME: Trying this out for a little bit
+" Remap semicolon to colon
+nnoremap ; :
+nnoremap : ;
+vnoremap ; :
+vnoremap : ;
+
 "
 
 " }}}

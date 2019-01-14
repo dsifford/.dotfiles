@@ -110,101 +110,93 @@
     "vim.leader": "<space>",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
-            "after": [],
+            "before": [
+                ";"
+            ],
+            "after": [
+                ":"
+            ]
+        },
+        {
+            "before": [
+                ":"
+            ],
+            "commands": [
+                "workbench.action.showCommands",
+            ]
+        },
+        {
             "before": [
                 "K"
             ],
             "commands": [
-                {
-                    "command": "editor.action.showHover"
-                }
+                "editor.action.showHover"
             ]
         },
         {
-            "after": [],
             "before": [
                 "g",
                 "r"
             ],
             "commands": [
-                {
-                    "command": "editor.action.referenceSearch.trigger"
-                }
+                "editor.action.referenceSearch.trigger"
             ]
         },
         {
-            "after": [],
             "before": [
                 "<leader>",
                 "f"
             ],
             "commands": [
-                {
-                    "command": "editor.action.formatDocument"
-                }
+                "editor.action.formatDocument"
             ]
         },
         {
-            "after": [],
             "before": [
                 "<leader>",
                 "z",
                 "f"
             ],
             "commands": [
-                {
-                    "command": "editor.foldAllMarkerRegions"
-                }
+                "editor.foldAllMarkerRegions"
             ]
         },
         {
-            "after": [],
             "before": [
                 "<leader>",
                 "b",
                 "l"
             ],
             "commands": [
-                {
-                    "command": "gitlens.toggleLineBlame"
-                }
+                "gitlens.toggleLineBlame"
             ]
         },
         {
-            "after": [],
             "before": [
                 "<leader>",
                 "b",
                 "f"
             ],
             "commands": [
-                {
-                    "command": "gitlens.toggleFileBlame"
-                }
+                "gitlens.toggleFileBlame"
             ]
         },
         {
-            "after": [],
             "before": [
                 "]",
                 "c"
             ],
             "commands": [
-                {
-                    "command": "workbench.action.editor.nextChange"
-                }
+                "workbench.action.editor.nextChange"
             ]
         },
         {
-            "after": [],
             "before": [
                 "[",
                 "c"
             ],
             "commands": [
-                {
-                    "command": "workbench.action.editor.previousChange"
-                }
+                "workbench.action.editor.previousChange"
             ]
         }
     ],

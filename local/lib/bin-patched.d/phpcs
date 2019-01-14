@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -e
+
+# skip binaries in $HOME
+phpcs=$(type -aP phpcs | sed -n '/\home/!p' | head -n1)
+
+if [[ -z $phpcs ]]; then
+    >&2 echo -bash: phpcs: command not found
+    exit 127
+fi
+
+$phpcs \
+    --colors \
+    --runtime-set installed_paths "$XDG_DATA_HOME"/phpcs,"$XDG_DATA_HOME"/phpcs/wpcs \
+    --standard=dsifford \
+    "$@"

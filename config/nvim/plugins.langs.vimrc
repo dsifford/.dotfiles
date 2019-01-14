@@ -11,6 +11,9 @@ Plug 'lervag/vimtex'
 " Python:
 Plug 'davidhalter/jedi-vim'
 
+" TOML:
+Plug 'cespare/vim-toml'
+
 " TypeScript:
 Plug 'HerringtonDarkholme/yats.vim'
 
