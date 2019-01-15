@@ -275,7 +275,7 @@ let g:UltiSnipsEditSplit           = 'tabdo'
 let g:UltiSnipsExpandTrigger       = '<M-j>'
 let g:UltiSnipsJumpForwardTrigger  = '<M-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<M-k>'
-let g:UltiSnipsSnippetDirectories  = [ $HOME.'/.vim/UltiSnips' ]
+let g:UltiSnipsSnippetDirectories  = [ $MYVIMHOME . '/UltiSnips' ]
 
 " }}}2
 " Vimtex: {{{2

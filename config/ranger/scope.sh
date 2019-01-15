@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -o noclobber
 set -o noglob
 set -o nounset
@@ -29,33 +28,31 @@ IFS=$'\n'
 # 7    | image      | Display the file directly as an image
 
 # Script arguments
-declare FILE_PATH="$1"        # Full path of the highlighted file
-declare IMAGE_CACHE_PATH="$4" # Full path that should be used to cache image preview
-declare PV_IMAGE_ENABLED="$5" # 'True' if image previews are enabled, 'False' otherwise
-declare MIMETYPE              # The file's mime type
-
-declare FILE_EXTENSION="${FILE_PATH##*.}"
-declare -l FILE_EXTENSION_LOWER="$FILE_EXTENSION"
+declare FILE_PATH="$1"                       # Full path of the highlighted file
+declare -l FILE_EXTENSION="${FILE_PATH##*.}" # The file extension
+declare IMAGE_CACHE_PATH="$4"                # Full path that should be used to cache image preview
+declare PV_IMAGE_ENABLED="$5"                # 'True' if image previews are enabled, 'False' otherwise
+declare MIMETYPE                             # The file's mime type
+MIMETYPE="$(file --dereference --brief --mime-type -- "$FILE_PATH")"
 
 # Settings
 declare -i HIGHLIGHT_SIZE_MAX=262143 # 256KiB
 declare -i HIGHLIGHT_TABWIDTH=4
 declare HIGHLIGHT_FORMAT=ansi
-declare HIGHLIGHT_STYLE='pablo'
-
-MIMETYPE="$(file --dereference --brief --mime-type -- "$FILE_PATH")"
+declare HIGHLIGHT_STYLE=pablo
 
 main() {
-	handle_extension
 	if [[ "$PV_IMAGE_ENABLED" == 'True' ]]; then
-		handle_image "$MIMETYPE"
+		handle_image
 	fi
-	handle_mime "$MIMETYPE"
+	handle_mime
+	handle_extension
 	handle_fallback
+	exit 1
 }
 
 handle_extension() {
-	case "$FILE_EXTENSION_LOWER" in
+	case "$FILE_EXTENSION" in
 		# Archive
 		a | ace | alz | arc | arj | bz | bz2 | cab | cpio | deb | gz | jar | lha | lz | lzh | lzma | lzo | rpm | rz | t7z | tar | tbz | tbz2 | tgz | tlz | txz | tZ | tzo | war | xpi | xz | Z | zip)
 			atool --list -- "$FILE_PATH" && exit 5
@@ -73,33 +70,6 @@ handle_extension() {
 			exit 1
 			;;
 
-		# PDF
-		pdf)
-			# Preview as text conversion
-			pdftotext -l 10 -nopgbrk -q -- "$FILE_PATH" - && exit 5
-			exiftool "$FILE_PATH" && exit 5
-			exit 1
-			;;
-
-		# SVG
-		svg)
-			prettier --parser babylon "$FILE_PATH" \
-				| highlight \
-					--force \
-					--out-format="$HIGHLIGHT_FORMAT" \
-					--style="$HIGHLIGHT_STYLE" \
-					--syntax=xml && exit 5
-			exit 1
-			;;
-		json)
-			prettier --parser json-stringify "$FILE_PATH" \
-				| highlight \
-					--force \
-					--out-format="$HIGHLIGHT_FORMAT" \
-					--style="$HIGHLIGHT_STYLE" \
-					--syntax=json && exit 5
-			;;
-		# BitTorrent
 		torrent)
 			transmission-show -- "$FILE_PATH" && exit 5
 			exit 1
@@ -124,13 +94,6 @@ handle_extension() {
 			exit 1
 			;;
 
-		# HTML
-		htm | html | xhtml)
-			# Preview as text conversion
-			w3m -dump "$FILE_PATH" && exit 5
-			lynx -dump -- "$FILE_PATH" && exit 5
-			elinks -dump "$FILE_PATH" && exit 5
-			;; # Continue with next handler on failure
 		tsx)
 			if [[ "$(stat --printf='%s' -- "$FILE_PATH")" -gt "$HIGHLIGHT_SIZE_MAX" ]]; then
 				exit 2
@@ -148,8 +111,11 @@ handle_extension() {
 }
 
 handle_image() {
-	local mimetype="$1"
-	case "$mimetype" in
+	case "$MIMETYPE" in
+		image/svg*)
+			return
+			;;
+
 		# Image
 		image/*)
 			local orientation
@@ -188,9 +154,36 @@ handle_image() {
 }
 
 handle_mime() {
-	local mimetype="$1"
-	case "$mimetype" in
-		# Text
+	case "$MIMETYPE" in
+		application/json)
+			prettier --parser json-stringify "$FILE_PATH" \
+				| highlight \
+					--force \
+					--out-format="$HIGHLIGHT_FORMAT" \
+					--style="$HIGHLIGHT_STYLE" \
+					--syntax=json && exit 5
+			exit 1
+			;;
+
+		application/pdf)
+			pdftotext -l 10 -nopgbrk -q -- "$FILE_PATH" - && exit 5
+			exit 1
+			;;
+
+		image/svg*)
+			prettier --parser html "$FILE_PATH" \
+				| highlight \
+					--force \
+					--out-format="$HIGHLIGHT_FORMAT" \
+					--style="$HIGHLIGHT_STYLE" \
+					--syntax=xml && exit 5
+			exit 1
+			;;
+	esac
+}
+
+handle_fallback() {
+	case "$MIMETYPE" in
 		text/* | */xml)
 			if [[ "$(stat --printf='%s' -- "$FILE_PATH")" -gt "$HIGHLIGHT_SIZE_MAX" ]]; then
 				exit 2
@@ -203,28 +196,14 @@ handle_mime() {
 				-- "$FILE_PATH" && exit 5
 			exit 2
 			;;
-
-		# Image
-		image/*)
-			# Preview as text conversion
-			exiftool "$FILE_PATH" && exit 5
-			exit 1
-			;;
-
-		# Video and audio
-		video/* | audio/*)
-			mediainfo "$FILE_PATH" && exit 5
-			exiftool "$FILE_PATH" && exit 5
-			exit 1
-			;;
 	esac
-}
 
-handle_fallback() {
-	echo '----- File Type Classification -----' && file --dereference --brief -- "$FILE_PATH" && exit 5
+	exiftool "$FILE_PATH" && exit 5
+	echo '----- File Type Classification -----' \
+		&& file --dereference --brief -- "$FILE_PATH" \
+		&& exit 5
+
 	exit 1
 }
 
 main
-
-exit 1

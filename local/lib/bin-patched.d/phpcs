@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -e
 
 # skip binaries in $HOME
 phpcs=$(type -aP phpcs | sed -n '/\home/!p' | head -n1)

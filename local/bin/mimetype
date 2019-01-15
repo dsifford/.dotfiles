@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+#
+USAGE='
+Print the mime-type for a given file.
+
+Usage:
+	mimetype <file>
+	mimetype -h | --help
+'
+
+if ! OPTS=$(getopt -o 'h' -l 'help' -n 'mimetype' -- "$@"); then
+	exit 1
+fi
+eval set -- "$OPTS"
+
+while true; do
+	case "$1" in
+		-h | --help)
+			echo "$USAGE"
+			exit 0
+			;;
+		--)
+			shift
+			break
+			;;
+		*)
+			exit 1
+		;;
+	esac
+done
+
+if [[ $# -ne 1 ]]; then
+	>&2 echo "Missing required argument <file>"
+	exit 1
+fi
+
+file --dereference --brief --mime-type "$1"

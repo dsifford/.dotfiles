@@ -31,6 +31,7 @@ cat <<- EOF > ruleset.xml
 	            Example:
 	                <exclude name="WordPress.VIP.SuperGlobalInputUsage" />
 	        -->
+	        <exclude name="WordPress.PHP.YodaConditions.NotYoda" />
 	    </rule>
 	</ruleset>
 EOF
