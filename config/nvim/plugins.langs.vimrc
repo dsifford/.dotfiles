@@ -2,6 +2,9 @@
 " C:
 Plug 'justinmk/vim-syntax-extra'
 
+" Haskell:
+Plug 'neovimhaskell/haskell-vim'
+
 " I3:
 Plug 'mboughaba/i3config.vim'
 

@@ -68,6 +68,7 @@ client.urgent           $bg        $bg     $red     $pink     $bg
 
 workspace $ws_spotify output $vertical_monitor
 workspace $ws_slack   output $vertical_monitor
+workspace 1           output $vertical_monitor
 workspace 2           output $main_monitor
 workspace $ws_code    output $main_monitor
 
