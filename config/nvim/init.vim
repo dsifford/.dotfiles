@@ -109,8 +109,6 @@ let g:ale_sign_error   = has('mac') ? 'x' : '⮿'
 let g:ale_sign_warning = has('mac') ? '!' : '⚠'
 let g:ale_sign_info    = has('mac') ? '?' : '🛈'
 
-let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
-
 let g:ale_javascript_prettier_options = '--config-precedence=prefer-file --prose-wrap=always --single-quote --tab-width=4 --trailing-comma=es5'
 
 nnoremap <silent> <Leader>f :ALEFix<CR>
@@ -199,7 +197,7 @@ endfunction
 " Add support for ripgrep
 command! -bang -complete=customlist,s:CompleteRg -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   'rg --column --line-number --no-heading --color=always --smart-case ' . <q-args>, 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
@@ -223,8 +221,12 @@ augroup END
 " }}}2
 " MUcomplete: {{{2
 
-let g:mucomplete#chains = {}
-let g:mucomplete#chains.default = ['ulti', 'path', 'keyn']
+try
+    let g:mucomplete#chains = g:mucomplete#chains
+catch
+    let g:mucomplete#chains = { 'default': [] }
+endtry
+let g:mucomplete#chains.default = ['ulti'] + g:mucomplete#chains.default
 
 " Expand Ultisnips with Enter key
 inoremap <silent> <expr> <CR> mucomplete#ultisnips#expand_snippet('<CR>')
@@ -384,7 +386,6 @@ cnoremap <C-k> <C-t>
 nnoremap <M--> zr
 nnoremap <M-=> zm
 
-" FIXME: Trying this out for a little bit
 " Remap semicolon to colon
 nnoremap ; :
 nnoremap : ;

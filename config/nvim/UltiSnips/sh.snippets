@@ -4,7 +4,7 @@ case "\$${1:word}" in
 esac
 endsnippet
 
-snippet opt "getopt (GNU)"
+snippet opt "getopt (GNU)" b
 if ! OPTS=$(getopt -o '${1:short options}' -l '${2:long options}' -n '${3:program name}' -- "$@"); then
 	exit 1
 fi
@@ -27,4 +27,8 @@ endsnippet
 
 snippet SCRIPT_DIR "one-liner for obtaining the absolute path to the current script" b
 ${1:SCRIPT_DIR}=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)$0
+endsnippet
+
+snippet echoerr "echo to stderr"
+>&2 echo $0
 endsnippet

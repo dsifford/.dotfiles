@@ -74,7 +74,7 @@ workspace $ws_code    output $main_monitor
 
 assign [class="^Slack$"]      $ws_slack
 assign [instance="^spotify$"] $ws_spotify
-assign [class="Atom|Code"]    $ws_code
+assign [class="Atom|code-oss"]    $ws_code
 
 # necessary due to strange bug with spotify
 for_window [instance="spotify"] move to workspace $ws_spotify

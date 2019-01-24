@@ -9,7 +9,7 @@
 [core]
     editor = nvim
     autocrlf = input
-    pager = diff-so-fancy | less --tabs=4 -RFX
+    pager = diff-so-fancy | less -p'(modified|deleted):' --tabs=4 -RFX
 
 [color "status"]
     added = green

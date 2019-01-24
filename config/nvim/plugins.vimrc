@@ -53,7 +53,7 @@ Plug 'junegunn/vader.vim'
 
 " Still not sure I want to keep
 Plug 'tweekmonster/startuptime.vim'
-Plug 'roman/golden-ratio'
+Plug 'andymass/vim-matchup'
 
 source $MYVIMHOME/plugins.langs.vimrc
 
