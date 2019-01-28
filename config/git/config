@@ -9,7 +9,6 @@
 [core]
     editor = nvim
     autocrlf = input
-    pager = diff-so-fancy | less -p'(modified|deleted):' --tabs=4 -RFX
 
 [color "status"]
     added = green
@@ -36,6 +35,9 @@
 
 [mergetool "nvimdiff"]
     cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
+[pager]
+    diff = diff-so-fancy | less -p'(modified|deleted):' --tabs=4 -RFX
 
 [pretty]
     compact = format:%C(auto)%h %ar %C(auto)%d %s

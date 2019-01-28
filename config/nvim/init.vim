@@ -119,7 +119,7 @@ nnoremap <silent> <C-j> :ALENextWrap<CR>
 
 nnoremap <silent> gd :ALEGoToDefinition<CR>
 nnoremap <silent> gD :ALEGoToDefinitionInTab<CR>
-nnoremap <silent> gr :ALEFindReferences<CR>
+nnoremap <silent> gr :ALEFindReferences -relative<CR>
 
 augroup dsifford
     " Set keywordprg for language server filetypes

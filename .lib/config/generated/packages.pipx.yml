@@ -1,13 +1,13 @@
 #
 # THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY.
 #
-- pipsi:
+- pipx:
+  - bandit
   - black
   - isort
   - neovim-remote
+  - pipx-app
   - poetry
   - pylint
-  - pyre-check
   - python-language-server
   - vim-vint
-  - yq

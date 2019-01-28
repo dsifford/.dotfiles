@@ -47,6 +47,6 @@
     - description: Updating phpcs rulesets
       command: ~/.dotfiles/.lib/shell/update-phpcs
       stdout: true
-    - description: Updating pipsi packages
-      command: ~/.dotfiles/.lib/shell/update-pipsi-packages
+    - description: Updating pipx packages
+      command: pipx upgrade-all
       stdout: true

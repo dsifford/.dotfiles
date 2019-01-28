@@ -139,7 +139,6 @@
     aur:
     - atom-editor-bin       # Hackable text editor built on Electron (official precompiled binary)
     - autokey-py3           # Python 3 port of AutoKey, a desktop automation utility for Linux and X11 with new features.
-    - ctop                  # Top-like interface for container metrics
     - dive                  # A tool for exploring each layer in a docker image
     - doctl-bin             # A command line tool for DigitalOcean services
     - dropbox               # A free service that lets you bring your photos, docs, and videos anywhere and share them easily.
@@ -148,6 +147,7 @@
     - google-chrome-beta    # The popular and trusted web browser by Google (Beta Channel)
     - google-cloud-sdk      # A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq.
     - gscreenshot           # A simple screenshot tool supporting multiple backends
+    - jflap                 # Software to learning the basic concepts of Formal Languages and Automata Theory
     - jid                   # JSON incremental digger (Go installer)
     - lab                   # A hub-like tool for GitLab (tagged release)
     - ncurses5-compat-libs  # System V Release 4.0 curses emulation library, ABI 5
@@ -157,7 +157,6 @@
     - php-codesniffer       # PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files to detect and fix violations of a defined set of coding standards.
     - plex-media-server     # Plex Media Server
     - postman-bin           # Build, test, and document your APIs faster
-    - python-pipsi          # Wraps pip and virtualenv to install scripts
     - shellcheck-static     # shellcheck, without the 130MB haskell dependencies
     - spotify               # A proprietary music streaming service
     - stack-static          # The Haskell Tool Stack (linked statically)
