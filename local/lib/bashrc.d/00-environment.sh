@@ -4,6 +4,7 @@ unset NPM_CONFIG_PREFIX
 
 export EDITOR=vim
 export LESSHISTFILE='-'
+export LESSCHARSET=utf-8
 export PAGER=less
 export LC_ALL=C
 

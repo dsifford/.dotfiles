@@ -189,10 +189,10 @@ let g:fzf_action = {
             \ 'ctrl-o': 'split',
             \ 'ctrl-v': 'vsplit' }
 
-function! s:CompleteRg(arg_lead, line, pos)
+func! s:CompleteRg(arg_lead, line, pos)
     let l:args = join(split(a:line)[1:])
     return systemlist('get_completions rg ' . l:args)
-endfunction
+endfunc
 
 " Add support for ripgrep
 command! -bang -complete=customlist,s:CompleteRg -nargs=* Rg
@@ -442,6 +442,10 @@ augroup dsifford
     " Set CursorLine to be underlined while in a diff
     autocmd FilterWritePost * if &diff | hi CursorLine gui=underline | endif
     autocmd BufEnter * if &diff | hi CursorLine gui=underline | endif
+
+    " Disable syntax on files larger than 1_000_000 bytes
+    autocmd BufReadPre,BufEnter * if getfsize(expand("%")) > 1000000 | syntax off | endif
+    autocmd BufWinLeave * if getfsize(expand("%")) > 1000000 && type(v:exiting) == 7 | syntax on | hi clear CursorLine | endif
 augroup END
 
 " }}}

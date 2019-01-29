@@ -4,6 +4,16 @@ Host *
     IdentityFile ~/.ssh/id_rsa
     UseKeychain yes
 
+Host aliem
+    HostName 157.230.172.235
+    Port 22
+    User root
+
+Host aliemu
+    HostName 178.128.188.161
+    Port 22
+    User root
+
 Host github.com
     HostName github.com
     Port 22

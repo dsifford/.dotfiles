@@ -1,4 +1,4 @@
-function! airline#extensions#tabline#formatters#indexfmt#format(bufnr, buffers)
+func! airline#extensions#tabline#formatters#indexfmt#format(bufnr, buffers)
     if getbufvar(a:bufnr, '&buftype') ==# 'terminal'
         return '~'
     elseif fnamemodify(bufname(a:bufnr), ':t:r') ==# 'index'
@@ -6,4 +6,4 @@ function! airline#extensions#tabline#formatters#indexfmt#format(bufnr, buffers)
     else
         return fnamemodify(bufname(a:bufnr), ':t')
     endif
-endfunction
+endfunc
