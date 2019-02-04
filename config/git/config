@@ -38,6 +38,7 @@
 
 [pager]
     diff = diff-so-fancy | less -p'(modified|deleted):' --tabs=4 -RFX
+    branch = false
 
 [pretty]
     compact = format:%C(auto)%h %ar %C(auto)%d %s

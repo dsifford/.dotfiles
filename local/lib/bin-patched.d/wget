@@ -4,7 +4,7 @@
 wget=$(type -aP wget | sed -n '/\home/!p' | head -n1)
 
 if [[ -z $wget ]]; then
-    >&2 echo -bash: phpcpf: command not found
+    >&2 echo -bash: wget: command not found
     exit 127
 fi
 

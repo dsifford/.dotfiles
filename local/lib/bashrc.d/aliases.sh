@@ -3,15 +3,13 @@
 # Clean the slate
 unalias -a
 
-# Package aliases
+# Docker
 alias d='docker'
 alias dc='docker-compose'
 alias dm='docker-machine'
-alias g='git'
-alias t='task'
-alias y='yarn'
 
 # Git
+alias g='git'
 alias git='hub'
 alias gs='git status'
 alias gf='git f'
@@ -25,8 +23,10 @@ alias info='info --vi-keys'
 alias posix-utils='apropos -s 1p .'
 alias reload='source ~/.bashrc'
 alias svn='command svn --config-dir "$XDG_CONFIG_HOME"/subversion'
+alias t='task'
 alias tmux='command tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
 alias vimrc='vim "$XDG_CONFIG_HOME/nvim/init.vim"'
+alias y='yarn'
 
 ## Always use neovim
 command -v nvim > /dev/null && alias vim='nvim'

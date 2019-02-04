@@ -7,8 +7,16 @@ func! vimrc#toggleEditVimrc() abort
 endfunc
 
 func! vimrc#foldtext() abort
-    let line = getline(v:foldstart)
-    return '+' . v:folddashes . ' ' . line
+    let l:line = getline(v:foldstart)
+    let l:leading_whitespace = match(l:line, '\S') - 1
+    let l:marks_count = len(v:folddashes) + 1
+    if l:marks_count <= l:leading_whitespace
+        return substitute(l:line, '^.\{' . l:marks_count . '}', '+' . v:folddashes, '')
+    elseif l:leading_whitespace > 0
+        return substitute(l:line, '^\s', '+', '')
+    else
+        return l:line
+    endif
 endfunc
 
 func! vimrc#MergeALEOptions(key, list)

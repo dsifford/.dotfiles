@@ -6,14 +6,15 @@
 # When finished, all dangling images are removed (if not a dependency of a child image)
 #
 
-if command -v docker > /dev/null; then
+command -v docker > /dev/null || return
 
-	docker-update-images() {
-		docker images --format '{{.Repository}}:{{.Tag}}' --filter dangling=false \
-			| xargs -I {} -P 0 docker pull {}
+docker-update-images() {
+	declare -a to_delete
 
-		# shellcheck disable=2046
-		docker rmi $(docker images --filter dangling=true -q) 2> /dev/null
-	}
+	docker images --format '{{.Repository}}:{{.Tag}}' --filter dangling=false \
+		| xargs -n 1 -P 0 docker pull
 
-fi
+	mapfile -t to_delete < <(docker images --filter dangling=true -q)
+
+	docker rmi "${to_delete[@]}" 2> /dev/null
+}
