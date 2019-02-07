@@ -93,6 +93,8 @@ brew "haskell-stack"
 brew "highlight"
 # Add GitHub support to git on the command-line
 brew "hub"
+# Json incremental digger
+brew "jid"
 # Regular expressions library
 brew "oniguruma"
 # Lightweight and flexible command-line JSON processor
@@ -176,8 +178,8 @@ cask "transmission"
 cask "visual-studio-code"
 cask "vmware-horizon-client"
 cask "windscribe"
-mas "Amphetamine", id: 937984704
-mas "Magnet", id: 441258766
-mas "Notability", id: 736189492
-mas "Trello", id: 1278508951
-mas "Typeeto", id: 970502923
+mas "", id: 1278508951
+mas "", id: 937984704
+mas "", id: 970502923
+mas "", id: 736189492
+mas "", id: 441258766
