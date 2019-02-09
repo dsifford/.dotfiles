@@ -215,5 +215,7 @@
     "workbench.colorTheme": "Dracula",
     "workbench.sideBar.location": "left",
     "workbench.startupEditor": "none",
-    "workbench.statusBar.visible": true
+    "workbench.statusBar.visible": true,
+    "vim.neovimPath": "/usr/bin/nvim",
+    "typescript.tsserver.log": "verbose"
 }

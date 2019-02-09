@@ -139,6 +139,7 @@
     aur:
     - atom-editor-bin       # Hackable text editor built on Electron (official precompiled binary)
     - autokey-py3           # Python 3 port of AutoKey, a desktop automation utility for Linux and X11 with new features.
+    - ctop                  # Top-like interface for container metrics
     - dive                  # A tool for exploring each layer in a docker image
     - doctl-bin             # A command line tool for DigitalOcean services
     - dropbox               # A free service that lets you bring your photos, docs, and videos anywhere and share them easily.

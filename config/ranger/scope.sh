@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
-set -o noclobber
-set -o noglob
-set -o nounset
-set -o pipefail
-
-IFS=$'\n'
+# shellcheck disable=SC2119
 
 # If the option `use_preview_script` is set to `true`,
 # then this script will be called and its output will be displayed in ranger.
@@ -27,6 +22,13 @@ IFS=$'\n'
 # 6    | image      | Display the image `$IMAGE_CACHE_PATH` points to as an image preview
 # 7    | image      | Display the file directly as an image
 
+set -o noclobber
+set -o noglob
+set -o nounset
+set -o pipefail
+
+IFS=$'\n'
+
 # Script arguments
 declare FILE_PATH="$1"                       # Full path of the highlighted file
 declare -l FILE_EXTENSION="${FILE_PATH##*.}" # The file extension
@@ -36,19 +38,26 @@ declare MIMETYPE                             # The file's mime type
 MIMETYPE="$(file --dereference --brief --mime-type -- "$FILE_PATH")"
 
 # Settings
+# shellcheck disable=SC2034
+declare COLORTERM=8bit
 declare -i HIGHLIGHT_SIZE_MAX=262143 # 256KiB
-declare -i HIGHLIGHT_TABWIDTH=4
-declare HIGHLIGHT_FORMAT=ansi
-declare HIGHLIGHT_STYLE=pablo
 
 main() {
+	handle_mime
 	if [[ "$PV_IMAGE_ENABLED" == 'True' ]]; then
 		handle_image
 	fi
-	handle_mime
 	handle_extension
 	handle_fallback
 	exit 1
+}
+
+highlight_file() {
+	bat \
+		--theme dracula \
+		--color always \
+		--style changes,numbers \
+		"$@"
 }
 
 handle_extension() {
@@ -75,47 +84,17 @@ handle_extension() {
 			exit 1
 			;;
 
-		# OpenDocument
-		odt | ods | odp | sxw)
-			# Preview as text conversion
-			odt2txt "$FILE_PATH" && exit 5
-			exit 1
-			;;
-
 		# Microsoft Word
-		docx)
+		docx | odt)
 			# Convert to markdown and preview
-			highlight \
-				--replace-tabs="$HIGHLIGHT_TABWIDTH" \
-				--out-format="$HIGHLIGHT_FORMAT" \
-				--style="$HIGHLIGHT_STYLE" \
-				--syntax=md \
-				--force < <(pandoc -t gfm "$FILE_PATH") && exit 5
+			highlight_file --language md < <(pandoc -t gfm "$FILE_PATH") && exit 5
 			exit 1
-			;;
-
-		tsx)
-			if [[ "$(stat --printf='%s' -- "$FILE_PATH")" -gt "$HIGHLIGHT_SIZE_MAX" ]]; then
-				exit 2
-			fi
-			highlight \
-				--force \
-				--replace-tabs="$HIGHLIGHT_TABWIDTH" \
-				--out-format="$HIGHLIGHT_FORMAT" \
-				--style="$HIGHLIGHT_STYLE" \
-				--syntax=ts \
-				-- "$FILE_PATH" && exit 5
-			exit 2
 			;;
 	esac
 }
 
 handle_image() {
 	case "$MIMETYPE" in
-		image/svg*)
-			return
-			;;
-
 		# Image
 		image/*)
 			local orientation
@@ -157,26 +136,15 @@ handle_mime() {
 	case "$MIMETYPE" in
 		application/json)
 			prettier --parser json-stringify "$FILE_PATH" \
-				| highlight \
-					--force \
-					--out-format="$HIGHLIGHT_FORMAT" \
-					--style="$HIGHLIGHT_STYLE" \
-					--syntax=json && exit 5
-			exit 1
-			;;
-
-		application/pdf)
-			pdftotext -l 10 -nopgbrk -q -- "$FILE_PATH" - && exit 5
+				| highlight_file -l json \
+				&& exit 5
 			exit 1
 			;;
 
 		image/svg*)
 			prettier --parser html "$FILE_PATH" \
-				| highlight \
-					--force \
-					--out-format="$HIGHLIGHT_FORMAT" \
-					--style="$HIGHLIGHT_STYLE" \
-					--syntax=xml && exit 5
+				| highlight_file -l xml \
+				&& exit 5
 			exit 1
 			;;
 	esac
@@ -188,12 +156,7 @@ handle_fallback() {
 			if [[ "$(stat --printf='%s' -- "$FILE_PATH")" -gt "$HIGHLIGHT_SIZE_MAX" ]]; then
 				exit 2
 			fi
-			highlight \
-				--force \
-				--replace-tabs="$HIGHLIGHT_TABWIDTH" \
-				--out-format="$HIGHLIGHT_FORMAT" \
-				--style="$HIGHLIGHT_STYLE" \
-				-- "$FILE_PATH" && exit 5
+			highlight_file "$FILE_PATH" && exit 5
 			exit 2
 			;;
 	esac

@@ -60,7 +60,7 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
-" Custom foldtext (TODO: Improve this)
+" Custom foldtext
 set foldtext=vimrc#foldtext()
 
 let g:mapleader = "\<Space>"
@@ -82,6 +82,7 @@ hi clear CursorLine  " disables line highlight, but keeps `CursorLineNr`
 " Plugin Settings: {{{
 " Airline: {{{2
 
+let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tab_type = 0
@@ -98,8 +99,6 @@ endif
 
 " }}}2
 " ALE: {{{2
-
-let g:airline#extensions#ale#enabled = 1
 
 let g:ale_completion_enabled = 1
 let g:ale_linters_explicit = 1
@@ -226,7 +225,9 @@ try
 catch
     let g:mucomplete#chains = { 'default': [] }
 endtry
+
 let g:mucomplete#chains.default = ['ulti'] + g:mucomplete#chains.default
+let g:mucomplete#enable_auto_at_startup = 1
 
 " Expand Ultisnips with Enter key
 inoremap <silent> <expr> <CR> mucomplete#ultisnips#expand_snippet('<CR>')
@@ -296,18 +297,6 @@ let g:vimtex_compiler_latexmk = {
     \   '-interaction=nonstopmode',
     \ ],
     \}
-
-augroup dsifford
-    autocmd Filetype tex call ncm2#register_source({
-            \ 'name': 'vimtex',
-            \ 'priority': 8,
-            \ 'scope': ['tex'],
-            \ 'mark': 'tex',
-            \ 'word_pattern': '\w+',
-            \ 'complete_pattern': g:vimtex#re#ncm2,
-            \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
-            \ })
-augroup END
 
 if executable('skimpdf')
     let g:vimtex_view_general_viewer = 'skim'

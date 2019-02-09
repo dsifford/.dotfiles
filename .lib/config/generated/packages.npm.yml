@@ -4,6 +4,7 @@
 - npm:
   - '@google-cloud/functions-emulator'
   - ndb
+  - phantomjs-prebuilt
   - prettier
   - quicktype
   - release
