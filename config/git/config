@@ -1,5 +1,6 @@
 [alias]
     ai = "!git -c color.status=always status --short | sed -n '/^\\x1B\\[32m[A-Z]\\x1B\\[m  /!p' | fzf-tmux --ansi -m | awk '{ print $2 }' | xargs --no-run-if-empty git add"
+    ch = checkout
     f  = fetch --all
     lg = log --oneline --decorate --all --graph
     peek = ! git log --color --format=compact | fzf-tmux --ansi --preview='git show --color {1}'
@@ -62,7 +63,7 @@
 
 [user]
     email = dereksifford@gmail.com
-    name = Derek P Sifford
+    name = Derek Sifford
 
 [url "ssh://git@github.com"]
     insteadOf = https://github.com

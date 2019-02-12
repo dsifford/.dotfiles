@@ -1,7 +1,7 @@
 #
 # THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY.
 #
-- trizen:
+- pacman:
     # Package Groups
     groups:
     - base
@@ -132,7 +132,6 @@
     - youtube-dl                 # A small command-line program to download videos from YouTube.com and a few more sites
     - zathura                    # Minimalistic document viewer
     - zathura-pdf-poppler        # Adds pdf support to zathura by using the poppler engine
-    - zeal                       # An offline API documentation browser
     - zip                        # Compressor/archiver for creating and modifying zipfiles
 
     # AUR Packages
@@ -148,11 +147,11 @@
     - google-chrome-beta    # The popular and trusted web browser by Google (Beta Channel)
     - google-cloud-sdk      # A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq.
     - gscreenshot           # A simple screenshot tool supporting multiple backends
+    - hadolint-bin          # Dockerfile linter, validate inline bash, written in Haskell
     - jflap                 # Software to learning the basic concepts of Formal Languages and Automata Theory
     - jid                   # JSON incremental digger (Go installer)
     - lab                   # A hub-like tool for GitLab (tagged release)
     - ncurses5-compat-libs  # System V Release 4.0 curses emulation library, ABI 5
-    - ngrok                 # A tunneling, reverse proxy for developing and understanding networked, HTTP services
     - oni                   # An IDE built around Neovim
     - pandoc-bin            # Pandoc - executable only, without 750MB Haskell depends/makedepends
     - php-codesniffer       # PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files to detect and fix violations of a defined set of coding standards.
@@ -161,7 +160,8 @@
     - shellcheck-static     # shellcheck, without the 130MB haskell dependencies
     - spotify               # A proprietary music streaming service
     - stack-static          # The Haskell Tool Stack (linked statically)
-    - trizen                # Trizen AUR Package Manager: A lightweight wrapper for AUR.
     - ttf-monaco            # A monospaced sans-serif typeface by Apple Inc.
     - unetbootin            # Create bootable Live USB drives
     - windscribe-cli        # Port of Windscribe's command line interface
+    - yay                   # Yet another yogurt. Pacman wrapper and AUR helper written in go.
+    - zeal-git              # A simple documentation browser

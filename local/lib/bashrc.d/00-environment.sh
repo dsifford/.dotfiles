@@ -28,6 +28,7 @@ export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
 export MACHINE_STORAGE_PATH="$XDG_DATA_HOME"/docker-machine
 export MANIFOLD_DIR=~/.local/bin
+export NODE_OPTIONS='--experimental-repl-await'
 export NODE_REPL_HISTORY=
 export NODE_REPL_MODE=strict
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc

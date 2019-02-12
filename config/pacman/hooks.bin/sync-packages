@@ -58,7 +58,7 @@ parse_package_list() {
     echo '#'
     echo '# THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY.'
     echo '#'
-    echo '- trizen:'
+    echo '- pacman:'
     echo '    # Package Groups'
     echo '    groups:'
     printf -- '    - %s\n' "${groups[@]}"

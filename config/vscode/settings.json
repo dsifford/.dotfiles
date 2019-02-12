@@ -5,7 +5,6 @@
     "docker.showExplorer": false,
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.autoIndent": true,
-    "editor.codeLens": false,
     "editor.cursorBlinking": "solid",
     "editor.fontFamily": "Monaco, 'Courier New', monospace",
     "editor.fontSize": 18,
@@ -217,5 +216,7 @@
     "workbench.startupEditor": "none",
     "workbench.statusBar.visible": true,
     "vim.neovimPath": "/usr/bin/nvim",
-    "typescript.tsserver.log": "verbose"
+    "typescript.tsserver.log": "verbose",
+    "workbench.tree.indent": 20,
+    "merge-conflict.autoNavigateNextConflict.enabled": true
 }

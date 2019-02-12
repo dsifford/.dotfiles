@@ -9,12 +9,12 @@
 command -v docker > /dev/null || return
 
 docker-update-images() {
-	declare -a to_delete
-
 	docker images --format '{{.Repository}}:{{.Tag}}' --filter dangling=false \
-		| xargs -n 1 -P 0 docker pull
+		| xargs -n 1 -P 0 docker pull \
+		| sed -n '/^Status.*/p'
 
-	mapfile -t to_delete < <(docker images --filter dangling=true -q)
-
-	docker rmi "${to_delete[@]}" 2> /dev/null
+	# Delete old dangling images
+	docker images --filter dangling=true -q \
+		| xargs --no-run-if-empty docker rmi \
+		| sed -n '/^Deleted.*/!p'
 }

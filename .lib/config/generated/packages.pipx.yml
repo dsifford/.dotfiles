@@ -4,6 +4,7 @@
 - pipx:
   - bandit
   - black
+  - dotbot
   - isort
   - neovim-remote
   - pipx-app
