@@ -302,7 +302,7 @@ exec_always --no-startup-id feh \
     --no-fehbg \
     --bg-center \
     -B "#000000" \
-    /usr/share/archlinux/wallpaper/archlinux-simplyblack.png
+    /usr/share/backgrounds/archlinux/archlinux-simplyblack.png
 
 # floating terminal
 exec --no-startup-id termite --name=FloatingTerminal -e 'tmux -2u -f /home/dsifford/.config/tmux/tmux.conf new -AD -s home'

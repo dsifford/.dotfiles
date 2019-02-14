@@ -1,5 +1,12 @@
 snippet it "it(...)" b
 it('${1:description}', ${2:async }() => {
-    $0
+	$0
 });
 endsnippet
+
+snippet desc "describe(...)" b
+describe('${1:description}', () => {
+	$0
+});
+endsnippet
+
