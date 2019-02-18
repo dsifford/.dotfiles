@@ -218,5 +218,6 @@
     "vim.neovimPath": "/usr/bin/nvim",
     "typescript.tsserver.log": "verbose",
     "workbench.tree.indent": 20,
-    "merge-conflict.autoNavigateNextConflict.enabled": true
+    "merge-conflict.autoNavigateNextConflict.enabled": true,
+    "gitlens.codeLens.enabled": false
 }

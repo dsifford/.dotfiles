@@ -2,13 +2,13 @@
 # THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY.
 #
 - npm:
-  - '@google-cloud/functions-emulator'
-  - ndb
-  - phantomjs-prebuilt
-  - prettier
-  - quicktype
-  - release
-  - stylelint
-  - tslint
-  - typescript
-  - vsce
+  - "@google-cloud/functions-emulator"
+  - "ndb"
+  - "phantomjs-prebuilt"
+  - "prettier"
+  - "quicktype"
+  - "release"
+  - "stylelint"
+  - "tslint"
+  - "typescript"
+  - "vsce"

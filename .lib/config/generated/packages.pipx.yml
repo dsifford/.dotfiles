@@ -7,8 +7,8 @@
   - dotbot
   - isort
   - neovim-remote
-  - pipx-app
   - poetry
   - pylint
   - python-language-server
   - vim-vint
+  - yq

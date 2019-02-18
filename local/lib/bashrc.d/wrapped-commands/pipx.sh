@@ -30,7 +30,7 @@ pipx() (
 		echo '#'
 		echo '- pipx:'
 
-		for package in "$PIPX_HOME"/*; do
+		for package in "$PIPX_HOME"/venvs/*; do
 			echo "  - $(basename "$package")"
 		done
 	} > "$DOTFILES"/.lib/config/generated/packages.pipx.yml

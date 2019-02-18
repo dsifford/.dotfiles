@@ -91,10 +91,9 @@
     - pulseaudio-bluetooth       # Bluetooth support for PulseAudio
     - python                     # Next generation of the python high-level scripting language
     - python-jedi                # Awesome autocompletion for python
-    - python-neovim              # Python 3 client for neovim
+    - python-neovim              # Python client for Neovim
     - python-pip                 # The PyPA recommended tool for installing Python packages
     - python2                    # A high-level scripting language
-    - python2-neovim             # Python 2 client for neovim
     - python2-pip                # The PyPA recommended tool for installing Python packages
     - qt5-tools                  # A cross-platform application and UI framework (Development Tools, QtHelp)
     - ranger                     # Simple, vim-like file manager

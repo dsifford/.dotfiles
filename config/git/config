@@ -1,11 +1,11 @@
 [alias]
-    ai = "!git -c color.status=always status --short | sed -n '/^\\x1B\\[32m[A-Z]\\x1B\\[m  /!p' | fzf-tmux --ansi -m | awk '{ print $2 }' | xargs --no-run-if-empty git add"
+    ai = "! git -c color.status=always status --short | sed -n '/^\\x1B\\[32m[A-Z]\\x1B\\[m  /!p' | fzf-tmux --ansi -m | awk '{ print $2 }' | xargs --no-run-if-empty git add"
     ch = checkout
     f  = fetch --all
+    issues = "! hub issue | fzf-tmux --ansi | awk '{ sub(\"#\", \"\", $1); print $1 }' | xargs -I {} --no-run-if-empty bash -c 'hub issue show {} | bat --language md'"
     lg = log --oneline --decorate --all --graph
     peek = ! git log --color --format=compact | fzf-tmux --ansi --preview='git show --color {1}'
     s  = status
-    submodule-update = submodule update --remote --merge
 
 [core]
     editor = nvim

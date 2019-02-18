@@ -1,13 +1,21 @@
-#!/usr/bin/env python3.7
-"""Postinstall hook for syncing global npm packages."""
-from _shared import get_toplevel_packages, write_pkg_file
+#!/usr/bin/env bash
 
+NPM_PACKAGES_FILE="$DOTFILES"/.lib/config/generated/packages.npm.yml
 
-def main() -> None:
-    """Main entrypoint."""
-    if get_toplevel_packages() is not None:
-        write_pkg_file()
+[[ ! -f $NPM_PACKAGES_FILE ]] && exit 1
+npm_config_argv=${npm_config_argv:?}
 
+declare -a package_list
 
-if __name__ == "__main__":
-    main()
+mapfile -t package_list < <(LC_ALL=c sort -u < <(
+    yq '.[0].npm[]' "$NPM_PACKAGES_FILE"
+    jq '.remain[]' <<< "$npm_config_argv"
+))
+
+{
+    echo '#'
+    echo '# THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY.'
+    echo '#'
+    echo '- npm:'
+    printf -- '  - %s\n' "${package_list[@]}"
+} > "$NPM_PACKAGES_FILE"
