@@ -1,3 +1,1 @@
-augroup dsifford
-    autocmd BufNewFile,BufRead *.hcl set filetype=terraform
-augroup END
+autocmd BufNewFile,BufRead *.hcl set filetype=terraform

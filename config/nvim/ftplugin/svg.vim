@@ -3,5 +3,5 @@ let b:ale_fixers = [
     \ ]
 
 let b:ale_javascript_prettier_options = vimrc#MergeALEOptions('ale_javascript_prettier_options', [
-    \ '--parser=babylon',
+    \ '--parser=html',
     \])
