@@ -29,7 +29,7 @@ npmc() {
 npmcg() {
 	npm --color=always -g outdated \
 		| fzf --ansi --header-lines 1 -m --nth 1 \
-		| awk '{ print $1"@"$4 }' \
+		| awk '{ print $1 }' \
 		| xargs --verbose --no-run-if-empty -I % \
 			npm -g install %
 }
