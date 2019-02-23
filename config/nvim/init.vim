@@ -82,14 +82,18 @@ hi clear CursorLine  " disables line highlight, but keeps `CursorLineNr`
 " Plugin Settings: {{{
 " Airline: {{{2
 
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
+let g:airline_skip_empty_sections              = 1
+
+let g:airline#extensions#ale#enabled           = 1
+let g:airline#extensions#ale#checking_symbol   = '' " Don't show warnings for non-warnings in ale
+
+let g:airline#extensions#tabline#enabled       = 1
+let g:airline#extensions#tabline#show_buffers  = 0
 let g:airline#extensions#tabline#show_tab_type = 0
 let g:airline#extensions#tabline#tab_min_count = 2
-let g:airline#extensions#tabline#tab_nr_type = 1
-let g:airline#extensions#tabline#formatter = 'indexfmt'
-let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#tab_nr_type   = 1
+let g:airline#extensions#tabline#formatter     = 'indexfmt'
+let g:airline#extensions#tabline#show_tab_nr   = 0
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {
@@ -411,9 +415,6 @@ augroup dsifford
     " Toggle quickfix and preview window with <Esc>
     autocmd BufEnter * if &ft ==# 'qf' || &previewwindow | nnoremap <buffer><silent> <Esc> :quit<CR> | endif
 
-    " Turn on cursorline for preview window
-    autocmd BufEnter * if &previewwindow | setlocal cursorline | endif
-
     " Check to see if the current buffer has changes from another program. If
     " so, reload the changes.
     autocmd FocusGained,BufEnter * :checktime
@@ -427,10 +428,6 @@ augroup dsifford
     " Sets the foldlevel from 99 (set above) to the number of the highest fold
     " in the buffer
     autocmd BufRead * :normal zr
-
-    " Set CursorLine to be underlined while in a diff
-    autocmd FilterWritePost * if &diff | hi CursorLine gui=underline | endif
-    autocmd BufEnter * if &diff | hi CursorLine gui=underline | endif
 
     " Disable syntax on files larger than 1_000_000 bytes
     autocmd BufReadPre,BufEnter * if getfsize(expand("%")) > 1000000 | syntax off | endif
