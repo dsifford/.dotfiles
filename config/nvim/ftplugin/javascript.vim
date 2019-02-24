@@ -1,7 +1,8 @@
 setlocal foldmethod=syntax
+setlocal omnifunc=
 
 let b:undo_ftplugin = get(b:, 'undo_ftplugin', '')
-    \ . '| setlocal foldmethod<'
+    \ . '| setlocal foldmethod< omnifunc<'
 
 let b:ale_fixers = [
     \ 'prettier',

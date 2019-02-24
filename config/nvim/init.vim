@@ -9,9 +9,12 @@ augroup END
 
 let $MYVIMHOME=fnamemodify($MYVIMRC, ':p:h')
 
-set runtimepath-=~/.config/nvim/after " Prevent this from being sourced twice due to symlink
-set runtimepath+=$MYVIMHOME/after
+" Load personal vim scripts after everything else
+set runtimepath-=~/.config/nvim
+set runtimepath-=~/.config/nvim/after
+set runtimepath+=$MYVIMHOME
 
+" FIXME:
 source $MYVIMHOME/plugins.vimrc
 
 " }}}
