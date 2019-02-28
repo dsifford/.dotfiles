@@ -20,7 +20,6 @@ mauve.terraform
 ms-python.python
 ms-vscode.cpptools
 ms-vscode.vscode-typescript-tslint-plugin
-msjsdiag.debugger-for-chrome
 neuron.neuron-IPE
 persoderlind.vscode-phpcbf
 quicktype.quicktype
