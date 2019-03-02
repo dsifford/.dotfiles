@@ -17,6 +17,9 @@ Plug 'pangloss/vim-javascript'
 " LaTeX:
 Plug 'lervag/vimtex'
 
+" PlantUML:
+Plug 'aklt/plantuml-syntax'
+
 " Python:
 Plug 'vim-python/python-syntax'
 Plug 'davidhalter/jedi-vim'
