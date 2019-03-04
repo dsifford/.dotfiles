@@ -219,5 +219,9 @@
     "typescript.tsserver.log": "verbose",
     "workbench.tree.indent": 20,
     "merge-conflict.autoNavigateNextConflict.enabled": true,
-    "gitlens.codeLens.enabled": false
+    "gitlens.codeLens.enabled": false,
+    "rust-client.updateOnStartup": true,
+    "rust.clippy_preference": "on",
+    "rust.goto_def_racer_fallback": true,
+    "rust.unstable_features": true
 }

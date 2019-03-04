@@ -1,3 +1,5 @@
+" vim: set fdm=marker fdl=0:
+
 " Initialization: {{{
 
 scriptencoding utf8
@@ -24,6 +26,7 @@ set autowrite             " Automatically save before commands like :next and :m
 set clipboard=unnamedplus " Use system clipboard
 set cursorline            " Highlight the cursor line
 set foldlevelstart=99     " Default to no folds closed on new buffers
+set foldmethod=syntax     " Fold using syntax by default
 set hidden                " Use hidden buffers liberally
 set history=200           " Truncate history at 200 lines
 set ignorecase            " Required for proper smartcase functionality
@@ -225,16 +228,12 @@ augroup dsifford
 augroup END
 
 " }}}2
+" }}}2
 " MUcomplete: {{{2
 
-try
-    let g:mucomplete#chains = g:mucomplete#chains
-catch
-    let g:mucomplete#chains = { 'default': [] }
-endtry
-
-let g:mucomplete#chains.default = ['ulti'] + g:mucomplete#chains.default
-let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#chains = {
+    \ 'default': ['omni', 'ulti', 'path', 'dict', 'uspl'],
+    \ }
 
 " Expand Ultisnips with Enter key
 inoremap <silent> <expr> <CR> mucomplete#ultisnips#expand_snippet('<CR>')
@@ -438,5 +437,3 @@ augroup dsifford
 augroup END
 
 " }}}
-
-" vim: set fdm=marker:
