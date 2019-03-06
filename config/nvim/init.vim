@@ -1,5 +1,3 @@
-" vim: set fdm=marker fdl=0:
-
 " Initialization: {{{
 
 scriptencoding utf8
@@ -11,12 +9,12 @@ augroup END
 
 let $MYVIMHOME=fnamemodify($MYVIMRC, ':p:h')
 
+" FIXME: Prob don't need this - it's screwing with core ftplugins
 " Load personal vim scripts after everything else
-set runtimepath-=~/.config/nvim
-set runtimepath-=~/.config/nvim/after
-set runtimepath+=$MYVIMHOME
+" set runtimepath-=~/.config/nvim
+" set runtimepath-=~/.config/nvim/after
+" set runtimepath+=$MYVIMHOME
 
-" FIXME:
 source $MYVIMHOME/plugins.vimrc
 
 " }}}
@@ -428,8 +426,8 @@ augroup dsifford
     autocmd FileType * set formatoptions-=o | set formatoptions+=r
 
     " Sets the foldlevel from 99 (set above) to the number of the highest fold
-    " in the buffer
-    autocmd BufRead * :normal zr
+    " in the buffer (skip vim files)
+    autocmd BufRead * if &ft !=# 'vim' | :normal zr | endif
 
     " Disable syntax on files larger than 1_000_000 bytes
     autocmd BufReadPre,BufEnter * if getfsize(expand("%")) > 1000000 | syntax off | endif
