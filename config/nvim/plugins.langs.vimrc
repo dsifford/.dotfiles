@@ -17,6 +17,9 @@ Plug 'pangloss/vim-javascript'
 " LaTeX:
 Plug 'lervag/vimtex'
 
+" Markdown:
+Plug 'plasticboy/vim-markdown'
+
 " PlantUML:
 Plug 'aklt/plantuml-syntax'
 
