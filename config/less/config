@@ -2,4 +2,4 @@
 ^L  undo-hilite
 
 #env
-LESS = -iRS
+LESS = -iRF
