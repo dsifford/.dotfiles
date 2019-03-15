@@ -9,12 +9,6 @@ augroup END
 
 let $MYVIMHOME=fnamemodify($MYVIMRC, ':p:h')
 
-" FIXME: Prob don't need this - it's screwing with core ftplugins
-" Load personal vim scripts after everything else
-" set runtimepath-=~/.config/nvim
-" set runtimepath-=~/.config/nvim/after
-" set runtimepath+=$MYVIMHOME
-
 source $MYVIMHOME/plugins.vimrc
 
 " }}}
@@ -65,7 +59,7 @@ set softtabstop=4
 set tabstop=4
 
 " Custom foldtext
-set foldtext=vimrc#foldtext()
+set foldtext=vimrc#folds#Foldtext()
 
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
@@ -174,9 +168,9 @@ xmap ga <Plug>(LiveEasyAlign)
 
 let g:user_emmet_leader_key='<C-e>'
 
-imap <C-e><C-e> <Plug>(emmet-expand-abbr)
-imap <C-e><C-]> <Plug>(emmet-move-next)
-imap <C-e><C-[> <Plug>(emmet-move-prev)
+let g:user_emmet_expandabbr_key = '<C-e><C-e>'
+let g:user_emmet_next_key = '<C-e>j'
+let g:user_emmet_prev_key = '<C-e>k'
 
 let g:user_emmet_settings = {
 \  'markdown' : {
@@ -362,6 +356,9 @@ nnoremap Y  y$
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
+" Repaint screen and clear highlights
+nnoremap <silent> <C-L> :nohlsearch<Bar>:syntax sync fromstart<CR>
+
 " Toggle fold
 nnoremap <silent> <CR> :pc <Bar> :if &foldenable <Bar> :exe ':silent! normal za\r' <Bar> :endif<CR>
 
@@ -424,10 +421,6 @@ augroup dsifford
 
     " Don't add comment when newline added with o or O for any filetype
     autocmd FileType * set formatoptions-=o | set formatoptions+=r
-
-    " Sets the foldlevel from 99 (set above) to the number of the highest fold
-    " in the buffer (skip vim files)
-    autocmd BufRead * if &ft !=# 'vim' | :normal zr | endif
 
     " Disable syntax on files larger than 1_000_000 bytes
     autocmd BufReadPre,BufEnter * if getfsize(expand("%")) > 1000000 | syntax off | endif

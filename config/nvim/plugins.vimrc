@@ -15,8 +15,6 @@ endif
 
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'tpope/vim-sensible'
-
 " Essential
 Plug 'justinmk/vim-sneak'
 Plug 'lifepillar/vim-mucomplete'
