@@ -1,6 +1,6 @@
 
 " Custom `foldtext` function.
-func! vimrc#folds#Foldtext() abort
+func! vimrc#folds#foldtext() abort
     let l:line = getline(v:foldstart)
     let l:leading_whitespace = match(l:line, '\S') - 1
     let l:marks_count = len(v:folddashes) + 1
@@ -14,7 +14,7 @@ func! vimrc#folds#Foldtext() abort
 endfunc
 
 " Folds all lines matching regex pattern entered in prompt.
-func! vimrc#folds#FoldLinesMatching()
+func! vimrc#folds#foldLinesMatching()
   call inputsave()
   let l:word = input('Enter fold word: ')
   call inputrestore()
@@ -22,7 +22,7 @@ func! vimrc#folds#FoldLinesMatching()
 endfunc
 
 " Toggle fold/unfold at first fold level only.
-func! vimrc#folds#ToggleFirstLevel()
+func! vimrc#folds#toggleFirstLevel()
     if get(b:, 'foldstate', 1)
         %foldc
     else

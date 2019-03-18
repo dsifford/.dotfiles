@@ -225,5 +225,8 @@
     "rust.goto_def_racer_fallback": true,
     "rust.unstable_features": true,
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.duration": 1000,
+    "vim.highlightedyank.color": "#ffb86c"
 }

@@ -6,7 +6,7 @@ func! vimrc#toggleEditVimrc() abort
     endif
 endfunc
 
-func! vimrc#MergeALEOptions(key, list)
+func! vimrc#mergeALEOptions(key, list)
     func! s:opts_to_dict(list)
         let l:opts = {}
         for l:item in a:list
@@ -27,17 +27,8 @@ func! vimrc#MergeALEOptions(key, list)
     return join(values(map(l:options, {k, v -> k . v})))
 endfunc
 
-" Helper that unloads, reloads, and repaints syntax on demand
-func! vimrc#ReloadSyntax()
-    let l:current_file = expand('%:p')
-    write
-    Reload
-    bdelete
-    exec 'edit' l:current_file
-endfunc
-
 " Zoom / Restore active window
-func! vimrc#ZoomToggle()
+func! vimrc#zoomToggle()
     if exists('t:zoomed') && t:zoomed
         exec t:zoom_winrestcmd
         let t:zoomed = 0

@@ -59,7 +59,7 @@ set softtabstop=4
 set tabstop=4
 
 " Custom foldtext
-set foldtext=vimrc#folds#Foldtext()
+set foldtext=vimrc#folds#foldtext()
 
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
@@ -238,12 +238,8 @@ let g:netrw_banner = 0
 let g:netrw_home = stdpath('cache')
 let g:netrw_preview = 1
 
-" Toggle Netrw window
-noremap <silent> <C-\> <Cmd>vertical botright vsplit <Bar> normal -<CR>
-
 augroup dsifford
-    autocmd FileType netrw let g:netrw_list_hide = netrw_gitignore#Hide() . ',\.git,^\.\.\=\/'
-    autocmd FileType netrw noremap <buffer> <silent> <C-\> <Cmd>q<CR>
+    autocmd FileType netrw let g:netrw_list_hide = netrw_gitignore#Hide(findfile('.gitignore', '.;')) . ',\.git,^\.\.\=\/'
 augroup END
 
 " }}}2
@@ -344,7 +340,6 @@ let g:which_key_map.b = {
 " Commands: {{{
 
 command! Reload source $MYVIMRC
-command! ReloadSyntax call vimrc#ReloadSyntax()
 
 " }}}
 " Mappings: {{{
@@ -394,13 +389,13 @@ nnoremap <silent> <Leader><Leader>ln :set relativenumber!<CR>
 let g:which_key_map.z = { 'name': '+folds' }
 
 let g:which_key_map.z.f = 'Toggle first-level folds in buffer'
-nnoremap <silent> <Leader>zf <Cmd>call vimrc#folds#ToggleFirstLevel()<CR>
+nnoremap <silent> <Leader>zf <Cmd>call vimrc#folds#toggleFirstLevel()<CR>
 
 let g:which_key_map.z['/'] = 'Fold all lines beginning with word'
-nnoremap <silent> <Leader>z/ <Cmd>call vimrc#folds#FoldLinesMatching()<CR>
+nnoremap <silent> <Leader>z/ <Cmd>call vimrc#folds#foldLinesMatching()<CR>
 
 let g:which_key_map['<Enter>'] = 'Toggle buffer fullscreen'
-nnoremap <silent> <Leader><Enter> :call vimrc#ZoomToggle()<CR>
+nnoremap <silent> <Leader><Enter> :call vimrc#zoomToggle()<CR>
 
 let g:which_key_map['/'] = 'Search project with ripgrep'
 nnoremap <Leader>/ :Rg<Space>
