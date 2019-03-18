@@ -57,6 +57,7 @@ highlight_file() {
 		--theme dracula \
 		--color always \
 		--style changes,numbers \
+		--line-range :500 \
 		"$@"
 }
 
