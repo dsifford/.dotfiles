@@ -13,7 +13,7 @@
     # Official Packages
     official:
     - arandr                     # Provide a simple visual front end for XRandR 1.2.
-    - archlinux-wallpaper        # A variety of Arch Linux branded wallpapers
+    - archlinux-wallpaper        # A selection of Arch Linux branded wallpapers
     - asciinema                  # Record and share terminal sessions
     - asp                        # Arch Linux build source file management tool
     - atool                      # A script for managing file archives of various types
