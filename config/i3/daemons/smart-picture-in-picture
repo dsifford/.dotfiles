@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
+# pylint: disable=invalid-name
+"""
+Daemon script that makes Chrome "Picture-in-picture" windows move to active
+window and away from the mouse.
+"""
 from enum import Enum, auto
 
 import i3ipc
 from Xlib import display
 
-FLOATING_NAME = "FLOATING_PLAYER_WINDOW"
+FLOATING_NAME = "Picture in picture"
 FLOATING_MARK = "FLOATING_ACTIVE"
 CROSS_MARK = "CROSS"
 

@@ -23,7 +23,6 @@
     - bc                         # An arbitrary precision calculator language
     - bind-tools                 # The ISC DNS tools
     - blueman                    # GTK+ Bluetooth Manager
-    - bluez-firmware             # Firmwares for Broadcom BCM203x and STLC2300 Bluetooth chips
     - bluez-utils                # Development and debugging utilities for the bluetooth protocol stack
     - cmake                      # A cross-platform open-source make system
     - code                       # The Open Source build of Visual Studio Code (vscode) editor
@@ -138,6 +137,7 @@
     aur:
     - atom-editor-bin       # Hackable text editor built on Electron (official precompiled binary)
     - autokey               # AutoKey, a desktop automation utility for Linux and X11, updated to run on Python 3
+    - bluez-firmware        # Firmwares for Broadcom BCM203x and STLC2300 Bluetooth chips
     - ctop                  # Top-like interface for container metrics
     - dive                  # A tool for exploring each layer in a docker image
     - doctl-bin             # A command line tool for DigitalOcean services
