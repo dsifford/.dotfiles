@@ -5,7 +5,7 @@ Host *
     UseKeychain yes
 
 Host aliem
-    HostName 157.230.172.235
+    HostName 178.128.182.65
     Port 22
     User root
 
