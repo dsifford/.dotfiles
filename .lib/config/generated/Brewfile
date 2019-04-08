@@ -75,6 +75,8 @@ brew "gnu-sed"
 brew "gnu-tar"
 # GNU implementation of which utility
 brew "gnu-which"
+# Asynchronous event library
+brew "libevent"
 # ASN.1 structure parser library
 brew "libtasn1"
 # Low-level cryptographic library
@@ -101,8 +103,6 @@ brew "oniguruma"
 brew "jq"
 # LastPass command-line interface tool
 brew "lastpass-cli"
-# Asynchronous event library
-brew "libevent"
 # Utility for directing compilation
 brew "make", args: ["with-default-names"]
 # Mac App Store command-line interface
@@ -178,8 +178,8 @@ cask "transmission"
 cask "visual-studio-code"
 cask "vmware-horizon-client"
 cask "windscribe"
-mas "", id: 1278508951
-mas "", id: 937984704
-mas "", id: 970502923
-mas "", id: 736189492
-mas "", id: 441258766
+mas "com.atlassian.trello", id: 1278508951
+mas "com.crowdcafe.windowmagnet", id: 441258766
+mas "com.eltima.tp2", id: 970502923
+mas "com.gingerlabs.NotabilityMac", id: 736189492
+mas "com.if.Amphetamine", id: 937984704
