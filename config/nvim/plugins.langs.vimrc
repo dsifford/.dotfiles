@@ -27,6 +27,9 @@ Plug 'aklt/plantuml-syntax'
 Plug 'vim-python/python-syntax'
 Plug 'davidhalter/jedi-vim'
 
+" Rust:
+Plug 'rust-lang/rust.vim'
+
 " Terraform:
 Plug 'hashivim/vim-terraform'
 

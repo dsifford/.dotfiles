@@ -63,7 +63,6 @@
     - libreoffice-fresh          # LibreOffice branch which contains new features and program enhancements
     - mpv                        # a free, open source, and cross-platform media player
     - mypy                       # Optional static typing for Python 2 and 3 (PEP484)
-    - neovim                     # Fork of Vim aiming to improve user experience, plugins, and GUIs
     - network-manager-applet     # Applet for managing network connections
     - networkmanager             # Network connection manager and user applications
     - nmap                       # Utility for network discovery and security auditing
@@ -152,7 +151,7 @@
     - jid                   # JSON incremental digger (Go installer)
     - lab                   # A hub-like tool for GitLab (tagged release)
     - ncurses5-compat-libs  # System V Release 4.0 curses emulation library, ABI 5
-    - oni                   # An IDE built around Neovim
+    - neovim-git            # Fork of Vim aiming to improve user experience, plugins, and GUIs.
     - pandoc-bin            # Pandoc - executable only, without 750MB Haskell depends/makedepends
     - php-codesniffer       # PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files to detect and fix violations of a defined set of coding standards.
     - plex-media-server     # Plex Media Server

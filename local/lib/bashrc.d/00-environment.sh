@@ -1,12 +1,13 @@
 # shellcheck shell=bash disable=2155
-unset PREFIX
+unset LC_ALL
 unset NPM_CONFIG_PREFIX
+unset PREFIX
+
+export LANG=en_US.UTF-8
+export LC_COLLATE=C
 
 export EDITOR=vim
-export LESSHISTFILE='-'
-export LESSCHARSET=utf-8
 export PAGER=less
-export LC_ALL=C
 
 export DOTFILES=~/.dotfiles
 
@@ -25,6 +26,8 @@ export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
 export GOPATH="$XDG_DATA_HOME"/go
 export HISTFILE="$XDG_DATA_HOME"/bash/history
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
+export LESSCHARSET=utf-8
+export LESSHISTFILE='-'
 export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
 export MACHINE_STORAGE_PATH="$XDG_DATA_HOME"/docker-machine
 export MANIFOLD_DIR=~/.local/bin
@@ -47,7 +50,6 @@ export npm_config_devdir="$XDG_CACHE_HOME"/node-gyp
 
 # fzf
 if command -v fzf > /dev/null; then
-	# use ripgrep instead for better speed and ignored file support
 	export FZF_DEFAULT_OPTS='
 		--height 40%
 		--reverse

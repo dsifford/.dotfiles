@@ -133,7 +133,7 @@ augroup dsifford
         \ ]
     autocmd BufNewFile,BufRead *
                 \ if index(s:ft_keywordprg_ale_hover, &ft) >= 0                                                   |
-                \     setlocal keywordprg=:call\ ale#hover#Show(bufnr(''),\ getcurpos()[1],\ getcurpos()[2],\ {}) |
+                \     setlocal keywordprg=:call\ ale#hover#ShowAtCursor() |
                 \ endif
 
     " Disable for certain buffers
@@ -351,8 +351,8 @@ nnoremap Y  y$
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
-" Repaint screen and clear highlights
-nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L><Bar>:syntax sync fromstart<CR>
+" Clear hlsearch
+nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
 " Toggle fold
 nnoremap <silent> <CR> :pc <Bar> :if &foldenable <Bar> :exe ':silent! normal za\r' <Bar> :endif<CR>
