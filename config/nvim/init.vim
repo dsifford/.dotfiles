@@ -9,6 +9,8 @@ augroup END
 
 let $MYVIMHOME=fnamemodify($MYVIMRC, ':p:h')
 
+set runtimepath^=/usr/share/vim/vimfiles/
+
 source $MYVIMHOME/plugins.vimrc
 
 " }}}
@@ -80,6 +82,8 @@ hi clear CursorLine  " disables line highlight, but keeps `CursorLineNr`
 " Plugin Settings: {{{
 " Airline: {{{2
 
+let g:airline_section_c = '%{vimrc#window#statusline()}'
+
 let g:airline_skip_empty_sections              = 1
 
 let g:airline#extensions#ale#enabled           = 1
@@ -114,9 +118,6 @@ let g:ale_javascript_prettier_options = '--config-precedence=prefer-file --prose
 
 nnoremap <silent> <Leader>f :ALEFix<CR>
 nnoremap <silent> <Leader>k :ALEDetail<CR>
-
-nnoremap <silent> <C-k> :ALEPreviousWrap<CR>
-nnoremap <silent> <C-j> :ALENextWrap<CR>
 
 nnoremap <silent> gd :ALEGoToDefinition<CR>
 nnoremap <silent> gD :ALEGoToDefinitionInTab<CR>
@@ -351,6 +352,9 @@ nnoremap Y  y$
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
+nnoremap <silent> <C-k> <Cmd>call vimrc#buffer#smartJump(-1)<CR>
+nnoremap <silent> <C-j> <Cmd>call vimrc#smart#Jump(1)<CR>
+
 " Clear hlsearch
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
@@ -361,7 +365,7 @@ nnoremap <silent> <CR> :pc <Bar> :if &foldenable <Bar> :exe ':silent! normal za\
 nnoremap ZA :confirm wqall<CR>
 
 " Open vimrc with F12
-noremap <silent> <F12> :call vimrc#toggleEditVimrc()<CR>
+noremap <silent> <F12> :call vimrc#toggleEdit()<CR>
 
 " Select the next/prev matches while performing a search
 cnoremap <C-j> <C-g>
@@ -395,7 +399,7 @@ let g:which_key_map.z['/'] = 'Fold all lines beginning with word'
 nnoremap <silent> <Leader>z/ <Cmd>call vimrc#folds#foldLinesMatching()<CR>
 
 let g:which_key_map['<Enter>'] = 'Toggle buffer fullscreen'
-nnoremap <silent> <Leader><Enter> :call vimrc#zoomToggle()<CR>
+nnoremap <silent> <Leader><Enter> :call vimrc#window#zoomToggle()<CR>
 
 let g:which_key_map['/'] = 'Search project with ripgrep'
 nnoremap <Leader>/ :Rg<Space>

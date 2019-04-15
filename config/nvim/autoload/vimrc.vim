@@ -1,11 +1,4 @@
-func! vimrc#toggleEditVimrc() abort
-    if expand('%:t') ==# fnamemodify($MYVIMRC, ':t')
-        w | bd
-    else
-        exec 'vert botright ' . float2nr(round(&columns * 0.75)) . 'vsplit $MYVIMRC'
-    endif
-endfunc
-
+" Merge local and global ALE options
 func! vimrc#mergeALEOptions(key, list)
     func! s:opts_to_dict(list)
         let l:opts = {}
@@ -27,17 +20,11 @@ func! vimrc#mergeALEOptions(key, list)
     return join(values(map(l:options, {k, v -> k . v})))
 endfunc
 
-" Zoom / Restore active window
-func! vimrc#zoomToggle()
-    if exists('t:zoomed') && t:zoomed
-        exec t:zoom_winrestcmd
-        let t:zoomed = 0
+" Toggle open/closed a vertical buffer to edit vimrc
+func! vimrc#toggleEdit() abort
+    if expand('%:t') ==# fnamemodify($MYVIMRC, ':t')
+        w | bd
     else
-        let t:zoom_winrestcmd = winrestcmd()
-        resize
-        vertical resize
-        let t:zoomed = 1
+        exec 'vert botright ' . float2nr(round(&columns * 0.75)) . 'vsplit $MYVIMRC'
     endif
 endfunc
-
-" vim: set fdm=syntax:

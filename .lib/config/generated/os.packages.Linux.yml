@@ -138,7 +138,6 @@
     - autokey               # AutoKey, a desktop automation utility for Linux and X11, updated to run on Python 3
     - bluez-firmware        # Firmwares for Broadcom BCM203x and STLC2300 Bluetooth chips
     - ctop                  # Top-like interface for container metrics
-    - dive                  # A tool for exploring each layer in a docker image
     - doctl-bin             # A command line tool for DigitalOcean services
     - dropbox               # A free service that lets you bring your photos, docs, and videos anywhere and share them easily.
     - exercism-cli          # Command line client for exercism.io
@@ -147,7 +146,6 @@
     - google-cloud-sdk      # A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq.
     - gscreenshot           # A simple screenshot tool supporting multiple backends
     - hadolint-bin          # Dockerfile linter, validate inline bash, written in Haskell
-    - jflap                 # Software to learning the basic concepts of Formal Languages and Automata Theory
     - jid                   # JSON incremental digger (Go installer)
     - lab                   # A hub-like tool for GitLab (tagged release)
     - ncurses5-compat-libs  # System V Release 4.0 curses emulation library, ABI 5

@@ -9,6 +9,6 @@ command -v fzf > /dev/null || return
 drmi() {
 	docker images \
 		| fzf --header-lines 1 --nth 1 --multi \
-		| awk '{ print $1":"$2 }' \
+		| awk '/<none>/{ print $3; next }{ print $1":"$2 }' \
 		| xargs --verbose --no-run-if-empty docker rmi
 }

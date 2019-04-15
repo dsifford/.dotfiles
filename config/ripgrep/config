@@ -1,0 +1,5 @@
+#
+# Default ripgrep args
+#
+
+--smart-case
