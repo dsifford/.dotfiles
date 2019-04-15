@@ -353,7 +353,7 @@ nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
 nnoremap <silent> <C-k> <Cmd>call vimrc#buffer#smartJump(-1)<CR>
-nnoremap <silent> <C-j> <Cmd>call vimrc#smart#Jump(1)<CR>
+nnoremap <silent> <C-j> <Cmd>call vimrc#buffer#smartJump(1)<CR>
 
 " Clear hlsearch
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
