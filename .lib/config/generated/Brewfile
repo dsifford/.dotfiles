@@ -67,7 +67,7 @@ brew "gcc"
 brew "git"
 # Small git utilities
 brew "git-extras"
-# Command-line option parsing library
+# Command-line option parsing utility
 brew "gnu-getopt"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
