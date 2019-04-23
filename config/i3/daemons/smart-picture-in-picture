@@ -5,6 +5,7 @@ Daemon script that makes Chrome "Picture-in-picture" windows move to active
 window and away from the mouse.
 """
 from enum import Enum, auto
+from typing import Optional
 
 import i3ipc
 from Xlib import display
@@ -39,7 +40,7 @@ def has_floating_fullscreen_window(self, workspace) -> bool:
     )
 
 
-def get_con_output_name(self, con) -> str:
+def get_con_output_name(self, con) -> Optional[str]:
     rect = con.props.rect
     return next(
         (
@@ -95,14 +96,15 @@ def translate_window(
         (i for i in self.get_outputs() if i.current_workspace == current_workspace),
         None,
     )
-    container.command(
-        (
-            "move position"
-            f" {get_x_position(output.rect, rect, explicit_x, cross)}"
-            f" {get_y_position(output.rect, rect, explicit_y)};"
-            " focus tiling"
+    if output is not None:
+        container.command(
+            (
+                "move position"
+                f" {get_x_position(output.rect, rect, explicit_x, cross)}"
+                f" {get_y_position(output.rect, rect, explicit_y)};"
+                " focus tiling"
+            )
         )
-    )
 
 
 def on_terminal_fullscreen(self, e) -> None:
@@ -134,24 +136,24 @@ def on_window_focus(self, e) -> None:
     translate_window(self, yt_window, cross=cross)
 
 
-def on_workspace_focus(self, e) -> None:
-    yt_window = get_floating_window(self)
-    if (
-        yt_window is None
-        or FLOATING_MARK not in yt_window.marks
-        or has_floating_fullscreen_window(self, e.current)
-        or yt_window.workspace().id == e.current.id
-    ):
-        return
-    yt_window.command(f"unmark {FLOATING_MARK}")
-    translate_window(self, get_floating_window(self), explicit_y=Position.BOTTOM)
-    yt_window.command(f"mark --add {FLOATING_MARK}")
+# def on_workspace_focus(self, e) -> None:
+#     yt_window = get_floating_window(self)
+#     if (
+#         yt_window is None
+#         or FLOATING_MARK not in yt_window.marks
+#         or has_floating_fullscreen_window(self, e.current)
+#         or yt_window.workspace().id == e.current.id
+#     ):
+#         return
+#     yt_window.command(f"unmark {FLOATING_MARK}")
+#     translate_window(self, get_floating_window(self), explicit_y=Position.BOTTOM)
+#     yt_window.command(f"mark --add {FLOATING_MARK}")
 
 
 i3 = i3ipc.Connection()
 
 i3.on("window::focus", on_window_focus)
-i3.on("workspace::focus", on_workspace_focus)
+# i3.on("workspace::focus", on_workspace_focus)
 i3.on("window::fullscreen_mode", on_terminal_fullscreen)
 
 i3.main()

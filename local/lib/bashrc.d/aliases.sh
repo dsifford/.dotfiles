@@ -28,11 +28,14 @@ alias tmux='command tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
 alias vimrc='vim "$XDG_CONFIG_HOME/nvim/init.vim"'
 alias y='yarn'
 
-## Always use neovim
-command -v nvim > /dev/null && alias vim='nvim'
+command -v rg > /dev/null \
+	&& alias grep='rg'
 
 command -v nvidia-settings > /dev/null \
 	&& alias nvidia-settings='command nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
+
+command -v nvim > /dev/null \
+	&& alias vim='nvim'
 
 # Coreutils stuff
 if ls --version &> /dev/null; then
