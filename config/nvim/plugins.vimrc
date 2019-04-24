@@ -15,15 +15,17 @@ endif
 
 call plug#begin(stdpath('data') . '/plugged')
 
-" Essential
-Plug 'justinmk/vim-sneak'
-Plug 'lifepillar/vim-mucomplete'
-Plug 'liuchengxu/vim-which-key'
+" Essential: {{{
+
+Plug 'w0rp/ale'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-repeat'
+Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-surround'
-Plug 'w0rp/ale'
+Plug 'liuchengxu/vim-which-key'
 
 Plug 'junegunn/fzf', { 'do': './install --bin' }
     Plug 'junegunn/fzf.vim'
@@ -31,30 +33,32 @@ Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
 
-" General Enhancements
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'editorconfig/editorconfig-vim'
+" }}}
+" General Enhancements: {{{
+
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
+Plug 'andymass/vim-matchup'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-vinegar'
 
-" Look and feel
-Plug 'airblade/vim-gitgutter'
-Plug 'chrisbra/Colorizer'
+" }}}
+" Look And Feel: {{{
+
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'machakann/vim-highlightedyank'
+Plug 'chrisbra/Colorizer'
 Plug 'vim-airline/vim-airline'
+Plug 'airblade/vim-gitgutter'
+Plug 'machakann/vim-highlightedyank'
 
-" Misc
-Plug 'tpope/vim-scriptease'
-Plug 'junegunn/vader.vim'
+" }}}
+" Misc: {{{
 
-" Still not sure I want to keep
 Plug 'tweekmonster/startuptime.vim'
-Plug 'andymass/vim-matchup'
+Plug 'tpope/vim-scriptease'
 
-source $MYVIMHOME/plugins.langs.vimrc
+" }}}
+
+runtime plugins.langs.vimrc
 
 call plug#end()
-
-" vim: set fdm=marker:

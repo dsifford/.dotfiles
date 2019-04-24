@@ -1,5 +1,5 @@
 " Merge local and global ALE options
-func! vimrc#mergeALEOptions(key, list)
+func! vimrc#merge_ale_options(key, list)
     func! s:opts_to_dict(list)
         let l:opts = {}
         for l:item in a:list
@@ -21,7 +21,7 @@ func! vimrc#mergeALEOptions(key, list)
 endfunc
 
 " Toggle open/closed a vertical buffer to edit vimrc
-func! vimrc#toggleEdit() abort
+func! vimrc#toggle_edit() abort
     if expand('%:t') ==# fnamemodify($MYVIMRC, ':t')
         w | bd
     else

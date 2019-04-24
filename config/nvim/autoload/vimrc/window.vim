@@ -11,7 +11,7 @@ func! vimrc#window#statusline()
 endfunc
 
 " Zoom / Restore active window
-func! vimrc#window#zoomToggle()
+func! vimrc#window#zoom_toggle()
     if exists('t:zoomed') && t:zoomed
         exec t:zoom_winrestcmd
         let t:zoomed = 0
@@ -23,3 +23,4 @@ func! vimrc#window#zoomToggle()
     endif
 endfunc
 
+" vim: set fdm=indent fdn=1:

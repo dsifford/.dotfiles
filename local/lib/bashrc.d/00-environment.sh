@@ -25,6 +25,7 @@ export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
 export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
 export GOPATH=$XDG_DATA_HOME/go
 export HISTFILE=$XDG_DATA_HOME/bash/history
+export HTTPIE_CONFIG_DIR=$XDG_CONFIG_HOME/httpie
 export INPUTRC=$XDG_CONFIG_HOME/readline/inputrc
 export LESSCHARSET=utf-8
 export LESSHISTFILE=-

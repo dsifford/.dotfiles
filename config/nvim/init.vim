@@ -7,11 +7,9 @@ augroup dsifford
     autocmd!
 augroup END
 
-let $MYVIMHOME=fnamemodify($MYVIMRC, ':p:h')
-
 set runtimepath^=/usr/share/vim/vimfiles/
 
-source $MYVIMHOME/plugins.vimrc
+runtime plugins.vimrc
 
 " }}}
 " Options: {{{
@@ -106,7 +104,6 @@ endif
 " }}}2
 " ALE: {{{2
 
-let g:ale_completion_enabled = 1
 let g:ale_linters_explicit = 1
 let g:ale_virtualtext_cursor = 1
 
@@ -157,6 +154,18 @@ let g:AutoPairsShortcutToggle = ''
 
 let g:colorizer_auto_filetype='css,scss'
 let g:colorizer_colornames = 0
+
+" }}}2
+" Deoplete: {{{2
+
+let g:deoplete#enable_at_startup = 1
+
+call deoplete#custom#source('ale', 'rank', 999)
+
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ vimrc#buffer#should_insert_tab() ? "\<TAB>" :
+    \ deoplete#mappings#manual_complete()
 
 " }}}2
 " EasyAlign: {{{2
@@ -222,16 +231,6 @@ augroup END
 
 " }}}2
 " }}}2
-" MUcomplete: {{{2
-
-let g:mucomplete#chains = {
-    \ 'default': ['omni', 'ulti', 'path', 'dict', 'uspl'],
-    \ }
-
-" Expand Ultisnips with Enter key
-inoremap <silent> <expr> <CR> mucomplete#ultisnips#expand_snippet('<CR>')
-
-" }}}2
 " Netrw: {{{2
 
 let g:netrw_alto = 0
@@ -273,7 +272,6 @@ let g:UltiSnipsEditSplit           = 'tabdo'
 let g:UltiSnipsExpandTrigger       = '<M-j>'
 let g:UltiSnipsJumpForwardTrigger  = '<M-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<M-k>'
-let g:UltiSnipsSnippetDirectories  = [ $MYVIMHOME . '/UltiSnips' ]
 
 " }}}2
 " Vimtex: {{{2
@@ -352,8 +350,8 @@ nnoremap Y  y$
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
-nnoremap <silent> <C-k> <Cmd>call vimrc#buffer#smartJump(-1)<CR>
-nnoremap <silent> <C-j> <Cmd>call vimrc#buffer#smartJump(1)<CR>
+nnoremap <silent> <C-k> <Cmd>call vimrc#buffer#smart_jump(-1)<CR>
+nnoremap <silent> <C-j> <Cmd>call vimrc#buffer#smart_jump(1)<CR>
 
 " Clear hlsearch
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
@@ -365,7 +363,7 @@ nnoremap <silent> <CR> :pc <Bar> :if &foldenable <Bar> :exe ':silent! normal za\
 nnoremap ZA :confirm wqall<CR>
 
 " Open vimrc with F12
-noremap <silent> <F12> :call vimrc#toggleEdit()<CR>
+noremap <silent> <F12> :call vimrc#toggle_edit()<CR>
 
 " Select the next/prev matches while performing a search
 cnoremap <C-j> <C-g>
@@ -393,13 +391,13 @@ nnoremap <silent> <Leader><Leader>ln :set relativenumber!<CR>
 let g:which_key_map.z = { 'name': '+folds' }
 
 let g:which_key_map.z.f = 'Toggle first-level folds in buffer'
-nnoremap <silent> <Leader>zf <Cmd>call vimrc#folds#toggleFirstLevel()<CR>
+nnoremap <silent> <Leader>zf <Cmd>call vimrc#folds#toggle_first_level()<CR>
 
 let g:which_key_map.z['/'] = 'Fold all lines beginning with word'
-nnoremap <silent> <Leader>z/ <Cmd>call vimrc#folds#foldLinesMatching()<CR>
+nnoremap <silent> <Leader>z/ <Cmd>call vimrc#folds#fold_lines_matching()<CR>
 
 let g:which_key_map['<Enter>'] = 'Toggle buffer fullscreen'
-nnoremap <silent> <Leader><Enter> :call vimrc#window#zoomToggle()<CR>
+nnoremap <silent> <Leader><Enter> :call vimrc#window#zoom_toggle()<CR>
 
 let g:which_key_map['/'] = 'Search project with ripgrep'
 nnoremap <Leader>/ :Rg<Space>
@@ -408,22 +406,25 @@ nnoremap <Leader>/ :Rg<Space>
 " Autocommands: {{{
 
 augroup dsifford
+    " Check to see if the current buffer has changes from another program. If
+    " so, reload the changes.
+    autocmd BufEnter,FocusGained * :checktime
+
     " Toggle quickfix and preview window with <Esc>
     autocmd BufEnter * if &ft ==# 'qf' || &previewwindow | nnoremap <buffer><silent> <Esc> :quit<CR> | endif
 
-    " Check to see if the current buffer has changes from another program. If
-    " so, reload the changes.
-    autocmd FocusGained,BufEnter * :checktime
+    " Disable syntax on files larger than 1_000_000 bytes
+    autocmd BufEnter,BufReadPre * if getfsize(expand("%")) > 1000000 | syntax off | endif
+    autocmd BufWinLeave * if getfsize(expand("%")) > 1000000 && type(v:exiting) == 7 | syntax on | hi clear CursorLine | endif
 
-    " Flush the screen's buffer on exit
-    autocmd VimLeave * :!clear
+    " Close the completion preview window when completion is selected.
+    autocmd CompleteDone * silent! pclose!
 
     " Don't add comment when newline added with o or O for any filetype
     autocmd FileType * set formatoptions-=o | set formatoptions+=r
 
-    " Disable syntax on files larger than 1_000_000 bytes
-    autocmd BufReadPre,BufEnter * if getfsize(expand("%")) > 1000000 | syntax off | endif
-    autocmd BufWinLeave * if getfsize(expand("%")) > 1000000 && type(v:exiting) == 7 | syntax on | hi clear CursorLine | endif
+    " Flush the screen's buffer on exit
+    autocmd VimLeave * :!clear
 augroup END
 
 " }}}

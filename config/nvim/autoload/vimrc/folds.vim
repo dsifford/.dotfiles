@@ -1,4 +1,3 @@
-
 " Custom `foldtext` function.
 func! vimrc#folds#foldtext() abort
     let l:line = getline(v:foldstart)
@@ -14,7 +13,7 @@ func! vimrc#folds#foldtext() abort
 endfunc
 
 " Folds all lines matching regex pattern entered in prompt.
-func! vimrc#folds#foldLinesMatching()
+func! vimrc#folds#fold_lines_matching()
   call inputsave()
   let l:word = input('Enter fold word: ')
   call inputrestore()
@@ -22,7 +21,7 @@ func! vimrc#folds#foldLinesMatching()
 endfunc
 
 " Toggle fold/unfold at first fold level only.
-func! vimrc#folds#toggleFirstLevel()
+func! vimrc#folds#toggle_first_level()
     if get(b:, 'foldstate', 1)
         %foldc
     else
@@ -30,3 +29,5 @@ func! vimrc#folds#toggleFirstLevel()
     endif
     let b:foldstate=!get(b:, 'foldstate', 1)
 endfunc
+
+" vim: set fdm=indent fdn=1:

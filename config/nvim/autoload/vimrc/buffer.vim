@@ -1,7 +1,17 @@
+" Checks to see if <Tab> should insert a tab character or trigger completion.
+" Returns v:true if...
+"    - the character before the cursor is whitespace
+"    OR
+"    - the cursor is at column 1
+func! vimrc#buffer#should_insert_tab() abort
+    let l:col = col('.') - 1
+    return !l:col || getline('.')[l:col - 1] =~? '\s'
+endfunc
+
 " Smart jump to next error/warning or next position in quickfix of loclist
-func! vimrc#buffer#smartJump(dir)
+func! vimrc#buffer#smart_jump(dir)
     if type(a:dir) != v:t_number
-        echoerr 'vimrc#smartJump: dir argument must be a number'
+        echoerr 'vimrc#smart_jump: dir argument must be a number'
         return
     endif
     let l:wininfo = getwininfo()
@@ -25,3 +35,5 @@ func! vimrc#buffer#smartJump(dir)
         exec a:dir > 0 ? 'ALENextWrap' : 'ALEPreviousWrap'
     endif
 endfunc
+
+" vim: set fdm=indent fdn=1:

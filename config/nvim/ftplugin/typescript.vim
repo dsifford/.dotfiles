@@ -12,7 +12,7 @@ let b:ale_linters = [
     \ 'tsserver',
     \ ]
 
-let b:ale_javascript_prettier_options = vimrc#mergeALEOptions('ale_javascript_prettier_options', [
+let b:ale_javascript_prettier_options = vimrc#merge_ale_options('ale_javascript_prettier_options', [
     \ '--print-width=100',
     \ '--trailing-comma=all',
     \])
