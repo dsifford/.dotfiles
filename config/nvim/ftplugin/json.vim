@@ -10,3 +10,8 @@ let b:ale_fixers = [
 let b:ale_javascript_prettier_options = vimrc#merge_ale_options('ale_javascript_prettier_options', [
     \ '--parser=json-stringify',
     \])
+
+let b:undo_ftplugin=vimrc#undo_ftplugin(
+    \ 'setlocal foldmethod<',
+    \ 'unlet b:ale_fixers b:ale_javascript_prettier_options'
+    \)

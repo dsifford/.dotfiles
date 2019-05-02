@@ -42,7 +42,6 @@ set completeopt =menu     " Use a popup menu to show the possible completions
 set completeopt+=menuone  " Use the popup menu also when there is only one match
 set completeopt+=noinsert " Do not insert any text for a match until the user selects a match from the menu
 set completeopt+=noselect " Do not select a match in the menu, force the user to select one from the menu
-set completeopt+=preview  " Show extra information about the completion in the preview window
 
 set listchars =tab:▸\ ,
 set listchars+=eol:¬
@@ -162,10 +161,12 @@ let g:deoplete#enable_at_startup = 1
 
 call deoplete#custom#source('ale', 'rank', 999)
 
-inoremap <silent><expr> <TAB>
+inoremap <silent><expr> <Tab>
     \ pumvisible() ? "\<C-n>" :
     \ vimrc#buffer#should_insert_tab() ? "\<TAB>" :
     \ deoplete#mappings#manual_complete()
+
+inoremap <silent> <S-Tab> <C-p>
 
 " }}}2
 " EasyAlign: {{{2
@@ -189,7 +190,7 @@ let g:user_emmet_settings = {
 \}
 
 augroup dsifford
-    autocmd FileType html,xml,markdown,css,scss,sass,tsx EmmetInstall
+    autocmd FileType html,xml,markdown,css,scss,sass,typescript.tsx EmmetInstall
 augroup END
 
 " }}}2
@@ -231,6 +232,11 @@ augroup END
 
 " }}}2
 " }}}2
+" Matchup: {{{2
+
+let g:matchup_transmute_enabled = 1
+
+" }}}2
 " Netrw: {{{2
 
 let g:netrw_alto = 0
@@ -261,9 +267,14 @@ let g:sneak#use_ic_scs = 1
 let g:tcomment_mapleader2 = ''
 let g:tcomment#filetype#guess_php = 'php'
 
-for s:t in [ 'php', 'typescript', 'javascript' ]
-    call tcomment#type#Define( s:t . '_block', g:tcomment#block2_fmt_c)
-endfor
+let g:tcomment#block2_fmt_c = g:tcomment#block2_fmt_c
+let g:tcomment#block2_fmt_c.commentstring = '/** %s */'
+
+augroup dsifford
+    autocmd FileType javascript,php,typescript,typescript.tsx ++once
+        \ call tcomment#type#Define( expand('<amatch>:r') . '_block', g:tcomment#block2_fmt_c) |
+        \ call tcomment#type#Define( expand('<amatch>:r') . '_inline', tcomment#GetLineC('/** %s */'))
+augroup END
 
 " }}}2
 " UltiSnips: {{{2
@@ -416,9 +427,6 @@ augroup dsifford
     " Disable syntax on files larger than 1_000_000 bytes
     autocmd BufEnter,BufReadPre * if getfsize(expand("%")) > 1000000 | syntax off | endif
     autocmd BufWinLeave * if getfsize(expand("%")) > 1000000 && type(v:exiting) == 7 | syntax on | hi clear CursorLine | endif
-
-    " Close the completion preview window when completion is selected.
-    autocmd CompleteDone * silent! pclose!
 
     " Don't add comment when newline added with o or O for any filetype
     autocmd FileType * set formatoptions-=o | set formatoptions+=r

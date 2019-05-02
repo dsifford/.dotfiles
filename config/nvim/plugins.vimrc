@@ -15,8 +15,9 @@ endif
 
 call plug#begin(stdpath('data') . '/plugged')
 
-" Essential: {{{
-
+"
+" Essential:
+"
 Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'editorconfig/editorconfig-vim'
@@ -33,31 +34,30 @@ Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
 
-" }}}
-" General Enhancements: {{{
-
+"
+" General Enhancements:
+"
 Plug 'jiangmiao/auto-pairs'
+Plug 'ncm2/float-preview.nvim'
 Plug 'junegunn/vim-easy-align'
 Plug 'andymass/vim-matchup'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-vinegar'
 
-" }}}
-" Look And Feel: {{{
-
+"
+" Look And Feel:
+"
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'chrisbra/Colorizer'
 Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
 Plug 'machakann/vim-highlightedyank'
 
-" }}}
-" Misc: {{{
-
+"
+" Misc:
+"
 Plug 'tweekmonster/startuptime.vim'
 Plug 'tpope/vim-scriptease'
-
-" }}}
 
 runtime plugins.langs.vimrc
 

@@ -1,4 +1,4 @@
-" Merge local and global ALE options
+" Merge local and global ALE options.
 func! vimrc#merge_ale_options(key, list)
     func! s:opts_to_dict(list)
         let l:opts = {}
@@ -20,11 +20,20 @@ func! vimrc#merge_ale_options(key, list)
     return join(values(map(l:options, {k, v -> k . v})))
 endfunc
 
-" Toggle open/closed a vertical buffer to edit vimrc
+" Toggle open/closed a vertical buffer to edit vimrc.
 func! vimrc#toggle_edit() abort
     if expand('%:t') ==# fnamemodify($MYVIMRC, ':t')
         w | bd
     else
         exec 'vert botright ' . float2nr(round(&columns * 0.75)) . 'vsplit $MYVIMRC'
     endif
+endfunc
+
+" Helper function for setting undo_ftplugin in ftplugin files.
+func! vimrc#undo_ftplugin(...)
+    let l:undo = join(a:000, ' | ')
+    if exists('b:undo_ftplugin') && ! empty('b:undo_ftplugin')
+        return b:undo_ftplugin . '| ' . l:undo
+    endif
+    return l:undo
 endfunc

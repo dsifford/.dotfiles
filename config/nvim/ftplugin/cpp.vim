@@ -1,3 +1,12 @@
-runtime ftplugin/c.vim
+setlocal noexpandtab
+setlocal softtabstop=0
 
-call timer_start(200, { tid -> execute('let b:ale_c_uncrustify_options = "-l CPP"', '') })
+let b:ale_fixers = [
+    \ 'uncrustify',
+    \ ]
+
+let b:ale_c_uncrustify_options = '-l CPP'
+
+let b:undo_ftplugin=vimrc#undo_ftplugin(
+    \ 'unlet b:ale_c_uncrustify_options'
+    \)

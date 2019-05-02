@@ -12,10 +12,11 @@ verbose=blank,label,footnote,new-id,affected,edit,special,project,sync,unwait
 uda.priority.label=Priority
 uda.priority.type=string
 uda.priority.values=H,M,,L
+uda.priority.default=
 
 urgency.uda.priority.H.coefficient=6.0
 urgency.uda.priority.M.coefficient=3.9
-urgency.uda.priority.L.coefficient=-1.0
+urgency.uda.priority.L.coefficient=-5.0
 
 # Colors
 color=on
@@ -38,3 +39,5 @@ taskd.key=~/.local/share/task/freecinc.key.pem
 taskd.certificate=~/.local/share/task/freecinc.cert.pem
 taskd.ca=~/.local/share/task/freecinc.ca.pem
 taskd.credentials=FreeCinc/freecinc_1dbf0215/861ea477-29ee-4d55-93ad-24b28bdee831
+
+# vim: set ft=taskrc:

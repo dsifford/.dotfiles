@@ -5,3 +5,7 @@ let b:ale_fixers = [
 let b:ale_javascript_prettier_options = vimrc#merge_ale_options('ale_javascript_prettier_options', [
     \ '--parser=html',
     \])
+
+let b:undo_ftplugin=vimrc#undo_ftplugin(
+    \ 'unlet b:ale_fixers b:ale_javascript_prettier_options'
+    \)

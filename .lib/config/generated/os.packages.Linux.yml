@@ -48,7 +48,6 @@
     - gnu-netcat                 # GNU rewrite of netcat, the network piping application
     - go                         # Core compiler tools for the Go programming language
     - go-tools                   # Developer tools for the Go programming language
-    - gparted                    # A Partition Magic clone, frontend to GNU Parted
     - graphviz                   # Graph visualization software
     - highlight                  # Fast and flexible source code highlighter (CLI version)
     - htop                       # Interactive process viewer
@@ -134,7 +133,6 @@
 
     # AUR Packages
     aur:
-    - atom-editor-bin       # Hackable text editor built on Electron (official precompiled binary)
     - autokey               # AutoKey, a desktop automation utility for Linux and X11, updated to run on Python 3
     - bluez-firmware        # Firmwares for Broadcom BCM203x and STLC2300 Bluetooth chips
     - ctop                  # Top-like interface for container metrics
@@ -146,6 +144,7 @@
     - google-cloud-sdk      # A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq.
     - gscreenshot           # A simple screenshot tool supporting multiple backends
     - hadolint-bin          # Dockerfile linter, validate inline bash, written in Haskell
+    - i3ipc-python-git      # An improved Python library to control i3wm
     - jid                   # JSON incremental digger (Go installer)
     - lab                   # A hub-like tool for GitLab (tagged release)
     - ncurses5-compat-libs  # System V Release 4.0 curses emulation library, ABI 5
@@ -153,12 +152,12 @@
     - pandoc-bin            # Pandoc - executable only, without 750MB Haskell depends/makedepends
     - php-codesniffer       # PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files to detect and fix violations of a defined set of coding standards.
     - plex-media-server     # Plex Media Server
+    - python-pipx           # Execute binaries from Python packages in isolated environments
     - shellcheck-static     # shellcheck, without the 130MB haskell dependencies
     - slack-desktop         # Slack Desktop (Beta) for Linux
     - spotify               # A proprietary music streaming service
     - stack-static          # The Haskell Tool Stack (linked statically)
     - ttf-monaco            # A monospaced sans-serif typeface by Apple Inc.
-    - unetbootin            # Create bootable Live USB drives
     - windscribe-cli        # Port of Windscribe's command line interface
     - yay                   # Yet another yogurt. Pacman wrapper and AUR helper written in go.
     - zeal-git              # A simple documentation browser

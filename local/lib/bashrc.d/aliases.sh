@@ -11,18 +11,15 @@ alias dm='docker-machine'
 # Git
 alias g='git'
 alias git='hub'
-alias gs='git status'
+alias gs='git status | less'
 alias gf='git f'
 
 # Misc
-alias bashrc='vim ~/.bashrc'
-alias dot='cd ~/.dotfiles'
+alias dotfiles='cd $DOTFILES'
 alias fzf='fzf-tmux'
 alias grep='grep --color'
 alias info='info --vi-keys'
 alias posix-utils='apropos -s 1p .'
-alias reload='source ~/.bashrc'
-alias svn='command svn --config-dir "$XDG_CONFIG_HOME"/subversion'
 alias t='task'
 alias tmux='command tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
 alias vimrc='vim "$XDG_CONFIG_HOME/nvim/init.vim"'
@@ -30,9 +27,6 @@ alias y='yarn'
 
 command -v rg > /dev/null \
 	&& alias grep='rg'
-
-command -v nvidia-settings > /dev/null \
-	&& alias nvidia-settings='command nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
 
 command -v nvim > /dev/null \
 	&& alias vim='nvim'

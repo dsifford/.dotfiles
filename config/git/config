@@ -12,6 +12,9 @@
     editor = nvim
     autocrlf = input
 
+[color]
+    status = always
+
 [color "status"]
     added = green
     changed = blue

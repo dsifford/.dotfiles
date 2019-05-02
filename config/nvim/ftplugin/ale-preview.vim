@@ -1,6 +1,8 @@
-setlocal breakat=\  " preserve trailing ws
+setlocal breakindent
 setlocal linebreak
 setlocal wrap
 
-let b:undo_ftplugin = get(b:, 'undo_ftplugin', '')
-    \ . '| setlocal breakat< linebreak< wrap<'
+let b:undo_ftplugin=vimrc#undo_ftplugin(
+    \ 'setlocal breakindent< linebreak< wrap<',
+    \)
+

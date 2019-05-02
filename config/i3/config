@@ -41,12 +41,13 @@ set_from_resource $selection Dracula.selection #000000
 # }}}
 # General Settings {{{
 
-default_border none
-default_floating_border none
-floating_modifier Mod4
-font $font_title
-hide_edge_borders smart
-mouse_warping none
+default_border                none
+default_floating_border       none
+floating_modifier             Mod4
+focus_on_window_activation    urgent
+font                          $font_title
+hide_edge_borders             smart
+mouse_warping                 none
 workspace_auto_back_and_forth yes
 
 # Improve pop-up and task dialog functionality
@@ -93,7 +94,6 @@ bindsym $<M-S>Tab move container to workspace $ws_spotify
 # Rofi {{{2
 
 bindsym $<M>space exec --no-startup-id rofi -show drun
-bindsym $<A>Tab exec --no-startup-id rofi -show window
 
 # }}}2
 # Terminal {{{2
@@ -313,4 +313,4 @@ exec --no-startup-id run_keybase
 
 # }}}
 
-# vim: set fdm=marker ft=i3config fdl=1:
+# vim: set fdm=marker ft=i3config fdl=0:

@@ -1,0 +1,19 @@
+configuration {
+    dpi: 250;
+    font: "Monaco 12";
+    theme: "/usr/share/rofi/themes/Arc-Dark.rasi";
+    show-icons: true;
+
+    // keybindings
+    kb-accept-entry: "Return";
+    kb-mode-next: "Ctrl-l,Super-l";
+    kb-mode-previous: "Ctrl-h,Super-h";
+    kb-remove-char-back: "BackSpace";
+    kb-remove-to-eol: "";
+    kb-row-down: "Ctrl-j,Super-j";
+    kb-row-first: "Ctrl-K,Super-K";
+    kb-row-last: "Ctrl-J,Super-J";
+    kb-row-up: "Ctrl-k,Super-k";
+}
+
+// vim: set syntax=scss:
