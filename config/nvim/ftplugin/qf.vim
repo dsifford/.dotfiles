@@ -3,6 +3,6 @@ if w:quickfix_title ==# 'Man TOC'
     nnoremap <buffer> <silent> q :wq<CR>
 endif
 
-let b:undo_ftplugin=vimrc#undo_ftplugin(
+let b:undo_ftplugin = vimrc#undo_ftplugin(
     \ 'nmapclear <buffer>',
     \)

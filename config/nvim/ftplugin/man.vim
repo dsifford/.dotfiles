@@ -1,5 +1,5 @@
 nmap <buffer> <silent> <Tab> gO
 
-let b:undo_ftplugin=vimrc#undo_ftplugin(
+let b:undo_ftplugin = vimrc#undo_ftplugin(
     \ 'nmapclear <buffer>',
     \)

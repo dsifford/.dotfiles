@@ -7,6 +7,6 @@ let b:ale_fixers = [
 
 let b:ale_c_uncrustify_options = '-l CPP'
 
-let b:undo_ftplugin=vimrc#undo_ftplugin(
+let b:undo_ftplugin = vimrc#undo_ftplugin(
     \ 'unlet b:ale_c_uncrustify_options'
     \)

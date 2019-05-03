@@ -8,7 +8,7 @@ let b:ale_linters = [
     \ 'vint',
     \ ]
 
-let b:undo_ftplugin=vimrc#undo_ftplugin(
+let b:undo_ftplugin = vimrc#undo_ftplugin(
     \ 'setlocal foldlevel< foldmethod< foldtext<',
     \ 'unlet b:ale_linters'
     \)
