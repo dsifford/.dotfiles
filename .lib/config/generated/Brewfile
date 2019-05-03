@@ -103,6 +103,8 @@ brew "oniguruma"
 brew "jq"
 # LastPass command-line interface tool
 brew "lastpass-cli"
+# Pager program similar to more
+brew "less"
 # Utility for directing compilation
 brew "make", args: ["with-default-names"]
 # Mac App Store command-line interface
@@ -115,6 +117,8 @@ brew "netcat"
 brew "node"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# Execute binaries from Python packages in isolated environments
+brew "pipx"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Show ps output as a tree
@@ -178,8 +182,8 @@ cask "transmission"
 cask "visual-studio-code"
 cask "vmware-horizon-client"
 cask "windscribe"
-mas "com.atlassian.trello", id: 1278508951
-mas "com.crowdcafe.windowmagnet", id: 441258766
-mas "com.eltima.tp2", id: 970502923
-mas "com.gingerlabs.NotabilityMac", id: 736189492
-mas "com.if.Amphetamine", id: 937984704
+mas "Amphetamine", id: 937984704
+mas "Magnet", id: 441258766
+mas "Notability", id: 736189492
+mas "Trello", id: 1278508951
+mas "Typeeto", id: 970502923
