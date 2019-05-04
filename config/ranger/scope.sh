@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2119
+# shellcheck disable=SC2034
 
 # If the option `use_preview_script` is set to `true`,
 # then this script will be called and its output will be displayed in ranger.
@@ -19,32 +19,44 @@
 # 3    | fix width  | Don't reload when width changes
 # 4    | fix height | Don't reload when height changes
 # 5    | fix both   | Don't ever reload
-# 6    | image      | Display the image `$IMAGE_CACHE_PATH` points to as an image preview
+# 6    | image      | Display the image `$image_cache_path` points to as an image preview
 # 7    | image      | Display the file directly as an image
 
+###
+# Settings
+##
 set -o noclobber
 set -o noglob
 set -o nounset
 set -o pipefail
 
-IFS=$'\n'
+declare COLORTERM=8bit
+declare IFS=$'\n'
 
+###
 # Script arguments
-declare FILE_PATH="$1"                       # Full path of the highlighted file
-declare -l FILE_EXTENSION="${FILE_PATH##*.}" # The file extension
-declare IMAGE_CACHE_PATH="$4"                # Full path that should be used to cache image preview
-declare PV_IMAGE_ENABLED="$5"                # 'True' if image previews are enabled, 'False' otherwise
-declare MIMETYPE                             # The file's mime type
-MIMETYPE="$(file --dereference --brief --mime-type -- "$FILE_PATH")"
+##
+declare file_path="$1"             # Full path of the highlighted file
+declare preview_width="$2"         # Height of the preview pane (number of fitting characters)
+declare preview_height="$3"        # Width of the preview pane (number of fitting characters)
+declare image_cache_path="$4"      # Full path that should be used to cache image preview
+declare image_preview_enabled="$5" # 'True' if image previews are enabled, 'False' otherwise
+
+###
+# Variables
+##
+declare -l file_extension
+declare -l file_mime_type
+declare -l file_encoding
+
+file_extension=${file_path##*.}                                          # The file extension
+file_mime_type=$(file --dereference --brief --mime-type -- "$file_path") # The file mime type
+file_encoding=$(file --brief --mime-encoding -- "$file_path")            # The file encoding
 
 # Settings
-# shellcheck disable=SC2034
-declare COLORTERM=8bit
-declare -i HIGHLIGHT_SIZE_MAX=262143 # 256KiB
 
 main() {
-	handle_mime
-	if [[ "$PV_IMAGE_ENABLED" == 'True' ]]; then
+	if [[ "$image_preview_enabled" == 'True' ]]; then
 		handle_image
 	fi
 	handle_extension
@@ -62,49 +74,49 @@ highlight_file() {
 }
 
 handle_extension() {
-	case "$FILE_EXTENSION" in
+	case "$file_extension" in
 		# Archive
 		a | ace | alz | arc | arj | bz | bz2 | cab | cpio | deb | gz | jar | lha | lz | lzh | lzma | lzo | rpm | rz | t7z | tar | tbz | tbz2 | tgz | tlz | txz | tZ | tzo | war | xpi | xz | Z | zip)
-			atool --list -- "$FILE_PATH" && exit 5
-			bsdtar --list --file "$FILE_PATH" && exit 5
+			atool --list -- "$file_path" && exit 5
+			bsdtar --list --file "$file_path" && exit 5
 			exit 1
 			;;
 		rar)
 			# Avoid password prompt by providing empty password
-			unrar lt -p- -- "$FILE_PATH" && exit 5
+			unrar lt -p- -- "$file_path" && exit 5
 			exit 1
 			;;
 		7z)
 			# Avoid password prompt by providing empty password
-			7z l -p -- "$FILE_PATH" && exit 5
+			7z l -p -- "$file_path" && exit 5
 			exit 1
 			;;
 
 		torrent)
-			transmission-show -- "$FILE_PATH" && exit 5
+			transmission-show -- "$file_path" && exit 5
 			exit 1
 			;;
 
 		# Microsoft Word
 		docx | odt)
 			# Convert to markdown and preview
-			highlight_file --language md < <(pandoc -t gfm "$FILE_PATH") && exit 5
+			highlight_file --language md < <(pandoc -t gfm "$file_path") && exit 5
 			exit 1
 			;;
 	esac
 }
 
 handle_image() {
-	case "$MIMETYPE" in
+	case "$file_mime_type" in
 		# Image
 		image/*)
 			local orientation
-			orientation="$(identify -format '%[EXIF:Orientation]\n' -- "$FILE_PATH")"
+			orientation="$(identify -format '%[EXIF:Orientation]\n' -- "$file_path")"
 			# If orientation data is present and the image actually
 			# needs rotating ("1" means no rotation)...
 			if [[ -n "$orientation" && "$orientation" != 1 ]]; then
 				# ...auto-rotate the image according to the EXIF data.
-				convert -- "$FILE_PATH" -auto-orient "$IMAGE_CACHE_PATH" && exit 6
+				convert -- "$file_path" -auto-orient "$image_cache_path" && exit 6
 			fi
 
 			# `w3mimgdisplay` will be called for all images (unless overriden as above),
@@ -115,7 +127,7 @@ handle_image() {
 		# Video
 		video/*)
 			# Thumbnail
-			ffmpegthumbnailer -i "$FILE_PATH" -o "$IMAGE_CACHE_PATH" -s 0 && exit 6
+			ffmpegthumbnailer -i "$file_path" -o "$image_cache_path" -s 0 && exit 6
 			exit 1
 			;;
 
@@ -126,45 +138,24 @@ handle_image() {
 				-scale-to-y -1 \
 				-singlefile \
 				-jpeg -tiffcompression jpeg \
-				-- "$FILE_PATH" "${IMAGE_CACHE_PATH%.*}" \
+				-- "$file_path" "${image_cache_path%.*}" \
 				&& exit 6
 			exit 1
 			;;
 	esac
 }
 
-handle_mime() {
-	case "$MIMETYPE" in
-		application/json)
-			prettier --parser json-stringify "$FILE_PATH" \
-				| highlight_file -l json \
-				&& exit 5
-			exit 1
-			;;
-
-		image/svg*)
-			prettier --parser html "$FILE_PATH" \
-				| highlight_file -l xml \
-				&& exit 5
-			exit 1
-			;;
-	esac
-}
-
 handle_fallback() {
-	case "$MIMETYPE" in
-		text/* | */xml)
-			if [[ "$(stat --printf='%s' -- "$FILE_PATH")" -gt "$HIGHLIGHT_SIZE_MAX" ]]; then
-				exit 2
-			fi
-			highlight_file "$FILE_PATH" && exit 5
+	case "$file_encoding" in
+		*-ascii | utf-8 | utf-16)
+			highlight_file "$file_path" && exit 5
 			exit 2
 			;;
 	esac
 
-	exiftool "$FILE_PATH" && exit 5
+	exiftool "$file_path" && exit 5
 	echo '----- File Type Classification -----' \
-		&& file --dereference --brief -- "$FILE_PATH" \
+		&& file --dereference --brief -- "$file_path" \
 		&& exit 5
 
 	exit 1

@@ -133,31 +133,30 @@
 
     # AUR Packages
     aur:
-    - autokey               # AutoKey, a desktop automation utility for Linux and X11, updated to run on Python 3
-    - bluez-firmware        # Firmwares for Broadcom BCM203x and STLC2300 Bluetooth chips
-    - ctop                  # Top-like interface for container metrics
-    - doctl-bin             # A command line tool for DigitalOcean services
-    - dropbox               # A free service that lets you bring your photos, docs, and videos anywhere and share them easily.
-    - exercism-cli          # Command line client for exercism.io
-    - git-extras            # GIT utilities -- repo summary, commit counting, repl, changelog population and more
-    - google-chrome-beta    # The popular and trusted web browser by Google (Beta Channel)
-    - google-cloud-sdk      # A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq.
-    - gscreenshot           # A simple screenshot tool supporting multiple backends
-    - hadolint-bin          # Dockerfile linter, validate inline bash, written in Haskell
-    - i3ipc-python-git      # An improved Python library to control i3wm
-    - jid                   # JSON incremental digger (Go installer)
-    - lab                   # A hub-like tool for GitLab (tagged release)
-    - ncurses5-compat-libs  # System V Release 4.0 curses emulation library, ABI 5
-    - neovim-git            # Fork of Vim aiming to improve user experience, plugins, and GUIs.
-    - pandoc-bin            # Pandoc - executable only, without 750MB Haskell depends/makedepends
-    - php-codesniffer       # PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files to detect and fix violations of a defined set of coding standards.
-    - plex-media-server     # Plex Media Server
-    - python-pipx           # Execute binaries from Python packages in isolated environments
-    - shellcheck-static     # shellcheck, without the 130MB haskell dependencies
-    - slack-desktop         # Slack Desktop (Beta) for Linux
-    - spotify               # A proprietary music streaming service
-    - stack-static          # The Haskell Tool Stack (linked statically)
-    - ttf-monaco            # A monospaced sans-serif typeface by Apple Inc.
-    - windscribe-cli        # Port of Windscribe's command line interface
-    - yay                   # Yet another yogurt. Pacman wrapper and AUR helper written in go.
-    - zeal-git              # A simple documentation browser
+    - autokey             # AutoKey, a desktop automation utility for Linux and X11, updated to run on Python 3
+    - bluez-firmware      # Firmwares for Broadcom BCM203x and STLC2300 Bluetooth chips
+    - ctop                # Top-like interface for container metrics
+    - doctl-bin           # A command line tool for DigitalOcean services
+    - dropbox             # A free service that lets you bring your photos, docs, and videos anywhere and share them easily.
+    - exercism-cli        # Command line client for exercism.io
+    - git-extras          # GIT utilities -- repo summary, commit counting, repl, changelog population and more
+    - google-chrome-beta  # The popular and trusted web browser by Google (Beta Channel)
+    - google-cloud-sdk    # A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq.
+    - gscreenshot         # A simple screenshot tool supporting multiple backends
+    - hadolint-bin        # Dockerfile linter, validate inline bash, written in Haskell
+    - i3ipc-python-git    # An improved Python library to control i3wm
+    - jid                 # JSON incremental digger (Go installer)
+    - lab                 # A hub-like tool for GitLab (tagged release)
+    - neovim-git          # Fork of Vim aiming to improve user experience, plugins, and GUIs.
+    - pandoc-bin          # Pandoc - executable only, without 750MB Haskell depends/makedepends
+    - php-codesniffer     # PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files to detect and fix violations of a defined set of coding standards.
+    - plex-media-server   # Plex Media Server
+    - python-pipx         # Execute binaries from Python packages in isolated environments
+    - shellcheck-static   # shellcheck, without the 130MB haskell dependencies
+    - slack-desktop       # Slack Desktop (Beta) for Linux
+    - spotify             # A proprietary music streaming service
+    - stack-static        # The Haskell Tool Stack (linked statically)
+    - ttf-monaco          # A monospaced sans-serif typeface by Apple Inc.
+    - windscribe-cli      # Port of Windscribe's command line interface
+    - yay                 # Yet another yogurt. Pacman wrapper and AUR helper written in go.
+    - zeal-git            # A simple documentation browser

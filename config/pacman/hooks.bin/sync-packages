@@ -87,8 +87,8 @@ parse_package_list() {
             )
         ) \
         <(
-            # All AUR packages
-            pacman -Qqm |
+            # All explicitly installed AUR packages
+            pacman -Qqme |
             sort
         ) |
     pacman -Qi - | parse_package_list
@@ -98,6 +98,6 @@ parse_package_list() {
     echo
     echo '    # AUR Packages'
     echo '    aur:'
-    pacman -Qmi | parse_package_list
+    pacman -Qmei | parse_package_list
 
 } > "$FILE"

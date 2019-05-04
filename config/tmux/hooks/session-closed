@@ -9,7 +9,19 @@ find "${XDG_CACHE_HOME:-$HOME/.cache}" -type f -atime +90 -delete
 # $XDG_CACHE_HOME -> empty directories
 find "${XDG_CACHE_HOME:-$HOME/.cache}" -type d -empty -delete
 
-# Clear out history files from session
-for __file in ~/.*_history; do
-	rm -f "$__file"
+# Clear out misc garbage files
+__junk_files=(
+    ~/.*_history
+    ~/.wget-hsts
+)
+for __file in "${__junk_files[@]}"; do
+    [[ -f $__file ]] && rm -f "$__file"
+done
+
+# Clear out misc garbage directories
+__junk_dirs=(
+    ~/.w3m
+)
+for __dir in "${__junk_dirs[@]}"; do
+    [[ -d $__dir ]] && rm -rf "$__dir"
 done

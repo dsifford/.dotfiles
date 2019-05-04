@@ -112,7 +112,12 @@ let g:ale_sign_info    = has('mac') ? '?' : '🛈'
 
 let g:ale_javascript_prettier_options = '--config-precedence=prefer-file --prose-wrap=always --single-quote --tab-width=4 --trailing-comma=es5'
 
-nnoremap <silent> <Leader>f :ALEFix<CR>
+let g:which_key_map.f = 'ALE: Quick fix'
+nnoremap <silent> <Leader>f <Cmd>exec 'ALEFix ' . get(b:, 'ale_quick_fixer', '')<CR>
+
+let g:which_key_map.F = 'ALE: Fix all'
+nnoremap <silent> <Leader>F :ALEFix<CR>
+
 nnoremap <silent> <Leader>k :ALEDetail<CR>
 
 nnoremap <silent> gd :ALEGoToDefinition<CR>

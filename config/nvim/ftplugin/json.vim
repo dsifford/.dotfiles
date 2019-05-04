@@ -1,8 +1,5 @@
 setlocal foldmethod=syntax
 
-let b:undo_ftplugin = get(b:, 'undo_ftplugin', '')
-    \ . '| setlocal foldmethod<'
-
 let b:ale_fixers = [
     \ 'prettier',
     \ ]

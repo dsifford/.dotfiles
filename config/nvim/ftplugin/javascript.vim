@@ -13,6 +13,8 @@ let b:ale_linters = [
     \ 'eslint',
     \ ]
 
+let b:ale_quick_fixer = 'prettier'
+
 let b:undo_ftplugin = vimrc#undo_ftplugin(
     \ 'setlocal foldmethod< omnifunc<',
     \ 'unlet b:ale_fixers b:ale_linters'
