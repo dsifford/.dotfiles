@@ -287,7 +287,7 @@ bar {
     font $font_bar
 
     # using custom i3status
-    status_command i3blocks -c $XDG_CONFIG_HOME/i3/i3blocks.conf
+    status_command i3blocks
     # }}}2
 }
 

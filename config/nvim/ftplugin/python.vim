@@ -1,3 +1,7 @@
+setlocal foldlevel=0
+setlocal foldmethod=indent
+setlocal foldnestmax=2
+
 let g:python_highlight_all = 1
 
 let b:ale_fixers = [
@@ -16,5 +20,6 @@ let b:ale_python_isort_options = '--multi-line=3 --trailing-comma --force-grid-w
 let b:ale_python_bandit_options = '--ini $XDG_CONFIG_HOME/bandit/bandit.ini'
 
 let b:undo_ftplugin = vimrc#undo_ftplugin(
+    \ 'setlocal foldlevel< foldmethod< foldnestmax<',
     \ 'unlet b:ale_fixers b:ale_linters b:ale_python_isort_options b:ale_python_bandit_options'
     \)

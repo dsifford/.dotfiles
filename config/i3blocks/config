@@ -1,4 +1,4 @@
-# i3blocks config file
+# i3blocks config file {{{
 #
 # Please see man i3blocks for a complete reference!
 # The man page is also hosted at http://vivien.github.io/i3blocks
@@ -19,14 +19,18 @@
 # short_text
 # signal
 # urgent
-
+# }}}
 # Global properties
 #
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
-command=/usr/lib/i3blocks/$BLOCK_NAME
+command=$XDG_CONFIG_HOME/i3blocks/blocks/$BLOCK_NAME
 separator_block_width=30
 markup=pango
+
+###
+# Blocks
+##
 
 [disk]
 interval=30
@@ -44,17 +48,27 @@ instance=/var
 interval=30
 label=/var
 
+# -------------------
+
+[trash]
+interval=60
+label=&#xf2ed;
+separator=false
+
 [cpu_usage]
 command=/usr/lib/i3blocks/cpu_usage -w 50 -c 90
 interval=1
-label=
 label=&#xf2db;
 separator=false
 
 [memory]
-label=&#xf538;
 interval=1
+label=&#xf538;
+
+# -------------------
 
 [time]
 command=date '+%a %m/%d/%y %I:%M:%S'
 interval=1
+
+# vim: set fdm=marker fdl=0:
