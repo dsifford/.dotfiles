@@ -16,7 +16,7 @@ CROSS_MARK = "CROSS"
 
 
 class Padding(Enum):
-    TOP = 70
+    TOP = 270
     RIGHT = 20
     BOTTOM = 20
     LEFT = 20
@@ -142,3 +142,5 @@ i3.on("window::focus", on_window_focus)
 i3.on("window::fullscreen_mode", on_terminal_fullscreen)
 
 i3.main()
+
+# vim: set fdn=1:
