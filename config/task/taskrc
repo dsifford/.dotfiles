@@ -8,6 +8,9 @@ nag=
 # Adjust default verbosity
 verbose=blank,label,footnote,new-id,affected,edit,special,project,sync,unwait
 
+# Show a dash instead of the date for annotations.
+dateformat.annotation=-
+
 # Priority Settings
 uda.priority.label=Priority
 uda.priority.type=string
