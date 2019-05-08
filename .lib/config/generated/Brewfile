@@ -38,7 +38,7 @@ brew "ctop"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Pack, ship and run any application as a lightweight container
-brew "docker", link: false
+brew "docker"
 # YAML Parser
 brew "libyaml"
 # Isolated development environments using Docker
