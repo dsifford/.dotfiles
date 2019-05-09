@@ -141,6 +141,8 @@ brew "task"
 brew "tldr"
 # Terminal multiplexer
 brew "tmux"
+# Command-line interface to the freedesktop.org trashcan
+brew "trash-cli"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Source code beautifier
