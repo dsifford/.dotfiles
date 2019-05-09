@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # skip binaries in $HOME
-svn=$(type -aP svn | sed -n '/\home/!p' | head -n1)
+svn=$(type -ap svn | sed -n '/\home/!p' | head -n1)
 
 if [[ -z $svn ]]; then
     >&2 echo -bash: svn: command not found

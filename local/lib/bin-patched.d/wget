@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # skip binaries in $HOME
-wget=$(type -aP wget | sed -n '/\home/!p' | head -n1)
+wget=$(type -ap wget | sed -n '/\home/!p' | head -n1)
 
 if [[ -z $wget ]]; then
     >&2 echo -bash: wget: command not found
