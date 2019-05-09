@@ -67,6 +67,10 @@ label=&#xf538;
 
 # -------------------
 
+[weather]
+interval=600
+separator=false
+
 [time]
 command=date '+%a %m/%d/%y %I:%M:%S'
 interval=1

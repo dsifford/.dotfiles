@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+curl --compressed  'wttr.in?format=%t+%c'
