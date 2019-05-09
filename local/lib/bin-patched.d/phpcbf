@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # skip binaries in $HOME
-phpcbf=$(type -ap phpcbf | sed -n '/\home/!p' | head -n1)
+phpcbf=$(type -ap phpcbf | grep --invert-match "$HOME" | head -n1)
 
 if [[ -z $phpcbf ]]; then
     >&2 echo -bash: phpcpf: command not found

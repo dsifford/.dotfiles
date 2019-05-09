@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # skip binaries in $HOME
-phpcs=$(type -ap phpcs | sed -n '/\home/!p' | head -n1)
+phpcs=$(type -ap phpcs | grep --invert-match "$HOME" | head -n1)
 
 if [[ -z $phpcs ]]; then
     >&2 echo -bash: phpcs: command not found
