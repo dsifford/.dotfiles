@@ -43,6 +43,7 @@ export PYTHONUSERBASE=~/.local
 export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 export STACK_ROOT=$XDG_DATA_HOME/stack
+export TASKDATA=$XDG_DATA_HOME/task
 export TASKRC=$XDG_CONFIG_HOME/task/taskrc
 export UNCRUSTIFY_CONFIG=$XDG_CONFIG_HOME/uncrustify/uncrustify.cfg
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
