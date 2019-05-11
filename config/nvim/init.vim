@@ -366,8 +366,13 @@ nnoremap Y  y$
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
-nnoremap <silent> <C-k> <Cmd>call vimrc#buffer#smart_jump(-1)<CR>
-nnoremap <silent> <C-j> <Cmd>call vimrc#buffer#smart_jump(1)<CR>
+" Jump to next error/warning/info from linter/language server
+nnoremap <silent> <C-k> <Cmd>ALEPreviousWrap<CR>
+nnoremap <silent> <C-j> <Cmd>ALENextWrap<CR>
+
+" Use <PageUp> and <PageDown> to jump lists
+nnoremap <silent> <PageUp>   <Cmd>call vimrc#lists#smart_jump(-1)<CR>
+nnoremap <silent> <PageDown> <Cmd>call vimrc#lists#smart_jump(1)<CR>
 
 " Clear hlsearch
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
