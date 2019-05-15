@@ -38,11 +38,15 @@ Plug 'SirVer/ultisnips'
 " General Enhancements:
 "
 Plug 'jiangmiao/auto-pairs'
-Plug 'ncm2/float-preview.nvim'
 Plug 'junegunn/vim-easy-align'
 Plug 'andymass/vim-matchup'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-vinegar'
+
+" FIXME: This is temporary until macos nvim gets updated.
+if exists('##CompleteChanged')
+    Plug 'ncm2/float-preview.nvim'
+endif
 
 "
 " Look And Feel:
