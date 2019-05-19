@@ -24,6 +24,6 @@ let b:undo_ftplugin = vimrc#undo_ftplugin(
     \)
 
 if expand('%:t:r') =~# '[-.]test$'
-    UltiSnipsAddFiletypes javascript-jest
+    UltiSnipsAddFiletypes jest.typescript
 endif
 

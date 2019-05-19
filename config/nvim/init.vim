@@ -43,6 +43,9 @@ set completeopt+=menuone  " Use the popup menu also when there is only one match
 set completeopt+=noinsert " Do not insert any text for a match until the user selects a match from the menu
 set completeopt+=noselect " Do not select a match in the menu, force the user to select one from the menu
 
+set formatoptions+=r      " DO insert the current comment leader after hitting <Enter> in Insert mode.
+set formatoptions-=o      " DO NOT insert the current comment leader after hitting 'o' or 'O' in Normal mode.
+
 set listchars =tab:▸\ ,
 set listchars+=eol:¬
 set listchars+=space:·
@@ -63,7 +66,6 @@ set foldtext=vimrc#folds#foldtext()
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
 
-let g:dracula_cursorline = 0 " Disable cursorline background highlight
 let g:tex_flavor = 'latex'   " Never use plaintex flavor
 let g:which_key_map = {}     " Mapping dictionary for vim-which-key
 
@@ -103,6 +105,7 @@ endif
 " }}}2
 " ALE: {{{2
 
+let g:ale_completion_enabled = 1
 let g:ale_linters_explicit = 1
 let g:ale_virtualtext_cursor = 1
 
@@ -134,7 +137,7 @@ augroup dsifford
         \ 'typescript.tsx',
         \ ]
     autocmd BufNewFile,BufRead *
-                \ if index(s:ft_keywordprg_ale_hover, &ft) >= 0                                                   |
+                \ if index(s:ft_keywordprg_ale_hover, &ft) >= 0           |
                 \     setlocal keywordprg=:call\ ale#hover#ShowAtCursor() |
                 \ endif
 
@@ -163,6 +166,7 @@ let g:colorizer_colornames = 0
 " Deoplete: {{{2
 
 let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('smart_case', v:true)
 
 call deoplete#custom#source('ale', 'rank', 999)
 
@@ -224,16 +228,10 @@ command! GFiles call fzf#run(fzf#wrap({ 'source': 'GFiles', 'options': '-m' }))
 nnoremap <C-p> :GFiles<CR>
 nnoremap <C-b> :Buffers<CR>
 
-nnoremap <silent> <M-p> :call fzf#run(fzf#wrap({ 'source': 'fd -t f . ' . expand('%:h') }))<CR>
+nnoremap <silent> <M-p> <Cmd>call fzf#run(fzf#wrap({ 'source': 'fd -t f . ' . expand('%:h') }))<CR>
 
 let g:which_key_map.r = 'Grep word under cursor'
 nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
-
-
-augroup dsifford
-    autocmd  FileType fzf set laststatus=0
-                \| autocmd BufLeave <buffer> set laststatus=2
-augroup END
 
 " }}}2
 " }}}2
@@ -248,10 +246,6 @@ let g:netrw_alto = 0
 let g:netrw_banner = 0
 let g:netrw_home = stdpath('cache')
 let g:netrw_preview = 1
-
-augroup dsifford
-    autocmd FileType netrw let g:netrw_list_hide = netrw_gitignore#Hide(findfile('.gitignore', '.;')) . ',\.git,^\.\.\=\/'
-augroup END
 
 " }}}2
 " Scriptease: {{{2
@@ -380,11 +374,8 @@ nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR
 " Toggle fold
 nnoremap <silent> <CR> :pc <Bar> :if &foldenable <Bar> :exe ':silent! normal za\r' <Bar> :endif<CR>
 
-" Save and quit all
-nnoremap ZA :confirm wqall<CR>
-
 " Open vimrc with F12
-noremap <silent> <F12> :call vimrc#toggle_edit()<CR>
+noremap <silent> <F12> <Cmd>call vimrc#toggle_edit()<CR>
 
 " Select the next/prev matches while performing a search
 cnoremap <C-j> <C-g>
@@ -400,7 +391,8 @@ nnoremap : ;
 vnoremap ; :
 vnoremap : ;
 
-"
+" Default every forward search to vim 'very magic' regex mode.
+nnoremap / /\v
 
 " }}}
 " Leader Mappings: {{{
@@ -427,19 +419,28 @@ nnoremap <Leader>/ :Rg<Space>
 " Autocommands: {{{
 
 augroup dsifford
-    " Check to see if the current buffer has changes from another program. If
-    " so, reload the changes.
+    " Check to see if the current buffer has changes from another program.
+    " If so, reload the changes.
     autocmd BufEnter,FocusGained * :checktime
 
     " Toggle quickfix and preview window with <Esc>
-    autocmd BufEnter * if &ft ==# 'qf' || &previewwindow | nnoremap <buffer><silent> <Esc> :quit<CR> | endif
+    autocmd BufEnter *
+        \ if &ft ==# 'qf' || &previewwindow           |
+        \   nnoremap <buffer><silent> <Esc> :quit<CR> |
+        \ endif
 
     " Disable syntax on files larger than 1_000_000 bytes
     autocmd BufEnter,BufReadPre * if getfsize(expand("%")) > 1000000 | syntax off | endif
     autocmd BufWinLeave * if getfsize(expand("%")) > 1000000 && type(v:exiting) == 7 | syntax on | hi clear CursorLine | endif
 
-    " Don't add comment when newline added with o or O for any filetype
-    autocmd FileType * set formatoptions-=o | set formatoptions+=r
+    " Prevent any global or plugin ftplugin from manipulating formatoptions
+    autocmd FileType * setlocal formatoptions< textwidth<
+
+    " Quit if the last remaining window is a quickfix or info window
+    autocmd WinEnter *
+        \ if winnr('$') == 1 && index(['quickfix', 'nofile'], &buftype) != -1 |
+        \   quit                                                              |
+        \ endif
 
     " Flush the screen's buffer on exit
     autocmd VimLeave * :!clear

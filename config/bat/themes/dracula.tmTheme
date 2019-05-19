@@ -17,6 +17,8 @@
                     <string>#44475A</string>
                     <key>gutterForeground</key>
                     <string>#6272A4</string>
+                    <key>lineHighlight</key>
+                    <string>#44475a</string>
                 </dict>
             </dict>
             <dict>

@@ -1,1 +1,5 @@
-extends typescript
+snippet useState "React.useState()" b
+const [${1:variable}, set${1/\w+\s*/\u$0/}] = useState($2);$0
+endsnippet
+
+

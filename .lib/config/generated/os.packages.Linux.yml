@@ -49,7 +49,6 @@
     - go                         # Core compiler tools for the Go programming language
     - go-tools                   # Developer tools for the Go programming language
     - graphviz                   # Graph visualization software
-    - highlight                  # Fast and flexible source code highlighter (CLI version)
     - htop                       # Interactive process viewer
     - httpie                     # cURL for humans
     - hub                        # cli interface for Github
@@ -70,16 +69,13 @@
     - noto-fonts-cjk             # Google Noto CJK fonts
     - noto-fonts-emoji           # Google Noto emoji fonts
     - npm                        # A package manager for javascript
-    - ntfs-3g                    # NTFS filesystem driver and utilities
     - ntp                        # Network Time Protocol reference implementation
     - numlockx                   # Turns on the numlock key in X11.
     - nvidia                     # NVIDIA drivers for linux
     - nvidia-settings            # Tool for configuring the NVIDIA graphics driver
     - openssh                    # Premier connectivity tool for remote login with the SSH protocol
     - openvpn                    # An easy-to-use, robust and highly configurable VPN (Virtual Private Network)
-    - otf-fira-code              # Monospaced font with programming ligatures
     - otf-font-awesome           # Iconic font designed for Bootstrap
-    - p7zip                      # Command-line file archiver with high compression ratio
     - pacman-contrib             # Contributed scripts and tools for pacman systems
     - pavucontrol                # PulseAudio Volume Control
     - pkgfile                    # a pacman .files metadata explorer
@@ -93,7 +89,6 @@
     - python-pip                 # The PyPA recommended tool for installing Python packages
     - python2                    # A high-level scripting language
     - python2-pip                # The PyPA recommended tool for installing Python packages
-    - qt5-tools                  # A cross-platform application and UI framework (Development Tools, QtHelp)
     - ranger                     # Simple, vim-like file manager
     - redshift                   # Adjusts the color temperature of your screen according to your surroundings.
     - reflector                  # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
@@ -110,7 +105,6 @@
     - termite                    # A simple VTE-based terminal
     - terraform                  # Tool for building, changing, and versioning infrastructure safely and efficiently
     - time                       # Utility for monitoring a program's use of system resources
-    - tldr                       # Command line client for tldr, a collection of simplified and community-driven man pages.
     - tmux                       # A terminal multiplexer
     - transmission-cli           # Fast, easy, and free BitTorrent client (CLI tools, daemon and web client)
     - trash-cli                  # Command line trashcan (recycle bin) interface
@@ -135,7 +129,6 @@
     aur:
     - autokey             # AutoKey, a desktop automation utility for Linux and X11, updated to run on Python 3
     - bluez-firmware      # Firmwares for Broadcom BCM203x and STLC2300 Bluetooth chips
-    - ctop                # Top-like interface for container metrics
     - doctl-bin           # A command line tool for DigitalOcean services
     - dropbox             # A free service that lets you bring your photos, docs, and videos anywhere and share them easily.
     - exercism-cli        # Command line client for exercism.io

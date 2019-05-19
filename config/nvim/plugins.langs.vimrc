@@ -2,6 +2,9 @@
 " C:
 Plug 'justinmk/vim-syntax-extra'
 
+" CSS:
+Plug 'JulesWang/css.vim'
+
 " Git:
 Plug 'tpope/vim-git'
 
