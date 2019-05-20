@@ -20,13 +20,14 @@ set cursorline            " Highlight the cursor line
 set foldlevelstart=99     " Default to no folds closed on new buffers
 set foldmethod=syntax     " Fold using syntax by default
 set hidden                " Use hidden buffers liberally
-set history=200           " Truncate history at 200 lines
+set history=500           " Truncate history at 200 lines
 set ignorecase            " Required for proper smartcase functionality
 set lazyredraw            " Improves perf under some conditions
 set nowrap                " Disable line wrapping
 set noshowmode            " Dont show mode in the command line -- using Airline for that
 set number                " Show line numbers
 set pastetoggle=<F2>      " Toggle paste mode with F2
+set scrolloff=1           " Minimum # of lines to keep above and below cursor.
 set shiftround            " Round indents to nearest indent size when using < or >
 set shortmess+=c          " Don't give ins-completion-menu messages
 set smartcase             " Case insensitive unless typing with caps
@@ -49,6 +50,8 @@ set formatoptions-=o      " DO NOT insert the current comment leader after hitti
 set listchars =tab:▸\ ,
 set listchars+=eol:¬
 set listchars+=space:·
+
+set wildoptions+=pum      " Display the completion matches using a popupmenu
 
 set wildignore =tags
 set wildignore+=*.o

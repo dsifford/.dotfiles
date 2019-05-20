@@ -124,8 +124,8 @@ bindsym $<C-S>space [class="Zeal"] scratchpad show, move position center
 # Mappings {{{
 
 # change focus
-bindsym $<M>l exec --no-startup-id $i3_script_path/focus-adjacent
-bindsym $<M>h exec --no-startup-id $i3_script_path/focus-adjacent -p
+bindsym $<M>l focus right
+bindsym $<M>h focus left
 bindsym $<M>j focus down
 bindsym $<M>k focus up
 
