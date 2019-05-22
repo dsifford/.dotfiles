@@ -51,7 +51,10 @@ set listchars =tab:▸\ ,
 set listchars+=eol:¬
 set listchars+=space:·
 
-set wildoptions+=pum      " Display the completion matches using a popupmenu
+if !has('mac')
+    " FIXME: this is temporary until neovim updates on mac os.
+    set wildoptions+=pum  " display the completion matches using a popupmenu
+endif
 
 set wildignore =tags
 set wildignore+=*.o

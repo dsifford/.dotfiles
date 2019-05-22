@@ -169,6 +169,7 @@ cask "postman"
 cask "slack"
 cask "spotify"
 cask "visual-studio-code"
+cask "vmware-horizon-client"
 cask "windscribe"
 mas "Amphetamine", id: 937984704
 mas "Magnet", id: 441258766
