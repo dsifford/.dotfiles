@@ -46,6 +46,7 @@ export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 export STACK_ROOT=$XDG_DATA_HOME/stack
 export TASKDATA=$XDG_DATA_HOME/task
 export TASKRC=$XDG_CONFIG_HOME/task/taskrc
+export TF_CLI_CONFIG_FILE=$XDG_DATA_HOME/terraform/config.tf
 export UNCRUSTIFY_CONFIG=$XDG_CONFIG_HOME/uncrustify/uncrustify.cfg
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 export XINITRC=$XDG_CONFIG_HOME/X11/xinitrc

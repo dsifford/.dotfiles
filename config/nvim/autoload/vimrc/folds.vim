@@ -22,12 +22,8 @@ endfunc
 
 " Toggle fold/unfold at first fold level only.
 func! vimrc#folds#toggle_first_level()
-    if get(b:, 'foldstate', 1)
-        %foldc
-    else
-        %foldo
-    endif
-    let b:foldstate=!get(b:, 'foldstate', 1)
+    normal! zR
+    %foldc
 endfunc
 
 " vim: set fdm=indent fdn=1:

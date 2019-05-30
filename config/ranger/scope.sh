@@ -108,7 +108,10 @@ handle_extension() {
 
 handle_image() {
 	case "$file_mime_type" in
-		# Image
+		image/svg)
+			# handle these with highlight_file
+			;;
+
 		image/*)
 			local orientation
 			orientation="$(identify -format '%[EXIF:Orientation]\n' -- "$file_path")"
@@ -124,14 +127,12 @@ handle_image() {
 			exit 7
 			;;
 
-		# Video
 		video/*)
 			# Thumbnail
 			ffmpegthumbnailer -i "$file_path" -o "$image_cache_path" -s 0 && exit 6
 			exit 1
 			;;
 
-		# PDF
 		application/pdf)
 			pdftoppm -f 1 -l 1 \
 				-scale-to-x 1920 \

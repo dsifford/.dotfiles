@@ -3,16 +3,12 @@ Gruntfuggly.todo-tree
 LaurentTreguier.uncrustify
 PeterJausovec.vscode-docker
 VisualStudioExptTeam.vscodeintellicode
-alexdima.vscode-lcov
-bierner.emojisense
-bierner.markdown-emoji
 bierner.markdown-preview-github-styles
 bungcip.better-toml
 dracula-theme.theme-dracula
 eamodio.gitlens
 esbenp.prettier-vscode
 fallenwood.vimL
-hoovercj.haskell-linter
 ikappas.phpcs
 justusadam.language-haskell
 kumar-harsh.graphql-for-vscode

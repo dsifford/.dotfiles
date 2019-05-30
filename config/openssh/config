@@ -10,7 +10,7 @@ Host aliem
     User root
 
 Host aliemu
-    HostName 178.128.188.161
+    HostName 104.248.220.191
     Port 22
     User root
 
