@@ -137,6 +137,8 @@ brew "shfmt"
 brew "subversion"
 # Feature-rich console based todo list manager
 brew "task"
+# Tool to build, change, and version infrastructure
+brew "terraform"
 # Simplified and community-driven man pages
 brew "tldr"
 # Terminal multiplexer
@@ -153,9 +155,9 @@ brew "wget"
 brew "yarn"
 # Lab wraps Git or Hub, making it simple to clone, fork, and interact with repositories on GitLab
 brew "zaquestion/tap/lab"
-cask "alfred"
 cask "bartender"
 cask "dash"
+cask "docker-edge"
 cask "dropbox"
 cask "firefoxdeveloperedition"
 cask "flux"
