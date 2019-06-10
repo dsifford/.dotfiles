@@ -6,6 +6,7 @@ unset PREFIX
 export LANG=en_US.UTF-8
 export LC_COLLATE=C
 
+export BROWSER=firefox-developer-edition
 export EDITOR=vim
 export PAGER=less
 

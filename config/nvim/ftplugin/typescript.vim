@@ -12,6 +12,7 @@ let b:ale_fixers = [
 let b:ale_linters = [
     \ 'tsserver',
     \ 'eslint',
+    \ 'tslint',
     \ ]
 
 let b:ale_quick_fixer = 'prettier'

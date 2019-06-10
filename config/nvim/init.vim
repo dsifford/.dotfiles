@@ -231,10 +231,11 @@ command! -bang -complete=customlist,s:CompleteRg -nargs=* Rg
 
 command! GFiles call fzf#run(fzf#wrap({ 'source': 'GFiles', 'options': '-m' }))
 
-nnoremap <C-p> :GFiles<CR>
-nnoremap <C-b> :Buffers<CR>
+nnoremap <C-b> <Cmd>Buffers<CR>
 
+nnoremap <C-p> <Cmd>Files<CR>
 nnoremap <silent> <M-p> <Cmd>call fzf#run(fzf#wrap({ 'source': 'fd -t f . ' . expand('%:h') }))<CR>
+nnoremap <M-g> <Cmd>GFiles<CR>
 
 let g:which_key_map.r = 'Grep word under cursor'
 nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>

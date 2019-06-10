@@ -1,0 +1,95 @@
+sanitize tridactyllocal tridactylsync " Wipe existing settings to ensure a clean slate when `:source`d
+
+" Options: {{{
+
+colorscheme shydactyl
+
+" }}}
+" Custom Search URLs: {{{
+
+" Disable all built-in searchurls
+jsb Object.keys(tri.config.get("searchurls")).forEach(u => tri.config.set("searchurls", u, '""'))
+
+" Add custom searchurls for :open
+set searchurls.npm       https://www.npmjs.com/search?q=%s
+set searchurls.types     https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/%s
+set searchurls.wordpress https://github.com/WordPress/gutenberg/tree/master/packages/%s
+
+" }}}
+" Mappings: {{{
+
+" Ctrl-F should use the browser's native 'find' functionality.
+unbind <C-f>
+
+" But also support Tridactyl search too.
+bind / fillcmdline find
+bind ? fillcmdline find -?
+bind n findnext 1
+bind N findnext -1
+
+" Remove search highlighting.
+bind <Space>l nohlsearch
+
+" remap ; to :
+bind ; fillcmdline_notrail
+
+" The default jump of 10 is a bit much.
+bind j scrollline 5
+bind k scrollline -5
+
+" Close tabs with `x`
+bind x tabclose
+
+" Hints Mappings: {{{2
+unbind h
+bind hi hint -i
+bind hb hint -b
+bind ho hint
+bind hI hint -I
+bind hk hint -k
+bind hy hint -y
+bind hp hint -p
+bind hP hint -P
+bind hr hint -r
+bind hs hint -s
+bind hS hint -S
+bind ha hint -a
+bind hA hint -A
+bind h; hint -;
+bind h# hint -#
+bind hv hint -W exclaim_quiet mpv
+bind hw hint -w
+bind ht hint -W tabopen
+bind hO hint -W fillcmdline_notrail open
+bind hW hint -W fillcmdline_notrail winopen
+bind hT hint -W fillcmdline_notrail tabopen
+bind hz hint -z
+bind hm composite hint -pipe img src | js -p tri.excmds.open('images.google.com/searchbyimage?image_url=' + JS_ARG)
+bind hM composite hint -pipe img src | jsb -p tri.excmds.tabopen('images.google.com/searchbyimage?image_url=' + JS_ARG)
+bind hgi hint -qi
+bind hgI hint -qI
+bind hgk hint -qk
+bind hgy hint -qy
+bind hgp hint -qp
+bind hgP hint -qP
+bind hgr hint -qr
+bind hgs hint -qs
+bind hgS hint -qS
+bind hga hint -qa
+bind hgA hint -qA
+bind hg; hint -q;
+bind hg# hint -q#
+bind hgv hint -qW exclaim_quiet mpv
+bind hgw hint -qw
+bind hgb hint -qb
+" }}}2
+
+" }}}
+" Autocmds: {{{
+
+" Don't run Tridactyl on the following sites.
+blacklistadd mail.google.com
+
+" }}}
+
+" vim: set ft=vim:
