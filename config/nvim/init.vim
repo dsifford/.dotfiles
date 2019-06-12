@@ -111,6 +111,8 @@ endif
 " }}}2
 " ALE: {{{2
 
+let g:which_key_map.a = { 'name': '+ALE' }
+
 let g:ale_completion_enabled = 1
 let g:ale_linters_explicit = 1
 let g:ale_virtualtext_cursor = 1
@@ -132,6 +134,14 @@ nnoremap <silent> <Leader>k :ALEDetail<CR>
 nnoremap <silent> gd :ALEGoToDefinition<CR>
 nnoremap <silent> gD :ALEGoToDefinitionInTab<CR>
 nnoremap <silent> gr :ALEFindReferences -relative<CR>
+
+let g:which_key_map.a.g = {
+    \ 'name': '+Goto',
+    \ 's': ['ALEGoToDefinitionInSplit', 'Definition in Split'],
+    \ 'v': ['ALEGoToDefinitionInVSplit', 'Definition in VSplit'],
+    \ 'S': ['ALEGoToTypeDefinitionInSplit', 'Type Definition in Split'],
+    \ 'V': ['ALEGoToTypeDefinitionInVSplit', 'Type Definition in VSplit'],
+    \ }
 
 augroup dsifford
     " Set keywordprg for language server filetypes

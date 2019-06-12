@@ -11,7 +11,9 @@ colorscheme shydactyl
 jsb Object.keys(tri.config.get("searchurls")).forEach(u => tri.config.set("searchurls", u, '""'))
 
 " Add custom searchurls for :open
+set searchurls.aur       https://aur.archlinux.org/packages/?O=0&SeB=nd&K=%s
 set searchurls.npm       https://www.npmjs.com/search?q=%s
+set searchurls.pac       https://www.archlinux.org/packages/?q=%s
 set searchurls.types     https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/%s
 set searchurls.wordpress https://github.com/WordPress/gutenberg/tree/master/packages/%s
 
