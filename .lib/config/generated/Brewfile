@@ -155,6 +155,7 @@ brew "wget"
 brew "yarn"
 # Lab wraps Git or Hub, making it simple to clone, fork, and interact with repositories on GitLab
 brew "zaquestion/tap/lab"
+cask "appcleaner"
 cask "bartender"
 cask "dash"
 cask "docker-edge"
