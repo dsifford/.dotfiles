@@ -395,8 +395,11 @@ nnoremap : ;
 vnoremap ; :
 vnoremap : ;
 
-" Default every forward search to vim 'very magic' regex mode.
+" Default every forward search to vim 'very magic' regex mode
 nnoremap / /\v
+
+" Enumerate vertical column of numbers
+vnoremap ++ g<C-a>
 
 " }}}
 " Leader Mappings: {{{
