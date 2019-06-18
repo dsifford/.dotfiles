@@ -35,7 +35,7 @@ set smarttab              " sw at the start of the line, sts everywhere else
 set splitbelow            " Open horizontal splits below current buffer
 set splitright            " Open vertical splits to the right of current buffer
 set termguicolors         " Force GUI colors in terminals
-set timeoutlen=500        " Time in milliseconds to wait for a mapped sequence to complete.
+set timeoutlen=250        " Time in milliseconds to wait for a mapped sequence to complete.
 set virtualedit=block     " Allow cursor to be placed in virtual positions when in visual block mode
 set winaltkeys=no         " Allows all ALT combinations to be mapped
 
@@ -184,8 +184,6 @@ let g:colorizer_colornames = 0
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('smart_case', v:true)
 
-call deoplete#custom#source('ale', 'rank', 999)
-
 inoremap <silent><expr> <Tab>
     \ pumvisible() ? "\<C-n>" :
     \ vimrc#buffer#should_insert_tab() ? "\<TAB>" :
@@ -255,6 +253,8 @@ nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
 " Matchup: {{{2
 
 let g:matchup_transmute_enabled = 1
+
+nnoremap <silent> <leader>w <Cmd>MatchupWhereAmI??<CR>
 
 " }}}2
 " Netrw: {{{2
@@ -348,19 +348,6 @@ vnoremap <silent> <Leader> :<C-u>silent! WhichKeyVisual '<Space>'<CR>
 nnoremap <silent> <LocalLeader> :<C-u>silent! WhichKey ','<CR>
 vnoremap <silent> <LocalLeader> :<C-u>silent! WhichKeyVisual ','<CR>
 
-let g:which_key_map.b = {
-      \ 'name' : '+buffer' ,
-      \ '1' : ['b1'        , 'buffer 1']        ,
-      \ '2' : ['b2'        , 'buffer 2']        ,
-      \ 'd' : ['bd'        , 'delete-buffer']   ,
-      \ 'f' : ['bfirst'    , 'first-buffer']    ,
-      \ 'h' : ['Startify'  , 'home-buffer']     ,
-      \ 'l' : ['blast'     , 'last-buffer']     ,
-      \ 'n' : ['bnext'     , 'next-buffer']     ,
-      \ 'p' : ['bprevious' , 'previous-buffer'] ,
-      \ '?' : ['Buffers'   , 'fzf-buffer']      ,
-      \ }
-
 " }}}2
 " }}}
 " Commands: {{{
@@ -426,7 +413,7 @@ nnoremap <silent> <Leader>zf <Cmd>call vimrc#folds#toggle_first_level()<CR>
 let g:which_key_map.z['/'] = 'Fold all lines beginning with word'
 nnoremap <silent> <Leader>z/ <Cmd>call vimrc#folds#fold_lines_matching()<CR>
 
-let g:which_key_map['<Enter>'] = 'Toggle buffer fullscreen'
+let g:which_key_map['<CR>'] = 'Toggle buffer fullscreen'
 nnoremap <silent> <Leader><Enter> :call vimrc#window#zoom_toggle()<CR>
 
 let g:which_key_map['/'] = 'Search project with ripgrep'
