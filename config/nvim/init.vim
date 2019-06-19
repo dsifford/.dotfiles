@@ -237,13 +237,11 @@ command! -bang -complete=customlist,s:CompleteRg -nargs=* Rg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
-command! GFiles call fzf#run(fzf#wrap({ 'source': 'GFiles', 'options': '-m' }))
+" List files relative to pwd
+nnoremap <C-p> <Cmd>call fzf#run(fzf#wrap({ 'source': 'fd -t f', 'options': '-m' }))<CR>
 
-nnoremap <C-b> <Cmd>Buffers<CR>
-
-nnoremap <C-p> <Cmd>Files<CR>
-nnoremap <silent> <M-p> <Cmd>call fzf#run(fzf#wrap({ 'source': 'fd -t f . ' . expand('%:h') }))<CR>
-nnoremap <M-g> <Cmd>GFiles<CR>
+" List files relative to directory of current file
+nnoremap <M-p> <Cmd>call fzf#run(fzf#wrap({ 'source': 'fd -t f . ' . expand('%:h'), 'options': '-m' }))<CR>
 
 let g:which_key_map.r = 'Grep word under cursor'
 nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>

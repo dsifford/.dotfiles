@@ -1,21 +1,19 @@
 sanitize tridactyllocal tridactylsync " Wipe existing settings to ensure a clean slate when `:source`d
 
-" Options: {{{
-
 colorscheme shydactyl
 
-" }}}
 " Custom Search URLs: {{{
 
 " Disable all built-in searchurls
 jsb Object.keys(tri.config.get("searchurls")).forEach(u => tri.config.set("searchurls", u, '""'))
 
 " Add custom searchurls for :open
-set searchurls.aur       https://aur.archlinux.org/packages/?O=0&SeB=nd&K=%s
-set searchurls.npm       https://www.npmjs.com/search?q=%s
-set searchurls.pac       https://www.archlinux.org/packages/?q=%s
-set searchurls.types     https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/%s
-set searchurls.wordpress https://github.com/WordPress/gutenberg/tree/master/packages/%s
+set searchurls.@wordpress https://github.com/WordPress/gutenberg/tree/master/packages/%s
+set searchurls.@types     https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/%s
+set searchurls.amazon     https://www.amazon.com/s?k=%s
+set searchurls.aur        https://aur.archlinux.org/packages/?O=0&SeB=nd&K=%s
+set searchurls.npm        https://www.npmjs.com/search?q=%s
+set searchurls.pac        https://www.archlinux.org/packages/?q=%s
 
 " }}}
 " Mappings: {{{
@@ -41,6 +39,10 @@ bind k scrollline -5
 
 " Close tabs with `x`
 bind x tabclose
+
+" Toggle between normal and ignore mode with tilde
+bind --mode=normal ` mode ignore
+bind --mode=ignore ` mode normal
 
 " Hints Mappings: {{{2
 unbind h
