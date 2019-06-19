@@ -284,6 +284,8 @@ let g:tcomment#filetype#guess_php = 'php'
 let g:tcomment#block2_fmt_c = g:tcomment#block2_fmt_c
 let g:tcomment#block2_fmt_c.commentstring = '/** %s */'
 
+call tcomment#type#Define('jsonc', '// %s')
+
 augroup dsifford
     autocmd FileType javascript,php,typescript,typescript.tsx ++once
         \ call tcomment#type#Define( expand('<amatch>:r') . '_block', g:tcomment#block2_fmt_c) |
