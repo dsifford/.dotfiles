@@ -12,6 +12,7 @@ set searchurls.@wordpress https://github.com/WordPress/gutenberg/tree/master/pac
 set searchurls.@types     https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/%s
 set searchurls.amazon     https://www.amazon.com/s?k=%s
 set searchurls.aur        https://aur.archlinux.org/packages/?O=0&SeB=nd&K=%s
+set searchurls.caniuse    https://www.caniuse.com/#search=%s
 set searchurls.npm        https://www.npmjs.com/search?q=%s
 set searchurls.pac        https://www.archlinux.org/packages/?q=%s
 
