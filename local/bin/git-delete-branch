@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Use `fzf` to interactively select and delete local branches
+#
+git branch -vv \
+	| fzf-tmux --ansi -m \
+	| awk '{ print $1 }' \
+	| xargs --no-run-if-empty git branch -d

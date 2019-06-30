@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Use `fzf` to interactively find and select a local branch to checkout
+#
+git branch -vv \
+	| fzf-tmux --ansi --nth 1 \
+	| awk '{ print $1 }' \
+	| xargs --no-run-if-empty git checkout

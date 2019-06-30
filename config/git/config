@@ -1,19 +1,23 @@
 [alias]
-    ai            = "! git -c color.status=always status --short | sed -n '/^\\x1B\\[32m[A-Z]\\x1B\\[m  /!p' | fzf-tmux --ansi -m | awk '{ print $2 }' | xargs --no-run-if-empty git add"
-    ch            = checkout
-    chi           = "! git -c color.branch=always --no-pager branch -vv | fzf-tmux --ansi | awk '{ print $1 }' |  xargs --no-run-if-empty git checkout"
-    f             = fetch --all
-    issues        = "! hub issue --color --format '%sC%i%Creset  %t%  l%n' | fzf-tmux --ansi | awk '{ sub(\"#\", \"\", $1); print $1 }' | xargs -I {} --no-run-if-empty bash -c 'hub issue show {} | bat --plain --language md'"
-    lg            = log --oneline --decorate --all --graph
-    peek          = ! git log --color --format=compact | fzf-tmux --ansi --preview='git show --color {1}'
-    pull-requests = "! hub pr list --color --limit 50 --format '%pC%i%Creset  %t%  l%n' | fzf-tmux --ansi | awk '{ sub(\"#\", \"\", $1); print $1 }' | xargs -I {} --no-run-if-empty bash -c 'hub issue show {} | bat --plain --language md'"
-    s             = status
+    ai   = add-interactive
+    ch   = checkout
+    chb  = checkout-branch
+    chf  = checkout-file
+    db   = delete-branch
+    f    = fetch --all
+    lg   = log --oneline --decorate --all --graph
+    lsi  = list-issues
+    lsp  = list-pull-requests
+    peek = ! git log --color --format=compact | fzf-tmux --ansi --preview='git show --color {1}'
+    ri   = reset-interactive
+    s    = status
 
 [core]
     editor = nvim
     autocrlf = input
 
 [color]
+    branch = always
     status = always
 
 [color "status"]

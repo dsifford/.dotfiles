@@ -63,6 +63,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'tweekmonster/startuptime.vim'
 Plug 'tpope/vim-scriptease'
 Plug 'Konfekt/FastFold'
+Plug 'tpope/vim-fugitive'
 
 runtime plugins.langs.vimrc
 

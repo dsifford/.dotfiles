@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Use `fzf` to interactively list and show issues
+#
+hub issue --color --format '%sC%i%Creset  %t%  l%n' \
+	| fzf-tmux --ansi \
+	| awk '{ sub("#", "", $1); print $1 }' \
+	| xargs -I {} --no-run-if-empty bash -c 'hub issue show {} | bat --plain --language md'

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+# Interactively perform a `git add` using `fzf` to select files.
+#
+git status --short \
+	| sed -n '/^\x1B\[32m[A-Z]\x1B\[m  /!p' `# skip files that are already added` \
+	| fzf-tmux --ansi -m \
+	| awk '{ print $2 }' \
+	| xargs --no-run-if-empty git add
+
