@@ -1,0 +1,74 @@
+###
+# Custom colorscheme based on no-color.theme
+##
+color=on
+
+# General decoration
+color.label=bold
+color.label.sort=bold
+color.alternate=on black
+color.header=
+color.footnote=yellow
+color.warning=yellow bold
+color.error=red bold
+color.debug=
+
+# Task state
+color.completed=
+color.deleted=
+color.active=
+color.recurring=
+color.scheduled=
+color.until=
+color.blocked=gray5
+color.blocking=
+
+# Project
+color.project.none=
+
+# Priority
+color.uda.priority.H=red bold
+color.uda.priority.M=yellow
+color.uda.priority.L=gray10
+
+# Tags
+color.tag.next=
+color.tag.none=
+color.tagged=
+
+# Due
+color.due=yellow
+color.due.today=red bold
+color.overdue=on red
+
+# Report: burndown
+color.burndown.done=on red
+color.burndown.pending=on yellow
+color.burndown.started=on green
+
+# Report: history
+color.history.add=
+color.history.delete=
+color.history.done=
+
+# Report: summary
+color.summary.background=
+color.summary.bar=on cyan
+
+# Command: calendar
+color.calendar.due=on red
+color.calendar.due.today=bold on red
+color.calendar.holiday=on magenta
+color.calendar.overdue=black on red
+color.calendar.today=black on cyan
+color.calendar.weekend=on black
+color.calendar.weeknumber=color8
+
+# Command: sync
+color.sync.added=green
+color.sync.changed=yellow
+color.sync.rejected=red
+
+# Command: undo
+color.undo.after=red
+color.undo.before=green

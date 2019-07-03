@@ -1,3 +1,7 @@
+include ./colors.theme
+
+dateformat=Y/M/D
+
 # Tone down verbosity
 nag=
 verbose=label,footnote,new-id,affected,edit,special,project,sync,unwait
@@ -6,114 +10,24 @@ verbose=label,footnote,new-id,affected,edit,special,project,sync,unwait
 dateformat.annotation=-
 indent.annotation=0
 
-dateformat=Y/M/D
-
-# Colors: {{{
-
-include /usr/share/doc/task/rc/no-color.theme
-
-color=on
-
-# General decoration
-color.label=bold
-color.label.sort=bold
-color.alternate=on black
-color.header=
-color.footnote=yellow
-color.warning=yellow bold
-color.error=red bold
-color.debug=
-
-# Task state
-color.completed=
-color.deleted=
-color.active=
-color.recurring=
-color.scheduled=
-color.until=
-color.blocked=gray5
-color.blocking=
-
-# Project
-color.project.none=
-
-# Priority
-color.uda.priority.H=red bold
-color.uda.priority.M=yellow
-color.uda.priority.L=gray10
-
-# Tags
-color.tag.next=
-color.tag.none=
-color.tagged=
-
-# Due
-color.due=yellow
-color.due.today=red bold
-color.overdue=on red
-
-# Report: burndown
-color.burndown.done=on red
-color.burndown.pending=on yellow
-color.burndown.started=on green
-
-# Report: history
-color.history.add=
-color.history.delete=
-color.history.done=
-
-# Report: summary
-color.summary.background=
-color.summary.bar=on cyan
-
-# Command: calendar
-color.calendar.due=on red
-color.calendar.due.today=bold on red
-color.calendar.holiday=on magenta
-color.calendar.overdue=black on red
-color.calendar.today=black on cyan
-color.calendar.weekend=on black
-color.calendar.weeknumber=color8
-
-# Command: sync
-color.sync.added=green
-color.sync.changed=yellow
-color.sync.rejected=red
-
-# Command: undo
-color.undo.after=red
-color.undo.before=green
-
-# }}}
-# Sync {{{
-
+# Sync
 taskd.server=freecinc.com:53589
 taskd.key=~/.local/share/task/freecinc.key.pem
 taskd.certificate=~/.local/share/task/freecinc.cert.pem
 taskd.ca=~/.local/share/task/freecinc.ca.pem
 taskd.credentials=FreeCinc/freecinc_1dbf0215/861ea477-29ee-4d55-93ad-24b28bdee831
 
-# }}}
-# Reports {{{
-
+# Reports
 report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description.combined,urgency
 report.next.sort=urgency-
 
-# }}}
-# User-defined Attributes {{{
-
+# User-defined Attributes
 uda.priority.label=Priority
 uda.priority.type=string
 uda.priority.values=H,M,,L
 uda.priority.default=
 
-# }}}
-# Urgency {{{
-
+# Urgency
 urgency.uda.priority.H.coefficient=6.0
 urgency.uda.priority.M.coefficient=3.9
 urgency.uda.priority.L.coefficient=-5.0
-
-# }}}
-
-# vim: set ft=taskrc fdm=marker fdl=0:
