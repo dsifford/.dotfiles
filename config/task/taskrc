@@ -1,4 +1,4 @@
-include ./colors.theme
+include ~/.config/task/colors.theme
 
 dateformat=Y/M/D
 

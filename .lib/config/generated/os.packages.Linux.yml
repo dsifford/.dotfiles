@@ -140,10 +140,11 @@
     - i3ipc-python-git    # An improved Python library to control i3wm
     - jid                 # JSON incremental digger (Go installer)
     - lab                 # A hub-like tool for GitLab (tagged release)
+    - libsixel            # libsixel provides and encoder/decoder implementation for DEC SIXEL graphics, and some converter programs
     - neovim-git          # Fork of Vim aiming to improve user experience, plugins, and GUIs.
     - pandoc-bin          # Pandoc - executable only, without 750MB Haskell depends/makedepends
     - php-codesniffer     # PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files to detect and fix violations of a defined set of coding standards.
-    - plex-media-server   # Plex Media Server
+    - plex-media-server   # The back-end media server component of Plex.
     - python-pipx         # Execute binaries from Python packages in isolated environments
     - shellcheck-static   # shellcheck, without the 130MB haskell dependencies
     - slack-desktop       # Slack Desktop (Beta) for Linux
