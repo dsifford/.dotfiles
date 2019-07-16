@@ -78,6 +78,8 @@ if command -v fzf > /dev/null; then
 		--color header:#8BE9FD
 	'
 	export FZF_TMUX=$([[ -n $TMUX ]] && echo 1 || echo 0)
+	# shellcheck disable=SC2016
+	bind '"\C-f":"`__fzf_cd__`\n"'
 fi
 
 if command -v nvim > /dev/null; then

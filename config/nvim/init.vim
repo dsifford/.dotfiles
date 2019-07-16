@@ -46,6 +46,7 @@ set completeopt+=noselect " Do not select a match in the menu, force the user to
 
 set formatoptions+=r      " DO insert the current comment leader after hitting <Enter> in Insert mode.
 set formatoptions-=o      " DO NOT insert the current comment leader after hitting 'o' or 'O' in Normal mode.
+set formatoptions-=t      " DO NOT automatically wrap non-comment lines when textwidth is set.
 
 set listchars =tab:▸\ ,
 set listchars+=eol:¬
