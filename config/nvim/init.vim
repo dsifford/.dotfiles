@@ -267,7 +267,7 @@ let g:netrw_preview = 1
 " Scriptease: {{{2
 
 " Show syntax groups under cursor
-nmap <silent> <Leader>s <Plug>ScripteaseSynnames
+nmap <silent> <Leader>S <Plug>ScripteaseSynnames
 
 " }}}2
 " Sneak: {{{2
@@ -414,17 +414,15 @@ vnoremap ++ g<C-a>
 " }}}
 " Leader Mappings: {{{
 
-let g:which_key_map.l = { 'name': '+settings' }
-nnoremap <silent> <Leader>ll :set list!<CR>
-nnoremap <silent> <Leader><Leader>ln :set relativenumber!<CR>
+let g:which_key_map.s = { 'name': '+settings' }
+nnoremap <silent> <Leader>sl :set list!<CR>
+nnoremap <silent> <Leader>st :set textwidth=
 
-let g:which_key_map.z = { 'name': '+folds' }
-
-let g:which_key_map.z.f = 'Toggle first-level folds in buffer'
-nnoremap <silent> <Leader>zf <Cmd>call vimrc#folds#toggle_first_level()<CR>
-
-let g:which_key_map.z['/'] = 'Fold all lines beginning with word'
-nnoremap <silent> <Leader>z/ <Cmd>call vimrc#folds#fold_lines_matching()<CR>
+let g:which_key_map.z = {
+\   'name': '+folds',
+\   'f': ['vimrc#folds#toggle_first_level()', 'Toggle first-level folds'],
+\   '/': ['vimrc#folds#fold_lines_matching()', 'Fold all lines beginning with word'],
+\}
 
 let g:which_key_map['<CR>'] = 'Toggle buffer fullscreen'
 nnoremap <silent> <Leader><Enter> :call vimrc#window#zoom_toggle()<CR>
