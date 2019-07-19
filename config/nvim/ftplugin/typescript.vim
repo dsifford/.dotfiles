@@ -1,7 +1,10 @@
 setlocal foldmethod=syntax
 
 " Sort imports by path
-command! -buffer -range -nargs=0 SortImports '<,'>sort r /from ['"]\zs[^'"]\+/
+command! -buffer -range -nargs=0 SortImports <line1>,<line2>sort r /from ['"]\zs[^'"]\+/
+
+" Transforms a selected range of JSDoc into TSDoc
+command! -range TSDocify <line1>,<line2>call vimrc#ftplugin#typescript#tsdocify()
 
 let b:ale_fixers = [
     \ 'prettier',

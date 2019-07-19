@@ -28,9 +28,6 @@ bind ? fillcmdline find -?
 bind n findnext 1
 bind N findnext -1
 
-" Remove search highlighting.
-bind <Space>l nohlsearch
-
 " remap ; to :
 bind ; fillcmdline_notrail
 
@@ -88,6 +85,11 @@ bind hgv hint -qW exclaim_quiet mpv
 bind hgw hint -qw
 bind hgb hint -qb
 " }}}2
+
+" }}}
+" URL Mappings: {{{
+
+bindurl youtube.com/watch <Space> js var el = document.querySelector('.ytp-play-button'); if (el) { el.click() }
 
 " }}}
 " Autocmds: {{{

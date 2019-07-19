@@ -327,6 +327,18 @@ endif
 let g:vimtex_compiler_progname = 'nvr'
 
 " }}}2
+" Vim Textobject User: {{{2
+
+" Text object for block comments
+call textobj#user#plugin('dsifford', {
+\   'block-comment': {
+\     'pattern': ['\/\*', '\*\/'],
+\     'region-type': 'V',
+\     'select-a': 'ac',
+\   },
+\ })
+
+" }}}2
 " Vim Tmux Navigator: {{{2
 
 " Disables built-in mappings
@@ -395,9 +407,6 @@ nnoremap ; :
 nnoremap : ;
 vnoremap ; :
 vnoremap : ;
-
-" Default every forward search to vim 'very magic' regex mode
-nnoremap / /\v
 
 " Enumerate vertical column of numbers
 vnoremap ++ g<C-a>
