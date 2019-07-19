@@ -15,6 +15,7 @@ alias gs='git status | less'
 alias gf='git f'
 
 # Misc
+alias ..='cd ..'
 alias dotfiles='cd $DOTFILES'
 alias fzf='fzf-tmux'
 alias grep='grep --color'
