@@ -105,7 +105,6 @@ for_window [instance="FloatingTerminal"] \
     move scratchpad
 bindsym $<C>space exec --no-startup-id $i3_script_path/toggle-floating-terminal
 bindsym $<M>Home  exec --no-startup-id termite --name=FloatingTerminal -e 'tmux -2u -f /home/dsifford/.config/tmux/tmux.conf new -AD -s home'
-for_window [instance="FloatingTerminal"] floating enable, sticky enable, resize set 3840 1054, move position 2160 $bar_height, move scratchpad
 
 # }}}2
 # Zeal {{{2

@@ -98,7 +98,7 @@
     - rustup                     # The Rust toolchain installer
     - shfmt                      # Format shell programs
     - slop                       # Utility to query the user for a selection and print the region to stdout
-    - solaar                     # Device manager for Logitech's Unifying receiver peripherals
+    - solaar                     # Linux device manager for a wide range of Logitech devices
     - subversion                 # A Modern Concurrent Version Control System
     - sysstat                    # a collection of performance monitoring tools (iostat,isag,mpstat,pidstat,sadf,sar)
     - task                       # A command-line todo list manager
@@ -141,6 +141,7 @@
     - jid                 # JSON incremental digger (Go installer)
     - lab                 # A hub-like tool for GitLab (tagged release)
     - libsixel            # libsixel provides and encoder/decoder implementation for DEC SIXEL graphics, and some converter programs
+    - lsix                # Like "ls", but for images. Shows thumbnails in terminal using sixel graphics.
     - neovim-git          # Fork of Vim aiming to improve user experience, plugins, and GUIs.
     - pandoc-bin          # Pandoc - executable only, without 750MB Haskell depends/makedepends
     - php-codesniffer     # PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files to detect and fix violations of a defined set of coding standards.
