@@ -32,7 +32,8 @@ cat <<- EOF > ruleset.xml
 	                <exclude name="WordPress.VIP.SuperGlobalInputUsage" />
 	        -->
 	        <exclude name="WordPress.PHP.YodaConditions.NotYoda" />
-			<exclude name="WordPress.NamingConventions.ValidHookName" />
+	        <exclude name="WordPress.NamingConventions.ValidHookName" />
+	        <exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
 	    </rule>
 	</ruleset>
 EOF

@@ -128,7 +128,7 @@ let g:which_key_map.f = 'ALE: Quick fix'
 nnoremap <silent> <Leader>f <Cmd>exec 'ALEFix ' . (index(get(b:, 'ale_fixers', []), get(b:, 'ale_quick_fixer', '')) >= 0 ? b:ale_quick_fixer : '')<CR>
 
 let g:which_key_map.F = 'ALE: Fix all'
-nnoremap <silent> <Leader>F :ALEFix<CR>
+nnoremap <silent> <Leader>F :ALEFix<Space>
 
 nnoremap <silent> <Leader>k :ALEDetail<CR>
 
