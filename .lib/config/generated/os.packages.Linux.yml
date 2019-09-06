@@ -85,8 +85,8 @@
     - pulseaudio-bluetooth       # Bluetooth support for PulseAudio
     - python                     # Next generation of the python high-level scripting language
     - python-jedi                # Awesome autocompletion for python
-    - python-neovim              # Python client for Neovim
     - python-pip                 # The PyPA recommended tool for installing Python packages
+    - python-pynvim              # Python client for Neovim
     - python2                    # A high-level scripting language
     - python2-pip                # The PyPA recommended tool for installing Python packages
     - ranger                     # Simple, vim-like file manager
@@ -131,7 +131,6 @@
     - bluez-firmware      # Firmwares for Broadcom BCM203x and STLC2300 Bluetooth chips
     - doctl-bin           # A command line tool for DigitalOcean services
     - dropbox             # A free service that lets you bring your photos, docs, and videos anywhere and share them easily.
-    - exercism-cli        # Command line client for exercism.io
     - git-extras          # GIT utilities -- repo summary, commit counting, repl, changelog population and more
     - google-chrome-beta  # The popular and trusted web browser by Google (Beta Channel)
     - google-cloud-sdk    # A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq.
