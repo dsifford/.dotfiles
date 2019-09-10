@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Use `fzf` to interactively find and restore one or more locally modified files
+#
+git status --porcelain=v2 \
+	| awk '/^1 .[^.]/{ print $NF }' \
+	| fzf-tmux \
+	| xargs --no-run-if-empty git restore

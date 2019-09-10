@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-#
-# Interactively perform a `git reset HEAD [<paths>...]` using `fzf` to select files.
-#
-git status --short --porcelain=v1 \
-	| sed -n '/^[A-Z] /p' \
-	| fzf-tmux -m --with-nth 2 \
-	| awk '{ print $2 }' \
-	| xargs --no-run-if-empty git reset -q HEAD

@@ -2,14 +2,14 @@
     ai   = add-interactive
     ch   = checkout
     chb  = checkout-branch
-    chf  = checkout-file
     db   = delete-branch
     f    = fetch --all
     lg   = log --oneline --decorate --all --graph
     lsi  = list-issues
     lsp  = list-pull-requests
     peek = ! git log --color --format=compact | fzf-tmux --ansi --preview='git show --color {1}'
-    ri   = reset-interactive
+    r    = restore-file
+    rs   = restore-staged-file
     s    = status
 
 [core]
