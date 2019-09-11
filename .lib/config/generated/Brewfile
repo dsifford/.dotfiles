@@ -9,22 +9,16 @@ tap "manifoldco/brew"
 tap "zaquestion/tap"
 # Apache Portable Runtime library
 brew "apr"
-# SSL/TLS cryptography library
-brew "openssl"
 # Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
+# SSL/TLS cryptography library
+brew "openssl"
 # Interpreted, interactive, object-oriented programming language
 brew "python"
 # Record and share terminal sessions
 brew "asciinema"
-# GNU internationalization (i18n) and localization (l10n) library
-brew "gettext"
-# Portable Foreign Function Interface library
-brew "libffi"
 # Archival front-end
 brew "atool"
-# Automatic configure script builder
-brew "autoconf"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Programmable completion for Bash 4.1+
@@ -37,26 +31,18 @@ brew "coreutils"
 brew "ctop"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
-# Pack, ship and run any application as a lightweight container
-brew "docker"
-# YAML Parser
-brew "libyaml"
-# Isolated development environments using Docker
-brew "docker-compose"
-# Create Docker hosts locally and on cloud providers
-brew "docker-machine", restart_service: true
 # Command-line tool for DigitalOcean
 brew "doctl"
 # Maintain consistent coding style between multiple editors
 brew "editorconfig"
-# Command-line tool to interact with exercism.io
-brew "exercism"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Collection of GNU find, xargs, and locate
-brew "findutils", args: ["with-default-names"]
+brew "findutils"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GNU internationalization (i18n) and localization (l10n) library
+brew "gettext"
 # GNU multiple precision arithmetic library
 brew "gmp"
 # GNU awk utility
@@ -75,8 +61,8 @@ brew "gnu-sed"
 brew "gnu-tar"
 # GNU implementation of which utility
 brew "gnu-which"
-# Asynchronous event library
-brew "libevent"
+# Portable Foreign Function Interface library
+brew "libffi"
 # ASN.1 structure parser library
 brew "libtasn1"
 # Low-level cryptographic library
@@ -85,26 +71,22 @@ brew "nettle"
 brew "gnutls"
 # GNU grep, egrep and fgrep
 brew "grep"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c"
-# Toolkit for creating graphical user interfaces
-brew "gtk+3"
-# The Haskell Tool Stack
-brew "haskell-stack"
-# Convert source code to formatted text with syntax highlighting
-brew "highlight"
 # Add GitHub support to git on the command-line
 brew "hub"
-# Json incremental digger
-brew "jid"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c"
 # Regular expressions library
 brew "oniguruma"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# User-friendly front-end to ssh-agent(1)
+brew "keychain"
 # LastPass command-line interface tool
 brew "lastpass-cli"
 # Pager program similar to more
 brew "less"
+# YAML Parser
+brew "libyaml"
 # Utility for directing compilation
 brew "make", args: ["with-default-names"]
 # Mac App Store command-line interface
@@ -119,12 +101,6 @@ brew "node"
 brew "pandoc"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
-# PDF rendering library (based on the xpdf-3.0 code base)
-brew "poppler"
-# Show ps output as a tree
-brew "pstree"
-# Interpreted, interactive, object-oriented programming language
-brew "python@2", link: false
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Utility that provides fast incremental file transfer
@@ -139,8 +115,6 @@ brew "subversion"
 brew "task"
 # Tool to build, change, and version infrastructure
 brew "terraform"
-# Simplified and community-driven man pages
-brew "tldr"
 # Terminal multiplexer
 brew "tmux"
 # Command-line interface to the freedesktop.org trashcan
@@ -170,7 +144,6 @@ cask "postman"
 cask "slack"
 cask "spotify"
 cask "visual-studio-code"
-cask "vmware-horizon-client"
 cask "windscribe"
 mas "Amphetamine", id: 937984704
 mas "Magnet", id: 441258766
