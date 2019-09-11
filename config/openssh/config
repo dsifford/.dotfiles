@@ -1,7 +1,7 @@
 Host *
-    IgnoreUnknown UseKeychain
     AddKeysToAgent yes
     IdentityFile ~/.ssh/id_rsa
+    IgnoreUnknown UseKeychain
     UseKeychain yes
 
 Host aliem
@@ -15,8 +15,8 @@ Host aliemu
     User root
 
 Host automattic
-    HostName proxy.automattic.com
     DynamicForward 8080
+    HostName proxy.automattic.com
     Port 22
     User dereksifford
 
