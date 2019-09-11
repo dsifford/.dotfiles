@@ -45,13 +45,15 @@ declare image_preview_enabled="$5" # 'True' if image previews are enabled, 'Fals
 ###
 # Variables
 ##
+declare -i file_bytes
+declare -l file_encoding
 declare -l file_extension
 declare -l file_mime_type
-declare -l file_encoding
 
+file_bytes=$(stat -c%s "$file_path")
+file_encoding=$(file --brief --mime-encoding -- "$file_path")            # The file encoding
 file_extension=${file_path##*.}                                          # The file extension
 file_mime_type=$(file --dereference --brief --mime-type -- "$file_path") # The file mime type
-file_encoding=$(file --brief --mime-encoding -- "$file_path")            # The file encoding
 
 # Settings
 
@@ -147,12 +149,14 @@ handle_image() {
 }
 
 handle_fallback() {
-	case "$file_encoding" in
-		*-ascii | utf-8 | utf-16)
-			highlight_file "$file_path" && exit 5
-			exit 2
-			;;
-	esac
+	if ((file_bytes < 1000000)); then
+		case "$file_encoding" in
+			*-ascii | utf-8 | utf-16)
+				highlight_file "$file_path" && exit 5
+				exit 2
+				;;
+		esac
+	fi
 
 	exiftool "$file_path" && exit 5
 	echo '----- File Type Classification -----' \
