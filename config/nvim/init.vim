@@ -188,7 +188,7 @@ call deoplete#custom#option('smart_case', v:true)
 inoremap <silent><expr> <Tab>
     \ pumvisible() ? "\<C-n>" :
     \ vimrc#buffer#should_insert_tab() ? "\<TAB>" :
-    \ deoplete#mappings#manual_complete()
+    \ deoplete#manual_complete()
 
 inoremap <silent> <S-Tab> <C-p>
 
