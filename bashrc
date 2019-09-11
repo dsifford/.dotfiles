@@ -1,4 +1,7 @@
-# shellcheck shell=bash
+# shellcheck shell=bash disable=SC1090
+#
+# ~/.bashrc
+#
 
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
@@ -20,7 +23,6 @@ sources=(
 )
 
 for f in "${sources[@]}"; do
-	# shellcheck source=/dev/null
 	[[ -f $f ]] && . "$f"
 done
 unset f sources

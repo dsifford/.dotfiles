@@ -1,4 +1,7 @@
-# shellcheck shell=bash disable=2155
+# shellcheck shell=sh
+#
+# ~/.profile
+#
 unset LC_ALL
 unset NPM_CONFIG_PREFIX
 unset PREFIX
@@ -77,7 +80,7 @@ if command -v fzf > /dev/null; then
 		--color spinner:#8BE9FD
 		--color header:#8BE9FD
 	'
-	export FZF_TMUX=$([[ -n $TMUX ]] && echo 1 || echo 0)
+    [ -n "$TMUX" ] && export FZF_TMUX=1
 fi
 
 if command -v nvim > /dev/null; then
@@ -91,7 +94,7 @@ if command -v rustc > /dev/null; then
 	export RUST_SRC_PATH
 fi
 
-if [[ $(uname) == Darwin ]]; then
+if [ "$(uname)" == Darwin ]; then
 	unset MANPATH
 	# FIXME: This is broken now after brew updated the locations of gnu manpages.
 	MANPATH="/usr/local/opt/coreutils/libexec/gnuman:/usr/local/opt/gnu-getopt/share/man:$(manpath)"
@@ -106,3 +109,5 @@ else
 	# Fix for deprecated gvfs-trash call
 	export ELECTRON_TRASH=gio
 fi
+
+# vim: set ft=sh:

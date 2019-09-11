@@ -12,12 +12,9 @@
 # %{GENERATED}%
 
 - keybase:
-    $XDG_DATA_HOME/task/freecinc.ca.pem:
-      /keybase/private/dsifford/taskwarrior/freecinc.ca.pem
-    $XDG_DATA_HOME/task/freecinc.cert.pem:
-      /keybase/private/dsifford/taskwarrior/freecinc.cert.pem
-    $XDG_DATA_HOME/task/freecinc.key.pem:
-      /keybase/private/dsifford/taskwarrior/freecinc.key.pem
+    $XDG_DATA_HOME/task/freecinc.ca.pem: /keybase/private/dsifford/taskwarrior/freecinc.ca.pem
+    $XDG_DATA_HOME/task/freecinc.cert.pem: /keybase/private/dsifford/taskwarrior/freecinc.cert.pem
+    $XDG_DATA_HOME/task/freecinc.key.pem: /keybase/private/dsifford/taskwarrior/freecinc.key.pem
 
 - merge:
     $XDG_CONFIG_HOME: config
@@ -31,6 +28,7 @@
     # Core
     ~/.bashrc:
     ~/.bash_profile:
+    ~/.profile:
 
     # Misc
     ~/.ssh/config: config/openssh/config
