@@ -30,7 +30,6 @@
 - link:
     # Core
     ~/.bashrc:
-    ~/.bash_logout:
     ~/.bash_profile:
 
     # Misc

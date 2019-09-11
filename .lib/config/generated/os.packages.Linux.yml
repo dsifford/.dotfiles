@@ -57,6 +57,7 @@
     - jq                         # Command-line JSON processor
     - kbfs                       # The Keybase filesystem
     - keybase                    # CLI tool for GPG with keybase.io
+    - keychain                   # A front-end to ssh-agent, allowing one long-running ssh-agent process per system, rather than per login
     - lastpass-cli               # LastPass command line interface tool
     - libreoffice-fresh          # LibreOffice branch which contains new features and program enhancements
     - mpv                        # a free, open source, and cross-platform media player
