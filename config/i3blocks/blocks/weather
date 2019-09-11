@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-curl --compressed  "wttr.in/$BLOCK_INSTANCE?format=%t+%c"

@@ -56,21 +56,15 @@ label=&#xf2ed;
 separator=false
 
 [cpu_usage]
-command=/usr/lib/i3blocks/cpu_usage -w 50 -c 90
+command=./blocks/cpu_usage -w 50 -c 90
 interval=1
 label=&#xf2db;
 separator=false
 
 [memory]
 interval=1
-label=&#xf538;
 
 # -------------------
-
-[weather]
-instance=48094
-interval=300
-separator=false
 
 [time]
 command=date '+%a %m/%d/%y %I:%M:%S'
