@@ -14,12 +14,6 @@ Host aliemu
     Port 22
     User root
 
-Host automattic
-    DynamicForward 8080
-    HostName proxy.automattic.com
-    Port 22
-    User dereksifford
-
 Host github.com
     HostName github.com
     Port 22

@@ -3,7 +3,6 @@
 	"breadcrumbs.enabled": true,
 	"css.validate": false,
 	"diffEditor.ignoreTrimWhitespace": true,
-	"docker.showExplorer": false,
 	"editor.acceptSuggestionOnEnter": "smart",
 	"editor.autoIndent": true,
 	"editor.cursorBlinking": "solid",
@@ -96,42 +95,14 @@
 	"rust.goto_def_racer_fallback": true,
 	"rust.unstable_features": true,
 	"scss.validate": false,
-	"search.usePCRE2": true,
 	"shellcheck.customArgs": [
 		"-x"
 	],
 	"stylelint.enable": true,
 	"telemetry.enableTelemetry": false,
-	"todo-tree.customHighlight": {
-		"FIXME": {
-			"background": "#ff5555",
-			"foreground": "#f8f8f2",
-			"icon": "alert",
-			"iconColour": "#ff5555"
-		}
-	},
-	"todo-tree.defaultHighlight": {
-		"background": "#8be9fd",
-		"foreground": "#282a36",
-		"icon": "check",
-		"iconColour": "#8be9fd",
-		"type": "tag"
-	},
-	"todo-tree.excludeGlobs": [
-		"**/node_modules/**"
-	],
-	"todo-tree.regex": "(($TAGS)|^\\s*- \\[ \\])",
-	"todo-tree.showBadges": false,
-	"todo-tree.statusBar": "tags",
-	"todo-tree.tags": [
-		"FIXME:",
-		"TODO:"
-	],
-	"todo-tree.tagsOnly": true,
 	"typescript.suggest.autoImports": false,
 	"typescript.tsdk": "/home/dsifford/.local/share/npm/lib/node_modules/typescript/lib",
 	"typescript.tsserver.log": "verbose",
-	"uncrustify.configPath": "/home/dsifford/.uncrustify.cfg",
 	"vim.easymotionMarkerBackgroundColor": "#ff5555",
 	"vim.easymotionMarkerFontFamily": "Monaco",
 	"vim.easymotionMarkerFontWeight": "bold",
@@ -253,5 +224,31 @@
 	"workbench.sideBar.location": "left",
 	"workbench.startupEditor": "none",
 	"workbench.statusBar.visible": true,
-	"workbench.tree.indent": 20
+	"workbench.tree.indent": 20,
+	"todo-tree.highlights.customHighlight": {
+		"FIXME": {
+			"background": "#ff5555",
+			"foreground": "#f8f8f2",
+			"icon": "alert",
+			"iconColour": "#ff5555"
+		}
+	},
+	"todo-tree.highlights.defaultHighlight": {
+		"background": "#8be9fd",
+		"foreground": "#282a36",
+		"icon": "check",
+		"iconColour": "#8be9fd",
+		"type": "tag"
+	},
+	"todo-tree.filtering.excludeGlobs": [
+		"**/node_modules/**"
+	],
+	"todo-tree.regex.regex": "(($TAGS)|^\\s*- \\[ \\])",
+	"todo-tree.tree.showBadges": false,
+	"todo-tree.general.statusBar": "tags",
+	"todo-tree.general.tags": [
+		"FIXME:",
+		"TODO:"
+	],
+	"todo-tree.tree.tagsOnly": true
 }

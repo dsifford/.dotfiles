@@ -21,8 +21,11 @@ export XDG_CACHE_HOME=~/.cache
 export XDG_DATA_HOME=~/.local/share
 
 export ATOM_HOME=$XDG_DATA_HOME/atom
+export AWS_CLI_HISTORY_FILE=$XDG_DATA_HOME/aws/history
 export AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
-export AWS_SHARED_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/credentials
+export AWS_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/credentials
+export AWS_SHARED_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/shared-credentials
+export AWS_WEB_IDENTITY_TOKEN_FILE=$XDG_CONFIG_HOME/aws/token
 export CARGO_HOME=$XDG_DATA_HOME/cargo
 export CUDA_CACHE_PATH=$XDG_CACHE_HOME/nv
 export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
