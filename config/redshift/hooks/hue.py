@@ -6,11 +6,11 @@ from os import makedirs
 from os.path import expandvars
 from urllib import request
 
-from phue import Bridge
+from phue import Bridge  # type: ignore
 
 GROUP = "Bedroom"
-SCENE_DAY = "Energize"
-SCENE_NIGHT = "Dimmed"
+SCENE_DAY = "Day"
+SCENE_NIGHT = "Night"
 
 
 def parse_args():
@@ -28,7 +28,7 @@ def get_bridge():
     "Retrieves the hue bridge instance."
     data_path = expandvars("$XDG_DATA_HOME/phue")
     makedirs(data_path, exist_ok=True)
-    with request.urlopen("https://discovery.meethue.com") as response:
+    with request.urlopen("https://discovery.meethue.com") as response:  # nosec
         ip_addr = json.loads(response.read())[0]["internalipaddress"]
         bridge = Bridge(ip_addr, config_file_path=f"{data_path}/data.json")
         bridge.connect()
