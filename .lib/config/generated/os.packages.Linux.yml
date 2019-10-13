@@ -18,6 +18,7 @@
     - asp                        # Arch Linux build source file management tool
     - atool                      # A script for managing file archives of various types
     - aws-cli                    # Universal Command Line Interface for Amazon Web Services
+    - base                       # Minimal package set to define a basic Arch Linux installation
     - bash-completion            # Programmable completion for the bash shell
     - bat                        # Cat clone with syntax highlighting and git integration
     - bc                         # An arbitrary precision calculator language
@@ -60,6 +61,7 @@
     - keychain                   # A front-end to ssh-agent, allowing one long-running ssh-agent process per system, rather than per login
     - lastpass-cli               # LastPass command line interface tool
     - libreoffice-fresh          # LibreOffice branch which contains new features and program enhancements
+    - linux                      # The Linux kernel and modules
     - mpv                        # a free, open source, and cross-platform media player
     - mypy                       # Optional static typing for Python 2 and 3 (PEP484)
     - network-manager-applet     # Applet for managing network connections
