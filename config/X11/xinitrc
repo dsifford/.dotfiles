@@ -25,7 +25,7 @@ xrandr \
     --mode 3840x2160 \
     --pos 2160x0 \
     --rotate normal \
-    --output DP-0 \
+    --output DP-0.8 \
     --mode 3840x2160 \
     --pos 0x0 \
     --rotate right

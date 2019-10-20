@@ -14,7 +14,7 @@ set $<C-S> Control+Shift+
 set $<A>   Mod1+
 
 set $main_monitor     DP-2
-set $vertical_monitor DP-0
+set $vertical_monitor DP-0.8
 
 set $font_title pango:Monaco, monospace, FontAwesome5Free 7
 set $font_bar   pango:Monaco, monospace, FontAwesome5Free 14
