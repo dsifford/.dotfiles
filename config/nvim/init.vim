@@ -151,7 +151,7 @@ augroup dsifford
         \ 'python',
         \ 'rust',
         \ 'typescript',
-        \ 'typescript.tsx',
+        \ 'typescriptreact',
         \ ]
     autocmd BufNewFile,BufRead *
                 \ if index(s:ft_keywordprg_ale_hover, &ft) >= 0           |
@@ -214,7 +214,7 @@ let g:user_emmet_settings = {
 \}
 
 augroup dsifford
-    autocmd FileType html,xml,markdown,css,scss,sass,typescript.tsx EmmetInstall
+    autocmd FileType html,xml,markdown,css,scss,sass,typescriptreact EmmetInstall
 augroup END
 
 " }}}2
@@ -288,7 +288,7 @@ let g:tcomment#block2_fmt_c.commentstring = '/** %s */'
 call tcomment#type#Define('jsonc', '// %s')
 
 augroup dsifford
-    autocmd FileType javascript,php,typescript,typescript.tsx ++once
+    autocmd FileType javascript,php,typescript,typescriptreact ++once
         \ call tcomment#type#Define( expand('<amatch>:r') . '_block', g:tcomment#block2_fmt_c) |
         \ call tcomment#type#Define( expand('<amatch>:r') . '_inline', tcomment#GetLineC('/** %s */'))
 augroup END
