@@ -147,5 +147,4 @@ cask "visual-studio-code"
 cask "windscribe"
 mas "Amphetamine", id: 937984704
 mas "Magnet", id: 441258766
-mas "Notability", id: 736189492
 mas "Trello", id: 1278508951
