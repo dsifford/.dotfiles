@@ -1,0 +1,3 @@
+! Monitor output defaults
+dsifford.Monitors.main: DP-4.8
+dsifford.Monitors.vertical: DP-4.1

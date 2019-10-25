@@ -106,7 +106,7 @@
     - sysstat                    # a collection of performance monitoring tools (iostat,isag,mpstat,pidstat,sadf,sar)
     - task                       # A command-line todo list manager
     - termite                    # A simple VTE-based terminal
-    - terraform                  # Tool for building, changing, and versioning infrastructure safely and efficiently
+    - terraform                  # HashiCorp tool for building and updating infrastructure as code idempotently
     - time                       # Utility for monitoring a program's use of system resources
     - tmux                       # A terminal multiplexer
     - transmission-cli           # Fast, easy, and free BitTorrent client (CLI tools, daemon and web client)

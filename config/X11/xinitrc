@@ -20,12 +20,12 @@ setxkbmap -option caps:escape
 
 # Init display output
 xrandr \
-    --output DP-2 \
+    --output "$(xrdb -query | grep dsifford.Monitors.main | cut -f2)" \
     --primary \
     --mode 3840x2160 \
     --pos 2160x0 \
     --rotate normal \
-    --output DP-0.8 \
+    --output "$(xrdb -query | grep dsifford.Monitors.vertical | cut -f2)" \
     --mode 3840x2160 \
     --pos 0x0 \
     --rotate right

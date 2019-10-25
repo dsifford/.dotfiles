@@ -1,0 +1,5 @@
+XTerm*decTerminalID:   vt340
+XTerm*faceName:        Monaco
+XTerm*faceSize:        16
+XTerm*metaSendsEscape: true
+XTerm*renderFont:      true
