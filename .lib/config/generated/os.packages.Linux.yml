@@ -62,6 +62,7 @@
     - lastpass-cli               # LastPass command line interface tool
     - libreoffice-fresh          # LibreOffice branch which contains new features and program enhancements
     - linux                      # The Linux kernel and modules
+    - man-db                     # A utility for reading man pages
     - mpv                        # a free, open source, and cross-platform media player
     - mypy                       # Optional static typing for Python 2 and 3 (PEP484)
     - network-manager-applet     # Applet for managing network connections
