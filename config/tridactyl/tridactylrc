@@ -19,6 +19,8 @@ set searchurls.pac        https://www.archlinux.org/packages/?q=%s
 " }}}
 " Mappings: {{{
 
+unbind d
+
 " Ctrl-F should use the browser's native 'find' functionality.
 unbind <C-f>
 

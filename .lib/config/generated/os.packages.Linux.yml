@@ -51,7 +51,6 @@
     - go-tools                   # Developer tools for the Go programming language
     - graphviz                   # Graph visualization software
     - htop                       # Interactive process viewer
-    - httpie                     # cURL for humans
     - hub                        # cli interface for Github
     - imagemagick                # An image viewing/manipulation program
     - iwd                        # Internet Wireless Daemon
