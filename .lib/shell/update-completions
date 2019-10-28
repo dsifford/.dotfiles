@@ -19,6 +19,7 @@ command -v rustup > /dev/null && {
 }
 
 declare -A completion_sources=(
+	[git]='https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash'
 	['git-prompt']="https://raw.githubusercontent.com/git/git/v$(git --version | awk '{ print $3 }' | head -n 1)/contrib/completion/git-prompt.sh"
 	[yarn]='https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash'
 )
