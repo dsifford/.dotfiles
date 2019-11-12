@@ -3,6 +3,7 @@
 #
 - npm:
   - "@google-cloud/functions-emulator"
+  - "fx"
   - "ndb"
   - "phantomjs-prebuilt"
   - "prettier"
