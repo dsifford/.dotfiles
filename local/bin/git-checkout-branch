@@ -1,8 +1,16 @@
 #!/usr/bin/env bash
 #
-# Use `fzf` to interactively find and select a local branch to checkout
+# Use `fzf` to interactively find and select a branch to checkout
 #
-git branch -vv \
-	| fzf-tmux --ansi --nth 1 \
-	| awk '{ print $1 }' \
+git branch -a --no-color \
+	| sed '{
+			# exclude HEAD
+			/HEAD/d
+			# include only branch name and nothing else
+			s/\S*\s*\(\S*\).*/\1/
+			# remove "remotes/<remote-name>/" prefix
+			s|remotes/\([^/]*\)/||
+		}' \
+	| sort -u --ignore-case \
+	| fzf-tmux --ansi \
 	| xargs --no-run-if-empty git checkout
