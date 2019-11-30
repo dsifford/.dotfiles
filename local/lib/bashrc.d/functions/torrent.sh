@@ -8,7 +8,7 @@ for cmd in transmission-daemon transmission-remote windscribe; do
 done
 
 torrent-start() {
-	windscribe connect best
+	windscribe connect Cub
 	windscribe firewall on
 	transmission-daemon
 	$BROWSER https://ipleak.net/

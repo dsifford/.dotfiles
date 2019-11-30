@@ -22,12 +22,10 @@
     - bash-completion            # Programmable completion for the bash shell
     - bat                        # Cat clone with syntax highlighting and git integration
     - bc                         # An arbitrary precision calculator language
-    - bind-tools                 # The ISC DNS tools
     - blueman                    # GTK+ Bluetooth Manager
     - bluez-utils                # Development and debugging utilities for the bluetooth protocol stack
     - cmake                      # A cross-platform open-source make system
     - code                       # The Open Source build of Visual Studio Code (vscode) editor
-    - compton                    # X compositor that may fix tearing issues
     - diff-so-fancy              # Good-looking diffs with diff-highlight and more
     - docker                     # Pack, ship and run any application as a lightweight container
     - docker-compose             # Fast, isolated development environments using Docker
@@ -53,6 +51,7 @@
     - htop                       # Interactive process viewer
     - hub                        # cli interface for Github
     - imagemagick                # An image viewing/manipulation program
+    - inetutils                  # A collection of common network programs
     - iwd                        # Internet Wireless Daemon
     - jq                         # Command-line JSON processor
     - kbfs                       # The Keybase filesystem
@@ -64,6 +63,7 @@
     - man-db                     # A utility for reading man pages
     - mpv                        # a free, open source, and cross-platform media player
     - mypy                       # Optional static typing for Python 2 and 3 (PEP484)
+    - netctl                     # Profile based systemd network management
     - network-manager-applet     # Applet for managing network connections
     - networkmanager             # Network connection manager and user applications
     - nmap                       # Utility for network discovery and security auditing
@@ -81,6 +81,7 @@
     - otf-font-awesome           # Iconic font designed for Bootstrap
     - pacman-contrib             # Contributed scripts and tools for pacman systems
     - pavucontrol                # PulseAudio Volume Control
+    - picom                      # X compositor that may fix tearing issues
     - pkgfile                    # a pacman .files metadata explorer
     - playerctl                  # mpris media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others.
     - pulseaudio                 # A featureful, general-purpose sound server

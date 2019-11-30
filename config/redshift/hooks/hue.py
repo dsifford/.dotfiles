@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.7
+#!/usr/bin/env python3
 """Redshift hook that automatically adjust hue lights in workstation."""
 import json
 from argparse import ArgumentParser

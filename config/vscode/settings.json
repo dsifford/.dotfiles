@@ -82,8 +82,6 @@
 	"prettier.trailingComma": "es5",
 	"python.formatting.provider": "black",
 	"python.jediEnabled": false,
-	"python.linting.mypyEnabled": true,
-	"python.linting.mypyPath": "/usr/bin/mypy",
 	"python.linting.pylintPath": "/home/dsifford/.local/bin/pylint",
 	"python.pythonPath": "python3.7",
 	"python.sortImports.args": [
