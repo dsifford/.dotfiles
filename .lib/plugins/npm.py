@@ -2,7 +2,7 @@
 Dotbot plugin for syncing global npm modules.
 """
 import json
-from subprocess import DEVNULL, PIPE, CalledProcessError, run
+from subprocess import DEVNULL, PIPE, CalledProcessError, check_call, run
 from typing import FrozenSet, List
 
 from dotbot import Plugin
@@ -15,7 +15,7 @@ class Npm(Plugin):
 
     def can_handle(self, directive) -> bool:
         """Checks to see if current item is handleable."""
-        return directive == self._directive
+        return directive == self._directive and Npm.__is_installed()
 
     def handle(self, _directive, data) -> bool:
         """Handler implementation."""
@@ -72,3 +72,14 @@ class Npm(Plugin):
             return frozenset(modules)
         except KeyError:
             return frozenset([])
+
+    @staticmethod
+    def __is_installed() -> bool:
+        """Checks to see if pipx is installed and available in PATH."""
+        try:
+            check_call(
+                ["bash", "-c", "command -v npm"], stdout=DEVNULL, stderr=DEVNULL
+            )
+            return True
+        except CalledProcessError:
+            return False

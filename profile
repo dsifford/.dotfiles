@@ -27,12 +27,10 @@ export AWS_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/credentials
 export AWS_SHARED_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/shared-credentials
 export AWS_WEB_IDENTITY_TOKEN_FILE=$XDG_CONFIG_HOME/aws/token
 export CARGO_HOME=$XDG_DATA_HOME/cargo
-export CUDA_CACHE_PATH=$XDG_CACHE_HOME/nv
 export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
 export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
 export GOPATH=$XDG_DATA_HOME/go
 export HISTFILE=$XDG_DATA_HOME/bash/history
-export HTTPIE_CONFIG_DIR=$XDG_CONFIG_HOME/httpie
 export INPUTRC=$XDG_CONFIG_HOME/readline/inputrc
 export LESSCHARSET=utf-8
 export LESSHISTFILE=-
@@ -57,7 +55,6 @@ export TF_CLI_CONFIG_FILE=$XDG_DATA_HOME/terraform/config.tf
 export UNCRUSTIFY_CONFIG=$XDG_CONFIG_HOME/uncrustify/uncrustify.cfg
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 export XINITRC=$XDG_CONFIG_HOME/X11/xinitrc
-export __GL_SHADER_DISK_CACHE_PATH=$XDG_CACHE_HOME/nvidia/GLCache
 export npm_config_devdir=$XDG_CACHE_HOME/node-gyp
 
 # fzf

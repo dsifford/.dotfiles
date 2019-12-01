@@ -16,7 +16,7 @@ class Keybase(Plugin):
 
     def can_handle(self, directive: str) -> bool:
         """Checks to see if current item is handleable."""
-        return directive == self.__directive and Keybase.__is_installed
+        return directive == self.__directive and Keybase.__is_installed()
 
     def handle(self, _directive, data) -> bool:
         """Handler implementation."""

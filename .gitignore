@@ -5,7 +5,6 @@
 .uuid
 .DS_store
 TESTER
-/.pyre_configuration
 __pycache__
 config/ranger/plugins/__init__.py
 config/tmux/plugins
