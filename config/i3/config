@@ -1,9 +1,14 @@
+#
 # i3 config file (v4)
+#
 # Reference: https://i3wm.org/docs/userguide.html
+#
 
 # Variable Definitions {{{
 set $i3_daemon_path $XDG_CONFIG_HOME/i3/daemons
-set $i3_script_path $XDG_CONFIG_HOME/i3/scripts
+
+set $font_title pango:Monaco, monospace, FontAwesome5Free 7
+set $font_bar   pango:Monaco, monospace, FontAwesome5Free 12
 
 # Vim-like pseudo-mappings
 # use `xmodmap -pm` for full list of mod mappings
@@ -11,19 +16,7 @@ set $<M>   Mod4+
 set $<M-S> Mod4+Shift+
 set $<C>   Control+
 set $<C-S> Control+Shift+
-set $<A>   Mod1+
-
-set_from_resource $main_monitor     dsifford.Monitors.main     auto
-set_from_resource $vertical_monitor dsifford.Monitors.vertical auto
-
-set $font_title pango:Monaco, monospace, FontAwesome5Free 7
-set $font_bar   pango:Monaco, monospace, FontAwesome5Free 14
-
-set $bar_height 56
-
-set $ws_spotify "0:&#xf1bc;"
-set $ws_slack   "0:&#xf198;"
-set $ws_code    "0:&#xf120;"
+set $<M-A> Mod4+Mod1+
 
 set_from_resource $fg        Dracula.fg        #000000
 set_from_resource $bg        Dracula.bg        #000000
@@ -53,8 +46,7 @@ workspace_auto_back_and_forth yes
 # Improve pop-up and task dialog functionality
 for_window [window_role="pop-up|task_dialog|Organizer"] floating enable, move position center
 for_window [window_type="dropdown_menu"] floating enable
-for_window [window_role="PictureInPicture"] floating enable, mark --toggle FLOATING_ACTIVE; \
-    [window_role="PictureInPicture"] resize set 1260 710, move position center;
+for_window [window_role="PictureInPicture"] floating enable, sticky enable
 
 # }}}
 # Colors {{{
@@ -66,58 +58,42 @@ client.unfocused        $bg        $bg     $comment $pink     $bg
 client.urgent           $bg        $bg     $red     $pink     $bg
 
 # }}}
-# Workspace Config {{{
+# Workspaces {{{
 
-workspace 1           output $vertical_monitor
-workspace $ws_spotify output $vertical_monitor
-workspace $ws_slack   output $vertical_monitor
+set $ws_term    "0:&#xf120;"
+set $ws_slack   "90:&#xf198;"
+set $ws_code    "91:&#xf121;"
+set $ws_spotify "92:&#xf1bc;"
 
-workspace 2           output $main_monitor
-workspace $ws_code    output $main_monitor
-
-assign [class="^Slack$"]      $ws_slack
-assign [instance="^spotify$"] $ws_spotify
-assign [class="Atom|code-oss"]    $ws_code
-
-# necessary due to strange bug with spotify
-for_window [instance="spotify"] move to workspace $ws_spotify
-
-bindsym $<M>grave   workspace $ws_code
-bindsym $<M-S>grave move container to workspace $ws_code
-
-bindsym $<M>Tab   workspace $ws_spotify
-bindsym $<M-S>Tab move container to workspace $ws_spotify
+assign [instance="PrimaryTerminal"] $ws_term
+assign [class="^Slack$"]            $ws_slack
+assign [instance="^spotify$"]       $ws_spotify
+assign [class="Atom|code-oss"]      $ws_code
 
 # }}}
-# Application Configs {{{
+# App Specific {{{
 
-# Rofi {{{2
-
+##
+# Rofi
+##
 bindsym $<M>space exec --no-startup-id rofi -show drun
 
-# }}}2
-# Terminal {{{2
+##
+# Termite
+##
+for_window [instance="PrimaryTerminal"] move container to workspace $ws_term
+bindsym $<M>Home  exec --no-startup-id termite --name=PrimaryTerminal -e 'tmux -2u -f /home/dsifford/.config/tmux/tmux.conf new -AD -s home'
+bindsym $<C>space workspace $ws_term
 
-for_window [instance="FloatingTerminal"] \
-    floating enable, \
-    sticky enable, \
-    resize set 3840 1054, \
-    move position 2160 $bar_height, \
-    move scratchpad
-bindsym $<C>space exec --no-startup-id $i3_script_path/toggle-floating-terminal
-bindsym $<M>Home  exec --no-startup-id termite --name=FloatingTerminal -e 'tmux -2u -f /home/dsifford/.config/tmux/tmux.conf new -AD -s home'
-
-# }}}2
-# Zeal {{{2
-
+##
+# Zeal
+##
 for_window [class="Zeal"] \
     floating enable, \
-    resize set 2080 2070, \
+    resize set 1400 1200, \
     move scratchpad
 
 bindsym $<C-S>space [class="Zeal"] scratchpad show, move position center
-
-# }}}2
 
 # }}}
 # Mappings {{{
@@ -128,14 +104,15 @@ bindsym $<M>h focus left
 bindsym $<M>j focus down
 bindsym $<M>k focus up
 
-# toggle fullscreen
-bindsym $<M>Return fullscreen toggle
+# change workspaces
+bindsym $<M-A>l workspace next_on_output
+bindsym $<M-A>h workspace prev_on_output
 
 # toggle between split and tabbed layouts
 bindsym $<M>w layout toggle splith tabbed
 
 # toggle floating picture-in-picture
-bindsym Pause [title="PictureInPicture"] mark --toggle FLOATING_ACTIVE
+bindsym Pause [title="Picture-in-Picture"] mark --toggle FLOATING_ACTIVE
 
 # switch to workspace
 bindsym $<M>1 workspace 1
@@ -187,22 +164,14 @@ bindsym $<C>XF86AudioNext exec --no-startup-id $XDG_CONFIG_HOME/redshift/hooks/h
 
 # kill window
 bindsym --whole-window $<M-S>button3 kill
-bindsym $<M-S>q kill
 
-# reload = reload the configuration file
-# restart = restart i3 inplace (preserves layout/session, can be used to upgrade i3)
-bindsym $<M-S>c reload
 bindsym $<M-S>r restart
-
-# exit i3 (also logs out of Xsession)
 bindsym $<M-S>e exec --no-startup-id i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your Xsession.' -b 'Yes, exit i3' 'i3-msg exit'
 
 # }}}
 # Binding Modes {{{
 
 mode "resize" {
-    # {{{2
-
     # Pressing left will shrink the window’s width.
     # Pressing right will grow the window’s width.
     # Pressing up will shrink the window’s height.
@@ -227,8 +196,6 @@ mode "resize" {
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
-
-    # }}}2
 }
 bindsym $<M>r mode "resize"
 
@@ -236,37 +203,11 @@ bindsym $<M>r mode "resize"
 # Bar {{{
 
 bar {
-    # Vertical Monitor {{{2
-    output $vertical_monitor
+    output primary
     position top
 
-    tray_output $vertical_monitor
-    tray_padding 5px
-
-    strip_workspace_numbers yes
-
-    colors {
-        background $bg
-        statusline $fg
-        separator  $pink
-
-        # type             border     bg         font
-        focused_workspace  $selection $selection $green
-        active_workspace   $selection $selection $fg
-        inactive_workspace $selection $selection $comment
-        urgent_workspace   $selection $selection $red
-    }
-
-    font $font_bar
-    # }}}2
-}
-
-bar {
-    # Primary Monitor {{{2
-    output $main_monitor
-    position top
-
-    tray_output none
+    tray_output primary
+    tray_padding 2
 
     separator_symbol "⸽"
     strip_workspace_numbers yes
@@ -285,23 +226,16 @@ bar {
 
     font $font_bar
 
-    # using custom i3status
     status_command i3blocks
-    # }}}2
 }
 
 # }}}
 # Autostart {{{
 
-# kill running daemons that will be restarted
-exec_always --no-startup-id killall compton
-
 exec_always --no-startup-id feh --no-fehbg --bg-center -B "#000000" /usr/share/backgrounds/archlinux/archlinux-simplyblack.png
 exec_always --no-startup-id $i3_daemon_path/smart-picture-in-picture
-exec_always --no-startup-id compton -b --config $XDG_CONFIG_HOME/compton/compton.conf
 
-exec --no-startup-id termite --name=FloatingTerminal -e 'tmux -2u -f /home/dsifford/.config/tmux/tmux.conf new -AD -s home'
-exec --no-startup-id albert
+exec --no-startup-id termite --name=PrimaryTerminal -e 'tmux -2u -f /home/dsifford/.config/tmux/tmux.conf new -AD -s home'
 exec --no-startup-id autokey-gtk
 exec --no-startup-id blueman-applet
 exec --no-startup-id dropbox

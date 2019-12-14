@@ -4,79 +4,59 @@
 Daemon script that makes Chrome "Picture-in-picture" windows move to active
 window and away from the mouse.
 """
-from enum import Enum, auto
-from typing import Optional
+from dataclasses import dataclass
+from os import environ
 
-import i3ipc
+from i3ipc import Con, Connection
 from Xlib import display
 
-FLOATING_NAME = "Picture in picture"
+FLOATING_NAME = "Picture-in-Picture"
 FLOATING_MARK = "FLOATING_ACTIVE"
 CROSS_MARK = "CROSS"
 
 
-class Padding(Enum):
-    TOP = 270
-    RIGHT = 20
-    BOTTOM = 20
-    LEFT = 20
+@dataclass
+class Padding:
+    TOP: int = 0
+    RIGHT: int = 0
+    BOTTOM: int = 0
+    LEFT: int = 0
 
 
-class Position(Enum):
-    TOP = auto()
-    RIGHT = auto()
-    BOTTOM = auto()
-    LEFT = auto()
+class Positioner:
+    padding: Padding
 
+    def __init__(self, i3: Connection):
+        last_active = next(
+            (
+                w.window_class
+                for w in i3.get_tree().find_focused().workspace().descendants()
+                if w.window_class is not None and w.window_title is not FLOATING_NAME
+            ),
+            None,
+        )
+        if last_active == "firefoxdeveloperedition":
+            self.padding = Padding(TOP=150, RIGHT=25)
+        elif last_active == "Termite":
+            self.padding = Padding(BOTTOM=50)
+        else:
+            self.padding = Padding()
 
-def has_floating_fullscreen_window(self, workspace) -> bool:
-    return next(
-        (
-            True
-            for i in self.get_tree().find_fullscreen()
-            if i.floating and i.workspace().name == workspace.name
-        ),
-        False,
-    )
+    def get_x(self, output_rect, rect, cross=False) -> int:
+        left_value = output_rect.x + self.padding.LEFT
+        right_value = (output_rect.x + output_rect.width) - (
+            rect.width + self.padding.RIGHT
+        )
+        on_left = output_rect.x + (output_rect.width / 2) > rect.x + (rect.width / 2)
+        if on_left:
+            return left_value if not cross else right_value
+        return right_value if not cross else left_value
 
-
-def get_con_output_name(self, con) -> Optional[str]:
-    rect = con.props.rect
-    return next(
-        (
-            o.name
-            for o in self.get_outputs()
-            if (o.rect.x <= rect.x <= o.rect.x + o.rect.width)
-            and (o.rect.y <= rect.y <= o.rect.y + o.rect.height)
-        ),
-        None,
-    )
-
-
-def get_floating_window(self):
-    return next(iter(self.get_tree().find_named(FLOATING_NAME)), None)
-
-
-def get_x_position(output_rect, rect, explicit=None, cross=False) -> int:
-    left_value = output_rect.x + Padding.LEFT.value
-    right_value = (output_rect.x + output_rect.width) - (
-        rect.width + Padding.RIGHT.value
-    )
-    on_left = output_rect.x + (output_rect.width / 2) > rect.x + (rect.width / 2)
-    if explicit is Position.LEFT:
-        return left_value
-    if explicit is Position.RIGHT:
-        return right_value
-    if on_left:
-        return left_value if not cross else right_value
-    return right_value if not cross else left_value
-
-
-def get_y_position(output_rect, rect, explicit=None) -> int:
-    on_top = rect.y + (rect.height / 2) > output_rect.y + (output_rect.height / 2)
-    if on_top and explicit is not Position.BOTTOM or explicit is Position.TOP:
-        return output_rect.y + Padding.TOP.value
-    return output_rect.y + output_rect.height - rect.height - Padding.BOTTOM.value
+    def get_y(self, output_rect, rect) -> int:
+        on_top = rect.y + (rect.height / 2) > output_rect.y + (output_rect.height / 2)
+        if on_top:
+            return output_rect.y + self.padding.TOP
+        return output_rect.y + output_rect.height - rect.height - self.padding.BOTTOM
 
 
 def mouse_is_hovered(rect) -> bool:
@@ -87,60 +67,39 @@ def mouse_is_hovered(rect) -> bool:
     )
 
 
-def translate_window(
-    self, container, explicit_x=None, explicit_y=None, cross=False
-) -> None:
-    current_workspace = self.get_tree().find_focused().workspace().name
-    rect = container.props.rect
-    output = next(
-        (i for i in self.get_outputs() if i.current_workspace == current_workspace),
-        None,
-    )
-    if output is not None:
-        container.command(
+def translate_window(i3: Connection, window, cross=False) -> None:
+    workspace = i3.get_tree().find_focused().workspace()
+    if workspace is not None:
+        positioner = Positioner(i3)
+        window.command(
             (
                 "move position"
-                f" {get_x_position(output.rect, rect, explicit_x, cross)}"
-                f" {get_y_position(output.rect, rect, explicit_y)};"
+                f" {positioner.get_x(workspace.rect, window.rect, cross)}"
+                f" {positioner.get_y(workspace.rect, window.rect)};"
                 " focus tiling"
             )
         )
 
 
-def on_terminal_fullscreen(self, e) -> None:
-    pip_window = get_floating_window(self)
-    if (
-        e.container.window_instance != "FloatingTerminal"
-        or pip_window is None
-        or FLOATING_MARK not in pip_window.marks
-        or not e.container.fullscreen_mode
-    ):
-        return
-    if get_con_output_name(self, pip_window) == get_con_output_name(self, e.container):
-        self.command("focus output left")
-        translate_window(self, pip_window)
-        self.command("focus output right")
-
-
-def on_window_focus(self, e) -> None:
-    pip_window = get_floating_window(self)
+def on_window_focus(i3: Connection, e) -> None:
+    pip_window = next(iter(i3.get_tree().find_named(FLOATING_NAME)), None)
     if (
         pip_window is None
         or FLOATING_MARK not in pip_window.marks
         or pip_window.id != e.container.id
-        or not mouse_is_hovered(e.container.props.rect)
+        or not mouse_is_hovered(e.container.rect)
     ):
         return
     pip_window.command(f"mark --add --toggle {CROSS_MARK}")
     cross = CROSS_MARK in pip_window.marks
-    translate_window(self, pip_window, cross=cross)
+    translate_window(i3, pip_window, cross=cross)
 
 
-i3 = i3ipc.Connection()
+# i3sock is being set incorrectly somewhere this forces i3ipc to look it up
+del environ["I3SOCK"]
 
-i3.on("window::focus", on_window_focus)
-i3.on("window::fullscreen_mode", on_terminal_fullscreen)
-
-i3.main()
+con = Connection()
+con.on("window::focus", on_window_focus)
+con.main()
 
 # vim: set fdn=1:

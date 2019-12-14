@@ -50,7 +50,7 @@
     # Display notification on focused monitor. ("mouse", "keyboard", "none")
     follow = none
 
-    font = Monaco 18
+    font = Monaco 16
 
     # Maximum amount of notifications kept in history
     history_length = 20

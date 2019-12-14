@@ -1,6 +1,5 @@
 configuration {
-    dpi: 250;
-    font: "Monaco 12";
+    font: "Monaco 16";
     theme: "/usr/share/rofi/themes/Arc-Dark.rasi";
     show-icons: true;
 

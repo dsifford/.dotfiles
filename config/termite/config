@@ -1,6 +1,6 @@
 [options]
 cursor_blink     = off
-font             = Monaco 16
+font             = Monaco 14
 mouse_autohide   = on
 scrollback_lines = 10000
 

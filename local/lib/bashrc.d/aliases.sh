@@ -26,8 +26,10 @@ alias tmux='command tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
 alias vimrc='vim "$XDG_CONFIG_HOME/nvim/init.vim"'
 alias y='yarn'
 
-command -v rg > /dev/null \
-	&& alias grep='rg'
+# FIXME: uncomment this when the following merges
+# https://github.com/github/hub/pull/2390
+# command -v rg > /dev/null \
+# 	&& alias grep='rg'
 
 command -v nvim > /dev/null \
 	&& alias vim='nvim'

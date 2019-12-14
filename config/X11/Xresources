@@ -1,5 +1,4 @@
 #include "./Xresources.d/colors.ad"
 #include "./Xresources.d/cursor.ad"
-#include "./Xresources.d/dsifford.ad"
 #include "./Xresources.d/font.ad"
 #include "./Xresources.d/xterm.ad"
