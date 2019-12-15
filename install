@@ -1,42 +1,60 @@
 #!/usr/bin/env bash
-set -e
+# shellcheck disable=SC1090
+USAGE='
+Install and synchronize dotfiles into system.
 
+Usage:
+    install [-p] [--] [<dotbot-args>...]
+    install [-h]
+
+Options:
+    -h --help      Show program help.
+    -p --packages  Include system packages in installation.
+'
+set -e
 shopt -s extglob nullglob
 
-[[ $USER == 'root' ]] && {
+[[ $USER == root ]] && {
     echo "Don't run this as root."
     exit 1
 }
 
-declare config_dir=~/.dotfiles/.lib/config
+# Ensure we have all environment variables loaded, even on fresh systems
+source ~/.dotfiles/profile
+
+declare config_dir="${DOTFILES?}"/.lib/config
 # Array of files to be included in the GENERATED section of the config file
-declare -a generated=()
-# Extra args to be passed to dotbot
-declare -a args=()
+declare -a generated=("$config_dir"/generated/packages.*.yml)
 
-# Add generated files to the queue only if this isn't the very first run on a
-# system. Using the $DOTFILES env variable because if that is set, then that
-# means ~/.profile has been linked already and this has ran at least once.
-if [[ -n $DOTFILES ]]; then
-    generated+=("$config_dir"/generated/packages.*.yml)
+if ! OPTS=$(getopt -o 'hp' --long 'help,packages' -n 'install' -- "$@"); then
+    exit 1
 fi
+eval set -- "$OPTS"
+unset OPTS
 
-while test $# -gt 0; do
+while true; do
     case "$1" in
-        --packages)
+        -h | --help)
+            echo "$USAGE"
+            exit
+            ;;
+        -p | --packages)
             generated+=("$config_dir"/generated/os.packages."$(uname)".yml)
             shift
             ;;
-        *)
-            args+=("$1")
+        --)
             shift
+            break
+            ;;
+        *)
+            exit 1
             ;;
     esac
 done
 
 dotbot \
-    --base-directory ~/.dotfiles \
-    --plugin-dir ~/.dotfiles/.lib/plugins \
+    --base-directory "$DOTFILES" \
+    --plugin-dir "$DOTFILES"/.lib/plugins \
     --config-file <(
         sed --posix -e '/^# %{[A-Z_]*}%.*$/{
             /GENERATED/{
@@ -49,4 +67,4 @@ dotbot \
             }
         }' "$config_dir"/config.yml
     ) \
-    "${args[@]}"
+    "$@"

@@ -17,9 +17,6 @@ Plug 'mboughaba/i3config.vim'
 " Javascript:
 Plug 'pangloss/vim-javascript'
 
-" LaTeX:
-Plug 'lervag/vimtex'
-
 " Markdown:
 Plug 'plasticboy/vim-markdown'
 
