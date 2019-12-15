@@ -55,6 +55,7 @@
     - man-db
     - mpv
     - mypy
+    - neovim
     - netctl
     - network-manager-applet
     - networkmanager
@@ -123,7 +124,6 @@
     - hadolint-bin
     - i3ipc-python-git
     - lab
-    - neovim-git
     - pandoc-bin
     - php-codesniffer
     - python-pipx
