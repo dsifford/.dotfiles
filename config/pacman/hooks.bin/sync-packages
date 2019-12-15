@@ -23,7 +23,6 @@ PACKAGES: Dict[str, FrozenSet[str]] = {
     # Package groups that are being synced.
     "groups": frozenset([
         "base-devel",
-        "i3",
         "texlive-most",
         "xorg",
     ]),

@@ -1,7 +1,3 @@
-setlocal foldlevel=0
-setlocal foldmethod=indent
-setlocal foldnestmax=2
-
 let g:python_highlight_all = 1
 
 let b:ale_fixers = [

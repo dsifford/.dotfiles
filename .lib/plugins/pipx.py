@@ -1,9 +1,8 @@
 """
 Dotbot plugin for syncing pipx packages.
 """
-from distutils.util import strtobool
 from re import MULTILINE, findall
-from subprocess import DEVNULL, PIPE, CalledProcessError, check_call, run
+from subprocess import DEVNULL, PIPE, CalledProcessError, check_call, run  # nosec
 from typing import FrozenSet, List
 
 from dotbot import Plugin

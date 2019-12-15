@@ -302,31 +302,6 @@ let g:UltiSnipsJumpForwardTrigger  = '<M-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<M-k>'
 
 " }}}2
-" Vimtex: {{{2
-
-let g:vimtex_compiler_latexmk = {
-    \ 'backend' : 'nvim',
-    \ 'background' : 1,
-    \ 'build_dir' : 'build',
-    \ 'callback' : 1,
-    \ 'continuous' : 1,
-    \ 'executable' : 'latexmk',
-    \ 'options' : [
-    \   '-verbose',
-    \   '-file-line-error',
-    \   '-synctex=1',
-    \   '-interaction=nonstopmode',
-    \ ],
-    \}
-
-if executable('skimpdf')
-    let g:vimtex_view_general_viewer = 'skim'
-    let g:vimtex_view_method = 'skim'
-endif
-
-let g:vimtex_compiler_progname = 'nvr'
-
-" }}}2
 " Vim Textobject User: {{{2
 
 " Text object for block comments

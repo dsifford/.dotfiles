@@ -93,10 +93,10 @@ class Merge(Plugin):
                 f"{dest_path_raw} already exists but is a regular file or directory"
             )
             return False
-        elif not path.exists(src_path):
+        if not path.exists(src_path):
             self._log.warning(f"Nonexistent target {dest_path_raw} -> {src_path}")
             return False
-        elif path.realpath(dest_path) != src_path:
+        if path.realpath(dest_path) != src_path:
             self._log.warning(
                 f"Invalid link {dest_path_raw} -> {path.realpath(dest_path)}"
             )
@@ -111,5 +111,4 @@ class Merge(Plugin):
         normalized = path.normpath(path.expandvars(path.expanduser(raw_path)))
         if require_absolute and not path.isabs(normalized):
             raise ValueError(f"Path {normalized} must be absolute")
-        else:
-            return normalized
+        return normalized

@@ -4,7 +4,6 @@
 - yay:
     groups:
     - base-devel
-    - i3
     - texlive-most
     - xorg
     official:
@@ -43,6 +42,10 @@
     - graphviz
     - htop
     - hub
+    - i3-gaps
+    - i3blocks
+    - i3lock
+    - i3status
     - imagemagick
     - inetutils
     - jq

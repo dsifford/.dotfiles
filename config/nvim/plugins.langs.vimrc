@@ -26,6 +26,7 @@ Plug 'aklt/plantuml-syntax'
 " Python:
 Plug 'vim-python/python-syntax'
 Plug 'davidhalter/jedi-vim'
+Plug 'tmhedberg/SimpylFold'
 
 " Rust:
 Plug 'rust-lang/rust.vim'
