@@ -11,20 +11,23 @@ Options:
     -h --help      Show program help.
     -p --packages  Include system packages in installation.
 '
-set -e
-shopt -s extglob nullglob
-
 [[ $USER == root ]] && {
     echo "Don't run this as root."
     exit 1
 }
 
-# Ensure we have all environment variables loaded, even on fresh systems
-source ~/.dotfiles/profile
+set -e
+shopt -s extglob nullglob
 
-declare config_dir="${DOTFILES?}"/.lib/config
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+CONFIG_DIR="$SCRIPT_DIR"/.lib/config
+
+# Ensure we have all environment variables loaded, even on fresh systems
+. "$SCRIPT_DIR"/pathrc
+. "$SCRIPT_DIR"/profile
+
 # Array of files to be included in the GENERATED section of the config file
-declare -a generated=("$config_dir"/generated/packages.*.yml)
+declare -a generated=("$CONFIG_DIR"/generated/packages.*.yml)
 
 if ! OPTS=$(getopt -o 'hp' --long 'help,packages' -n 'install' -- "$@"); then
     exit 1
@@ -39,7 +42,9 @@ while true; do
             exit
             ;;
         -p | --packages)
-            generated+=("$config_dir"/generated/os.packages."$(uname)".yml)
+            for f in "$CONFIG_DIR"/generated/os.packages.{"$(uname)","$(uname).$(uname -n)"}.yml; do
+                [ -f "$f" ] && generated+=("$f")
+            done
             shift
             ;;
         --)
@@ -62,9 +67,9 @@ dotbot \
                 d
             }
             /OS_SPECIFIC/{
-                r '"$config_dir/config.$(uname).yml"'
+                r '"$CONFIG_DIR/config.$(uname).yml"'
                 d
             }
-        }' "$config_dir"/config.yml
+        }' "$CONFIG_DIR"/config.yml
     ) \
     "$@"

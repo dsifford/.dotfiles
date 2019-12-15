@@ -106,8 +106,6 @@ if [ "$(uname)" = Darwin ]; then
 	export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 	export XDG_RUNTIME_DIR="$TMPDIR"
 else
-	# Fix tiny QT windows on 4k monitor
-	export QT_AUTO_SCREEN_SCALE_FACTOR=2
 	# Fix for deprecated gvfs-trash call
 	export ELECTRON_TRASH=gio
 fi
