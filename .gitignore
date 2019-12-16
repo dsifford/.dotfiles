@@ -1,4 +1,3 @@
-**/.pyre/
 **/.mypy_cache
 *.pyo
 *.spl
@@ -8,6 +7,5 @@ TESTER
 __pycache__
 config/ranger/plugins/__init__.py
 config/tmux/plugins
-config/nvim/_plugins
 config/vscode/workspaceStorage
 config/vscode/globalStorage
