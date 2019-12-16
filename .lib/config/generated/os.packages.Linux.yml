@@ -4,7 +4,6 @@
 - yay:
     groups:
     - base-devel
-    - texlive-most
     - xorg
     official:
     - arandr
@@ -98,6 +97,7 @@
     - task
     - termite
     - terraform
+    - texlive-core
     - tmux
     - transmission-cli
     - trash-cli
