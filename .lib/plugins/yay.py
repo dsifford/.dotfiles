@@ -29,11 +29,11 @@ from dotbot import Plugin
 
 DataType = Dict[str, List[str]]
 
-
 class Yay(Plugin):
     """Plugin implementation"""
 
     _directive = "yay"
+    _did_update = False
 
     def can_handle(self, directive: str) -> bool:
         """Checks to see if current item is handleable"""
@@ -43,23 +43,29 @@ class Yay(Plugin):
         """Handler implementation"""
         aur = data.pop("aur", None)
         official = sorted(chain(*data.values()))
-        success = self.install_official(official)
+        success = True
+        if not Yay._did_update:
+            self._log.info("Updating installed system packages")
+            success &= Yay.__run(["-Syu"])
+            Yay._did_update = success
+        if official:
+            success &= self.install_official(official)
         if aur:
             success &= self.install_aur(aur)
         return success
 
     def install_aur(self, packages: List[str]) -> bool:
         """Installs the AUR packages given that are needed to be installed"""
-        self._log.info("Installing missing AUR packages")
         to_install = list(filterfalse(Yay.is_package_installed, packages))
         if to_install:
+            self._log.info("Installing missing AUR packages")
             return Yay.__run(["-S", *to_install])
         return True
 
     def install_official(self, packages: List[str]) -> bool:
         """Installs the packages given that are needed to be installed"""
-        self._log.info("Installing missing arch packages")
-        return Yay.__run(["-Syuq", "--needed", *packages])
+        self._log.info("Installing missing system packages")
+        return Yay.__run(["-S", "--needed", *packages])
 
     @property
     def is_installed(self) -> bool:
