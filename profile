@@ -67,6 +67,7 @@ if command -v fzf > /dev/null; then
 		--bind=ctrl-alt-k:preview-up
 		--bind=ctrl-d:preview-page-down
 		--bind=ctrl-u:preview-page-up
+        --bind=alt-bs:clear-query
 		--color fg:#F8F8F2
 		--color fg+:#F8F8F2
 		--color bg:-1

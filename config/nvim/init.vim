@@ -136,6 +136,12 @@ nnoremap <silent> gd :ALEGoToDefinition<CR>
 nnoremap <silent> gD :ALEGoToDefinitionInTab<CR>
 nnoremap <silent> gr :ALEFindReferences -relative<CR>
 
+nnoremap <silent> <F2> <Cmd>ALERename<CR>
+
+" Jump to next error/warning/info from linter/language server
+nnoremap <silent> <C-k> <Cmd>ALEPreviousWrap<CR>
+nnoremap <silent> <C-j> <Cmd>ALENextWrap<CR>
+
 let g:which_key_map.a.g = {
     \ 'name': '+Goto',
     \ 's': ['ALEGoToDefinitionInSplit', 'Definition in Split'],
@@ -161,11 +167,6 @@ augroup dsifford
     " Disable for certain buffers
     autocmd BufEnter */node_modules/* ALEDisableBuffer
 augroup END
-
-" TODO: Waiting for feature support
-" nnoremap <silent> gs        :call LanguageClient_textDocument_documentSymbol()<CR>
-" nnoremap <silent> gS        :call LanguageClient_workspace_symbol()<CR>
-" nnoremap <silent> <F2>      :call LanguageClient_textDocument_rename()<CR>
 
 " }}}2
 " Auto Pairs: {{{2
@@ -351,10 +352,6 @@ nnoremap Y  y$
 " Make j and k move through soft line breaks
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
-
-" Jump to next error/warning/info from linter/language server
-nnoremap <silent> <C-k> <Cmd>ALEPreviousWrap<CR>
-nnoremap <silent> <C-j> <Cmd>ALENextWrap<CR>
 
 " Use <PageUp> and <PageDown> to jump lists
 nnoremap <silent> <PageUp>   <Cmd>call vimrc#lists#smart_jump(-1)<CR>

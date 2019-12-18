@@ -90,7 +90,6 @@ bindsym $<C>space workspace $ws_term
 ##
 for_window [class="Zeal"] \
     floating enable, \
-    resize set 1400 1200, \
     move scratchpad
 
 bindsym $<C-S>space [class="Zeal"] scratchpad show, move position center
