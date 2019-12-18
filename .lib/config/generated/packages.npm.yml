@@ -2,12 +2,9 @@
 # THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY.
 #
 - npm:
-  - "@google-cloud/functions-emulator"
   - "fx"
-  - "ndb"
   - "phantomjs-prebuilt"
   - "prettier"
-  - "quicktype"
   - "release"
   - "stylelint"
   - "typescript"

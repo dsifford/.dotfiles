@@ -6,6 +6,5 @@
 TESTER
 __pycache__
 config/ranger/plugins/__init__.py
-config/tmux/plugins
 config/vscode/workspaceStorage
 config/vscode/globalStorage
