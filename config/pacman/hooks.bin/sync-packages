@@ -31,12 +31,16 @@ PACKAGES: Dict[str, FrozenSet[str]] = {
     ]),
     # List of packages to be included on laptop only.
     "archlinux.laptop": frozenset([
+        "acpi",
+        "fwupd",
     ]),
     # List of packages to not include in sync.
     "ignored": frozenset([
         "bluez-firmware",
+        "intel-ucode",
         "nvidia",
         "nvidia-settings",
+        "xf86-video-intel",
     ]),
 }
 # fmt: on

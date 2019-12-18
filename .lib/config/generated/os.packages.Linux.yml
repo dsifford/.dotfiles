@@ -16,6 +16,7 @@
     - bash-completion
     - bat
     - blueman
+    - bluez-utils
     - cmake
     - code
     - dhclient
@@ -36,7 +37,6 @@
     - git
     - gnome-keyring
     - gnu-netcat
-    - go
     - go-tools
     - graphviz
     - htop
@@ -54,7 +54,7 @@
     - lastpass-cli
     - libreoffice-fresh
     - linux
-    - man-db
+    - linux-firmware
     - mpv
     - mypy
     - neovim
