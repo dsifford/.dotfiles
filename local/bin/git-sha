@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#
+# Use `fzf` to interactively find and select a SHA from the log
+#
+git log --color --oneline \
+	| fzf-tmux --ansi \
+	| awk '{ print $1 }'
