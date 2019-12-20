@@ -2,6 +2,8 @@ sanitize tridactyllocal tridactylsync " Wipe existing settings to ensure a clean
 
 colorscheme shydactyl
 
+set editorcmd termite --role=pop-up -e "nvim %f -c 'setf markdown | set wrap linebreak | normal %lG%cl'"
+
 " Custom Search URLs: {{{
 
 " Disable all built-in searchurls
