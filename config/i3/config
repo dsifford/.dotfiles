@@ -232,9 +232,8 @@ bar {
 # Autostart {{{
 
 exec_always --no-startup-id feh --no-fehbg --bg-center -B "#000000" /usr/share/backgrounds/archlinux/archlinux-simplyblack.png
-exec_always --no-startup-id $i3_daemon_path/smart-picture-in-picture
 
-exec --no-startup-id picom -b
+exec --no-startup-id $i3_daemon_path/smart-picture-in-picture
 exec --no-startup-id termite --name=PrimaryTerminal -e 'tmux -2u -f /home/dsifford/.config/tmux/tmux.conf new -AD -s home'
 exec --no-startup-id autokey-gtk
 exec --no-startup-id blueman-applet
@@ -242,6 +241,11 @@ exec --no-startup-id dropbox
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet
 exec --no-startup-id redshift-gtk
+
+exec --no-startup-id \
+    if [[ $(uname -n) == archlinux.laptop ]]; then \
+        picom -b \
+    fi
 
 # }}}
 
