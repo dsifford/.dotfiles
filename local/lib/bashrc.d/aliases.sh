@@ -16,14 +16,12 @@ alias gf='git f'
 
 # Misc
 alias ..='cd ..'
+alias ssh='TERM=xterm-256color ssh'
 alias dotfiles='cd $DOTFILES'
 alias fzf='fzf-tmux'
-alias grep='grep --color'
 alias info='info --vi-keys'
-alias posix-utils='apropos -s 1p .'
 alias t='task'
 alias tmux='command tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
-alias vimrc='vim "$XDG_CONFIG_HOME/nvim/init.vim"'
 alias y='yarn'
 
 # FIXME: uncomment this when the following merges

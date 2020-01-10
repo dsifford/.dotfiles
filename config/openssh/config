@@ -6,22 +6,30 @@ Host *
 
 Host aliem
     HostName 178.128.182.65
-    Port 22
     User root
 
 Host aliemu
     HostName 104.248.220.191
-    Port 22
     User root
+
+Host bloomscape-dev
+    HostName bloomscpdev.ssh.wpengine.net
+    User bloomscpdev
+
+Host bloomscape-staging
+    HostName bloomstage.ssh.wpengine.net
+    User bloomstage
+
+Host bloomscape
+    HostName bloomscape2019.ssh.wpengine.net
+    User bloomscape2019
 
 Host github.com
     HostName github.com
-    Port 22
     User git
 
 Host gitlab.com
     HostName gitlab.com
-    Port 22
     User git
 
 # vim: ft=sshconfig
