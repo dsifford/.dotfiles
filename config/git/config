@@ -47,7 +47,7 @@
     cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
 [pager]
-    diff = diff-so-fancy | less -p'^(modified|deleted):' --tabs=4 -RFX
+    diff = diff-so-fancy | less -p'^(modified|deleted):' --tabs=4 --chop-long-lines -RFX
     branch = false
 
 [pretty]
