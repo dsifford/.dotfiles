@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#
+# Git hook that generates generated configuration files on pull.
+#
+
+main() {
+	i3blocks-config
+}
+
+i3blocks-config() {
+	declare config_file
+	declare generated=./config/i3blocks/config
+	config_file=./config/i3blocks/config."$(uname -n)"
+
+	if [[ ! -f $config_file ]]; then
+		>&2 echo "ERROR(i3blocks): $config_file not found."
+		return
+	fi
+	{
+		echo '#'
+		echo '# THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY.'
+		echo '#'
+	} > $generated
+	cat "$config_file" >> $generated
+}
+
+main
