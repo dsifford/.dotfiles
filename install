@@ -11,6 +11,7 @@ Options:
     -h --help      Show program help.
     -p --packages  Include system packages in installation.
 '
+
 [[ $USER == root ]] && {
     echo "Don't run this as root."
     exit 1
@@ -23,7 +24,13 @@ SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 CONFIG_DIR="$SCRIPT_DIR"/.lib/config
 
 # Ensure the repo has git hooks path updated
-git config --local core.hookspath ./.lib/git-hooks
+if [[ $(git config --local core.hooksPath) != ./.lib/git-hooks ]]; then
+    git config --local core.hooksPath ./.lib/git-hooks
+    (
+        cd "$SCRIPT_DIR"
+        ./.lib/git-hooks/post-merge
+    )
+fi
 
 # Ensure we have all environment variables loaded, even on fresh systems
 . "$SCRIPT_DIR"/pathrc
