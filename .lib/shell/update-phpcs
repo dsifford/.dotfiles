@@ -35,5 +35,8 @@ cat <<- EOF > ruleset.xml
 	        <exclude name="WordPress.NamingConventions.ValidHookName" />
 	        <exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
 	    </rule>
+
+	    <!-- Additional rules that aren't in the WordPress standards -->
+	    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
 	</ruleset>
 EOF
