@@ -1,0 +1,34 @@
+#
+# i3blocks laptop configuration
+# https://vivien.github.io/i3blocks
+#
+command=$XDG_CONFIG_HOME/i3blocks/blocks/$BLOCK_NAME
+separator_block_width=30
+markup=pango
+
+###
+# Blocks
+##
+
+[disk]
+instance=/
+interval=30
+label=&#xf0a0;
+
+# -------------------
+
+[memory]
+interval=1
+
+# -------------------
+
+[time]
+command=date '+%a %m/%d/%y %I:%M:%S'
+interval=1
+
+# -------------------
+
+[battery]
+interval=30
+
+# vim: set ft=desktop:

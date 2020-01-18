@@ -1,0 +1,38 @@
+#
+# i3blocks desktop configuration
+# https://vivien.github.io/i3blocks
+#
+command=$XDG_CONFIG_HOME/i3blocks/blocks/$BLOCK_NAME
+separator_block_width=30
+markup=pango
+
+###
+# Blocks
+##
+
+[disk]
+interval=30
+label=&#xf015;
+separator=false
+
+[disk]
+instance=/
+interval=30
+label=&#xf0a0;
+separator=false
+
+[disk]
+instance=/var
+interval=30
+label=/var
+
+# -------------------
+
+[memory]
+interval=1
+
+# -------------------
+
+[time]
+command=date '+%a %m/%d/%y %I:%M:%S'
+interval=1
