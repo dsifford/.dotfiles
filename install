@@ -22,6 +22,9 @@ shopt -s extglob nullglob
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 CONFIG_DIR="$SCRIPT_DIR"/.lib/config
 
+# Ensure the repo has git hooks path updated
+git config --local core.hookspath ./.lib/git-hooks
+
 # Ensure we have all environment variables loaded, even on fresh systems
 . "$SCRIPT_DIR"/pathrc
 . "$SCRIPT_DIR"/profile
