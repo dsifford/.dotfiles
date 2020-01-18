@@ -122,7 +122,7 @@ let g:ale_sign_error   = has('mac') ? 'x' : '⮿'
 let g:ale_sign_warning = has('mac') ? '!' : '⚠'
 let g:ale_sign_info    = has('mac') ? '?' : '🛈'
 
-let g:ale_javascript_prettier_options = '--config-precedence=prefer-file --prose-wrap=always --single-quote --tab-width=4 --trailing-comma=es5'
+let g:ale_javascript_prettier_options = '--config-precedence=prefer-file --prose-wrap=preserve --single-quote --tab-width=4 --trailing-comma=es5'
 
 let g:which_key_map.f = 'ALE: Quick fix'
 nnoremap <silent> <Leader>f <Cmd>exec 'ALEFix ' . (index(get(b:, 'ale_fixers', []), get(b:, 'ale_quick_fixer', '')) >= 0 ? b:ale_quick_fixer : '')<CR>
