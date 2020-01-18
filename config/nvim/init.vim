@@ -240,10 +240,10 @@ command! -bang -complete=customlist,s:CompleteRg -nargs=* Rg
   \   <bang>0)
 
 " List files relative to pwd
-nnoremap <C-p> <Cmd>call fzf#run(fzf#wrap({ 'source': 'fd -t f', 'options': '-m' }))<CR>
+nnoremap <C-p> <Cmd>call fzf#run(fzf#wrap({ 'source': 'fd --hidden --type file --exclude ".git/"', 'options': '-m' }))<CR>
 
 " List files relative to directory of current file
-nnoremap <M-p> <Cmd>call fzf#run(fzf#wrap({ 'source': 'fd -t f . ' . expand('%:h'), 'options': '-m' }))<CR>
+nnoremap <M-p> <Cmd>call fzf#run(fzf#wrap({ 'source': 'fd --hidden --type file --exclude ".git/"' . expand('%:h'), 'options': '-m' }))<CR>
 
 let g:which_key_map.r = 'Grep word under cursor'
 nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
