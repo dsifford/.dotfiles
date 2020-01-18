@@ -3,8 +3,10 @@
 *.spl
 .uuid
 .DS_store
-TESTER
 __pycache__
+
+TESTER
+config/i3blocks/config
 config/ranger/plugins/__init__.py
-config/vscode/workspaceStorage
 config/vscode/globalStorage
+config/vscode/workspaceStorage
