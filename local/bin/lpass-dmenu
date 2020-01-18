@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+#
+# Interactive dmenu program that displays a list of all lastpass accounts. The
+# password for the account selected is then copied to the system clipboard.
+#
+
+# make sure we're logged in
+if ! lpass status -q; then
+	lpass login --trust dereksifford@gmail.com > /dev/null
+fi
+
+lpass ls --format='%aU|%an|%au|%ai' |
+	# filter out lines that have missing info
+	awk '!/^[|]/ && !/\|\|/ { print }' |
+	sort -r |
+	column \
+		--separator '|' \
+		--output-separator $'\t' \
+		--table \
+		--table-columns DATE,ACCOUNT,USERNAME,ID \
+		--table-hide DATE |
+	rofi -dmenu -i -p lpass |
+	awk -F $'\t' '{ print $3 }' |
+	xargs --no-run-if-empty lpass show --password --clip

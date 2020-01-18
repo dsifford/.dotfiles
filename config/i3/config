@@ -17,6 +17,7 @@ set $<M-S> Mod4+Shift+
 set $<C>   Control+
 set $<C-S> Control+Shift+
 set $<M-A> Mod4+Mod1+
+set $<A>   Mod1+
 
 set_from_resource $fg        Dracula.fg        #000000
 set_from_resource $bg        Dracula.bg        #000000
@@ -163,6 +164,9 @@ bindsym $<C>XF86AudioNext exec --no-startup-id $XDG_CONFIG_HOME/redshift/hooks/h
 
 # kill window
 bindsym --whole-window $<M-S>button3 kill
+
+# lpass-dmenu trigger
+bindsym $<A>backslash exec --no-startup-id lpass-dmenu
 
 bindsym $<M-S>r restart
 bindsym $<M-S>e exec --no-startup-id i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your Xsession.' -b 'Yes, exit i3' 'i3-msg exit'
