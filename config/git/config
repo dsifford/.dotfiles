@@ -8,7 +8,8 @@
     lsi  = list-issues
     lsp  = list-pull-requests
     peek = ! git log --color --format=compact | fzf-tmux --ansi --preview='git show --color {1}'
-    r    = restore-file
+    rf   = restore-file
+    root = rev-parse --show-toplevel
     rs   = restore-staged-file
     s    = status
 

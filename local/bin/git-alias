@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Prints out a list of aliases defined in git config
+#
+git config --get-regexp 'alias.*' |
+	sed -e 's/ /#/' -e 's/^alias.//' |
+	column -t -s '#' -o ' = ' |
+	sort

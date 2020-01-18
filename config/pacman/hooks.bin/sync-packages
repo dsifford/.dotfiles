@@ -32,6 +32,8 @@ PACKAGES: Dict[str, FrozenSet[str]] = {
     # List of packages to be included on laptop only.
     "archlinux.laptop": frozenset([
         "acpi",
+        "arc-gtk-theme",
+        "arc-icon-theme",
         "fwupd",
     ]),
     # List of packages to not include in sync.
