@@ -7,6 +7,8 @@
     - xorg
     official:
     - arandr
+    - arc-gtk-theme
+    - arc-icon-theme
     - archlinux-wallpaper
     - asciinema
     - asp
