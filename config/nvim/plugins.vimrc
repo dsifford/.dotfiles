@@ -7,7 +7,7 @@ if ! filereadable(s:plug_file)
     silent exec '!curl -fLo ' . shellescape(s:plug_file) .
                 \ ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     augroup dsifford
-        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+        autocmd VimEnter * ++once PlugInstall --sync
     augroup END
 endif
 
