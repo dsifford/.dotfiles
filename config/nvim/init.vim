@@ -229,12 +229,24 @@ func! s:CompleteRg(arg_lead, line, pos)
 endfunc
 
 " Add support for ripgrep
+" TODO: better arg parsing
 command! -bang -complete=customlist,s:CompleteRg -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case ' . <q-args>, 1,
+  \   'rg --column --line-number --no-heading --color=always --smart-case ' . <q-args>,
+  \   1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+  \   <bang>0
+  \ )
+
+" Search for all todo-style comments in the current working directory
+command! -complete=customlist,s:CompleteRg -nargs=* TODOs
+  \ call fzf#vim#grep(
+  \     'rg --column --line-number --no-heading --color=always --smart-case ' . <q-args> . ' "\b(FIXME|HACK|TODO|XXX)\b:"',
+  \     1,
+  \     fzf#vim#with_preview('up:50%'),
+  \     1
+  \ )
 
 " List files relative to pwd
 nnoremap <C-p> <Cmd>call fzf#run(fzf#wrap({ 'source': 'fd --hidden --type file --exclude ".git/"', 'options': '-m' }))<CR>

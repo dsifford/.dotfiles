@@ -9,5 +9,5 @@ trim_trailing_whitespace = true
 [{**.sh,./*,local/bin/*,**.snippets,.lib/{shell,git-hooks}/*}]
 indent_style = tab
 
-[*.yml]
+[*.{vim,yml}]
 indent_size = 2
