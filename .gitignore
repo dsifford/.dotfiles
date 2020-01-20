@@ -6,6 +6,7 @@
 __pycache__
 
 TESTER
+config/i3/config
 config/i3blocks/config
 config/ranger/plugins/__init__.py
 config/vscode/globalStorage
