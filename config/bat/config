@@ -1,4 +1,4 @@
-# Set the theme to "TwoDark"
+# Set the theme to "dracula"
 --theme="dracula"
 
 # Show line numbers, Git modifications and file header (but no grid)
