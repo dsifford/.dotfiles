@@ -128,13 +128,13 @@ let g:which_key_map.f = 'ALE: Quick fix'
 nnoremap <silent> <Leader>f <Cmd>exec 'ALEFix ' . (index(get(b:, 'ale_fixers', []), get(b:, 'ale_quick_fixer', '')) >= 0 ? b:ale_quick_fixer : '')<CR>
 
 let g:which_key_map.F = 'ALE: Fix all'
-nnoremap <silent> <Leader>F :ALEFix<Space>
+nnoremap <silent> <Leader>F <Cmd>ALEFix<CR>
 
-nnoremap <silent> <Leader>k :ALEDetail<CR>
+nnoremap <silent> <Leader>k <Cmd>ALEDetail<CR>
 
-nnoremap <silent> gd :ALEGoToDefinition<CR>
-nnoremap <silent> gD :ALEGoToDefinitionInTab<CR>
-nnoremap <silent> gr :ALEFindReferences -relative<CR>
+nnoremap <silent> gd <Cmd>ALEGoToDefinition<CR>
+nnoremap <silent> gD <Cmd>ALEGoToDefinitionInTab<CR>
+nnoremap <silent> gr <Cmd>ALEFindReferences -relative<CR>
 
 nnoremap <silent> <F2> <Cmd>ALERename<CR>
 
@@ -245,9 +245,6 @@ nnoremap <C-p> <Cmd>call fzf#run(fzf#wrap({ 'source': 'fd --hidden --type file -
 " List files relative to directory of current file
 nnoremap <M-p> <Cmd>call fzf#run(fzf#wrap({ 'source': 'fd --hidden --type file --exclude ".git/"' . expand('%:h'), 'options': '-m' }))<CR>
 
-let g:which_key_map.r = 'Grep word under cursor'
-nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
-
 " }}}2
 " }}}2
 " Matchup: {{{2
@@ -321,22 +318,21 @@ call textobj#user#plugin('dsifford', {
 " Disables built-in mappings
 let g:tmux_navigator_no_mappings = 1
 
-nnoremap <silent> <M-h> :TmuxNavigateLeft<CR>
-nnoremap <silent> <M-j> :TmuxNavigateDown<CR>
-nnoremap <silent> <M-k> :TmuxNavigateUp<CR>
-nnoremap <silent> <M-l> :TmuxNavigateRight<CR>
-nnoremap <silent> <M-\> :TmuxNavigatePrevious<CR>
+nnoremap <silent> <M-h> <Cmd>TmuxNavigateLeft<CR>
+nnoremap <silent> <M-j> <Cmd>TmuxNavigateDown<CR>
+nnoremap <silent> <M-k> <Cmd>TmuxNavigateUp<CR>
+nnoremap <silent> <M-l> <Cmd>TmuxNavigateRight<CR>
 
 " }}}2
 " Vim Which Key: {{{2
 
 call which_key#register('<Space>', 'g:which_key_map')
 
-nnoremap <silent> <Leader> :<C-u>silent! WhichKey '<Space>'<CR>
-vnoremap <silent> <Leader> :<C-u>silent! WhichKeyVisual '<Space>'<CR>
+nnoremap <silent> <Leader> <Cmd>silent! WhichKey '<Space>'<CR>
+vnoremap <silent> <Leader> <Cmd>silent! WhichKeyVisual '<Space>'<CR>
 
-nnoremap <silent> <LocalLeader> :<C-u>silent! WhichKey ','<CR>
-vnoremap <silent> <LocalLeader> :<C-u>silent! WhichKeyVisual ','<CR>
+nnoremap <silent> <LocalLeader> <Cmd>silent! WhichKey ','<CR>
+vnoremap <silent> <LocalLeader> <Cmd>silent! WhichKeyVisual ','<CR>
 
 " }}}2
 " }}}
@@ -362,7 +358,7 @@ nnoremap <silent> <PageDown> <Cmd>call vimrc#lists#smart_jump(1)<CR>
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
 " Toggle fold
-nnoremap <silent> <CR> :pc <Bar> :if &foldenable <Bar> :exe ':silent! normal za\r' <Bar> :endif<CR>
+nnoremap <silent> <CR> <Cmd>pc <Bar> :if &foldenable <Bar> :exe ':silent! normal za\r' <Bar> :endif<CR>
 
 " Open vimrc with F12
 noremap <silent> <F12> <Cmd>call vimrc#toggle_edit()<CR>
@@ -388,8 +384,8 @@ vnoremap ++ g<C-a>
 " Leader Mappings: {{{
 
 let g:which_key_map.s = { 'name': '+settings' }
-nnoremap <silent> <Leader>sl :set list!<CR>
-nnoremap <silent> <Leader>st :set textwidth=
+nnoremap <silent> <Leader>sl <Cmd>set list!<CR>
+nnoremap <silent> <Leader>st <Cmd>set textwidth=
 
 let g:which_key_map.z = {
 \   'name': '+folds',
@@ -398,7 +394,7 @@ let g:which_key_map.z = {
 \}
 
 let g:which_key_map['<CR>'] = 'Toggle buffer fullscreen'
-nnoremap <silent> <Leader><Enter> :call vimrc#window#zoom_toggle()<CR>
+nnoremap <silent> <Leader><Enter> <Cmd>call vimrc#window#zoom_toggle()<CR>
 
 let g:which_key_map['/'] = 'Search project with ripgrep'
 nnoremap <Leader>/ :Rg<Space>
@@ -413,8 +409,8 @@ augroup dsifford
 
     " Toggle quickfix and preview window with <Esc>
     autocmd BufEnter *
-        \ if &ft ==# 'qf' || &previewwindow           |
-        \   nnoremap <buffer><silent> <Esc> :quit<CR> |
+        \ if &ft ==# 'qf' || &previewwindow               |
+        \   nnoremap <buffer><silent> <Esc> <Cmd>quit<CR> |
         \ endif
 
     " Disable syntax on files larger than 1_000_000 bytes
