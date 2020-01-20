@@ -4,10 +4,11 @@ scriptencoding utf8
 filetype plugin indent on
 
 augroup dsifford
-    autocmd!
+  autocmd!
 augroup END
 
-set runtimepath^=/usr/share/vim/vimfiles/
+" TODO: do i still need this?
+" set runtimepath^=/usr/share/vim/vimfiles/
 
 runtime plugins.vimrc
 
@@ -29,14 +30,15 @@ set number                " Show line numbers
 set pastetoggle=<F2>      " Toggle paste mode with F2
 set scrolloff=1           " Minimum # of lines to keep above and below cursor.
 set shiftround            " Round indents to nearest indent size when using < or >
-set shortmess+=c          " Don't give ins-completion-menu messages
 set smartcase             " Case insensitive unless typing with caps
 set smarttab              " sw at the start of the line, sts everywhere else
 set splitbelow            " Open horizontal splits below current buffer
 set splitright            " Open vertical splits to the right of current buffer
 set termguicolors         " Force GUI colors in terminals
 set timeoutlen=250        " Time in milliseconds to wait for a mapped sequence to complete.
+set updatetime=100        " Time in milliseconds until swap file is updated
 set virtualedit=block     " Allow cursor to be placed in virtual positions when in visual block mode
+set wildoptions+=pum      " Display the completion matches using a popupmenu
 set winaltkeys=no         " Allows all ALT combinations to be mapped
 
 set completeopt =menu     " Use a popup menu to show the possible completions
@@ -52,10 +54,8 @@ set listchars =tab:▸\ ,
 set listchars+=eol:¬
 set listchars+=space:·
 
-if !has('mac')
-    " FIXME: this is temporary until neovim updates on mac os.
-    set wildoptions+=pum  " display the completion matches using a popupmenu
-endif
+set shortmess+=c          " Don't give ins-completion-menu messages
+set shortmess+=I          " Don't show the intro message when starting vim
 
 set wildignore =tags
 set wildignore+=*.o
@@ -70,19 +70,19 @@ set tabstop=4
 " Custom foldtext
 set foldtext=vimrc#folds#foldtext()
 
-let g:mapleader = "\<Space>"
+let g:mapleader      = "\<Space>"
 let g:maplocalleader = ','
 
-let g:tex_flavor = 'latex'   " Never use plaintex flavor
-let g:which_key_map = {}     " Mapping dictionary for vim-which-key
+let g:tex_flavor = 'latex' " Never use plaintex flavor
+
+let g:which_key_map = {}   " Mapping dictionary for vim-which-key
 
 if has('nvim')
-    set inccommand=split
+  set inccommand=split
 endif
 
 colorscheme dracula
-
-hi clear CursorLine  " disables line highlight, but keeps `CursorLineNr`
+hi clear CursorLine " disables line highlight, but keeps `CursorLineNr`
 
 " }}}
 " Plugin Settings: {{{
@@ -90,10 +90,10 @@ hi clear CursorLine  " disables line highlight, but keeps `CursorLineNr`
 
 let g:airline_section_c = '%{vimrc#window#statusline()}'
 
-let g:airline_skip_empty_sections              = 1
+let g:airline_skip_empty_sections = 1
 
-let g:airline#extensions#ale#enabled           = 1
-let g:airline#extensions#ale#checking_symbol   = '' " Don't show warnings for non-warnings in ale
+let g:airline#extensions#ale#enabled         = 1
+let g:airline#extensions#ale#checking_symbol = '' " Don't show warnings for non-warnings in ale
 
 let g:airline#extensions#tabline#enabled       = 1
 let g:airline#extensions#tabline#show_buffers  = 0
@@ -104,9 +104,9 @@ let g:airline#extensions#tabline#formatter     = 'indexfmt'
 let g:airline#extensions#tabline#show_tab_nr   = 0
 
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {
-        \ 'readonly': '⛔',
-        \}
+  let g:airline_symbols = {
+  \  'readonly': '⛔',
+  \}
 endif
 
 " }}}2
@@ -115,7 +115,7 @@ endif
 let g:which_key_map.a = { 'name': '+ALE' }
 
 let g:ale_completion_enabled = 1
-let g:ale_linters_explicit = 1
+let g:ale_linters_explicit   = 1
 let g:ale_virtualtext_cursor = 1
 
 let g:ale_sign_error   = has('mac') ? 'x' : '⮿'
@@ -143,29 +143,29 @@ nnoremap <silent> <C-k> <Cmd>ALEPreviousWrap<CR>
 nnoremap <silent> <C-j> <Cmd>ALENextWrap<CR>
 
 let g:which_key_map.a.g = {
-    \ 'name': '+Goto',
-    \ 's': ['ALEGoToDefinitionInSplit', 'Definition in Split'],
-    \ 'v': ['ALEGoToDefinitionInVSplit', 'Definition in VSplit'],
-    \ 'S': ['ALEGoToTypeDefinitionInSplit', 'Type Definition in Split'],
-    \ 'V': ['ALEGoToTypeDefinitionInVSplit', 'Type Definition in VSplit'],
-    \ }
+\  'name': '+Goto',
+\  's': ['ALEGoToDefinitionInSplit', 'Definition in Split'],
+\  'v': ['ALEGoToDefinitionInVSplit', 'Definition in VSplit'],
+\  'S': ['ALEGoToTypeDefinitionInSplit', 'Type Definition in Split'],
+\  'V': ['ALEGoToTypeDefinitionInVSplit', 'Type Definition in VSplit'],
+\}
 
 augroup dsifford
-    " Set keywordprg for language server filetypes
-    let s:ft_keywordprg_ale_hover = [
-        \ 'javascript',
-        \ 'python',
-        \ 'rust',
-        \ 'typescript',
-        \ 'typescriptreact',
-        \ ]
-    autocmd BufNewFile,BufRead *
-                \ if index(s:ft_keywordprg_ale_hover, &ft) >= 0           |
-                \     setlocal keywordprg=:call\ ale#hover#ShowAtCursor() |
-                \ endif
+  " Set keywordprg for language server filetypes
+  let s:ft_keywordprg_ale_hover = [
+  \  'javascript',
+  \  'python',
+  \  'rust',
+  \  'typescript',
+  \  'typescriptreact'
+  \]
+  autocmd BufNewFile,BufRead *
+    \ if index(s:ft_keywordprg_ale_hover, &ft) >= 0
+    \|  setlocal keywordprg=:call\ ale#hover#ShowAtCursor()
+    \|endif
 
-    " Disable for certain buffers
-    autocmd BufEnter */node_modules/* ALEDisableBuffer
+  " Disable for certain buffers
+  autocmd BufEnter */node_modules/* ALEDisableBuffer
 augroup END
 
 " }}}2
@@ -186,10 +186,7 @@ let g:colorizer_colornames = 0
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('smart_case', v:true)
 
-inoremap <silent><expr> <Tab>
-    \ pumvisible() ? "\<C-n>" :
-    \ vimrc#buffer#should_insert_tab() ? "\<TAB>" :
-    \ deoplete#manual_complete()
+inoremap <silent><expr> <Tab> vimrc#buffer#handle_tab()
 
 inoremap <silent> <S-Tab> <C-p>
 
@@ -202,33 +199,33 @@ xmap ga <Plug>(LiveEasyAlign)
 " }}}2
 " Emmet: {{{2
 
-let g:user_emmet_leader_key='<C-e>'
-
+let g:user_emmet_leader_key     = '<C-e>'
 let g:user_emmet_expandabbr_key = '<C-e><C-e>'
-let g:user_emmet_next_key = '<C-e>j'
-let g:user_emmet_prev_key = '<C-e>k'
+let g:user_emmet_next_key       = '<C-e>j'
+let g:user_emmet_prev_key       = '<C-e>k'
 
 let g:user_emmet_settings = {
 \  'markdown' : {
-\      'extends' : 'html',
+\    'extends' : 'html',
 \  },
 \}
 
 augroup dsifford
-    autocmd FileType html,xml,markdown,css,scss,sass,typescriptreact EmmetInstall
+  autocmd FileType html,xml,markdown,css,scss,sass,typescriptreact EmmetInstall
 augroup END
 
 " }}}2
 " Fzf: {{{2
 
 let g:fzf_action = {
-            \ 'ctrl-t': 'tab split',
-            \ 'ctrl-o': 'split',
-            \ 'ctrl-v': 'vsplit' }
+\  'ctrl-t': 'tab split',
+\  'ctrl-o': 'split',
+\  'ctrl-v': 'vsplit',
+\}
 
 func! s:CompleteRg(arg_lead, line, pos)
-    let l:args = join(split(a:line)[1:])
-    return systemlist('get_completions rg ' . l:args)
+  let l:args = join(split(a:line)[1:])
+  return systemlist('get_completions rg ' . l:args)
 endfunc
 
 " Add support for ripgrep
@@ -256,10 +253,10 @@ nnoremap <silent> <leader>w <Cmd>MatchupWhereAmI??<CR>
 " }}}2
 " Netrw: {{{2
 
-let g:netrw_alto = 0
-let g:netrw_banner = 0
-let g:netrw_home = stdpath('cache')
-let g:netrw_preview = 1               " Preview window is a vertical split
+let g:netrw_alto           = 0
+let g:netrw_banner         = 0
+let g:netrw_home           = stdpath('cache')
+let g:netrw_preview        = 1        " Preview window is a vertical split
 let g:netrw_browsex_viewer = $BROWSER " gx when cursor is over a link will open the link in $BROWSER
 
 " }}}2
@@ -271,25 +268,27 @@ nmap <silent> <Leader>S <Plug>ScripteaseSynnames
 " }}}2
 " Sneak: {{{2
 
-let g:sneak#label = 1
-let g:sneak#s_next = 1
+let g:sneak#label      = 1
+let g:sneak#s_next     = 1
 let g:sneak#use_ic_scs = 1
 
 " }}}2
 " TComment: {{{2
 
 let g:tcomment_mapleader2 = ''
+
 let g:tcomment#filetype#guess_php = 'php'
 
-let g:tcomment#block2_fmt_c = g:tcomment#block2_fmt_c
-let g:tcomment#block2_fmt_c.commentstring = '/** %s */'
+let g:tcomment#block2_fmt_c = extend(g:tcomment#block2_fmt_c, {
+\  'commentstring': '/** %s */',
+\})
 
 call tcomment#type#Define('jsonc', '// %s')
 
 augroup dsifford
-    autocmd FileType javascript,php,typescript,typescriptreact ++once
-        \ call tcomment#type#Define( expand('<amatch>:r') . '_block', g:tcomment#block2_fmt_c) |
-        \ call tcomment#type#Define( expand('<amatch>:r') . '_inline', tcomment#GetLineC('/** %s */'))
+  autocmd FileType javascript,php,typescript,typescriptreact ++once
+    \ call tcomment#type#Define( expand('<amatch>:r') . '_block', g:tcomment#block2_fmt_c)
+    \|call tcomment#type#Define( expand('<amatch>:r') . '_inline', tcomment#GetLineC('/** %s */'))
 augroup END
 
 " }}}2
@@ -305,12 +304,12 @@ let g:UltiSnipsJumpBackwardTrigger = '<M-k>'
 
 " Text object for block comments
 call textobj#user#plugin('dsifford', {
-\   'block-comment': {
-\     'pattern': ['\/\*', '\*\/'],
-\     'region-type': 'V',
-\     'select-a': 'ac',
-\   },
-\ })
+\  'block-comment': {
+\    'pattern': ['\/\*', '\*\/'],
+\    'region-type': 'V',
+\    'select-a': 'ac',
+\  }
+\})
 
 " }}}2
 " Vim Tmux Navigator: {{{2
@@ -403,31 +402,39 @@ nnoremap <Leader>/ :Rg<Space>
 " Autocommands: {{{
 
 augroup dsifford
-    " Check to see if the current buffer has changes from another program.
-    " If so, reload the changes.
-    autocmd BufEnter,FocusGained * :checktime
+  " Check to see if the current buffer has changes from another program.
+  " If so, reload the changes.
+  autocmd BufEnter,FocusGained * :checktime
 
-    " Toggle quickfix and preview window with <Esc>
-    autocmd BufEnter *
-        \ if &ft ==# 'qf' || &previewwindow               |
-        \   nnoremap <buffer><silent> <Esc> <Cmd>quit<CR> |
-        \ endif
+  " Toggle quickfix and preview window with <Esc>
+  autocmd BufEnter *
+    \ if &ft ==# 'qf' || &previewwindow
+    \|  nnoremap <buffer><silent> <Esc> <Cmd>quit<CR>
+    \|endif
 
-    " Disable syntax on files larger than 1_000_000 bytes
-    autocmd BufEnter,BufReadPre * if getfsize(expand("%")) > 1000000 | syntax off | endif
-    autocmd BufWinLeave * if getfsize(expand("%")) > 1000000 && type(v:exiting) == 7 | syntax on | hi clear CursorLine | endif
+  " Disable syntax on files larger than 1_000_000 bytes
+  autocmd BufEnter,BufReadPre *
+    \ if getfsize(expand("%")) > 1000000
+    \|  syntax off
+    \|endif
+  " Re-enable syntax when leaving large files
+  autocmd BufWinLeave *
+    \ if getfsize(expand("%")) > 1000000 && type(v:exiting) == 7
+    \|  syntax on
+    \|  hi clear CursorLine
+    \|endif
 
-    " Prevent any global or plugin ftplugin from manipulating formatoptions
-    autocmd FileType * setlocal formatoptions< textwidth<
+  " Prevent any global or plugin ftplugin from manipulating formatoptions
+  autocmd FileType * setlocal formatoptions< textwidth<
 
-    " Quit if the last remaining window is a quickfix or info window
-    autocmd WinEnter *
-        \ if winnr('$') == 1 && index(['quickfix', 'nofile'], &buftype) != -1 |
-        \   quit                                                              |
-        \ endif
+  " Quit if the last remaining window is a quickfix or info window
+  autocmd WinEnter *
+    \ if winnr('$') == 1 && index(['quickfix', 'nofile'], &buftype) != -1
+    \|  quit
+    \|endif
 
-    " Flush the screen's buffer on exit
-    autocmd VimLeave * :!clear
+  " Flush the screen's buffer on exit
+  autocmd VimLeave * :!clear
 augroup END
 
 " }}}
