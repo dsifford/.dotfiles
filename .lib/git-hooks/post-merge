@@ -1,27 +1,58 @@
 #!/usr/bin/env bash
 #
-# Git hook that generates generated configuration files on pull.
+# Re-generates generated configuration files.
 #
 
 main() {
+	i3-config
 	i3blocks-config
 }
 
-i3blocks-config() {
-	declare config_file
-	declare generated=./config/i3blocks/config
-	config_file=./config/i3blocks/config."$(uname -n)"
+i3-config() {
+	generate-config \
+		./config/i3/config \
+		./config/i3/base.config \
+		./config/i3/"$(uname -n)".config
+}
 
-	if [[ ! -f $config_file ]]; then
-		>&2 echo "ERROR(i3blocks): $config_file not found."
-		return
-	fi
+i3blocks-config() {
+	generate-config \
+		./config/i3blocks/config \
+		./config/i3blocks/"$(uname -n)".config
+}
+
+##
+# Helpers
+#
+
+#
+# Given an OUTPUT_FILE and a list of INPUT_FILEs, write the contents of each
+# INPUT_FILE to OUTPUT_FILE with some safety checks.
+#
+# Usage:
+#   generate-config OUTPUT_FILE INPUT_FILE...
+#
+generate-config() {
+	declare input_file
+	declare output_file="$1"
+	shift
+
+	# make sure all input files exist
+	for input_file in "$@"; do
+		if [[ ! -f $input_file ]]; then
+			>&2 echo "ERROR(${FUNCNAME[1]}): $input_file not found."
+			return
+		fi
+	done
+
 	{
 		echo '#'
 		echo '# THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY.'
 		echo '#'
-	} > $generated
-	cat "$config_file" >> $generated
+	} > "$output_file"
+	for input_file in "$@"; do
+		cat "$input_file" >> "$output_file"
+	done
 }
 
 main
