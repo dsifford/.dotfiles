@@ -252,7 +252,7 @@ command! -complete=customlist,s:CompleteRg -nargs=* TODOs
 nnoremap <C-p> <Cmd>call fzf#run(fzf#wrap({ 'source': 'fd --hidden --type file --exclude ".git/"', 'options': '-m' }))<CR>
 
 " List files relative to directory of current file
-nnoremap <M-p> <Cmd>call fzf#run(fzf#wrap({ 'source': 'fd --hidden --type file --exclude ".git/"' . expand('%:h'), 'options': '-m' }))<CR>
+nnoremap <M-p> <Cmd>call fzf#run(fzf#wrap({ 'source': 'fd . --hidden --type file --exclude ".git/" ' . expand('%:h'), 'options': '-m' }))<CR>
 
 " }}}2
 " }}}2
