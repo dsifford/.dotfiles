@@ -308,8 +308,8 @@ augroup END
 
 let g:UltiSnipsEditSplit           = 'tabdo'
 let g:UltiSnipsExpandTrigger       = '<M-j>'
-let g:UltiSnipsJumpForwardTrigger  = '<M-j>'
-let g:UltiSnipsJumpBackwardTrigger = '<M-k>'
+let g:UltiSnipsJumpForwardTrigger  = '<M-n>'
+let g:UltiSnipsJumpBackwardTrigger = '<M-b>'
 
 " }}}2
 " Vim Textobject User: {{{2

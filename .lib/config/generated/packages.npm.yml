@@ -3,8 +3,6 @@
 #
 - npm:
   - "fx"
-  - "phantomjs-prebuilt"
   - "prettier"
   - "release"
-  - "stylelint"
   - "typescript"

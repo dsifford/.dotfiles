@@ -4,7 +4,7 @@
     chb  = checkout-branch
     db   = delete-branch
     f    = fetch --all
-    lg   = log --oneline --decorate --all --graph
+    lg   = log --oneline --all --graph
     lsi  = list-issues
     lsp  = list-pull-requests
     peek = ! git log --color --format=compact | fzf-tmux --ansi --preview='git show --color {1}'
