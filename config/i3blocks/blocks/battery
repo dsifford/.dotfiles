@@ -5,18 +5,31 @@
 declare -i battery_level
 declare -u battery_status
 declare time_remaining
+declare text
 
 battery_level=$(cat /sys/class/power_supply/BAT0/capacity)
 battery_status=$(cat /sys/class/power_supply/BAT0/status)
 time_remaining=$(acpi | sed 's/.*, \([0-9]\{2\}:[0-9]\{2\}\).*/\1/')
 
-# Full text
-echo "BAT ${battery_level}% ${battery_status:0:3} (${time_remaining})"
+text="BAT ${battery_level}%"
+
+case "$battery_status" in
+    DISCHARGING)
+        echo "$text DIS (${time_remaining})"
+        ;;
+    CHARGING | FULL)
+        echo "$text &#xf1e6;"
+        ;;
+    *)
+        echo "$text ${battery_status:0:3}"
+        ;;
+esac
+
 # Short text
-echo "BAT ${battery_level}% ${battery_status:0:1}"
+echo "$text"
 
 # Text color
-if [[ $battery_status = Discharging ]]; then
+if [[ $battery_status = DISCHARGING ]]; then
     if ((battery_level < 20)); then
         echo '#FF5555'
     elif ((battery_level < 50)); then
