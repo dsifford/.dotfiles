@@ -372,7 +372,7 @@ nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR
 nnoremap <silent> <CR> <Cmd>pc <Bar> :if &foldenable <Bar> :exe ':silent! normal za\r' <Bar> :endif<CR>
 
 " Open vimrc with F12
-noremap <silent> <F12> <Cmd>call vimrc#toggle_edit()<CR>
+noremap <silent> <F12> <Cmd>call vimrc#toggle_edit_ftplugin()<CR>
 
 " Select the next/prev matches while performing a search
 cnoremap <C-j> <C-g>
