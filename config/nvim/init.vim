@@ -7,9 +7,6 @@ augroup dsifford
   autocmd!
 augroup END
 
-" TODO: do i still need this?
-" set runtimepath^=/usr/share/vim/vimfiles/
-
 runtime plugins.vimrc
 
 " }}}
