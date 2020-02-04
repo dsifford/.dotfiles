@@ -29,7 +29,7 @@ Plug 'tpope/vim-surround'
 Plug 'liuchengxu/vim-which-key'
 Plug 'kana/vim-textobj-user'
 
-Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'
 
 Plug 'SirVer/ultisnips'
