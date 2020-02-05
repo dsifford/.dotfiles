@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+"""
+Script which moves to the adjacent LEFT or RIGHT window, navigating to next
+workspace if no adjacent window.
+
+NOTE: This requires "focus_wrapping no" in i3config
+
+Usage: move-adjacent (left | right)
+"""
+
+from argparse import ArgumentParser
+from typing import Optional
+
+from i3ipc import Con, Connection
+
+
+def get_focused_id(conn: Connection) -> Optional[int]:
+    """Returns the id of the focused window, or None if none focused"""
+    focused = conn.get_tree().find_focused()
+    return focused.id if focused else None
+
+
+def main():
+    """Main entrypoint"""
+    parser = ArgumentParser()
+    parser.add_argument(
+        "direction", choices=["left", "right"], metavar="DIR",
+    )
+    args = parser.parse_args()
+
+    conn = Connection()
+    focused_id = get_focused_id(conn)
+    if focused_id is None:
+        if args.direction == "left":
+            conn.command("workspace prev")
+        else:
+            conn.command("workspace next")
+
+    if args.direction == "left":
+        conn.command("focus left")
+        if focused_id == get_focused_id(conn):
+            conn.command("workspace prev")
+    else:
+        conn.command("focus right")
+        if focused_id == get_focused_id(conn):
+            conn.command("workspace next")
+
+
+if __name__ == "__main__":
+    main()
