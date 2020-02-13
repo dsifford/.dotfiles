@@ -122,6 +122,7 @@
     - doctl-bin
     - dropbox
     - git-delta-bin
+    - github-cli-bin
     - google-chrome-beta
     - gscreenshot
     - hadolint-bin
