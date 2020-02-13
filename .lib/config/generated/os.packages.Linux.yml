@@ -23,7 +23,6 @@
     - code
     - dhclient
     - dialog
-    - diff-so-fancy
     - docker
     - docker-compose
     - docker-machine
@@ -122,6 +121,7 @@
     - autokey
     - doctl-bin
     - dropbox
+    - git-delta-bin
     - google-chrome-beta
     - gscreenshot
     - hadolint-bin
