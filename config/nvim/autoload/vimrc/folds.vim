@@ -14,10 +14,12 @@ endfunc
 
 " Folds all lines matching regex pattern entered in prompt.
 func! vimrc#folds#fold_lines_matching()
+  let l:pos = getpos('.')
   call inputsave()
   let l:word = input('Enter fold word: ')
   call inputrestore()
   exec 'g/^\s*' . l:word . '/normal zc'
+  call setpos('.', l:pos)
 endfunc
 
 " Toggle fold/unfold at first fold level only.
