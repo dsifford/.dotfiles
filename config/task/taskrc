@@ -18,7 +18,8 @@ taskd.ca=~/.local/share/task/freecinc.ca.pem
 taskd.credentials=FreeCinc/freecinc_1dbf0215/861ea477-29ee-4d55-93ad-24b28bdee831
 
 # Reports
-report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description.combined,urgency
+report.next.labels=ID,Active,Age,Deps,P,Project,Recur,Due,Until,Description,Tag
+report.next.columns=id,start.age,entry.age,depends,priority,project,recur,due.remaining,until.remaining,description.combined,tags
 report.next.sort=urgency-
 
 # User-defined Attributes
