@@ -1,15 +1,12 @@
 EditorConfig.EditorConfig
 Gruntfuggly.todo-tree
-LaurentTreguier.uncrustify
 VisualStudioExptTeam.vscodeintellicode
 bierner.markdown-preview-github-styles
-bungcip.better-toml
 dracula-theme.theme-dracula
 eamodio.gitlens
 esbenp.prettier-vscode
 fallenwood.vimL
 ikappas.phpcs
-justusadam.language-haskell
 kumar-harsh.graphql-for-vscode
 mauve.terraform
 ms-azuretools.vscode-docker
@@ -20,11 +17,8 @@ ms-vscode-remote.remote-ssh
 ms-vscode-remote.remote-ssh-edit
 ms-vscode-remote.remote-wsl
 ms-vscode-remote.vscode-remote-extensionpack
-ms-vscode.cpptools
 ms-vscode.vscode-typescript-tslint-plugin
-neuron.neuron-IPE
 persoderlind.vscode-phpcbf
-quicktype.quicktype
 richie5um2.vscode-sort-json
 rust-lang.rust
 shinnn.stylelint

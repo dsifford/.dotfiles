@@ -110,7 +110,7 @@ handle_extension() {
 
 handle_image() {
 	case "$file_mime_type" in
-		image/svg)
+		image/svg*)
 			# handle these with highlight_file
 			;;
 
