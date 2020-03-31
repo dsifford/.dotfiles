@@ -13,6 +13,6 @@
 
 # Register syntaxes
 --map-syntax .babelrc:json
---map-syntax conf:ini
---map-syntax config:ini
---map-syntax h:cpp
+--map-syntax *.conf:ini
+--map-syntax *.config:ini
+--map-syntax *.h:cpp

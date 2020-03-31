@@ -4,7 +4,6 @@ if w:quickfix_title ==# 'Man TOC'
     nnoremap <buffer> <silent> q :wq<CR>
 endif
 
-" TODO: look into replacing this with CFilter command (see :h CFilter)
 nnoremap <buffer> <silent> dd <Cmd>call vimrc#lists#delete_item_at_cursor()<CR>
 
 let b:undo_ftplugin = vimrc#undo_ftplugin(

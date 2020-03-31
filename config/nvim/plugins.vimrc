@@ -43,8 +43,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'andymass/vim-matchup'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-vinegar'
-" FIXME: I'm pretty sure I'm not using ncm2 anymore. Check to see why and if I should remove this
-Plug 'ncm2/float-preview.nvim'
 
 "
 " Look And Feel:

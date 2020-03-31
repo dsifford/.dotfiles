@@ -39,7 +39,6 @@
     - gnome-keyring
     - gnu-netcat
     - go-tools
-    - graphviz
     - htop
     - hub
     - i3-gaps
@@ -48,6 +47,7 @@
     - i3status
     - imagemagick
     - inetutils
+    - inkscape
     - jq
     - kbfs
     - keybase
@@ -119,16 +119,17 @@
     - zip
     aur:
     - autokey
+    - chromium-snapshot-bin
     - doctl-bin
     - dropbox
     - git-delta-bin
     - github-cli-bin
-    - google-chrome-beta
     - gscreenshot
     - hadolint-bin
     - i3ipc-python-git
     - lab
     - pandoc-bin
+    - phantomjs-bin
     - php-codesniffer
     - python-pipx
     - shellcheck-static
