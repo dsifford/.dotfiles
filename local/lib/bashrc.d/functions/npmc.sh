@@ -3,7 +3,7 @@
 # Better "npm-check" command utilizing fzf without any other dependencies.
 #
 
-command -v docker > /dev/null || return
+command -v fzf > /dev/null || return
 command -v npm > /dev/null || return
 
 npmc() {
