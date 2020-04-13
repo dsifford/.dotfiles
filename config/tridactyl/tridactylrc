@@ -50,6 +50,7 @@ bindurl youtube.com/watch <Space> js var el = document.querySelector('.ytp-play-
 
 " Don't run Tridactyl on the following sites.
 blacklistadd mail.google.com
+blacklistadd figma.com
 
 " }}}
 
