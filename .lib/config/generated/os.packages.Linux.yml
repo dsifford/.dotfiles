@@ -26,6 +26,7 @@
     - docker
     - docker-compose
     - docker-machine
+    - dos2unix
     - dunst
     - fd
     - feh
@@ -129,7 +130,6 @@
     - i3ipc-python-git
     - lab
     - pandoc-bin
-    - phantomjs-bin
     - php-codesniffer
     - python-pipx
     - shellcheck-static
