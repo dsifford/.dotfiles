@@ -39,6 +39,9 @@
 [fetch]
     prune = true
 
+[interactive]
+    diffFilter = delta --color-only
+
 [merge]
     tool = nvimdiff
 
