@@ -264,9 +264,10 @@ nnoremap <silent> <leader>w <Cmd>MatchupWhereAmI??<CR>
 
 let g:netrw_alto           = 0
 let g:netrw_banner         = 0
+let g:netrw_browsex_viewer = $BROWSER " gx when cursor is over a link will open the link in $BROWSER
 let g:netrw_home           = stdpath('cache')
 let g:netrw_preview        = 1        " Preview window is a vertical split
-let g:netrw_browsex_viewer = $BROWSER " gx when cursor is over a link will open the link in $BROWSER
+let g:netrw_special_syntax = 1
 
 " }}}2
 " Scriptease: {{{2
