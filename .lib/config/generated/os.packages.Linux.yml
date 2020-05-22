@@ -130,6 +130,7 @@
     - i3ipc-python-git
     - lab
     - pandoc-bin
+    - phantomjs-bin
     - php-codesniffer
     - python-pipx
     - shellcheck-static
