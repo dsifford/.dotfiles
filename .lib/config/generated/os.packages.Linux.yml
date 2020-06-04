@@ -133,7 +133,7 @@
     - phantomjs-bin
     - php-codesniffer
     - python-pipx
-    - shellcheck-static
+    - shellcheck-bin
     - slack-desktop
     - spotify
     - ttf-monaco
