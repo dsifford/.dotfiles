@@ -84,6 +84,7 @@
     - python
     - python-jedi
     - python-pip
+    - python-pipx
     - python-pynvim
     - ranger
     - redshift
@@ -132,7 +133,6 @@
     - pandoc-bin
     - phantomjs-bin
     - php-codesniffer
-    - python-pipx
     - shellcheck-bin
     - slack-desktop
     - spotify
