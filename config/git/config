@@ -16,7 +16,7 @@
 [core]
     editor = nvim
     autocrlf = input
-    pager = delta --theme dracula --hunk-style plain
+    pager = delta --theme dracula --hunk-style plain --navigate
 
 [color]
     branch = always

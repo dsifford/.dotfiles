@@ -26,6 +26,7 @@ export AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
 export AWS_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/credentials
 export AWS_SHARED_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/shared-credentials
 export AWS_WEB_IDENTITY_TOKEN_FILE=$XDG_CONFIG_HOME/aws/token
+export BAT_THEME=dracula
 export CARGO_HOME=$XDG_DATA_HOME/cargo
 export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
 export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
