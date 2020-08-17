@@ -1,5 +1,7 @@
 [mypy]
 mypy_path = $PIPX_HOME/venvs/dotbot/lib/python3.8/site-packages:$PATH
+ignore_missing_imports = True
+cache_dir = /dev/null
 ; namespace_packages = True
 ; warn_return_any = True
 ; warn_unused_configs = True
