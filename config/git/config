@@ -16,7 +16,7 @@
 [core]
     editor = nvim
     autocrlf = input
-    pager = delta --theme dracula --hunk-style plain --navigate
+    pager = delta
 
 [color]
     branch = always
@@ -28,6 +28,9 @@
 
 [credential]
     helper = store
+
+[delta]
+    theme = dracula
 
 [diff]
     tool = nvimdiff
@@ -50,6 +53,9 @@
 
 [mergetool "nvimdiff"]
     cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
+[pager]
+    diff = delta --navigate
 
 [pretty]
     compact = format:%C(auto)%h %ar %C(auto)%d %s

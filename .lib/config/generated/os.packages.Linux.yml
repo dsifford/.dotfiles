@@ -17,6 +17,7 @@
     - base
     - bash-completion
     - bat
+    - bind
     - blueman
     - bluez-utils
     - cmake

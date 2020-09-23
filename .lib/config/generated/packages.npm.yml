@@ -2,7 +2,5 @@
 # THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY.
 #
 - npm:
-  - "fx"
   - "prettier"
-  - "release"
   - "typescript"
