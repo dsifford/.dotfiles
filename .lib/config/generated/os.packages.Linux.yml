@@ -38,6 +38,7 @@
     - gdb
     - gimp
     - git
+    - github-cli
     - gnome-keyring
     - gnu-netcat
     - go-tools
@@ -126,7 +127,6 @@
     - doctl-bin
     - dropbox
     - git-delta-bin
-    - github-cli-bin
     - gscreenshot
     - hadolint-bin
     - i3ipc-python-git
