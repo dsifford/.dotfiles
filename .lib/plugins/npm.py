@@ -54,7 +54,7 @@ class Npm(Plugin):
             run(["npm", "-g", "rm", *mods], check=True, stdout=PIPE, stderr=PIPE)
             return True
         except CalledProcessError as err:
-            self._log.error(f"An error occurred while attempting to uninstall modules")
+            self._log.error("An error occurred while attempting to uninstall modules")
             print(err.output)
             return False
 

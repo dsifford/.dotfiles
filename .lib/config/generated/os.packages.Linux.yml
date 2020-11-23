@@ -124,7 +124,6 @@
     aur:
     - autokey
     - chromium-snapshot-bin
-    - doctl-bin
     - dropbox
     - git-delta-bin
     - gscreenshot
