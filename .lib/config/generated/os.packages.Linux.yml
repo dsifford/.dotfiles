@@ -122,7 +122,7 @@
     - zathura-pdf-poppler
     - zip
     aur:
-    - autokey
+    - autokey-gtk
     - chromium-snapshot-bin
     - dropbox
     - git-delta-bin
