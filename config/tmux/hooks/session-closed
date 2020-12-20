@@ -12,7 +12,9 @@ find "${XDG_CACHE_HOME:-$HOME/.cache}" -type d -empty -delete
 # Clear out misc garbage files
 __junk_files=(
     ~/.*_history
+    ~/.serverlessrc
     ~/.wget-hsts
+    ~/.yarnrc
 )
 for __file in "${__junk_files[@]}"; do
     [[ -f $__file ]] && rm -f "$__file"
@@ -20,6 +22,7 @@ done
 
 # Clear out misc garbage directories
 __junk_dirs=(
+    ~/.serverless
     ~/.w3m
 )
 for __dir in "${__junk_dirs[@]}"; do

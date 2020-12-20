@@ -133,6 +133,7 @@
     - pandoc-bin
     - phantomjs-bin
     - php-codesniffer
+    - postman-bin
     - shellcheck-bin
     - slack-desktop
     - spotify
