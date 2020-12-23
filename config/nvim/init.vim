@@ -131,7 +131,7 @@ nnoremap <silent> <Leader>F <Cmd>ALEFix<CR>
 nnoremap <silent> <Leader>k <Cmd>ALEDetail<CR>
 
 nnoremap <silent> gd <Cmd>ALEGoToDefinition<CR>
-nnoremap <silent> gD <Cmd>ALEGoToDefinitionInTab<CR>
+nnoremap <silent> gD <Cmd>ALEGoToDefinition -tab<CR>
 nnoremap <silent> gr <Cmd>ALEFindReferences -relative<CR>
 
 nnoremap <silent> <F2> <Cmd>ALERename<CR>
@@ -142,10 +142,10 @@ nnoremap <silent> <C-j> <Cmd>ALENextWrap<CR>
 
 let g:which_key_map.a.g = {
 \  'name': '+Goto',
-\  's': ['ALEGoToDefinitionInSplit', 'Definition in Split'],
-\  'v': ['ALEGoToDefinitionInVSplit', 'Definition in VSplit'],
-\  'S': ['ALEGoToTypeDefinitionInSplit', 'Type Definition in Split'],
-\  'V': ['ALEGoToTypeDefinitionInVSplit', 'Type Definition in VSplit'],
+\  's': ['ALEGoToDefinition -split', 'Definition in Split'],
+\  'v': ['ALEGoToDefinition -vsplit', 'Definition in VSplit'],
+\  'S': ['ALEGoToTypeDefinition -split', 'Type Definition in Split'],
+\  'V': ['ALEGoToTypeDefinition -vsplit', 'Type Definition in VSplit'],
 \}
 
 augroup dsifford
