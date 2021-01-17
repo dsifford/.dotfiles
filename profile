@@ -57,6 +57,7 @@ export TMUX_PLUGIN_MANAGER_PATH=$XDG_DATA_HOME/tmux/plugins
 export UNCRUSTIFY_CONFIG=$XDG_CONFIG_HOME/uncrustify/uncrustify.cfg
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 export XINITRC=$XDG_CONFIG_HOME/X11/xinitrc
+export npm_config_cache=$XDG_CACHE_HOME/npm
 export npm_config_devdir=$XDG_CACHE_HOME/node-gyp
 
 # fzf

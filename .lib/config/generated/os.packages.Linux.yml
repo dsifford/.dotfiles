@@ -29,6 +29,7 @@
     - dos2unix
     - dunst
     - fd
+    - fdupes
     - feh
     - ffmpeg
     - ffmpegthumbnailer
@@ -113,6 +114,7 @@
     - unzip
     - w3m
     - wget
+    - wireguard-tools
     - xclip
     - xorg-xinit
     - xterm
