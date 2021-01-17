@@ -17,7 +17,6 @@
     - base
     - bash-completion
     - bat
-    - bind
     - blueman
     - bluez-utils
     - cmake
@@ -84,6 +83,7 @@
     - pulseaudio-alsa
     - pulseaudio-bluetooth
     - python
+    - python-i3ipc
     - python-jedi
     - python-pip
     - python-pipx
@@ -128,8 +128,6 @@
     - git-delta-bin
     - gscreenshot
     - hadolint-bin
-    - i3ipc-python-git
-    - lab
     - pandoc-bin
     - phantomjs-bin
     - php-codesniffer
