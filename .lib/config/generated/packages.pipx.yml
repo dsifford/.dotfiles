@@ -7,7 +7,6 @@
   - dotbot
   - isort
   - neovim-remote
-  - poetry
   - pylint
   - python-language-server
   - vim-vint
