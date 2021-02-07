@@ -40,6 +40,7 @@ PACKAGES: Dict[str, FrozenSet[str]] = {
         "intel-ucode",
         "nvidia",
         "nvidia-settings",
+        "sof-firmware",
         "xf86-video-intel",
     ]),
 }

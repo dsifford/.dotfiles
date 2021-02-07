@@ -4,5 +4,4 @@
 - yay:
     official:
     - acpi
-    - alsa-utils
     - fwupd

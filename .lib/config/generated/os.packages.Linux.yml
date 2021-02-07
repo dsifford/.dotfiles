@@ -6,6 +6,7 @@
     - base-devel
     - xorg
     official:
+    - alsa-utils
     - arandr
     - arc-icon-theme
     - arc-solid-gtk-theme
@@ -77,7 +78,6 @@
     - openvpn
     - otf-font-awesome
     - pacman-contrib
-    - pavucontrol
     - picom
     - playerctl
     - pulseaudio
