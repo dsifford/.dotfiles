@@ -113,7 +113,9 @@ endif
 let g:which_key_map.a = { 'name': '+ALE' }
 
 let g:ale_completion_enabled = 1
+let g:ale_floating_preview   = 1
 let g:ale_linters_explicit   = 1
+let g:ale_lsp_suggestions    = 1
 let g:ale_virtualtext_cursor = 1
 
 let g:ale_sign_error   = has('mac') ? 'x' : '⮿'
