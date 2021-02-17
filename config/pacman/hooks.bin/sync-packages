@@ -28,6 +28,7 @@ PACKAGES: Dict[str, FrozenSet[str]] = {
     # List of packages to be included on desktop only.
     "archlinux.desktop": frozenset([
         "plex-media-server",
+        "rclone",
         "wireguard-tools",
     ]),
     # List of packages to be included on laptop only.

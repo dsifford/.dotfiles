@@ -2,5 +2,8 @@
 # THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY.
 #
 - yay:
+    official:
+    - rclone
+    - wireguard-tools
     aur:
     - plex-media-server
