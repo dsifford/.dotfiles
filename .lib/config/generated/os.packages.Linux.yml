@@ -34,9 +34,9 @@
     - ffmpeg
     - ffmpegthumbnailer
     - firefox-developer-edition
+    - flameshot
     - fzf
     - gdb
-    - gimp
     - git
     - github-cli
     - gnome-keyring
@@ -127,7 +127,6 @@
     - chromium-snapshot-bin
     - dropbox
     - git-delta-bin
-    - gscreenshot
     - hadolint-bin
     - pandoc-bin
     - phantomjs-bin
