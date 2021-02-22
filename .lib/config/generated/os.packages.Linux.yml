@@ -55,7 +55,6 @@
     - kbfs
     - keybase
     - keychain
-    - lastpass-cli
     - libreoffice-fresh
     - linux
     - linux-firmware
@@ -124,6 +123,7 @@
     - zip
     aur:
     - autokey-gtk
+    - bitwarden-cli
     - chromium-snapshot-bin
     - dropbox
     - git-delta-bin

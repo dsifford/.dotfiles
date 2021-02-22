@@ -87,6 +87,11 @@ if command -v fzf > /dev/null; then
     [ -n "$TMUX" ] && export FZF_TMUX=1
 fi
 
+if [ -r "$XDG_CONFIG_HOME/Bitwarden CLI/session.sh" ]; then
+    # shellcheck disable=SC1090
+    . "$XDG_CONFIG_HOME/Bitwarden CLI/session.sh"
+fi
+
 if command -v nvim > /dev/null; then
 	export EDITOR=nvim
 	export MANPAGER='nvim -c "set ft=man" -'

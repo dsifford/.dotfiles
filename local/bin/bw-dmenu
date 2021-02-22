@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+#
+# Interactive dmenu program that displays a list of all bitwarden accounts. The
+# password for the account selected is then copied to the system clipboard.
+#
+
+if [ -f "$XDG_CONFIG_HOME/Bitwarden CLI/session.sh" ]; then
+	# shellcheck disable=SC1090
+	. "$XDG_CONFIG_HOME/Bitwarden CLI/session.sh"
+else
+	notify-send "Bitwarden session file does not exist"
+fi
+
+# make sure the vault is unlocked
+if [[ $(bw status | jq -r '.status') != 'unlocked' ]]; then
+	notify-send "Bitwarden vault is locked"
+	exit 0
+fi
+
+bw list items |
+	jq -r '.[] | "\(.name)|\(.login.username)|\(.id)"' |
+	column \
+		--separator '|' \
+		--output-separator $'\t' \
+		--table \
+		--table-columns ACCOUNT,USERNAME,ID |
+	rofi -dmenu -i -a 0 -p bitwarden |
+	awk -F $'\t' '{ print $3 }' |
+	xargs --no-run-if-empty bw get password |
+	xclip -selection clipboard
