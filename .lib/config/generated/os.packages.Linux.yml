@@ -124,9 +124,9 @@
     aur:
     - autokey-gtk
     - bitwarden-cli
-    - chromium-snapshot-bin
     - dropbox
     - git-delta-bin
+    - google-chrome-dev
     - hadolint-bin
     - pandoc-bin
     - phantomjs-bin

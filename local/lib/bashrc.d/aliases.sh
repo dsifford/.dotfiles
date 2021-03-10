@@ -11,7 +11,7 @@ alias dm='docker-machine'
 # Git
 alias g='git'
 alias git='hub'
-alias gs='git status | less'
+alias gs='git status | less --quit-if-one-screen'
 alias gf='git f'
 
 # Misc
@@ -24,10 +24,8 @@ alias t='task'
 alias tmux='command tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
 alias y='yarn'
 
-# FIXME: uncomment this when the following merges
-# https://github.com/github/hub/pull/2390
-# command -v rg > /dev/null \
-# 	&& alias grep='rg'
+command -v rg > /dev/null \
+	&& alias grep='rg'
 
 command -v nvim > /dev/null \
 	&& alias vim='nvim'
@@ -37,10 +35,4 @@ if ls --version &> /dev/null; then
 	alias ls='ls -hF1 --group-directories-first --color=tty'
 else
 	alias ls='ls -FHG11'
-fi
-
-if [[ $(uname) != 'Darwin' ]]; then
-	# Verbosely rate the 200 most recently synchronized HTTP servers located in the US,
-	# sort them by download rate, and overwrite the file /etc/pacman.d/mirrorlist
-	alias pacman-update='sudo reflector --verbose --country "United States" -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
 fi
