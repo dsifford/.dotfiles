@@ -11,7 +11,7 @@ alias dm='docker-machine'
 # Git
 alias g='git'
 alias git='hub'
-alias gs='git status | less --quit-if-one-screen'
+alias gs='git status | less'
 alias gf='git f'
 
 # Misc
