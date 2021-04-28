@@ -5,5 +5,3 @@
     official:
     - rclone
     - wireguard-tools
-    aur:
-    - plex-media-server
