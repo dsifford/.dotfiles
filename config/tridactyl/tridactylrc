@@ -1,6 +1,6 @@
 sanitize tridactyllocal tridactylsync " Wipe existing settings to ensure a clean slate when `:source`d
 
-set editorcmd termite --role=pop-up -e "nvim %f -c 'setf markdown | set wrap linebreak | normal %lG%cl'"
+set editorcmd alacritty --class=pop-up -e "nvim %f -c 'setf markdown | set wrap linebreak | normal %lG%cl'"
 
 " Custom Search URLs: {{{
 

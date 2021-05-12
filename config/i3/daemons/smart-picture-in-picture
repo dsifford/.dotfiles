@@ -36,7 +36,7 @@ class Positioner:
         )
         if last_active == "firefoxdeveloperedition":
             self.padding = Padding(TOP=150, RIGHT=25)
-        elif last_active == "Termite":
+        elif last_active == "Alacritty":
             self.padding = Padding(BOTTOM=50)
         else:
             self.padding = Padding()

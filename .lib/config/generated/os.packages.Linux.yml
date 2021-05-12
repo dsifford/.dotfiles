@@ -6,6 +6,7 @@
     - base-devel
     - xorg
     official:
+    - alacritty
     - arandr
     - arc-icon-theme
     - arc-solid-gtk-theme
@@ -100,7 +101,6 @@
     - solaar
     - subversion
     - task
-    - termite
     - terraform
     - texlive-core
     - tmux
