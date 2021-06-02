@@ -123,10 +123,10 @@
     - zip
     aur:
     - autokey-gtk
-    - bitwarden-cli
+    - bitwarden-cli-bin
     - dropbox
     - git-delta-bin
-    - google-chrome-dev
+    - google-chrome-beta
     - hadolint-bin
     - pandoc-bin
     - phantomjs-bin
