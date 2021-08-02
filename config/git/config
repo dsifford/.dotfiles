@@ -95,3 +95,5 @@
     insteadOf = http://bitbucket.org
 
 # vim: set ft=gitconfig:
+[init]
+	defaultBranch = main
