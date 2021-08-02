@@ -1,28 +1,19 @@
 {
-	"C_Cpp.intelliSenseEngine": "Default",
 	"breadcrumbs.enabled": true,
 	"css.validate": false,
 	"diffEditor.ignoreTrimWhitespace": true,
 	"editor.acceptSuggestionOnEnter": "smart",
-	"editor.autoIndent": true,
+	"editor.autoIndent": "full",
 	"editor.cursorBlinking": "solid",
 	"editor.fontFamily": "Monaco, 'Courier New', monospace",
 	"editor.fontSize": 18,
-	"editor.gotoLocation.multiple": "goto",
-	"editor.quickSuggestions": {
-		"comments": true,
-		"other": true,
-		"strings": true
-	},
 	"editor.renderWhitespace": "none",
 	"editor.rulers": [
 		100,
 		120,
 		80
 	],
-	"editor.suggest.localityBonus": true,
 	"editor.suggestOnTriggerCharacters": false,
-	"editor.suggestSelection": "first",
 	"editor.wordWrap": "off",
 	"emmet.includeLanguages": {
 		"php": "html",
@@ -43,69 +34,28 @@
 		"**/CVS": true,
 		"**/node_modules": true
 	},
-	"gitlens.advanced.messages": {
-		"suppressCommitHasNoPreviousCommitWarning": false,
-		"suppressCommitNotFoundWarning": false,
-		"suppressFileNotUnderSourceControlWarning": false,
-		"suppressGitVersionWarning": false,
-		"suppressLineUncommittedWarning": false,
-		"suppressNoRepositoryWarning": false,
-		"suppressResultsExplorerNotice": true,
-		"suppressShowKeyBindingsNotice": true,
-		"suppressUpdateNotice": true,
-		"suppressWelcomeNotice": true
-	},
-	"gitlens.blame.highlight.locations": [
-		"gutter",
-		"line",
-		"overview"
-	],
-	"gitlens.codeLens.enabled": false,
-	"gitlens.codeLens.recentChange.command": "gitlens.diffWithPrevious",
-	"gitlens.codeLens.scopes": [
-		"blocks",
-		"containers",
-		"document"
-	],
-	"gitlens.hovers.annotations.over": "annotation",
-	"gitlens.keymap": "none",
-	"gitlens.views.fileHistory.enabled": true,
-	"gitlens.views.lineHistory.enabled": true,
-	"gitlens.views.repositories.files.layout": "list",
-	"javascript.suggest.autoImports": false,
 	"keyboard.dispatch": "keyCode",
 	"merge-conflict.autoNavigateNextConflict.enabled": true,
-	"phpcbf.standard": "dsifford",
 	"prettier.proseWrap": "always",
 	"prettier.singleQuote": true,
 	"prettier.tabWidth": 4,
 	"prettier.trailingComma": "es5",
 	"python.formatting.provider": "black",
-	"python.jediEnabled": false,
-	"python.linting.pylintPath": "/home/dsifford/.local/bin/pylint",
-	"python.pythonPath": "python3.7",
 	"python.sortImports.args": [
 		"-ac"
 	],
 	"references.preferredLocation": "view",
 	"rust-client.updateOnStartup": true,
 	"rust.clippy_preference": "on",
-	"rust.goto_def_racer_fallback": true,
 	"rust.unstable_features": true,
 	"scss.validate": false,
-	"shellcheck.customArgs": [
-		"-x"
-	],
 	"stylelint.enable": true,
 	"telemetry.enableTelemetry": false,
 	"typescript.suggest.autoImports": false,
 	"typescript.tsdk": "/home/dsifford/.local/share/npm/lib/node_modules/typescript/lib",
-	"typescript.tsserver.log": "verbose",
+	"typescript.tsserver.log": "off",
 	"vim.easymotionMarkerBackgroundColor": "#ff5555",
-	"vim.easymotionMarkerFontFamily": "Monaco",
 	"vim.easymotionMarkerFontWeight": "bold",
-	"vim.easymotionMarkerHeight": 20,
-	"vim.easymotionMarkerWidthPerChar": 10,
 	"vim.enableNeovim": true,
 	"vim.foldfix": true,
 	"vim.highlightedyank.color": "#ffb86c",
@@ -218,9 +168,8 @@
 		"editorBracketMatch.background": "#FF79C680",
 		"editorBracketMatch.border": "#ff00ff"
 	},
-	"workbench.colorTheme": "Dracula",
 	"workbench.sideBar.location": "left",
-	"workbench.startupEditor": "none",
+	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 20,
 	"todo-tree.highlights.customHighlight": {
@@ -248,5 +197,8 @@
 		"FIXME:",
 		"TODO:"
 	],
-	"todo-tree.tree.tagsOnly": true
+	"todo-tree.tree.tagsOnly": true,
+	"editor.semanticHighlighting.enabled": true,
+	"workbench.colorTheme": "Dracula",
+	"window.dialogStyle": "custom",
 }
