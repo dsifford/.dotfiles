@@ -1,4 +1,3 @@
-
 " C:
 Plug 'justinmk/vim-syntax-extra'
 
@@ -19,9 +18,6 @@ Plug 'pangloss/vim-javascript'
 
 " Markdown:
 Plug 'plasticboy/vim-markdown'
-
-" PlantUML:
-Plug 'aklt/plantuml-syntax'
 
 " Python:
 Plug 'vim-python/python-syntax'
