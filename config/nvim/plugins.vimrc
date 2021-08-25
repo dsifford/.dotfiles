@@ -28,6 +28,8 @@ Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-surround'
 Plug 'liuchengxu/vim-which-key'
 Plug 'kana/vim-textobj-user'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 
 Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'

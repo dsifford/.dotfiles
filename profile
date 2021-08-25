@@ -49,6 +49,7 @@ export PYLINTRC=$XDG_CONFIG_HOME/pylint/pylintrc
 export PYTHONUSERBASE=~/.local
 export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
+export SSB_HOME=$XDG_DATA_HOME/zoom
 export STACK_ROOT=$XDG_DATA_HOME/stack
 export TASKDATA=$XDG_DATA_HOME/task
 export TASKRC=$XDG_CONFIG_HOME/task/taskrc

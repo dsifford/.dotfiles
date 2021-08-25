@@ -20,8 +20,8 @@
     - bat
     - blueman
     - bluez-utils
+    - chromium
     - cmake
-    - code
     - dhclient
     - dialog
     - docker
@@ -39,6 +39,7 @@
     - fzf
     - gdb
     - git
+    - git-delta
     - github-cli
     - gnome-keyring
     - gnu-netcat
@@ -108,10 +109,10 @@
     - trash-cli
     - tree
     - udiskie
+    - ueberzug
     - uncrustify
     - unrar
     - unzip
-    - w3m
     - wget
     - xclip
     - xorg-xinit
@@ -125,8 +126,6 @@
     - autokey-gtk
     - bitwarden-cli-bin
     - dropbox
-    - git-delta-bin
-    - google-chrome-beta
     - hadolint-bin
     - pandoc-bin
     - phantomjs-bin
@@ -136,6 +135,8 @@
     - slack-desktop
     - spotify
     - ttf-monaco
+    - visual-studio-code-bin
     - windscribe-cli
     - yay
     - zeal-git
+    - zoom

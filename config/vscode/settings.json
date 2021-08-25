@@ -199,6 +199,8 @@
 	],
 	"todo-tree.tree.tagsOnly": true,
 	"editor.semanticHighlighting.enabled": true,
-	"workbench.colorTheme": "Dracula",
 	"window.dialogStyle": "custom",
+	"editor.suggestSelection": "first",
+	"python.languageServer": "Pylance",
+	"workbench.colorTheme": "Dracula",
 }

@@ -304,6 +304,21 @@ augroup dsifford
 augroup END
 
 " }}}2
+" Tree-Sitter: {{{2
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true,
+  },
+  playground = {
+    enable = true,
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+  },
+}
+EOF
+" }}}2
 " UltiSnips: {{{2
 
 let g:UltiSnipsEditSplit           = 'tabdo'

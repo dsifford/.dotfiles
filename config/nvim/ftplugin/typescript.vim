@@ -25,12 +25,6 @@ let b:ale_javascript_prettier_options = vimrc#merge_ale_options('ale_javascript_
     \ '--trailing-comma=all',
     \])
 
-let b:undo_ftplugin = vimrc#undo_ftplugin(
-    \ 'setlocal foldmethod<',
-    \ 'unlet b:ale_fixers b:ale_linters b:ale_javascript_prettier_options',
-    \ 'delcommand SortImports'
-    \)
-
 if expand('%:t:r') =~# '[-.]test$'
     UltiSnipsAddFiletypes jest.typescript
 endif
