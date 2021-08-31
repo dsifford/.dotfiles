@@ -4,26 +4,6 @@ Host *
     IgnoreUnknown UseKeychain
     UseKeychain yes
 
-Host aliem
-    HostName 178.128.182.65
-    User root
-
-Host aliemu
-    HostName 104.248.220.191
-    User root
-
-Host bloomscape-dev
-    HostName bloomscpdev.ssh.wpengine.net
-    User bloomscpdev
-
-Host bloomscape-staging
-    HostName bloomstage.ssh.wpengine.net
-    User bloomstage
-
-Host bloomscape
-    HostName bloomscape2019.ssh.wpengine.net
-    User bloomscape2019
-
 Host github.com
     HostName github.com
     User git

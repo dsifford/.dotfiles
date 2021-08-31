@@ -7,6 +7,7 @@ configuration {
     kb-accept-entry: "Return";
     kb-mode-next: "Ctrl-l,Super-l";
     kb-mode-previous: "Ctrl-h,Super-h";
+    kb-mode-complete: "";
     kb-remove-char-back: "BackSpace";
     kb-remove-to-eol: "";
     kb-row-down: "Ctrl-j,Super-j";
