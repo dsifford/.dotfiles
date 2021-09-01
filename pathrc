@@ -8,6 +8,7 @@ declare -a path=(
 	"${XDG_DATA_HOME:-$HOME/.local/share}"/{cargo,go,npm}/bin
 	/usr/local/opt/openssl/bin
 	/usr/local/opt/*/libexec/gnubin
+    /usr/local/opt/gnu-getopt/bin
 	/usr/local/{bin,sbin}
 )
 

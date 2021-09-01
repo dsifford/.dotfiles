@@ -9,16 +9,20 @@ main() {
 }
 
 i3-config() {
-	generate-config \
-		./config/i3/config \
-		./config/i3/base.config \
-		./config/i3/"$(uname -n)".config
+	if command -v i3 > /dev/null; then
+		generate-config \
+			./config/i3/config \
+			./config/i3/base.config \
+			./config/i3/"$(uname -n)".config
+	fi
 }
 
 i3blocks-config() {
-	generate-config \
-		./config/i3blocks/config \
-		./config/i3blocks/"$(uname -n)".config
+	if command -v i3 > /dev/null; then
+		generate-config \
+			./config/i3blocks/config \
+			./config/i3blocks/"$(uname -n)".config
+	fi
 }
 
 ##
@@ -40,7 +44,7 @@ generate-config() {
 	# make sure all input files exist
 	for input_file in "$@"; do
 		if [[ ! -f $input_file ]]; then
-			>&2 echo "ERROR(${FUNCNAME[1]}): $input_file not found."
+			echo >&2 "ERROR(${FUNCNAME[1]}): $input_file not found."
 			return
 		fi
 	done

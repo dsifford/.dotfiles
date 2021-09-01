@@ -1,58 +1,28 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
-tap "homebrew/cask-drivers"
-tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
 tap "homebrew/core"
-tap "homebrew/services"
-tap "manifoldco/brew"
-tap "zaquestion/tap"
-# Apache Portable Runtime library
-brew "apr"
-# Companion library to apr, the Apache Portable Runtime library
-brew "apr-util"
-# Interpreted, interactive, object-oriented programming language
-brew "python"
-# Record and share terminal sessions
-brew "asciinema"
 # Archival front-end
 brew "atool"
-# Tool for generating GNU Standards-compliant Makefiles
-brew "automake"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# Programmable completion for Bash 4.2+
+brew "bash-completion@2"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
-# Top-like interface for container metrics
-brew "ctop"
-# Good-lookin' diffs with diff-highlight and more
-brew "diff-so-fancy"
-# Command-line tool for DigitalOcean
-brew "doctl"
-# Convert text between DOS, UNIX, and Mac formats
-brew "dos2unix"
-# Maintain consistent coding style between multiple editors
-brew "editorconfig"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# GNU internationalization (i18n) and localization (l10n) library
-brew "gettext"
-# GNU multiple precision arithmetic library
-brew "gmp"
 # GNU awk utility
 brew "gawk"
-# GNU compiler collection
-brew "gcc"
-# Distributed revision control system
-brew "git"
-# Small git utilities
-brew "git-extras"
+# GitHub command-line tool
+brew "gh"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
 # Command-line option parsing utility
 brew "gnu-getopt"
 # GNU implementation of the famous stream editor
@@ -61,86 +31,33 @@ brew "gnu-sed"
 brew "gnu-tar"
 # GNU implementation of which utility
 brew "gnu-which"
-# Portable Foreign Function Interface library
-brew "libffi"
-# ASN.1 structure parser library
-brew "libtasn1"
-# Low-level cryptographic library
-brew "nettle"
-# GNU Transport Layer Security (TLS) Library
-brew "gnutls"
-# GNU grep, egrep and fgrep
-brew "grep"
 # Add GitHub support to git on the command-line
 brew "hub"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c"
-# Regular expressions library
-brew "oniguruma"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # User-friendly front-end to ssh-agent(1)
 brew "keychain"
-# LastPass command-line interface tool
-brew "lastpass-cli"
 # Pager program similar to more
 brew "less"
-# YAML Parser
-brew "libyaml"
-# Mac App Store command-line interface
-brew "mas"
 # Node version management
 brew "n"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Utility for managing network connections
-brew "netcat"
-# SSL/TLS cryptography library
-brew "openssl"
-# Swiss-army knife of markup format conversion
-brew "pandoc"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
+# File browser
+brew "ranger"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Utility that provides fast incremental file transfer
-brew "rsync"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
-# Version control system designed to be a better CVS
-brew "subversion"
-# Feature-rich console based todo list manager
-brew "task"
-# Tool to build, change, and version infrastructure
-brew "terraform"
 # Terminal multiplexer
 brew "tmux"
-# Command-line interface to the freedesktop.org trashcan
-brew "trash-cli"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Source code beautifier
-brew "uncrustify"
-# Internet file retriever
-brew "wget"
 # JavaScript package manager
 brew "yarn"
-# Lab wraps Git or Hub, making it simple to clone, fork, and interact with repositories on GitLab
-brew "zaquestion/tap/lab"
-cask "appcleaner"
-cask "bartender"
-cask "dash"
-cask "docker-edge"
-cask "dropbox"
-cask "google-chrome-canary"
-cask "iterm2"
-cask "karabiner-elements"
-cask "keybase"
-cask "libreoffice"
-cask "mactex-no-gui"
-cask "postman"
-cask "slack"
-cask "spotify"
-cask "windscribe"
+# GPU-accelerated terminal emulator
+cask "alacritty"
