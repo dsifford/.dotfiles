@@ -17,6 +17,7 @@
     - base
     - bash-completion
     - bat
+    - bitwarden-cli
     - blueman
     - bluez-utils
     - chromium
@@ -115,7 +116,6 @@
     - wget
     - xclip
     - xorg-xinit
-    - xterm
     - yarn
     - youtube-dl
     - zathura
@@ -123,7 +123,6 @@
     - zip
     aur:
     - autokey-gtk
-    - bitwarden-cli-bin
     - dropbox
     - hadolint-bin
     - pandoc-bin
