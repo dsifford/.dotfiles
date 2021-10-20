@@ -419,6 +419,7 @@ vnoremap ++ g<C-a>
 let g:which_key_map.s = { 'name': '+settings' }
 nnoremap <silent> <Leader>sl <Cmd>set list!<CR>
 nnoremap <silent> <Leader>st <Cmd>set textwidth=
+nnoremap <silent> <Leader>sw <Cmd>set wrap! linebreak!<CR>
 
 let g:which_key_map.z = {
 \   'name': '+folds',
