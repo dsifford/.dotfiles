@@ -110,6 +110,7 @@ if [ "$(uname)" = Darwin ]; then
 	MANPATH="/usr/local/opt/coreutils/libexec/gnuman:/usr/local/opt/gnu-getopt/share/man:$(manpath)"
 	export MANPATH
 
+	export MANPAGER='less'
     export BROWSER=open
 	export CPPFLAGS="-I/usr/local/opt/openssl/include"
 	export LDFLAGS="-L/usr/local/opt/openssl/lib"

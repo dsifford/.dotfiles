@@ -9,6 +9,10 @@ augroup END
 
 runtime plugins.vimrc
 
+if has('mac')
+  runtime mac.vimrc
+endif
+
 " }}}
 " Options: {{{
 
@@ -305,6 +309,9 @@ augroup END
 
 " }}}2
 " Tree-Sitter: {{{2
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained",

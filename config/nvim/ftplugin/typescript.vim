@@ -1,5 +1,3 @@
-setlocal foldmethod=syntax
-
 " Sort imports by path
 command! -buffer -range -nargs=0 SortImports <line1>,<line2>sort r /from ['"]\zs[^'"]\+/
 
