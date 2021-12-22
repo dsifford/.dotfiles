@@ -61,7 +61,6 @@
     - linux
     - linux-firmware
     - mpv
-    - mypy
     - neovim
     - netctl
     - network-manager-applet
@@ -137,4 +136,3 @@
     - windscribe-cli
     - yay
     - zeal-git
-    - zoom

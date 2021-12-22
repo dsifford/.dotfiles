@@ -95,7 +95,7 @@ fi
 
 if command -v nvim > /dev/null; then
 	export EDITOR=nvim
-	export MANPAGER='nvim -c "set ft=man" -'
+    export MANPAGER='nvim +Man!'
 fi
 
 # rustc

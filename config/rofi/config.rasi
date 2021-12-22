@@ -1,6 +1,5 @@
 configuration {
     font: "Monaco 16";
-    theme: "/usr/share/rofi/themes/Arc-Dark.rasi";
     show-icons: true;
 
     // keybindings
@@ -15,5 +14,7 @@ configuration {
     kb-row-last: "Ctrl-J,Super-J";
     kb-row-up: "Ctrl-k,Super-k";
 }
+
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
 
 // vim: set syntax=scss:
