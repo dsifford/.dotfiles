@@ -13,21 +13,23 @@ declare -a COMPREPLY
 declare completion
 
 # load bash-completion if necessary
-declare -F _completion_loader &>/dev/null || {
-    declare src
-    for src in \
-        /usr/share/bash-completion/bash_completion \
-        /usr/local/share/bash-completion/bash_completion; do
-        # shellcheck disable=SC1090
-        [ -f "$src" ] && source "$src"
-    done
+declare -F _completion_loader &> /dev/null || {
+	declare src
+	for src in \
+		/usr/share/bash-completion/bash_completion \
+		/usr/local/share/bash-completion/bash_completion; do
+		# shellcheck disable=SC1090
+		[ -r "$src" ] && source "$src"
+	done
 }
 
-_completion_loader "$1"
+# For whatever reason, calling this on mac breaks the script
+if [ "$(uname)" != Darwin ]; then
+	_completion_loader "$1"
+fi
 
-completion=$(complete -p "$1" 2>/dev/null | awk '{ print $(NF-1) }')
+completion=$(complete -p "$1" 2> /dev/null | awk '{ print $(NF-1) }')
 
 "$completion"
 
 printf '%s\n' "${COMPREPLY[@]}" | LC_ALL=C sort -u
-
