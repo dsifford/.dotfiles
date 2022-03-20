@@ -13,7 +13,6 @@
     - archlinux-wallpaper
     - asciinema
     - asp
-    - atool
     - base
     - bash-completion
     - bat
@@ -121,13 +120,13 @@
     - zathura-pdf-poppler
     - zip
     aur:
+    - atool
     - autokey-gtk
     - dropbox
     - hadolint-bin
     - pandoc-bin
     - phantomjs-bin
     - php-codesniffer
-    - postman-bin
     - shellcheck-bin
     - slack-desktop
     - spotify
