@@ -12,6 +12,7 @@
     root = rev-parse --show-toplevel
     rs   = restore-staged-file
     s    = status
+    undo = reset HEAD~
 
 [core]
     editor = nvim
