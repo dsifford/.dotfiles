@@ -21,6 +21,8 @@ brew "fzf"
 brew "gawk"
 # GitHub command-line tool
 brew "gh"
+# Distributed revision control system
+brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
 # Command-line option parsing utility
