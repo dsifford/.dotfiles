@@ -53,7 +53,7 @@ colors:
      foreground: '#282A36'
      background: '#FFB86C'
 
-    bar:
+    footer_bar:
      background: '#44475a'
      foreground: '#F8F8F2'
 
