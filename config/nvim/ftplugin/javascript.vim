@@ -1,4 +1,5 @@
 setlocal omnifunc=
+setlocal indentexpr=
 
 let g:javascript_plugin_jsdoc = 1
 
